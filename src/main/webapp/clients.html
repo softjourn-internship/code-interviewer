@@ -1,0 +1,79 @@
+<head>
+	<title>Admin Panel</title>
+	<link rel="stylesheet" type="text/css" href="styles/admin.css">
+	<meta name="viewport" content="width=device-width, initial-scale: 1.0, user-scalabe=0">
+	<script type="text/javascript" src="scripts/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="scripts/admin.js"></script>
+</head>
+<body>
+
+	<div id="header">
+		<div class="mobile"><a href="#"><img src="images/menu.png"></a></div>
+		<div class="logo"><a href="#">interview<span>.code</span></a></div>
+		<div class="search"><input type="text" placeholder="Search for something"></div>
+	</div>	
+
+
+	<div id="conteiner">
+		<div class="sidebar">
+			<ul id="nav">
+				<li><a href="index.html">Dashboard</a></li>
+				<li><a id="selected" href="#">Clients</a></li>
+				<li><a href="#">Search</a></li>
+				<li><a href="#">Statistics</a></li>
+			</ul>
+		</div>
+		<div class="content">
+		<!-- 	<h1>Dashboard</h1> -->
+			<div class="top">
+
+			</div>
+			<div class="box">
+				<div class="clients-search">
+					<form method="POST">
+						<input type="text" placeholder="Id">
+						<input type="text" placeholder="Name">
+						<input type="text" placeholder="Surname">
+					</form>
+				</div>
+				<table>
+					<thead>
+						<tr>
+							<th>id</th>
+							<th>Name</th>
+							<th>Surname</th>
+							<th>Email</th>
+							<th>Admin</th>		
+						</tr>				
+					</thead>
+					<tbody>
+						<tr class="hover-tr">
+							<td>1</td>
+							<td>Dmytro</td>
+							<td>Kutsaniuk</td>
+							<td>kutsaniuk@gmail.com</td>
+							<td><input type="checkbox" checked></td>
+						</tr>
+						<tr class="hover-tr">
+							<td>2</td>
+							<td>Yura</td>
+							<td>Demkiv</td>
+							<td>demkiv@gmail.com</td>
+							<td><input type="checkbox"></td>
+						</tr>
+						<tr class="hover-tr">
+							<td>3</td>
+							<td>Ivan</td>
+							<td>Arabchuk</td>
+							<td>arabchuk@gmail.com</td>
+							<td><input type="checkbox"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			
+		</div>
+	</div>
+
+</body>
+</html>
