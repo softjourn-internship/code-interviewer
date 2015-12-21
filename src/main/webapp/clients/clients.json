@@ -1,0 +1,18 @@
+[
+    {
+    	"id": 1,
+     	"name": "Dmytro",
+     	"surname": "Kutsaniuk",
+     	"middlename": "Volodymyrovych",
+     	"email":"kutsaniuk@gmail.com",
+     	"status":"red"
+     },
+    {
+    	"id": 2,
+     	"name": "Dmytro",
+     	"surname": "Kutsaniuk",
+     	"middlename": "Volodymyrovych",
+     	"email":"kutsaniuk@gmail.com",
+     	"status":"red"
+     }
+ ]

@@ -19,8 +19,7 @@ adminPanelApp.controller('PhoneListCtrl', function ($scope, $http) {
      	'surname': 'Kutsaniuk',
      	'middlename': 'Volodymyrovych',
      	'email':'kutsaniuk@gmail.com',
-     	'status':'Done',
-     	'statusClass':'done',
+     	'status':'done',
      	'testSent':'17.12.2015',
      	'testReturn':'18.12.2015'
      },
@@ -30,8 +29,7 @@ adminPanelApp.controller('PhoneListCtrl', function ($scope, $http) {
      	'surname': 'Demkiv',
      	'middlename': 'Volodymyrovych',
      	'email':'demkiv@gmail.com',
-     	'status':'Done',
-     	'statusClass':'done',
+     	'status':'done',
      	'testSent':'13.01.2015',
      	'testReturn':'18.01.2015'
      },
@@ -41,8 +39,7 @@ adminPanelApp.controller('PhoneListCtrl', function ($scope, $http) {
      	'surname': 'Arabchuk',
      	'middlename': 'Volodymyrovych',
      	'email':'arabchuk@gmail.com',
-     	'status':'In progress',
-     	'statusClass':'in-progress',
+     	'status':'in-progress',
      	'testSent':'18.06.2015',
      	'testReturn':'20.06.2015'
      }

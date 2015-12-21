@@ -14,51 +14,55 @@
 </head>
 <body  ng-controller="PhoneListCtrl">
 
-	<div id="header">
-		<div class="mobile"><a href="#"><img src="images/mm.gif"></a></div>
-		<div class="logo"><a href="#">interview<span>.code</span></a></div>
-		<div class="search"><input type="text" placeholder="Search for something"></div>
-		<div class="send-request">
-			
-		</div>
-	</div>	
+	
 
 
-	<div id="conteiner">
+	<div id="container">
 		<div class="sidebar">
 			<ul id="nav">
-				<li><a id="selected" href="#">Dashboard</a></li>
-				<li><a href="clients.html">Clients</a></li>
-				<li><a href="#">Participants</a></li>
-				<li><a href="#">Statistics</a></li>
+				<li><a id="dachboard" href="#">DASHBOARD</a></li>
+				<li><a id="participants" href="#">PARTICIPANTS</a></li>
+				<li><a id="statistics" href="#">STATISTICS</a></li>
 			</ul>
 		</div>
 		<div class="content">
+		<div id="header">
+		<div class="mobile"><a href="#">
+			<img src="images/menu.png"></a></div>
+		<!-- <div class="logo"><a href="#">interview<span>.code</span></a></div> -->
+		<div class="search"><input type="text" value="Search for something..." onblur="this.value='Search for something...'" onfocus="this.value=''"></div>
+		<div class="logout">
+			Log out
+		</div>
+	</div>	
 		<!-- 	<h1>Dashboard</h1> -->
+
+			<div class="box">
+
+				<div>
+					<ul>
+					<li><input type="text" value="Name" onblur="this.value='Name'" onfocus="this.value=''" ng-model="name"></li>
+					<li><button>Search</button></li>
+					</ul>
+				</div>
+				<table id="table-dashboard">
+					<tbody>
+						<tr class="hover-tr" ng-repeat="client in clients | filter:name">
+							<td><a href="#">{{client.name}} {{client.surname}}</a></td>
+							<td class="td-default"> {{client.email}} </td>
+							<td class="td-default"> 17.04.15</td>
+							<td class="status-{{client.status}}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			
 			<div class="top">
 				<div class="box box-small"><span>Requests</span><hr/><p>152</p></div>
 				<div class="box box-small"><span>View</span><hr/><p>12,456</p></div>
 				<div class="box box-small"><span>Passed tests</span><hr/><p>1,512</p></div>
 				<br class="clearBoth">
 			</div>
-
-			<div class="box">
-				<div>
-					<input type="text" placeholder="Name" ng-model="name">
-					<button>Search</button>
-				</div>
-				<table id="table-dashboard">
-					<tbody>
-						<tr class="hover-tr" ng-repeat="client in clients | filter:name">
-							<td><a href="#">{{client.name}} {{client.surname}}</a></td>
-							<td> {{client.email}} </td>
-							<td> 17.04.15</td>
-							<td><div class="status-{{client.statusClass}}">{{client.status}}</div></td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<br><br><br>
 		</div>
 	</div>
 

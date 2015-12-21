@@ -1,7 +1,8 @@
 $(document).ready(function() {
 	
 	$("div.mobile").click(function() {
-			$(".sidebar").slideToggle('fast');
+			$(".sidebar").fadeToggle();
+			// $("div.box div button").fadeToggle();
 	});
 
 	window.onresize = function(event) {
