@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+	<meta charset="UTF-8">
+	<title>Workspase</title>
+	<link rel="stylesheet" type="text/css" href="styles/UsersWorkspaseStyle.css">
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+
+  <script src="scripts/UsersWorkspase.js"></script>
+</head>
+<body>
+	<div id="header">
+		<div class="taskButton" onclick="SelectTask(1)">Task 1</div>
+		<div class="taskButton" onclick="SelectTask(2)">Task 2</div>
+		<div class="taskButton" onclick="SelectTask(3)">Task 3</div>
+	</div>
+	<div id="fullTask">
+		<div id="titleTask">{{'Task '+ $scope.T}}</div>
+
+		<div id="Task"><p></p>
+		</div>
+	</div>
+	<div id="menuBar">
+		<div class="menuBox">
+			<img class="Icons" id="IconProg" src="images/Icon1.jpg" alt="" title="Show program editor" onclick="ShowPr()">
+			<img class="Icons" src="images/Icon2.jpg" title="Show test editor" onclick="ShowTest()">
+			<img class="Icons" id="IconAll" src="images/Icon3.jpg" alt="" title="Show all editors" onclick="ShowAll()">
+		</div>
+		<div class="menuBox">
+			<img class="Icons" src="images/Icon4.jpg" alt="" title="Run">
+			<img class="Icons" src="images/Icon5.jpg" alt="" title="Pause">
+			<img class="Icons" src="images/Icon6.jpg" alt="" title="Stop">
+		</div>
+		<div class="menuBox">
+			<img class="Icons" src="images/Icon8.jpg" alt="" title="Send programs at server">
+		</div>
+		<div class="menuBox">
+			<img class="Icons" src="images/Icon9.jpg" alt="" title="Show debug message" onclick="ShowLogMessage()">
+		</div>
+	</div>
+	<div id="baseArea">
+		<div id="programEditor">
+			<div id="files">ProgramEditor</div>
+			<textarea id="prEditor" autofocus></textarea>
+		</div>
+		<div id="testEditor">
+			<div id="files">TestEditor</div>
+			<textarea id="prEditor" autofocus></textarea>
+		</div>
+		<div id="logMess"></div>
+		
+	</div>
+</body>
+</html>
