@@ -1,9 +1,25 @@
 $(document).ready(function() {
 	
 	$("div.mobile").click(function() {
-			$(".sidebar").fadeToggle();
-			// $("div.box div button").fadeToggle();
+			$("div.sidebar").fadeToggle();
 	});
+
+	$("#view").click(function() {
+			// $("div.sidebar").fadeOut();
+	});
+
+	$("#send").click(function() {
+			$("div.send-test").fadeIn();
+			$("div.profile div.info-profile div.details").fadeOut();
+			$("#send").hide();
+	});
+
+	$("#close").click(function() {
+			$("div.send-test").fadeOut();
+			$("#send").show();
+			$("div.profile div.info-profile div.details").fadeIn();		
+	});
+
 
 	window.onresize = function(event) {
 		if ($(window).width() > 700) {

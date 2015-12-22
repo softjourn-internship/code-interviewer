@@ -6,8 +6,10 @@
         "email":"kutsaniuk@gmail.com",
         "status":"done",
         "testSent":"17.12.2015",
-        "testReturn":"18.12.2015"
-     },
+        "testReturn":"18.12.2015",
+        "perfomedTests": ["Java","Html","CSS","JS"],
+        "image": "id1.jpg"
+    },
     {
         "id": 2,
         "name": "Ivan",
@@ -22,7 +24,7 @@
         "name": "Yura",
         "surname": "Demkiv",
         "email":"demkiv@gmail.com",
-        "status":"in-progress",
+        "status":"inProcess",
         "testSent":"16.12.2015",
         "testReturn":"18.12.2015"
      },
@@ -40,7 +42,7 @@
         "name": "Nicholas",
         "surname": "Grinkevych",
         "email":"grinkevych@gmail.com",
-        "status":"in-progress",
+        "status":"inProcess",
         "testSent":"17.12.2015",
         "testReturn":"18.12.2015"
      },
@@ -49,7 +51,7 @@
         "name": "Serhiy",
         "surname": "Kartashov",
         "email":"kartashov@gmail.com",
-        "status":"in-progress",
+        "status":"inProcess",
         "testSent":"18.12.2015",
         "testReturn":"18.12.2015"
      },

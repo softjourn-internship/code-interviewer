@@ -5,15 +5,7 @@
 	<title>Admin Panel</title>
 	<link rel="stylesheet" type="text/css" href="styles/admin.css">
 	<meta name="viewport" content="width=device-width, initial-scale: 1.0, user-scalabe=0">
-	<script type="text/javascript" src="scripts/jquery-1.11.3.min.js"></script>
-	<script src="bower_components/angular/angular.js"></script>
-	<script src="bower_components/angular-route/angular-route.js"></script>
-	<script src="bower_components/angular-resource/angular-resource.js"></script>
-
-	<!-- <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script> -->
-
-	<script type="text/javascript" src="scripts/admin.js"></script>
-	<script src="scripts/admin-controllers.js"></script>
+	
 </head>
 <body  ng-controller="ClientsListCtrl">
 	
@@ -36,7 +28,14 @@
 			</div>
 		</div>	
 
-		<div ng-view></div>
+		
+		<script type="text/javascript" src="scripts/jquery-1.11.3.min.js"></script>
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/angular-route/angular-route.js"></script>
+	<script src="bower_components/angular-resource/angular-resource.js"></script>
+	<script type="text/javascript" src="scripts/admin.js"></script>
+	<script src="scripts/admin-controllers.js"></script>
+	<div id="view" ng-view></div>
 		<br>
 		</div>
 	</div>

@@ -1,0 +1,12 @@
+{
+    "id": 1,
+    "name": "Dmytro",
+    "surname": "Kutsaniuk",
+    "city":"Ivano-Frankivsk",
+    "email":"kutsaniuk@gmail.com",
+    "complication":["middle","hard","easy"],
+    "testSent":["13.23.2015","15.03.2015","07.11.2015"],
+    "testReturn":["18.12.2015","18.12.2015",false],
+    "perfomedTests": ["Java","Html","CSS","JS"],
+    "image": "id1.jpg"
+}

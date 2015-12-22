@@ -325,7 +325,7 @@ div.box div input, select{
 	-o-transition: 0.2s;
 	transition: 0.2s;
 }
-div.box div input:focus{
+div input:focus{
 	border-bottom: 2px solid #34495e;
 	color: #34495e;
 }
@@ -333,10 +333,10 @@ div.box div select{
 	padding: 5px;
 	width: 18%;
 }
-div.box div select:hover{
+div select:hover{
 	border-bottom: 2px solid #34495e;
 }
-div.box div select option:hover{background: #2c3e50;color: #ecf0f1;}
+div select option:hover{background: #2c3e50;color: #ecf0f1;}
 table#table-dashboard{
 	/*border-top: 1px solid #e1e1e1;
 	border-bottom: 1px solid #e1e1e1;*/
@@ -355,7 +355,8 @@ table#table-dashboard tbody td{
 	padding: 10px;
 }
 table#table-dashboard tbody td.td-name{	width: 170px; }
-table#table-dashboard tbody td.td-status{ width: 100px; }
+table#table-dashboard tbody td.td-status{padding: 0; padding-left: 18px;}
+table#table-dashboard tbody td.td-status img{ width: 24px; padding: 0;}
 table#table-dashboard tbody tr td a{
 	color: #555;
 	font-weight: bold;
@@ -421,21 +422,20 @@ button.send{
 	/*background: #8491c7;*/
 }
 div.status-done:before{content: "Done";}
-div.status-in-progress:before{content: "In progress";}
+/*div.status-in-progress:before{content: "In progress";}*/
 div.status-false:before{content: "Not sent";}
 div.status-done,div.status-in-progress,div.status-false{
+	padding: 0px;
+	padding-right: 24px;
+	padding-bottom: 5px;
 	display: block;
-	color: #fff;
-	padding: 5px;
-	font-size: 12px;
-	font-weight: 600;
-	background: #aec785;
-	border-radius: 3px;
-	width: auto;
-	height: 25px;
-	text-align: center;
 }
-div.status-in-progress{background: #f4d66c;}
+div.status-in-progress{
+	background: #333;
+	width: 50px;
+	background-image: url(/images/clock.png);
+	background-repeat: no-repeat;	
+}
 div.status-false{background: #fa8564;/*background: #e74c3c;*/}
 div#box-list{position:static;float: left;width: 100%;padding: 10px;margin: 0;}
 ul#list-tb li {display: inline-block;font-size: 14px; padding: 10px;}
@@ -456,35 +456,192 @@ div.box div.tool{
 }
 div.profile{
 	padding: 0;
-	padding-top: 15px;
+	/*position: relative;*/
+	/*padding-top: 15px;*/
 }
 div.profile span.title-profile{
+	/*position: absolute;*/
 	font-size: 13px;
 	color: #666;
 	font-weight: bold;
 	margin-left: 15px;
 }
 div.profile img{
-	margin-top: 15px;
+	border-radius: 5px 5px 0 0; 
+	margin-top: 0;
+
 	width: 100%;
 }
 div.profile div.info-profile{
 	/*position: absolute;
 	width: 100%;
 	background: rgba(34,34,34,0.3);*/
-	margin-top: -80px; 
+	margin: 0;
+	margin-top: -80px;
+	
+	/*widh: 400px;*/
+	position: relative;
 	display: block;
+	width: 100%;
 	font-size: 15px;
 	color: #fff;
 	font-weight: bold;
 	padding: 15px;
 	padding-left: 25px;
 	text-shadow: 0 0 5px #000;
+	/*background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%); /* FF3.6-15 */*/
+	/*background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* Chrome10-25,Safari5.1-6 */*/
+	/*background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */*/
 }
 div.profile div.info-profile span{
+	width: 100%; 
 	font-weight: 500;
+}
+div.profile div.info-profile div.details{
+	float: left;
+	width: auto;
+	display: block;
+}
+div.profile div.info-profile div.tool{
+	float: right;
+	width: auto;
+	display: block;
+}
+div.profile div.info-profile div.tool button, #send-in-box{
+	position: relative;
+	background: #a2b57d;
+	border-color: #a2b57d;
+	color: #fff;
+	text-shadow: 0 1px 0 #828e65;
+}
+div.profile div.info-profile div.tool button:hover, #send-in-box:hover{
+	background: #afbc8e;
+	border-color: #afbc8e;
+	color: #fff;
+}
+div.profile div.info-profile div.tool button:active, #send-in-box:active{
+	background: #a2b57d;
+	border-color: #a2b57d;
 }
 div.profile div.info-profile span.name{
 	font-weight: bold;
 	font-size: 20px;
 }
+div.profile div.history{
+	margin-top: 25px;
+	padding: 15px;
+	padding-bottom: 5px;
+	display: block;
+}
+div.profile span img.done{
+	width: 24px;
+}
+
+div.send-test{
+	width: 100%;
+	height: 100%;
+	background: rgba(34,34,34,0.8);
+	display: none;
+	position: fixed;
+	margin: auto;
+	/*margin-right: auto;*/
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+}
+div.send-test div {
+	position: fixed;
+	/*border-radius: 2px;*/
+	/*box-shadow: 0 0 2px rgba(34,34,34,0.5);*/
+	background: #fff;
+	width: 50%;
+	height: 250px;
+	margin: auto;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin-top: 100px; 
+
+}
+div.send-test div div.tool{
+	position: relative;
+	box-shadow: none;
+	padding: 15px;
+	display: inline-block;
+	/*background: #2c3e50;*/
+	width: 100%;
+	height: auto;
+	margin: 0;
+}
+div.send-test div div.action{
+	position: relative;
+	font-size: 14px;
+	font-weight: bold;
+	color: #2c3e50;
+	padding: 15px;
+	width: 100%;
+	height: 80%;
+	margin: 0;
+	top: 0;
+}
+div.send-test div div.head{
+	margin-top:0; 
+	position: relative;
+	width: 100%;
+	height: 50px;
+	background: #2c3e50;
+	display: block;
+	padding: 12.5px;
+}
+div.send-test div div.head span{
+	color: #fff;
+	font-size: 13px;
+	color: #4e6e87;
+}
+div.send-test div div.head #close{
+	border: none;
+	background: transparent;
+	float: right;
+	color: #4e6e87;
+	font-weight: normal;
+}
+div.send-test div div.head #close:hover{color: #fff;}
+
+div.send-test div {
+	position: relative;
+}
+div.send-test div div.action input[type="radio"] {
+    display:none; 
+}
+
+div.send-test div div.action label {
+    display:inline-block;
+    background-color:#ddd;
+    padding:4px 11px;
+    color: #333;
+    font-size:13px;
+}
+
+div.send-test div div.action input[type="radio"]:checked + label { 
+    background-color:#bbb;
+    -webkit-transition: 0.2s;
+	-moz-transition: 0.2s;
+	-o-transition: 0.2s;
+	transition: 0.2s;
+}
+div.send-test div div.action select{
+	width: 70%;
+	color: #333;
+	font-weight: bold;
+}
+div.send-test div div.action textarea{
+	margin-top: 15px;
+	width: 100%;
+	height: 100%;
+	padding: 15px;
+	font-family: Open Sans, Tahoma;
+	border: 2px solid #e1e1e1;
+}
+#ul-sent li,#ul-test li,#ul-compl li,#ul-return li{display: list-item;padding: 5px;padding-left: 0;}

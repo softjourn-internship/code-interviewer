@@ -1,14 +1,3 @@
-<div class="box profile">
-	<span class="title-profile">Profile</span>
-	<img src="/images/profile.jpg">
-	<div class="info-profile">
-			<span class="name">{{clients[0].name}} {{clients[0].surname}}</span><br>
-			<span>City</span>
-	</div>
-	<div class="perfomed-tests-profile"><span>123 performed tests</span></div>
-	<button>Send test</button>
-</div>
-
 <div class="box">
 	<div>
 		<span class="clients-length">{{lengthClientsD.length}} Elements</span>
@@ -22,10 +11,10 @@
 		</thead>
 		<tbody>
 			<tr class="hover-tr" ng-repeat="client in lengthClientsD = (clients | filter:{testSent: '!false'})">
-				<td class="td-name"><a href="#">{{client.name}} {{client.surname}}</a></td>
+				<td class="td-name"><a href="#/clients/{{client.id}}">{{client.name}} {{client.surname}}</a></td>
 				<td>{{client.email}}</td>
 				<td>{{client.testSent}}</td>
-				<td class="td-status"><div class="status-{{client.status}}"></div></td>
+				<td class="td-status"><img src="/images/{{client.status}}.png"></td>
 			</tr>
 		</tbody>
 	</table>
