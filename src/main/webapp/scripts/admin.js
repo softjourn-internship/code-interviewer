@@ -8,21 +8,6 @@ $(document).ready(function() {
 			// $("div.sidebar").fadeOut();
 	});
 
-	$("button.send").click(function() {
-			$("div.send-test").fadeIn();
-			$("div.profile div.info-profile div.details").fadeOut();
-			$("#send-profile").fadeOut();
-			$(".info-profile").fadeOut();
-	});
-
-	$("#close").click(function() {
-			$("div.send-test").fadeOut();
-			$("#send-profile").fadeIn();
-			$(".info-profile").fadeIn();
-			$("div.profile div.info-profile div.details").fadeIn();		
-	});
-
-
 	window.onresize = function(event) {
 		if ($(window).width() > 700) {
 			$(".sidebar").show();

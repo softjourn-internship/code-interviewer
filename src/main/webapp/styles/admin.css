@@ -459,7 +459,7 @@ div.profile div.info-profile{
 }
 div.profile div.info-profile div.general-info{
 	position: absolute;
-	width: 40%;
+	width: 50%;
 	margin:-75px;
 	margin-left: 130px;
 	display: block;
@@ -639,4 +639,28 @@ div.profile div.history ul{
 }
 div.profile div.history ul li{
 	display: list-item;
+}
+.thumbnail {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  border-radius: 100%;
+  border: 2px solid #fff;
+
+}
+.thumbnail img {
+  margin: 250px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+}
+.thumbnail img.portrait {
+  width: 100%;
+  height: auto;
 }

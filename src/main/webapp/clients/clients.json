@@ -8,7 +8,7 @@
         "testSent":"17.12.2015",
         "testReturn":"18.12.2015",
         "perfomedTests": ["Java","Html","CSS","JS"],
-        "image": "id1.jpg"
+        "image": "id1-bg.jpg"
     },
     {
         "id": 2,
@@ -17,7 +17,8 @@
         "email":"arabhuk@gmail.com",
         "status":"done",
         "testSent":"17.12.2015",
-        "testReturn":"18.12.2015"
+        "testReturn":"18.12.2015",
+        "image": ".jpg"
      },
      {
         "id": 3,

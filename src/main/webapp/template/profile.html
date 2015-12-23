@@ -1,4 +1,17 @@
-<script type="text/javascript" src="scripts/admin.js"></script>
+<script type="text/javascript">
+	$("button.send").click(function() {
+			$("div.send-test").fadeIn();
+			$("div.profile div.info-profile div.details").fadeOut();
+			$("#send-profile").fadeOut();
+			$(".info-profile").fadeOut();
+	});
+	$("#close").click(function() {
+			$("div.send-test").fadeOut();
+			$("#send-profile").fadeIn();
+			$(".info-profile").fadeIn();
+			$("div.profile div.info-profile div.details").fadeIn();		
+	});
+</script>
 <div ng-controller="ClientsProfileCtrl">
 <div class="send-test">
 	<div>
@@ -33,15 +46,16 @@
 </div>
 
 <div class="box profile">
-	<img ng-src="images/profiles/{{client.bgImage}}">
+	<img ng-src="images/profiles/id{{client.id}}-bg.jpg">
 	<div class="info-profile">
-		<img ng-src="images/profiles/{{client.avatar}}">
+		<img ng-src="images/profiles/id{{client.id}}-avatar.jpg">
 		<div class="general-info">
 			<div class="name">{{client.name}} {{client.surname}}</div>
 			<div class="city">{{client.city}}</div>
 		</div>
 
 	</div>
+
 	<div class="history">
 		<button id="send-profile" class="send">Send test</button>
 		<ul>
