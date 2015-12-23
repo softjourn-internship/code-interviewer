@@ -22,7 +22,7 @@ adminPanelApp.config([
           controller:'ClientsListCtrl'
         })
         .
-          when('/clients/:clientId', {
+        when('/clients/:clientId', {
             templateUrl: 'template/profile.html', 
             controller: 'ClientsProfileCtrl'
          })

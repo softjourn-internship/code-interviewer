@@ -14,7 +14,9 @@ body{
 a{
 	text-decoration: none;
 }
-
+#view{
+		padding: 25px;
+	}
 div#header {
 	width: 100%;
 	height: 50px;
@@ -58,7 +60,7 @@ div#container {
 	float: left;
 }
 a#dachboard, a#participants, a#statistics {
-	background-image:url(/images/db.png);
+	background-image:url(../images/db.png);
     background-position:10px 10px;
     background-repeat:no-repeat;
     display:block;
@@ -66,14 +68,14 @@ a#dachboard, a#participants, a#statistics {
     /*overflow:hidden;*/
     text-indent:20%;
 }
-a#dachboard:hover{background-image:url(/images/db-h.png);}
-a#dachboard:focus{background-image:url(/images/db-h.png);}
-a#participants{background-image:url(/images/pib.png);}
-a#participants:hover{background-image:url(/images/pib-h.png);}
-a#participants:focus{background-image:url(/images/pib-h.png);}
-a#statistics{background-image:url(/images/s.png);}
-a#statistics:hover{background-image:url(/images/s-h.png);}
-a#statistics:focus{background-image:url(/images/s-h.png);}
+a#dachboard:hover{background-image:url(../images/db-h.png);}
+a#dachboard:focus{background-image:url(../images/db-h.png);}
+a#participants{background-image:url(../images/pib.png);}
+a#participants:hover{background-image:url(../images/pib-h.png);}
+a#participants:focus{background-image:url(../images/pib-h.png);}
+a#statistics{background-image:url(../images/s.png);}
+a#statistics:hover{background-image:url(../images/s-h.png);}
+a#statistics:focus{background-image:url(../images/s-h.png);}
 
 ul#nav li {
 	margin-left: 10px;
@@ -162,15 +164,13 @@ div.mobile:hover{
 		display: none;
 		text-align: center;
 	}
-	#view{
-		padding: 25px;
-	}
 	.content {
 		margin-left: 0px;
 	}
 }
 @media only screen and (min-width: 700px){
-	div.box{width: 60%;margin: 25px;}
+	div.box{width: 700px;margin: 25px;}
+	div.profile{width: 500px;}
 	table#table-dashboard{width: auto;}
 	ul#nav{margin-top: 75px;}
 	/*div.search{margin-left: 0px;}*/
@@ -234,6 +234,7 @@ div#box-main {
 }
 div.box {
 	/*border: 3px solid #fff; */
+	margin: 0;
 	margin-bottom: 15px;
 	border-radius: 5px;
 	box-shadow: 0 1px 0 #e1e1e1; 
@@ -326,7 +327,7 @@ div.box div input, select{
 	-o-transition: 0.2s;
 	transition: 0.2s;
 }
-div input:focus{
+div.box div input:focus{
 	border-bottom: 2px solid #34495e;
 	color: #34495e;
 }
@@ -419,21 +420,6 @@ button:active{
 	background: #666;
 	color: #fff;
 }
-div.status-done:before{content: "Done";}
-/*div.status-in-progress:before{content: "In progress";}*/
-div.status-false:before{content: "Not sent";}
-div.status-done,div.status-in-progress,div.status-false{
-	padding: 0px;
-	padding-right: 24px;
-	padding-bottom: 5px;
-	display: block;
-}
-div.status-in-progress{
-	background: #333;
-	width: 50px;
-	background-image: url(/images/clock.png);
-	background-repeat: no-repeat;	
-}
 div.status-false{background: #fa8564;/*background: #e74c3c;*/}
 div#box-list{position:static;float: left;width: 100%;padding: 10px;margin: 0;}
 ul#list-tb li {display: inline-block;font-size: 14px; padding: 10px;}
@@ -473,6 +459,7 @@ div.profile div.info-profile{
 }
 div.profile div.info-profile div.general-info{
 	position: absolute;
+	width: 40%;
 	margin:-75px;
 	margin-left: 130px;
 	display: block;
