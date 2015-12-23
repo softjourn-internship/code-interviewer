@@ -8,15 +8,17 @@ $(document).ready(function() {
 			// $("div.sidebar").fadeOut();
 	});
 
-	$("#send").click(function() {
+	$("button.send").click(function() {
 			$("div.send-test").fadeIn();
 			$("div.profile div.info-profile div.details").fadeOut();
-			$("#send").hide();
+			$("#send-profile").fadeOut();
+			$(".info-profile").fadeOut();
 	});
 
 	$("#close").click(function() {
 			$("div.send-test").fadeOut();
-			$("#send").show();
+			$("#send-profile").fadeIn();
+			$(".info-profile").fadeIn();
 			$("div.profile div.info-profile div.details").fadeIn();		
 	});
 

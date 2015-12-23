@@ -23,64 +23,31 @@
 			    <input type="radio" id="radio3" name="radios" value="easy">
 			    <label for="radio3">Easy</label> <br>
 			<br>Message<br>
-			<textarea rows="6"></textarea>
+			<textarea rows="6" autofocus></textarea>
 		</div>
 		<div class="tool">
-			<button id="send-in-box">Send test</button>
+			<button class="send">Send test</button>
 		</div>
 	</form>
 	</div>
 </div>
 
 <div class="box profile">
-	<!-- <span class="title-profile">Profile</span> -->
-	<img ng-src="/images/profiles/{{client.image}}">
+	<img ng-src="/images/profiles/{{client.bgImage}}">
 	<div class="info-profile">
-		<div class="details">
-			<span class="name">{{client.name}} {{client.surname}}</span><br>
-			<span>{{client.city}}</span>
-			<!-- <span>123 performed tests</span> -->
+		<img ng-src="/images/profiles/{{client.avatar}}">
+		<div class="general-info">
+			<div class="name">{{client.name}} {{client.surname}}</div>
+			<div class="city">{{client.city}}</div>
 		</div>
-		<div class="tool">
-			<button id="send">Send test</button>
-		</div>
-	</div>
-	<div>
-		<span class="clients-length"> Elements</span>
+
 	</div>
 	<div class="history">
-	<table id="table-dashboard">
-		<thead>
-			<th>Test</th>
-			<th>Сomplication</th>
-			<th>Sent</th>
-			<th>Status</th>
-		</thead>
-		<tbody>
-			<tr>
-				<td>
-				<ul id="ul-test"><li ng-repeat="test in client.perfomedTests">{{test}}</li>
-				</ul>
-				</td>
-				<td>
-					<ul id="ul-compl"><li ng-repeat="compl in client.complication">{{compl}}</li>
-				</ul>
-				</td>
-				<td>
-					<ul id="ul-sent"><li ng-repeat="sent in client.testSent">{{sent}}</li>
-				</ul>
-				</td>
-				<td>
-					<ul id="ul-return"><li ng-repeat="return in client.testReturn">{{return}}</li>
-				</ul>
-				</td>
-				<!-- <td class="td-name"><a href="#"></a></td>
-				<td>{{compl}}</td>
-				<td></td>
-				<td class="td-status"><img src="/images/done.png"></td> -->
-			</tr>
-		</tbody>
-	</table>
+		<button id="send-profile" class="send">Send test</button>
+		<ul>
+			<b>Perfomed tests</b>
+			<li ng-repeat="test in client.perfomedTests"> {{test}} </li>
+		</ul>
 	</div>
 </div>
 </div>

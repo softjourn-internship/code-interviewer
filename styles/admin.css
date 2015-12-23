@@ -138,7 +138,7 @@ div.mobile:hover{
 }
 /*	RESIZE	*/
 @media only screen and (max-width: 700px){
-	div.box{width: 93%;}
+	div.box{width: 100%;}
 	table#table-dashboard{width: 100%;}
 	a#dachboard,a#participants,a#statistics,a#dachboard:hover,
 	a#participants:hover,a#statistics:hover,a#dachboard:focus,
@@ -162,13 +162,15 @@ div.mobile:hover{
 		display: none;
 		text-align: center;
 	}
-
+	#view{
+		padding: 25px;
+	}
 	.content {
 		margin-left: 0px;
 	}
 }
 @media only screen and (min-width: 700px){
-	div.box{width: 60%;}
+	div.box{width: 60%;margin: 25px;}
 	table#table-dashboard{width: auto;}
 	ul#nav{margin-top: 75px;}
 	/*div.search{margin-left: 0px;}*/
@@ -232,8 +234,7 @@ div#box-main {
 }
 div.box {
 	/*border: 3px solid #fff; */
-	margin: 25px;
-	margin-bottom: 0;
+	margin-bottom: 15px;
 	border-radius: 5px;
 	box-shadow: 0 1px 0 #e1e1e1; 
 	display: block;
@@ -418,9 +419,6 @@ button:active{
 	background: #666;
 	color: #fff;
 }
-button.send{
-	/*background: #8491c7;*/
-}
 div.status-done:before{content: "Done";}
 /*div.status-in-progress:before{content: "In progress";}*/
 div.status-false:before{content: "Not sent";}
@@ -459,80 +457,78 @@ div.profile{
 	/*position: relative;*/
 	/*padding-top: 15px;*/
 }
-div.profile span.title-profile{
-	/*position: absolute;*/
-	font-size: 13px;
-	color: #666;
-	font-weight: bold;
-	margin-left: 15px;
-}
 div.profile img{
 	border-radius: 5px 5px 0 0; 
 	margin-top: 0;
-
 	width: 100%;
 }
 div.profile div.info-profile{
-	/*position: absolute;
 	width: 100%;
-	background: rgba(34,34,34,0.3);*/
-	margin: 0;
-	margin-top: -80px;
-	
-	/*widh: 400px;*/
-	position: relative;
+	height: 100px;
 	display: block;
-	width: 100%;
-	font-size: 15px;
+	margin-top: -85px;
+	padding: 25px;
+	position: relative;
+	float: left;
+}
+div.profile div.info-profile div.general-info{
+	position: absolute;
+	margin:-75px;
+	margin-left: 130px;
+	display: block;
 	color: #fff;
 	font-weight: bold;
-	padding: 15px;
-	padding-left: 25px;
-	text-shadow: 0 0 5px #000;
-	/*background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%); /* FF3.6-15 */*/
-	/*background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* Chrome10-25,Safari5.1-6 */*/
-	/*background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */*/
 }
-div.profile div.info-profile span{
-	width: 100%; 
-	font-weight: 500;
-}
-div.profile div.info-profile div.details{
-	float: left;
-	width: auto;
+div.profile div.info-profile div.general-info div.name{
+
+	font-size: 20px;
 	display: block;
+	margin: -10px;
+	margin-left: 0;
 }
-div.profile div.info-profile div.tool{
-	float: right;
-	width: auto;
+div.profile div.info-profile div.general-info div.city{
+	margin-top: 25px;
+	color: #333;
 	display: block;
+	font-size: 14px;
+	color: #666;
 }
-div.profile div.info-profile div.tool button, #send-in-box{
+div.profile div.info-profile img{
+	/*position: inherit;*/
+	width: 100px;
+	height: 100px;
+	border-radius: 100%;
+	border: 2px solid #fff;
+}
+button.send{
 	position: relative;
 	background: #a2b57d;
 	border-color: #a2b57d;
 	color: #fff;
 	text-shadow: 0 1px 0 #828e65;
 }
-div.profile div.info-profile div.tool button:hover, #send-in-box:hover{
+button#send-profile{
+	margin: 25px;
+	margin-top: 0;
+}
+button.send:hover{
 	background: #afbc8e;
 	border-color: #afbc8e;
 	color: #fff;
 }
-div.profile div.info-profile div.tool button:active, #send-in-box:active{
+button.send:active{
 	background: #a2b57d;
 	border-color: #a2b57d;
 }
-div.profile div.info-profile span.name{
+/*div.name, div.city{
 	font-weight: bold;
-	font-size: 20px;
-}
-div.profile div.history{
-	margin-top: 25px;
-	padding: 15px;
-	padding-bottom: 5px;
+	font-size: 15px;
 	display: block;
-}
+	width: auto;
+	position: fixed;
+	margin-top: 30px;
+	margin-left: 115px;
+}*/
 div.profile span img.done{
 	width: 24px;
 }
@@ -644,4 +640,16 @@ div.send-test div div.action textarea{
 	font-family: Open Sans, Tahoma;
 	border: 2px solid #e1e1e1;
 }
-#ul-sent li,#ul-test li,#ul-compl li,#ul-return li{display: list-item;padding: 5px;padding-left: 0;}
+div.profile div.history{
+	margin: 0;
+}
+div.profile div.history button {
+	float: right;
+}
+div.profile div.history ul{
+	margin-top: 25px;
+	padding: 25px;
+}
+div.profile div.history ul li{
+	display: list-item;
+}
