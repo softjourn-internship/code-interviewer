@@ -29,6 +29,8 @@ $(document).ready(function() {
 			$("div.logo").show();
 		};
 	};
+
+
 	// alert(window.location.pathname);
 	// alert(window.location.hash);
 	// if(window.location.hash === '#/' ){
