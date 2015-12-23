@@ -5,66 +5,39 @@
 	<title>Admin Panel</title>
 	<link rel="stylesheet" type="text/css" href="styles/admin.css">
 	<meta name="viewport" content="width=device-width, initial-scale: 1.0, user-scalabe=0">
-	<script type="text/javascript" src="scripts/jquery-1.11.3.min.js"></script>
-	<script src="bower_components/angular/angular.js"></script>
-	<!-- <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script> -->
-
-	<script type="text/javascript" src="scripts/admin.js"></script>
-	<script src="scripts/admin-controllers.js"></script>
-</head>
-<body  ng-controller="PhoneListCtrl">
-
 	
-
-
+</head>
+<body  ng-controller="ClientsListCtrl">
+	
 	<div id="container">
 		<div class="sidebar">
 			<ul id="nav">
-				<li><a id="dachboard" href="#">DASHBOARD</a></li>
-				<li><a id="participants" href="#">PARTICIPANTS</a></li>
+				<li><a id="dachboard" href="#/dashboard">DASHBOARD</a></li>
+				<li><a id="participants" href="#/participants">PARTICIPANTS</a></li>
 				<li><a id="statistics" href="#">STATISTICS</a></li>
 			</ul>
 		</div>
+
 		<div class="content">
+
 		<div id="header">
-		<div class="mobile"><a href="#">
-			<img src="images/menu.png"></a></div>
-		<!-- <div class="logo"><a href="#">interview<span>.code</span></a></div> -->
-		<div class="search"><input type="text" value="Search for something..." onblur="this.value='Search for something...'" onfocus="this.value=''"></div>
-		<div class="logout">
-			Log out
-		</div>
-	</div>	
-		<!-- 	<h1>Dashboard</h1> -->
-
-			<div class="box">
-
-				<div>
-					<ul>
-					<li><input type="text" value="Name" onblur="this.value='Name'" onfocus="this.value=''" ng-model="name"></li>
-					<li><button>Search</button></li>
-					</ul>
-				</div>
-				<table id="table-dashboard">
-					<tbody>
-						<tr class="hover-tr" ng-repeat="client in clients | filter:name">
-							<td><a href="#">{{client.name}} {{client.surname}}</a></td>
-							<td class="td-default"> {{client.email}} </td>
-							<td class="td-default"> 17.04.15</td>
-							<td class="status-{{client.status}}"></td>
-						</tr>
-					</tbody>
-				</table>
+			<div class="mobile"><img src="images/menu.png"></div>
+			<div class="search"><input type="text" placeholder="Search for something..." onblur="this.placeholder='Search for something...'" ></div>
+			<div class="logout">
+				Log out
 			</div>
-			
-			<div class="top">
-				<div class="box box-small"><span>Requests</span><hr/><p>152</p></div>
-				<div class="box box-small"><span>View</span><hr/><p>12,456</p></div>
-				<div class="box box-small"><span>Passed tests</span><hr/><p>1,512</p></div>
-				<br class="clearBoth">
-			</div>
+		</div>	
+
+		
+		<script type="text/javascript" src="scripts/jquery-1.11.3.min.js"></script>
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/angular-route/angular-route.js"></script>
+	<script src="bower_components/angular-resource/angular-resource.js"></script>
+	<script type="text/javascript" src="scripts/admin.js"></script>
+	<script src="scripts/admin-controllers.js"></script>
+	<div id="view" ng-view></div>
+		<br>
 		</div>
 	</div>
-
 </body>
 </html>

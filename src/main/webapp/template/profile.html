@@ -1,0 +1,53 @@
+<script type="text/javascript" src="scripts/admin.js"></script>
+<div ng-controller="ClientsProfileCtrl">
+<div class="send-test">
+	<div>
+		<div class="head">
+			<span>To: <b>{{client.email}}</b></span>
+			<button id="close">Close</button>
+		</div>
+		<form method="POST">
+		<div class="action">
+			Language
+			<select required>
+				<option>Java</option>
+				<option>JavaSript</option>
+				<option>HTML</option>
+				<option>CSS</option>
+			</select><br>
+			<br>Сomplication  
+			    <input type="radio" id="radio1" name="radios" value="hard" required>
+			    <label for="radio1">Hard</label>
+			    <input type="radio" id="radio2" name="radios"value="middle">
+			    <label for="radio2">Middle</label>
+			    <input type="radio" id="radio3" name="radios" value="easy">
+			    <label for="radio3">Easy</label> <br>
+			<br>Message<br>
+			<textarea rows="6" autofocus></textarea>
+		</div>
+		<div class="tool">
+			<button class="send">Send test</button>
+		</div>
+	</form>
+	</div>
+</div>
+
+<div class="box profile">
+	<img ng-src="/images/profiles/{{client.bgImage}}">
+	<div class="info-profile">
+		<img ng-src="/images/profiles/{{client.avatar}}">
+		<div class="general-info">
+			<div class="name">{{client.name}} {{client.surname}}</div>
+			<div class="city">{{client.city}}</div>
+		</div>
+
+	</div>
+	<div class="history">
+		<button id="send-profile" class="send">Send test</button>
+		<ul>
+			<b>Perfomed tests</b>
+			<li ng-repeat="test in client.perfomedTests"> {{test}} </li>
+		</ul>
+	</div>
+</div>
+</div>

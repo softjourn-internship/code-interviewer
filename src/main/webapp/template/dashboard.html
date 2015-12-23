@@ -1,0 +1,29 @@
+<div class="box">
+	<div>
+		<span class="clients-length">{{lengthClientsD.length}} Elements</span>
+	</div>
+	<table id="table-dashboard">
+		<thead>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Sent</th>
+			<th>Status</th>
+		</thead>
+		<tbody>
+			<tr class="hover-tr" ng-repeat="client in lengthClientsD = (clients | filter:{testSent: '!false'})">
+				<td class="td-name"><a href="#/clients/{{client.id}}">{{client.name}} {{client.surname}}</a></td>
+				<td>{{client.email}}</td>
+				<td>{{client.testSent}}</td>
+				<td class="td-status"><img src="/images/{{client.status}}.png"></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+
+<div class="box">
+	<div class="box-small"><span>Requests</span><hr/><p>152</p></div>
+	<div class="box-small"><span>View</span><hr/><p>12,456</p></div>
+	<div class="box-small"><span>Passed tests</span><hr/><p>1,512</p></div>
+	<br class="clearBoth">
+</div>

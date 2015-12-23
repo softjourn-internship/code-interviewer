@@ -1,49 +1,43 @@
 /* Controllers */
-var adminPanelApp = angular.module("adminPanelApp", []); 
+var adminPanelApp = angular.module("adminPanelApp", ['ngRoute', 'ngResource']); 
 
-adminPanelApp.controller('myCtrl', 
-	function($scope, $http) {
-  		$http.get("http://www.w3schools.com/angular/customers.php").then(function (response) {$scope.names = response.data.records;});
-});
+adminPanelApp.controller('ClientsListCtrl', ['$scope', '$http','$location',
+  function ($scope, $http, $location) {
+    $http.get('clients/clients.json').success(function(data) {
+      $scope.clients = data;
+    });
+  }]);
 
-adminPanelApp.controller('PhoneListCtrl', function ($scope, $http) {
-  
-  // $http.get('clients/clients.json').succes(function(data){
-  // 	$scope.clients = data;
-  // });
 
-  $scope.clients = [
-    {
-    	'id': 1,
-     	'name': 'Dmytro',
-     	'surname': 'Kutsaniuk',
-     	'middlename': 'Volodymyrovych',
-     	'email':'kutsaniuk@gmail.com',
-     	'status':'done',
-     	'testSent':'17.12.2015',
-     	'testReturn':'18.12.2015'
-     },
-    {
-    	'id': 2,
-     	'name': 'Yura',
-     	'surname': 'Demkiv',
-     	'middlename': 'Volodymyrovych',
-     	'email':'demkiv@gmail.com',
-     	'status':'done',
-     	'testSent':'13.01.2015',
-     	'testReturn':'18.01.2015'
-     },
-     {
-    	'id': 3,
-     	'name': 'Ivan',
-     	'surname': 'Arabchuk',
-     	'middlename': 'Volodymyrovych',
-     	'email':'arabchuk@gmail.com',
-     	'status':'in-progress',
-     	'testSent':'18.06.2015',
-     	'testReturn':'20.06.2015'
-     }
-  ];
+adminPanelApp.config([
+  '$routeProvider', '$locationProvider',
+  function($routeProvide, $locationProvider){
+    $routeProvide
+        .when('/',{
+          templateUrl:'template/dashboard.html',
+          controller:'ClientsListCtrl'
+        })
+        .when('/participants',{
+          templateUrl:'template/participants.html',
+          controller:'ClientsListCtrl'
+        })
+        .
+          when('/clients/:clientId', {
+            templateUrl: 'template/profile.html', 
+            controller: 'ClientsProfileCtrl'
+         })
+        .otherwise({
+          redirectTo: '/'
+        });
+  }
+]);
 
-  // $scope.orderProp = 'age';
-});
+adminPanelApp.controller('ClientsProfileCtrl', ['$scope', '$http', '$location','$routeParams',
+  function ($scope, $http, $location, $routeParams) {
+        $scope.clientId = $routeParams.clientId;
+
+        var url = 'clients/'+$routeParams.clientId+'.json';
+        $http.get(url).success(function(data) {
+          $scope.client = data;
+        });
+  }]);
