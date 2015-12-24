@@ -1,6 +1,8 @@
-/* Controllers Admin*/
-var adminPanelApp = angular.module("adminPanelApp", ['ngRoute', 'ngResource']); 
+var adminPanelApp = angular.module("adminPanelApp", ['ngRoute', 'ngResource','googlechart']); 
 var myAppModule = angular.module('MyApp', ['ui.ace']);
+
+/* Controllers Admin*/
+/************************************************************************************/
 
 adminPanelApp.controller('ClientsListCtrl', ['$scope', '$http','$location',
   function ($scope, $http, $location) {
@@ -9,6 +11,23 @@ adminPanelApp.controller('ClientsListCtrl', ['$scope', '$http','$location',
     });
   }]);
 
+// CHARTS
+
+adminPanelApp.controller('ClientsChartsCtrl', ['$scope', '$http','$location',
+  function ($scope, $http, $location) {
+    $http.get('data/chart-pie.json').success(function(data) {
+      $scope.chartPie = data;
+    });
+    $http.get('data/chart-column.json').success(function(data) {
+      $scope.chartColumn = data;
+    });
+    $http.get('data/chart-line.json').success(function(data) {
+      $scope.chartLine = data;
+    });
+
+  }]);
+
+// PROFILE
 adminPanelApp.controller('ClientsProfileCtrl', ['$scope', '$http', '$location','$routeParams',
   function ($scope, $http, $location, $routeParams) {
         $scope.clientId = $routeParams.clientId;
@@ -18,28 +37,6 @@ adminPanelApp.controller('ClientsProfileCtrl', ['$scope', '$http', '$location','
           $scope.client = data;
         });
   }]);
-
-/* Controllers UsersWorkspace*/
-
-
-
-myAppModule.controller('SelectTaskCtrl', function($scope,$http){
-  $scope.NumberTask=1;
-  $http.get("Data/Tasks.json").then(function (response) {
-      if ($scope.NumberTask==1){$scope.TaskShow=response.data.first;}
-      if ($scope.NumberTask==2){$scope.TaskShow= response.data.second;}
-      if ($scope.NumberTask==3){$scope.TaskShow= response.data.third;}});
-  $scope.ShowTask=function(){
-    $http.get("Data/Tasks.json").then(function (response) {
-      if ($scope.NumberTask==1){$scope.TaskShow=response.data.first; console.log($scope.TaskShow);}
-      if ($scope.NumberTask==2){$scope.TaskShow= response.data.second;}
-      if ($scope.NumberTask==3){$scope.TaskShow= response.data.third;}
-
-  });
-}
-    $scope.TaskListVisible=true;
-});
-
 // config Admin Panel
 
 adminPanelApp.config([
@@ -59,8 +56,35 @@ adminPanelApp.config([
             templateUrl: 'template/profile.html', 
             controller: 'ClientsProfileCtrl'
          })
+        .
+        when('/statistics', {
+            templateUrl: 'template/statistics.html', 
+            controller: 'ClientsChartsCtrl'
+         })
         .otherwise({
           redirectTo: '/'
         });
   }
 ]);
+
+
+/* Controllers UsersWorkspace*/
+/************************************************************************************/
+
+myAppModule.controller('SelectTaskCtrl', function($scope,$http){
+  $scope.NumberTask=1;
+  $http.get("data/Tasks.json").then(function (response) {
+      if ($scope.NumberTask==1){$scope.TaskShow=response.data.first;}
+      if ($scope.NumberTask==2){$scope.TaskShow= response.data.second;}
+      if ($scope.NumberTask==3){$scope.TaskShow= response.data.third;}});
+  $scope.ShowTask=function(){
+    $http.get("data/Tasks.json").then(function (response) {
+      if ($scope.NumberTask==1){$scope.TaskShow=response.data.first; console.log($scope.TaskShow);}
+      if ($scope.NumberTask==2){$scope.TaskShow= response.data.second;}
+      if ($scope.NumberTask==3){$scope.TaskShow= response.data.third;}
+
+  });
+}
+    $scope.TaskListVisible=true;
+});
+

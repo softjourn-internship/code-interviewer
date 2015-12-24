@@ -77,12 +77,11 @@ a#statistics:hover{background-image:url(../images/s-h.png);}
 a#statistics:focus{background-image:url(../images/s-h.png);}
 a#workspace{background-image:url(../images/ws.png);}
 a#workspace:hover{background-image:url(../images/ws-h.png);}
-/*a#workspace:focus{background-image:url(../images/ws.png);}
-*/ul#nav li {
+ul#nav li {
 	margin-left: 10px;
 	list-style: none;
 }
-ul#nav li a {
+ul#nav li a, li#li-main {
 	color: #577a9d;
 	font-family: 'Open Sans', Tahoma;
 	font-weight: 600;
@@ -206,6 +205,7 @@ div.search{
 	padding: 10px;
 }
 div.search input{
+	width: 100%;
 	color: silver;
 	font-family: Open Sans, Tahoma;
 	font-weight: 300;
@@ -314,7 +314,7 @@ select{
 	-o-transition: 0.2s;
 	transition: 0.2s;
 }
-div.box div input, select{
+input, select{
 	color: silver;
 	font-family: Open Sans, Tahoma;
 	background: transparent;
@@ -331,7 +331,7 @@ div.box div input, select{
 	-o-transition: 0.2s;
 	transition: 0.2s;
 }
-div.box div input:focus{
+input:focus{
 	border-bottom: 2px solid #34495e;
 	color: #34495e;
 }
@@ -644,27 +644,24 @@ div.profile div.history ul{
 div.profile div.history ul li{
 	display: list-item;
 }
-.thumbnail {
-  position: relative;
-  width: 100px;
-  height: 100px;
-  overflow: hidden;
-  border-radius: 100%;
-  border: 2px solid #fff;
-
+div.chart{
+	font-family: Open Sans;
+	border-radius: 5px;
+	width: 100%;
+	height: 500px;
+	background: transparent;
 }
-.thumbnail img {
-  margin: 250px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  height: 100%;
-  width: auto;
-  -webkit-transform: translate(-50%,-50%);
-      -ms-transform: translate(-50%,-50%);
-          transform: translate(-50%,-50%);
+div.send-test table{width: 100%;height: 100%;}
+div.send-test table tr td{
+	padding: 5px;
 }
-.thumbnail img.portrait {
-  width: 100%;
-  height: auto;
+div.send-test table tr td input{
+	width: 100%;
+}
+div.send-test table tr td.title{
+	width: 50px;
+}
+div.send-test table tr td input[type="file"]{
+	width: 100%;
+	border: none;
 }

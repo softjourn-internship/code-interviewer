@@ -1,0 +1,160 @@
+{
+  "type": "AreaChart",
+  "displayed": false,
+  "data": {
+    "cols": [
+      {
+        "id": "month",
+        "label": "Month",
+        "type": "string",
+        "p": {}
+      },
+      {
+        "id": "laptop-id",
+        "label": "Java",
+        "type": "number",
+        "p": {}
+      },
+      {
+        "id": "desktop-id",
+        "label": "CSS",
+        "type": "number",
+        "p": {}
+      },
+      {
+        "id": "server-id",
+        "label": "HTML",
+        "type": "number",
+        "p": {}
+      },
+      {
+        "id": "cost-id",
+        "label": "JavaScript",
+        "type": "number"
+      }
+    ],
+    "rows": [
+       {
+        "c": [
+          {
+            "v": "January"
+          },
+          {
+            "v": 19,
+            "f": "42 items"
+          },
+          {
+            "v": 12,
+            "f": "Ony 12 items"
+          },
+          {
+            "v": 7,
+            "f": "7 servers"
+          },
+          {
+            "v": 4
+          }
+        ]
+      },
+      {
+        "c": [
+          {
+            "v": "January"
+          },
+          {
+            "v": 19,
+            "f": "42 items"
+          },
+          {
+            "v": 12,
+            "f": "Ony 12 items"
+          },
+          {
+            "v": 7,
+            "f": "7 servers"
+          },
+          {
+            "v": 4
+          }
+        ]
+      },
+      {
+        "c": [
+          {
+            "v": "January"
+          },
+          {
+            "v": 19,
+            "f": "42 items"
+          },
+          {
+            "v": 12,
+            "f": "Ony 12 items"
+          },
+          {
+            "v": 7,
+            "f": "7 servers"
+          },
+          {
+            "v": 4
+          }
+        ]
+      },
+      {
+        "c": [
+          {
+            "v": "February"
+          },
+          {
+            "v": 13
+          },
+          {
+            "v": 1
+          },
+          {
+            "v": 12
+          },
+          {
+            "v": 2
+          }
+        ]
+      },
+      {
+        "c": [
+          {
+            "v": "March"
+          },
+          {
+            "v": 24
+          },
+          {
+            "v": 5
+          },
+          {
+            "v": 11
+          },
+          {
+            "v": 6
+          }
+        ]
+      }
+    ]
+  },
+  "options": {
+    "colors": ["#fa8564", "#f4d66c", "#8491c7", "#aec785"],
+    "title": "Sales per month",
+    "isStacked": "true",
+    "fill": 20,
+    "displayExactValues": true,
+    "vAxis": {
+      "title": "Sales unit",
+      "gridlines": {
+        "count": 10
+      }
+    },
+    "hAxis": {
+      "title": "Date"
+    }
+  },
+  "formatters": {}
+}

@@ -5,16 +5,16 @@
 	<title>Admin Panel</title>
 	<link rel="stylesheet" type="text/css" href="styles/admin.css">
 	<meta name="viewport" content="width=device-width, initial-scale: 1.0, user-scalabe=0">
-	
+<!-- 	// <script type="text/javascript" src="https://www.google.com/jsapi"></script> -->
 </head>
-<body  ng-controller="ClientsListCtrl">
+<body ng-controller="ClientsListCtrl">
 	
 	<div id="container">
 		<div class="sidebar">
 			<ul id="nav">
 				<li><a id="dachboard" href="#/dashboard">DASHBOARD</a></li>
 				<li><a id="participants" href="#/participants">ACCOUNTS</a></li>
-				<li><a id="statistics" href="#">STATISTICS</a></li>
+				<li><a id="statistics" href="#/statistics">STATISTICS</a></li>
 				<li><a id="workspace" href="workspace.html">WORKSPACE</a></li>
 				<!-- <li>Add account</li> -->
 			</ul>
@@ -30,13 +30,16 @@
 			</div>
 		</div>	
 
-		<script type="text/javascript" src="scripts/jquery-1.11.3.min.js"></script>
-	   <script src="bower_components/angular/angular.js"></script>
+	<script type="text/javascript" src="scripts/jquery-1.11.3.min.js"></script>
+
+	<script src="bower_components/angular/angular.js"></script>
 	<script src="bower_components/angular-route/angular-route.js"></script>
 	<script src="bower_components/angular-resource/angular-resource.js"></script>
+
 	<script type="text/javascript" src="scripts/admin.js"></script>
 	<script src="scripts/controllers.js"></script>
 
+	<script type="text/javascript" src="scripts/ng-google-chart.js"></script>
 
 		<div id="view" ng-view></div>
 		</div>
