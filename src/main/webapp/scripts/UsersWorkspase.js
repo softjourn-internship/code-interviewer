@@ -25,8 +25,8 @@ function ShowLogMessage () {
 		$('#logMess').css("z-index",7);
 		anableLog=true;}
 	else{
-		$('#testEditor').css("height",'98%');
-		$('#programEditor').css("height",'98%');
+		$('#testEditor').css("height",'96%');
+		$('#programEditor').css("height",'96%');
 		$('#logMess').css("z-index",-2);
 		anableLog=false;}
 }
