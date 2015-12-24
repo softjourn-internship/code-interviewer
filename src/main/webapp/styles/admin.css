@@ -141,7 +141,7 @@ div.mobile:hover{
 	/*background-image: url(D:/Mockup-interview/images/menu.png); */
 }
 /*	RESIZE	*/
-@media only screen and (max-width: 700px){
+@media only screen and (max-width: 768px){
 	div.box{width: 100%;}
 	table#table-dashboard{width: 100%;}
 	a#dachboard,a#participants,a#statistics,a#dachboard:hover,
@@ -171,8 +171,8 @@ div.mobile:hover{
 		margin-left: 0px;
 	}
 }
-@media only screen and (min-width: 700px){
-	div.box{width: 700px;margin: 25px;}
+@media only screen and (min-width: 768px){
+	div.box{width: 100%;margin: 25px;}
 	div.profile{width: 500px;}
 	table#table-dashboard{width: auto;}
 	ul#nav{margin-top: 75px;}
@@ -398,12 +398,11 @@ p.info-p{
 }
 button{
 	background: #f8fafb;
-	/*background: #16a085;*/
 	border-radius: 2px; 
 	border-color: transparent; 
 	border: 1px solid silver;
 	color: #666;
-	font-weight: bold;
+	font-weight: 300;
 	font-size: 13px;
 	font-family: Open Sans, Tahoma;
 	padding: 2.5px 10px 2.5px 10px;
@@ -492,7 +491,6 @@ div.profile div.info-profile img{
 	border: 2px solid #fff;
 }
 button.send{
-	position: relative;
 	background: #a2b57d;
 	border-color: #a2b57d;
 	color: #fff;
@@ -583,18 +581,18 @@ div.send-test div div.head{
 	padding: 12.5px;
 }
 div.send-test div div.head span{
-	color: #fff;
+	color: #56799c;
 	font-size: 13px;
-	color: #4e6e87;
+	/*color: #4e6e87;*/
 }
 div.send-test div div.head #close{
 	border: none;
 	background: transparent;
 	float: right;
-	color: #4e6e87;
+	color: #415b76;
 	font-weight: normal;
 }
-div.send-test div div.head #close:hover{color: #fff;}
+div.send-test div div.head #close:hover{color: #56799c;}
 
 div.send-test div {
 	position: relative;
