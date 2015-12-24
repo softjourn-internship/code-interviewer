@@ -1,6 +1,10 @@
 Manifest-Version: 1.0
 Implementation-Version: 1.0-SNAPSHOT
+<<<<<<< HEAD
 Built-By: dmytro
+=======
+Built-By: yar65
+>>>>>>> 79faf922b4dee3ee58cc057e91af389eb6f9a066
 Implementation-Vendor-Id: softjorn-internship
 Created-By: IntelliJ IDEA
 Build-Jdk: 1.8.0_60

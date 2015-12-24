@@ -1,5 +1,4 @@
 var anableLog=false;
-var T=1;
 function ShowTest () {
 	$('#testEditor').css("z-index",4);
 	$('#testEditor').css("width",'98%');
@@ -30,12 +29,4 @@ function ShowLogMessage () {
 		$('#programEditor').css("height",'98%');
 		$('#logMess').css("z-index",-2);
 		anableLog=false;}
-}
-
-function SelectTask (number){
-	if(number==1){T=1;}
-	else if(number==2){T=2;}
-	else{T=3;}
-	console.log(T);
-
 }
