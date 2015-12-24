@@ -1,45 +1,46 @@
 <!doctype html>
 <html lang="en" ng-app="adminPanelApp">
 <head>
-	<meta charset="utf-8">
-	<title>Admin Panel</title>
-	<link rel="stylesheet" type="text/css" href="styles/admin.css">
-	<meta name="viewport" content="width=device-width, initial-scale: 1.0, user-scalabe=0">
-	
+    <meta charset="utf-8">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" type="text/css" href="styles/admin.css">
+    <meta name="viewport" content="width=device-width, initial-scale: 1.0, user-scalabe=0">
+
 </head>
-<body  ng-controller="ClientsListCtrl">
-	
-	<div id="container">
-		<div class="sidebar">
-			<ul id="nav">
-				<li><a id="dachboard" href="#/dashboard">DASHBOARD</a></li>
-				<li><a id="participants" href="#/participants">ACCOUNTS</a></li>
-				<li><a id="statistics" href="#">STATISTICS</a></li>
-				<li><a id="workspace" href="workspace.html">WORKSPACE</a></li>
-				<!-- <li>Add account</li> -->
-			</ul>
-		</div>
+<body ng-controller="ClientsListCtrl">
 
-		<div class="content">
+<div id="container">
+    <div class="sidebar">
+        <ul id="nav">
+            <li><a id="dachboard" href="#/dashboard">DASHBOARD</a></li>
+            <li><a id="participants" href="#/participants">ACCOUNTS</a></li>
+            <li><a id="statistics" href="#">STATISTICS</a></li>
+            <li><a id="workspace" href="workspace.html">WORKSPACE</a></li>
+            <!-- <li>Add account</li> -->
+        </ul>
+    </div>
 
-		<div id="header">
-			<div class="mobile"><img src="images/menu.png"></div>
-			<div class="search"><input type="text" placeholder="Search for something..." onblur="this.placeholder='Search for something...'" ></div>
-			<div class="logout">
-				Log out
-			</div>
-		</div>	
+    <div class="content">
 
-		<script type="text/javascript" src="scripts/jquery-1.11.3.min.js"></script>
-	   <script src="bower_components/angular/angular.js"></script>
-	<script src="bower_components/angular-route/angular-route.js"></script>
-	<script src="bower_components/angular-resource/angular-resource.js"></script>
-	<script type="text/javascript" src="scripts/admin.js"></script>
-	<script src="scripts/controllers.js"></script>
+        <div id="header">
+            <div class="mobile"><img src="images/menu.png"></div>
+            <div class="search"><input type="text" placeholder="Search for something..."
+                                       onblur="this.placeholder='Search for something...'"></div>
+            <div class="logout">
+                Log out
+            </div>
+        </div>
+
+        <script type="text/javascript" src="scripts/jquery-1.11.3.min.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-route/angular-route.js"></script>
+        <script src="bower_components/angular-resource/angular-resource.js"></script>
+        <script type="text/javascript" src="scripts/admin.js"></script>
+        <script src="scripts/controllers.js"></script>
 
 
-		<div id="view" ng-view></div>
-		</div>
-	</div>
+        <div id="view" ng-view></div>
+    </div>
+</div>
 </body>
 </html>
