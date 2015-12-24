@@ -58,7 +58,7 @@ div#container {
 	background: #2c3e50;
 	float: left;
 }
-a#dachboard, a#participants, a#statistics {
+a#dachboard, a#participants, a#statistics, a#workspace {
 	background-image:url(../images/db.png);
     background-position:10px 10px;
     background-repeat:no-repeat;
@@ -75,8 +75,10 @@ a#participants:focus{background-image:url(../images/pib-h.png);}
 a#statistics{background-image:url(../images/s.png);}
 a#statistics:hover{background-image:url(../images/s-h.png);}
 a#statistics:focus{background-image:url(../images/s-h.png);}
-
-ul#nav li {
+a#workspace{background-image:url(../images/ws.png);}
+a#workspace:hover{background-image:url(../images/ws-h.png);}
+/*a#workspace:focus{background-image:url(../images/ws.png);}
+*/ul#nav li {
 	margin-left: 10px;
 	list-style: none;
 }
@@ -98,10 +100,12 @@ ul#nav li a:hover {
 	/*background: #2c3e50;*/
 	/*margin-left: 5px;*/
 }
+
 ul#nav li a:focus, ul li a#selected {
 	color: #fff;
 	/*border-left: 5px solid #577a9d;*/
 }
+ul#nav li a#workspace:focus{color: #577a9d;}
 .content {
 	width: auto; 
 	/*height: calc(100% - 50%);*/
@@ -143,7 +147,8 @@ div.mobile:hover{
 	table#table-dashboard{width: 100%;}
 	a#dachboard,a#participants,a#statistics,a#dachboard:hover,
 	a#participants:hover,a#statistics:hover,a#dachboard:focus,
-	a#participants:focus,a#statistics:focus
+	a#participants:focus,a#statistics:focus,a#workspace,a#workspace:hover,
+	a#workspace:focus
 	{background-image:none;text-indent:0%;}
 	ul#nav{margin-top: 0px;}
 	/*div.search{margin-left: 125px;}*/
