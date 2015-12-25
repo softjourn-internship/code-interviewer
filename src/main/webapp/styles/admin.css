@@ -77,12 +77,11 @@ a#statistics:hover{background-image:url(../images/s-h.png);}
 a#statistics:focus{background-image:url(../images/s-h.png);}
 a#workspace{background-image:url(../images/ws.png);}
 a#workspace:hover{background-image:url(../images/ws-h.png);}
-/*a#workspace:focus{background-image:url(../images/ws.png);}
-*/ul#nav li {
+ul#nav li {
 	margin-left: 10px;
 	list-style: none;
 }
-ul#nav li a {
+ul#nav li a, li#li-main {
 	color: #577a9d;
 	font-family: 'Open Sans', Tahoma;
 	font-weight: 600;
@@ -142,7 +141,8 @@ div.mobile:hover{
 	/*background-image: url(D:/Mockup-interview/images/menu.png); */
 }
 /*	RESIZE	*/
-@media only screen and (max-width: 700px){
+@media only screen and (max-width: 768px){
+	div.send-test div{width: 80%;}
 	div.box{width: 100%;}
 	table#table-dashboard{width: 100%;}
 	a#dachboard,a#participants,a#statistics,a#dachboard:hover,
@@ -172,9 +172,10 @@ div.mobile:hover{
 		margin-left: 0px;
 	}
 }
-@media only screen and (min-width: 700px){
+@media only screen and (min-width: 768px){
 	div.box{width: 700px;margin: 25px;}
-	div.profile{width: 500px;}
+	div.send-test div{width: 400px;}
+	div.profile{width: 600px;}
 	table#table-dashboard{width: auto;}
 	ul#nav{margin-top: 75px;}
 	/*div.search{margin-left: 0px;}*/
@@ -206,6 +207,7 @@ div.search{
 	padding: 10px;
 }
 div.search input{
+	width: 100%;
 	color: silver;
 	font-family: Open Sans, Tahoma;
 	font-weight: 300;
@@ -314,7 +316,7 @@ select{
 	-o-transition: 0.2s;
 	transition: 0.2s;
 }
-div.box div input, select{
+input, select{
 	color: silver;
 	font-family: Open Sans, Tahoma;
 	background: transparent;
@@ -331,7 +333,7 @@ div.box div input, select{
 	-o-transition: 0.2s;
 	transition: 0.2s;
 }
-div.box div input:focus{
+input:focus{
 	border-bottom: 2px solid #34495e;
 	color: #34495e;
 }
@@ -398,12 +400,11 @@ p.info-p{
 }
 button{
 	background: #f8fafb;
-	/*background: #16a085;*/
 	border-radius: 2px; 
 	border-color: transparent; 
 	border: 1px solid silver;
 	color: #666;
-	font-weight: bold;
+	font-weight: 300;
 	font-size: 13px;
 	font-family: Open Sans, Tahoma;
 	padding: 2.5px 10px 2.5px 10px;
@@ -484,15 +485,20 @@ div.profile div.info-profile div.general-info div.city{
 	font-size: 14px;
 	color: #666;
 }
-div.profile div.info-profile img{
+div.profile div.info-profile img.avatar, img.avatar-send{
 	/*position: inherit;*/
 	width: 100px;
 	height: 100px;
 	border-radius: 100%;
 	border: 2px solid #fff;
 }
+img.avatar-send{
+	border: none;
+	position: left;
+	width: 38px;
+	height: 38px;
+}
 button.send{
-	position: relative;
 	background: #a2b57d;
 	border-color: #a2b57d;
 	color: #fff;
@@ -542,7 +548,7 @@ div.send-test div {
 	/*border-radius: 2px;*/
 	/*box-shadow: 0 0 2px rgba(34,34,34,0.5);*/
 	background: #fff;
-	width: 50%;
+	/*width: 50%;*/
 	height: 250px;
 	margin: auto;
 	left: 0;
@@ -580,21 +586,33 @@ div.send-test div div.head{
 	height: 50px;
 	background: #2c3e50;
 	display: block;
-	padding: 12.5px;
 }
 div.send-test div div.head span{
-	color: #fff;
+	text-align: center;
+	color: #56799c;
 	font-size: 13px;
-	color: #4e6e87;
+	position: absolute;
+	padding: 5px;
+	margin-left: -10px;
+	/*color: #4e6e87;*/
 }
 div.send-test div div.head #close{
 	border: none;
 	background: transparent;
 	float: right;
-	color: #4e6e87;
+	color: #415b76;
 	font-weight: normal;
+	/*position: absolute;*/
+	margin-bottom: 10px;
 }
-div.send-test div div.head #close:hover{color: #fff;}
+div.send-test div div.head table{
+	width: 100%;
+	margin: 0;
+}
+div.send-test div div.head table tr td.img{
+	width: 38px;
+}
+div.send-test div div.head #close:hover{color: #56799c;}
 
 div.send-test div {
 	position: relative;
@@ -644,27 +662,24 @@ div.profile div.history ul{
 div.profile div.history ul li{
 	display: list-item;
 }
-.thumbnail {
-  position: relative;
-  width: 100px;
-  height: 100px;
-  overflow: hidden;
-  border-radius: 100%;
-  border: 2px solid #fff;
-
+div.chart{
+	font-family: Open Sans;
+	border-radius: 5px;
+	width: 100%;
+	height: 500px;
+	background: transparent;
 }
-.thumbnail img {
-  margin: 250px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  height: 100%;
-  width: auto;
-  -webkit-transform: translate(-50%,-50%);
-      -ms-transform: translate(-50%,-50%);
-          transform: translate(-50%,-50%);
+div.send-test table{width: 100%;height: 100%;}
+div.send-test table tr td{
+	padding: 5px;
 }
-.thumbnail img.portrait {
-  width: 100%;
-  height: auto;
+div.send-test table tr td input{
+	width: 100%;
+}
+div.send-test table tr td.title{
+	width: 50px;
+}
+div.send-test table tr td input[type="file"]{
+	width: 100%;
+	border: none;
 }

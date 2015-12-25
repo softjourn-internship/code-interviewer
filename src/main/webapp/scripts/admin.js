@@ -4,6 +4,10 @@ $(document).ready(function() {
 			$("div.sidebar").fadeToggle();
 	});
 
+	// $("div.sidebar").click(function(){
+	// 	$("div.sidebar").fadeOut();
+	// })
+
 	$("#view").click(function() {
 			// $("div.sidebar").fadeOut();
 	});
