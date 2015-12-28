@@ -6,6 +6,9 @@ var myAppModule = angular.module('MyApp', ['ui.ace']);
 
 adminPanelApp.controller('ClientsListCtrl', ['$scope', '$http','$location',
   function ($scope, $http, $location) {
+    $scope.logOut = function() {
+      $location.path('/');
+    };
 
     $http.get('clients/clients.json').success(function(data) {
       $scope.clients = data;
@@ -19,14 +22,30 @@ adminPanelApp.controller('loginCtrl',function($scope, $location) {
     $scope.sumbit = function() {
       var username = $scope.username;
       var password = $scope.password;
-      // alert(""+$scope.username);
-      if(username == 'admin' && password =='admin'){
-        // window.location.hash = '#/dashboard';
-        $location.path('/dashboard');
 
-        document.getElementById("header").style.display = "block";
-        document.getElementById("container").style.display = "block";
-      }
+      function admin() {
+          $location.path('/participants');
+          document.getElementById("header").style.display = "block";
+          document.getElementById("container").style.display = "none";
+          document.getElementById("content").style.marginLeft = "0px";
+      };
+
+      function recruiter() {
+          $location.path('/dashboard');
+          document.getElementById("header").style.display = "block";
+          document.getElementById("container").style.display = "block";
+          document.getElementById("content").style.marginLeft = "0px";
+      };
+
+      function manager() {
+          $location.path('/dashboard');
+          document.getElementById("header").style.display = "block";
+          document.getElementById("container").style.display = "block";
+      };
+
+      if(username == 'admin' && password == 'admin'){ admin(); }
+      else if(username == 'recruiter' && password == 'recruiter'){ recruiter(); }
+      else if(username == 'manager' && password == 'manager'){ manager(); }
       else alert("Wrong staff");
     };
 });

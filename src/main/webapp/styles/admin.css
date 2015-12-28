@@ -58,7 +58,7 @@ div#container {
 	background: #2c3e50;
 	float: left;
 }
-a#dachboard, a#participants, a#statistics, a#workspace {
+a#dachboard, a#participants, a#statistics, a#workspace,a#tasks {
 	background-image:url(../images/db.png);
     background-position:10px 10px;
     background-repeat:no-repeat;
@@ -77,6 +77,9 @@ a#statistics:hover{background-image:url(../images/s-h.png);}
 a#statistics:focus{background-image:url(../images/s-h.png);}
 a#workspace{background-image:url(../images/ws.png);}
 a#workspace:hover{background-image:url(../images/ws-h.png);}
+a#tasks{background-image:url(../images/t.png);}
+a#tasks:hover{background-image:url(../images/t-h.png);}
+a#tasks:focus{background-image:url(../images/t-h.png);}
 ul#nav li {
 	margin-left: 10px;
 	list-style: none;
@@ -105,7 +108,7 @@ ul#nav li a:focus, ul li a#selected {
 	/*border-left: 5px solid #577a9d;*/
 }
 ul#nav li a#workspace:focus{color: #577a9d;}
-.content {
+#content {
 	width: auto; 
 	/*height: calc(100% - 50%);*/
 	height: auto;
@@ -148,7 +151,7 @@ div.mobile:hover{
 	a#dachboard,a#participants,a#statistics,a#dachboard:hover,
 	a#participants:hover,a#statistics:hover,a#dachboard:focus,
 	a#participants:focus,a#statistics:focus,a#workspace,a#workspace:hover,
-	a#workspace:focus
+	a#workspace:focus,a#tasks,,a#tasks:hover,,a#tasks:focus
 	{background-image:none;text-indent:0%;}
 	ul#nav{margin-top: 0px;}
 	/*div.search{margin-left: 125px;}*/
