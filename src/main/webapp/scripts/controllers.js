@@ -6,11 +6,30 @@ var myAppModule = angular.module('MyApp', ['ui.ace']);
 
 adminPanelApp.controller('ClientsListCtrl', ['$scope', '$http','$location',
   function ($scope, $http, $location) {
+
     $http.get('clients/clients.json').success(function(data) {
       $scope.clients = data;
     });
   }]);
 
+adminPanelApp.controller('loginCtrl',function($scope, $location) {
+    document.getElementById("header").style.display = "none";
+    document.getElementById("container").style.display = "none";
+
+    $scope.sumbit = function() {
+      var username = $scope.username;
+      var password = $scope.password;
+      // alert(""+$scope.username);
+      if(username == 'admin' && password =='admin'){
+        // window.location.hash = '#/dashboard';
+        $location.path('/dashboard');
+
+        document.getElementById("header").style.display = "block";
+        document.getElementById("container").style.display = "block";
+      }
+      else alert("Wrong staff");
+    };
+});
 // CHARTS
 
 adminPanelApp.controller('ClientsChartsCtrl', ['$scope', '$http','$location',
@@ -44,6 +63,10 @@ adminPanelApp.config([
   function($routeProvide, $locationProvider){
     $routeProvide
         .when('/',{
+          templateUrl:'template/login.html',
+          controller:'loginCtrl'
+        })
+        .when('/dashboard',{
           templateUrl:'template/dashboard.html',
           controller:'ClientsListCtrl'
         })
