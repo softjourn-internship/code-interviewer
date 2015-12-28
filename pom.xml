@@ -18,6 +18,8 @@
     <properties>
         <java-version>1.8</java-version>
         <jta-version>1.1</jta-version>
+        <mysql-connector-java.version>5.1.37</mysql-connector-java.version>
+        <spring-core.version>4.2.4.RELEASE</spring-core.version>
     </properties>
 
     <dependencyManagement>
@@ -40,7 +42,8 @@
 
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring-core.version}</version>
         </dependency>
 
         <dependency>
@@ -49,24 +52,8 @@
         </dependency>
 
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
         </dependency>
 
         <dependency>
@@ -84,6 +71,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-connector-java.version}</version>
             <scope>compile</scope>
         </dependency>
 
@@ -100,6 +88,11 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-rest-webmvc</artifactId>
         </dependency>
     </dependencies>
 
@@ -122,7 +115,7 @@
                 <executions>
                     <execution>
                         <goals>
-                            <goal>run</goal>
+                            <goal>repackage</goal>
                         </goals>
                     </execution>
                 </executions>
