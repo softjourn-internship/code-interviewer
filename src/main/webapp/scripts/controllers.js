@@ -6,11 +6,49 @@ var myAppModule = angular.module('MyApp', ['ui.ace']);
 
 adminPanelApp.controller('ClientsListCtrl', ['$scope', '$http','$location',
   function ($scope, $http, $location) {
+    $scope.logOut = function() {
+      $location.path('/');
+    };
+
     $http.get('clients/clients.json').success(function(data) {
       $scope.clients = data;
     });
   }]);
 
+adminPanelApp.controller('loginCtrl',function($scope, $location) {
+    document.getElementById("header").style.display = "none";
+    document.getElementById("container").style.display = "none";
+
+    $scope.sumbit = function() {
+      var username = $scope.username;
+      var password = $scope.password;
+
+      function admin() {
+          $location.path('/participants');
+          document.getElementById("header").style.display = "block";
+          document.getElementById("container").style.display = "none";
+          document.getElementById("content").style.marginLeft = "0px";
+      };
+
+      function recruiter() {
+          $location.path('/dashboard');
+          document.getElementById("header").style.display = "block";
+          document.getElementById("container").style.display = "block";
+          document.getElementById("content").style.marginLeft = "0px";
+      };
+
+      function manager() {
+          $location.path('/dashboard');
+          document.getElementById("header").style.display = "block";
+          document.getElementById("container").style.display = "block";
+      };
+
+      if(username == 'admin' && password == 'admin'){ admin(); }
+      else if(username == 'recruiter' && password == 'recruiter'){ recruiter(); }
+      else if(username == 'manager' && password == 'manager'){ manager(); }
+      else alert("Wrong staff");
+    };
+});
 // CHARTS
 
 adminPanelApp.controller('ClientsChartsCtrl', ['$scope', '$http','$location',
@@ -44,6 +82,10 @@ adminPanelApp.config([
   function($routeProvide, $locationProvider){
     $routeProvide
         .when('/',{
+          templateUrl:'template/login.html',
+          controller:'loginCtrl'
+        })
+        .when('/dashboard',{
           templateUrl:'template/dashboard.html',
           controller:'ClientsListCtrl'
         })

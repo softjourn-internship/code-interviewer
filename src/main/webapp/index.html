@@ -15,18 +15,19 @@
 				<li><a id="dachboard" href="#/dashboard">DASHBOARD</a></li>
 				<li><a id="participants" href="#/participants">ACCOUNTS</a></li>
 				<li><a id="statistics" href="#/statistics">STATISTICS</a></li>
+                <li><a id="tasks" href="#/tasks">TASKS</a></li>
 				<li><a id="workspace" href="workspace.html">WORKSPACE</a></li>
 				<!-- <li>Add account</li> -->
 			</ul>
 		</div>
     </div>
     
-	<div class="content">
+	<div id="content">
 
         <div id="header">
             <div class="mobile"><img src="images/menu.png"></div>
             <div class="search"><input type="text" placeholder="Search for something..." onblur="this.placeholder='Search for something...'"></div>
-            <div class="logout">
+            <div class="logout"  ng-click="logOut()">
                 Log out
             </div>
         </div>

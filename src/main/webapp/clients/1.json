@@ -3,11 +3,18 @@
     "name": "Dmytro",
     "surname": "Kutsaniuk",
     "city":"Ivano-Frankivsk",
+    "birthday": "08 November 1996",
+    "studied":"College of Electronic Devices",
+    "specialty":"Front-End developer",
+    "englishLevel":"Intermediate",
     "email":"kutsaniuk@gmail.com",
     "complication":["middle","hard","easy"],
-    "testSent":["13.23.2015","15.03.2015","07.11.2015"],
-    "testReturn":["18.12.2015","18.12.2015",false],
-    "perfomedTests":["Java","Html","CSS"],
     "bgImage":"id1-bg.jpg",
-    "avatar":"id1-avatar.png"
+    "avatar":"id1-avatar.png",
+    "activity":[
+        {"technology":"Java", "taken":"failed","status":"sent","review":"Сhecked"},
+        {"technology":"HTML", "taken":"done","status":"sent","review":"Сhecked"},
+        {"technology":"CSS", "taken":"inProcess","status":"sent","review": "Check"},
+        {"technology":"Java Script", "taken":"","status":"sent","review":"Check"}
+    ]
 }
