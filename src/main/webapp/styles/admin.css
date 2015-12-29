@@ -24,7 +24,7 @@ div#header {
 	/*background: #16a085;*/
 	background: #fff;
 	margin: 0 auto;
-	box-shadow: 0 1px 0 #e1e1e1; 
+	box-shadow: 0 1px 0 #e1e1e1;
 }
 
 .logo {
@@ -106,7 +106,7 @@ ul#nav li a:focus, ul li a#selected {
 }
 ul#nav li a#workspace:focus{color: #577a9d;}
 .content {
-	width: auto; 
+	width: auto;
 	/*height: calc(100% - 50%);*/
 	height: auto;
 	font-family: Open Sans, Tahoma;
@@ -129,7 +129,7 @@ div.mobile {
 	-moz-transition: 0.2s;
 	-o-transition: 0.2s;
 	transition: 0.2s;
-}	
+}
 div.mobile:hover{
 	/*margin-top: 1px;*/
 	/*background: #148f77 ;*/
@@ -181,7 +181,7 @@ div.mobile:hover{
 	/*div.search{margin-left: 0px;}*/
 	div.box-small{
 		width: 200px;
-		margin-left: 15px; 
+		margin-left: 15px;
 	}
 	div.mobile{
 		display: none;
@@ -223,7 +223,7 @@ div.search input:focus{
 div.logout{
 	float: right;
 	display: block;
-	padding: 15px;	
+	padding: 15px;
 	color: silver;
 	font-size: 13px;
 	font-weight: bold;
@@ -243,7 +243,7 @@ div.box {
 	margin: 0;
 	margin-bottom: 15px;
 	border-radius: 5px;
-	box-shadow: 0 1px 0 #e1e1e1; 
+	box-shadow: 0 1px 0 #e1e1e1;
 	display: block;
 	padding: 20px;
 	background: #fff;
@@ -261,7 +261,7 @@ div.box span.clients-length{
 div.box-small{
 	padding: 0;
 	height: 125px;
-	float: left; 
+	float: left;
 }
 hr {
     border: 0;
@@ -278,7 +278,7 @@ div.box-small span{
 	color: #666;
 }
 div.box-small p{
-	padding: 20px; 
+	padding: 20px;
 	font-size: 30px;
 	color: #666;
 	font-weight: 300;
@@ -286,7 +286,7 @@ div.box-small p{
 div.box div{
 	width: 100%;
 	display: inline;
-	
+
 }
 div.box div ul { list-style: none; }
 div.box div ul li{ display: inline;padding: 0; }
@@ -299,7 +299,7 @@ div.box div ul li button{
 	height: 33.5px;
 }
 /*div.box div input{
-	
+
 	color: silver;
 	width: 80%;
 	-webkit-transition: 0.2s;
@@ -324,7 +324,7 @@ input, select{
 	border-bottom: 2px solid #e1e1e1;
 	border-radius: 1px;
 	padding: 6px;
-	padding-left: 12px; 
+	padding-left: 12px;
 	font-size: 13px;
 	width: 40%;
 	margin: -3px;
@@ -400,8 +400,8 @@ p.info-p{
 }
 button{
 	background: #f8fafb;
-	border-radius: 2px; 
-	border-color: transparent; 
+	border-radius: 2px;
+	border-color: transparent;
 	border: 1px solid silver;
 	color: #666;
 	font-weight: 300;
@@ -449,7 +449,7 @@ div.profile{
 	/*padding-top: 15px;*/
 }
 div.profile img{
-	border-radius: 5px 5px 0 0; 
+	border-radius: 5px 5px 0 0;
 	margin-top: 0;
 	width: 100%;
 }
@@ -502,6 +502,7 @@ button.send{
 	background: #a2b57d;
 	border-color: #a2b57d;
 	color: #fff;
+	margin-left: 1%;
 	text-shadow: 0 1px 0 #828e65;
 }
 button#send-profile{
@@ -555,7 +556,7 @@ div.send-test div {
 	right: 0;
 	top: 0;
 	bottom: 0;
-	margin-top: 100px; 
+	margin-top: 100px;
 
 }
 div.send-test div div.tool{
@@ -580,7 +581,7 @@ div.send-test div div.action{
 	top: 0;
 }
 div.send-test div div.head{
-	margin-top:0; 
+	margin-top:0;
 	position: relative;
 	width: 100%;
 	height: 50px;
@@ -618,7 +619,7 @@ div.send-test div {
 	position: relative;
 }
 div.send-test div div.action input[type="radio"] {
-    display:none; 
+    display:none;
 }
 
 div.send-test div div.action label {
@@ -629,7 +630,7 @@ div.send-test div div.action label {
     font-size:13px;
 }
 
-div.send-test div div.action input[type="radio"]:checked + label { 
+div.send-test div div.action input[type="radio"]:checked + label {
     background-color:#bbb;
     -webkit-transition: 0.2s;
 	-moz-transition: 0.2s;
@@ -682,4 +683,75 @@ div.send-test table tr td.title{
 div.send-test table tr td input[type="file"]{
 	width: 100%;
 	border: none;
+}
+
+/* css for tasks.html*/
+.Tbox{
+	width: 80%;
+	height: 80%;
+	position: absolute;
+	margin: 1%;
+	background-color: #D3D1F7;
+	border-radius: 5px;
+	box-shadow: 0 0 8px;
+	overflow: auto;
+}
+#TTBox{
+	width: 80%;
+	height: 80%;
+	position: absolute;
+	margin: 1%;
+	background-color:#fff;
+	border-radius: 5px;
+}
+
+#editImage{
+	height: 20px;
+	width: 20px;
+	cursor: pointer;
+	float: left;
+}
+
+#blockEdit{
+	width: 70px;
+}
+
+.selectBl{
+	width: 20%;
+	margin-left: 1%;
+	margin-top: 0px;
+	color: #000;
+}
+
+td .selectBl{
+	width:70%;
+}
+
+#build-editor{
+	height: 69%;
+	width: 98%;
+	margin: 2px 1% 1% 1%;
+	border-radius: 5px;
+}
+.Ttitle{
+	padding-left: 10px;
+	font-family: 'Comic Sans MS';
+}
+td input{
+	margin-left: 5px;
+	width: 200%;
+}
+.Tbox img{
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	left: 97%;
+	box-shadow:0 0 8px;
+	padding: 0px;
+	border-radius: 100%;
+	margin: 6px;
+	cursor: pointer;
+}
+#inputTitle{
+	color: #000;
 }

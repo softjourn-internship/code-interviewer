@@ -1,0 +1,78 @@
+<div ng-controller="TasksCtrl">
+	<div class="Tbox" ng-show="!Visible">
+		<img src="images/close.png" ng-click="changeFrame(0)" />
+		<form method="POST">
+			<table>
+				<tr>
+					<td class="Ttitle">Title task:</td>
+					<td><input id="inputTitle" type="text" ng-model="titleTaskC" required></td>
+				</tr>
+				<tr>
+					<td class="Ttitle">Difficalty:</td>
+					<td><select class="selectBl" ng-model="diffTaskC" name="difficalty" required>
+						<option value="Eazy">Eazy</option>
+						<option value="Middle">Middle</option>
+						<option value="Hard">Hard</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td class="Ttitle">Technology:</td>
+					<td>
+					<select class="selectBl" ng-model="techTaskC" name="technology" required>
+						<option value="Java">Java</option>
+						<option value="PHP">PHP</option>
+						<option value="C#">C#</option>
+					</select>
+					</td>
+				</tr>
+				<tr>
+					<td class="Ttitle">
+						Task:{{TaskId}}
+					</td>
+				</tr>
+		</table>
+	</form>
+	<div id="build-editor" ui-ace ng-model="TaskC"></div>
+				<button class="send" ng-click="Visible=!Visible;">{{buttonTbox}}</button>
+	</div>
+
+
+	<div id="Tbox" ng-show=Visible>
+		<div>
+			<input type="text" placeholder="Title Task" onblur="this.placeholder='Name'" onfocus="this.placeholder=''" ng-model="searchTask">
+			<select class="selectBl" ng-model="technology">
+				<option value="" selected>All</option>
+				<option value="Java">Java</option>
+				<option value="PHP">PHP</option>
+				<option value="C#">C#</option>
+			</select>
+			<select class="selectBl" ng-model="difficalty">
+				<option value="" selected>All</option>
+				<option value="eazy">Eazy</option>
+				<option value="middle">Middle</option>
+				<option value="hard">Hard</option>
+			</select>
+		</div>
+		<table id="table-dashboard">
+  		<thead>
+				<th>Title task</th>
+  			<th>Technology</th>
+  			<th>Added</th>
+  			<th>Difficalty</th>
+  		</thead>
+  		<tbody>
+  			<tr class="hover-tr" ng-repeat="task in allTasks | filter:{title:searchTask,language:technology,level:difficalty}">
+  				<td>{{task.title}}</td>
+  				<td>{{task.language}}</td>
+  				<td>{{task.added}}</td>
+  				<td>{{task.level}}</td>
+					<td id="blockEdit"><img ng-click="changeFrame(task.id);CreateOrChangeTask('Change Task');" id="editImage" src="images/edit.jpg" /></td>
+  			</tr>
+  		</tbody>
+  	</table>
+		<div class="tool">
+			<button id="add" ng-click="changeFrame('empty'); CreateOrChangeTask('Create Task');">Add</button>
+		</div>
+	</div>
+
+</div>

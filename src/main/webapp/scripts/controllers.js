@@ -1,4 +1,4 @@
-var adminPanelApp = angular.module("adminPanelApp", ['ngRoute', 'ngResource','googlechart']); 
+var adminPanelApp = angular.module("adminPanelApp", ['ngRoute', 'ngResource','googlechart','ui.ace']);
 var myAppModule = angular.module('MyApp', ['ui.ace']);
 
 /* Controllers Admin*/
@@ -37,6 +37,43 @@ adminPanelApp.controller('ClientsProfileCtrl', ['$scope', '$http', '$location','
           $scope.client = data;
         });
   }]);
+
+  //TASKS
+
+  adminPanelApp.controller('TasksCtrl',['$scope','$http',function ($scope,$http){
+    $scope.Visible=true;
+    $http.get("data/AllTasks.json").then(function (response) {
+      $scope.allTasks=response.data;
+
+    });
+
+    $scope.buttonTbox;
+    $scope.CreateOrChangeTask=function(buttonTitle) {
+      $scope.buttonTbox=buttonTitle;
+    }
+    $scope.changeFrame=function(taskId) {
+      if(taskId!='empty'){
+        for(var i=0;i<$scope.allTasks.length;i++){
+        var obj = $scope.allTasks[i];
+        if(taskId==i){
+          $scope.titleTaskC=obj.title;
+          $scope.diffTaskC=obj.level;
+          $scope.techTaskC=obj.language;
+          $scope.TaskC=obj.task;
+      }
+    }
+  }
+  else{
+    $scope.titleTaskC='';
+    $scope.diffTaskC='';
+    $scope.techTaskC='';
+    $scope.TaskC='';
+  }
+    $scope.Visible=!$scope.Visible;
+  }
+
+}]);
+
 // config Admin Panel
 
 adminPanelApp.config([
@@ -53,14 +90,19 @@ adminPanelApp.config([
         })
         .
         when('/clients/:clientId', {
-            templateUrl: 'template/profile.html', 
+            templateUrl: 'template/profile.html',
             controller: 'ClientsProfileCtrl'
          })
         .
         when('/statistics', {
-            templateUrl: 'template/statistics.html', 
+            templateUrl: 'template/statistics.html',
             controller: 'ClientsChartsCtrl'
          })
+
+         .when('/tasks', {
+             templateUrl: 'template/tasks.html',
+             controller: 'TasksCtrl'
+          })
         .otherwise({
           redirectTo: '/'
         });
@@ -77,6 +119,9 @@ myAppModule.controller('SelectTaskCtrl', function($scope,$http){
       if ($scope.NumberTask==1){$scope.TaskShow=response.data.first;}
       if ($scope.NumberTask==2){$scope.TaskShow= response.data.second;}
       if ($scope.NumberTask==3){$scope.TaskShow= response.data.third;}});
+  $scope.logg=function() {
+    console.log("d");
+  }
   $scope.ShowTask=function(){
     $http.get("data/tasks.json").then(function (response) {
       if ($scope.NumberTask==1){$scope.TaskShow=response.data.first; console.log($scope.TaskShow);}
@@ -87,4 +132,3 @@ myAppModule.controller('SelectTaskCtrl', function($scope,$http){
 }
     $scope.TaskListVisible=true;
 });
-
