@@ -10,12 +10,12 @@ import org.springframework.boot.context.web.SpringBootServletInitializer;
  * Created by NicholasG on 18.12.2015.
  */
 @SpringBootApplication
-public class WebStaticApp extends SpringBootServletInitializer {
+public class WebStaticApp /*extends SpringBootServletInitializer*/ {
 
-    @Override
+    /*@Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
         return builder.sources(WebStaticApp.class);
-    }
+    }*/
 
     public static void main(String[] args) {
         SpringApplication.run(WebStaticApp.class, args);

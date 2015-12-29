@@ -5,41 +5,31 @@
 
 This project is a platform for making online interview with writing a code.
 
-### Environment configuration::
+### Environment configuration:
 ***************************************************
 
-1. java SE 1.8.
+1. JDK:  java SE 1.8.
 
-2. apache-maven-3.3.9.
+2. Maven: apache-maven-3.3.9.
 
-3. ---
+3. SQL Server: MySQL Server 5.6.
 
 4. Node.js
 
-5. Bower
+5. Bower, to install, use "Node.js command prompt" and type:
 
    npm install -g bower
 
-6. Browse required libraries In your console go to the {system path}/sales-if-ua/src/main/webapp/app and type following comand:
+   5.1. Browse required libraries, then go to ../webapp and type the following:
 
    bower install
-
-### Database steps:
-***************************************************
-
-1. ---
 
 ### Run server:
 ***************************************************
 
-1. ---
+   Use mvn spring-boot:run
 
 ### Home page:
 ***************************************************
 
-1. ---
-
-### SWAGGER documentation:
-***************************************************
-
-1. ---
+   http://localhost:8080/
