@@ -1,3 +1,4 @@
+
 INSERT INTO `users` VALUES (1, 'Mykola', 'Grynkevych', 'kolya@gmail.com');
 INSERT INTO `users` VALUES (2, 'Iwan', 'Arabchuk', 'iwan@gmail.com');
 INSERT INTO `users` VALUES (3, 'Dmytro', 'Kutsaniuk', 'dmytro@gmail.com');

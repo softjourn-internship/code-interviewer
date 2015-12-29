@@ -19,7 +19,7 @@ public class User implements Serializable {
     @Column(name = "firstName", nullable = false)
     private String firstName;
 
-    @Column(name = "lastName", nullable = false)
+    @Column(name = "firstName", nullable = false)
     private String lastName;
 
     @Column(name = "email", nullable = false)
