@@ -1,7 +1,7 @@
 /**
  * Created by Iwan on 25.12.2015.
  */
-package java;
+package configuration;
 
 import java.sql.SQLException;
 

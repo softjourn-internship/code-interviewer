@@ -1,6 +1,6 @@
-package jpa.repository;
+package user.repository;
 
-import jpa.entity.User;
+import user.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

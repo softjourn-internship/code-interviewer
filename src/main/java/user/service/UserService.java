@@ -1,7 +1,6 @@
-package service;
+package user.service;
 
-import jpa.entity.User;
-import org.springframework.lang.UsesSunHttpServer;
+import user.domain.User;
 
 import java.util.List;
 

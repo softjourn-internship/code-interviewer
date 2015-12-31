@@ -1,9 +1,9 @@
-package service.Impl;
+package user.service.impl;
 
-import jpa.entity.User;
-import jpa.repository.UserRepository;
+import user.domain.User;
+import user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import service.UserService;
+import user.service.UserService;
 
 import java.util.List;
 

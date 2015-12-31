@@ -1,4 +1,4 @@
-package jpa.config;
+package configuration;
 
 import org.hibernate.ejb.HibernatePersistence;
 import org.hibernate.jpa.HibernatePersistenceProvider;
@@ -20,7 +20,7 @@ import java.util.Properties;
  */
 @Configuration
 @EnableTransactionManagement
-@ComponentScan("jpa")
+@ComponentScan("configuration")
 public class DataConfig {
 
     private static final String PROP_DATABASE_DRIVER = "db.driver";

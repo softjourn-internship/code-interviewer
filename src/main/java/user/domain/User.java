@@ -1,4 +1,4 @@
-package jpa.entity;
+package user.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -6,14 +6,13 @@ import java.io.Serializable;
 /**
  * Created by NicholasG on 17.12.2015.
  */
-// Додати enumRoles
 @Entity
 @Table(name = "users")
 public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idUsers", nullable = false)
+    @Column(name = "userId", nullable = false)
     private Integer userID;
 
     @Column(name = "firstName", nullable = false)
