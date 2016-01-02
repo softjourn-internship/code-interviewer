@@ -755,3 +755,45 @@ td input{
 #inputTitle{
 	color: #000;
 }
+
+/*/////////////////////////////////*/
+/*	LOGIN	*/
+form.login{
+	display: block;
+	background: #fff;
+	width: 500px;
+	height: 300px;
+	position: absolute;
+	margin: auto;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	font-family: Open Sans;
+	box-shadow: 0 1px 0 #e1e1e1; 
+}
+form.login div{
+	position: absolute;
+	display: block;
+	background: #fff;
+	margin: auto;
+	width: 50%;
+	height: 55%;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+form.login input{
+	margin: 0;
+	width: 100%;
+	color: #34495e;
+	font-weight: bold;
+	margin-bottom: 15px; 
+}
+form.login button{
+	margin-top: 10px;
+}
+form.login label{
+	color: #444;
+}

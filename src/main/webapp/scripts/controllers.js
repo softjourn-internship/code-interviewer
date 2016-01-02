@@ -10,7 +10,46 @@ adminPanelApp.controller('ClientsListCtrl', ['$scope', '$http','$location',
       $scope.clients = data;
     });
   }]);
+// LOGIN
+adminPanelApp.controller('loginCtrl',function($scope, $location) {
+    document.getElementById("header").style.display = "none";
+    document.getElementById("container").style.display = "none";
 
+    $scope.sumbit = function() {
+      var username = $scope.username;
+      var password = $scope.password;
+
+      function admin() {
+          $location.path('/participants');
+          // $scope.sideBarShow = false;
+          document.getElementById("header").style.display = "block";
+          document.getElementById("container").style.display = "none";
+          document.getElementById("content").style.marginLeft = "0px";
+      };
+
+      function recruiter() {
+          $location.path('/dashboard');
+          // $scope.sideBarShow = true;
+          document.getElementById("header").style.display = "block";
+          document.getElementById("container").style.display = "block";
+          document.getElementById("content").style.marginLeft = "180px";
+
+      };
+
+      function manager() {
+          $location.path('/dashboard');
+          // $scope.sideBarShow = true;  
+          document.getElementById("header").style.display = "block";
+          document.getElementById("container").style.display = "block";
+          document.getElementById("content").style.marginLeft = "180px";
+      };
+
+      if(username == 'admin' && password == 'admin'){ admin(); }
+      else if(username == 'recruiter' && password == 'recruiter'){ recruiter(); }
+      else if(username == 'manager' && password == 'manager'){ manager(); }
+      else alert("Wrong staff");
+    };
+});
 // CHARTS
 
 adminPanelApp.controller('ClientsChartsCtrl', ['$scope', '$http','$location',
@@ -81,6 +120,10 @@ adminPanelApp.config([
   function($routeProvide, $locationProvider){
     $routeProvide
         .when('/',{
+          templateUrl:'template/login.html',
+          controller:'loginCtrl'
+        })
+        .when('/dashboard',{
           templateUrl:'template/dashboard.html',
           controller:'ClientsListCtrl'
         })
