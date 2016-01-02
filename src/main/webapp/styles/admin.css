@@ -470,7 +470,7 @@ div.profile{
 	padding-bottom: 15px;
 }
 div.profile img{
-	border-radius: 5px 5px 0 0; 
+	border-radius: 5px 5px 0 0;
 	margin-top: 0;
 	width: 100%;
 }
@@ -512,10 +512,10 @@ div.profile div.info-profile div.general-info div.name input{
 	color: #fff;
 	font-weight: bold;
 	width: auto;
-	border-bottom: 2px solid transparent; 
+	border-bottom: 2px solid transparent;
 }
 div.profile div.info-profile div.general-info div.name input:focus{
-	border-bottom: 2px solid #444; 
+	border-bottom: 2px solid #444;
 }
 div.profile div.info-profile div.general-info div.city input{
 	color: #333;
@@ -553,7 +553,7 @@ div.profile table tr td input{
 	color: #333;
 	padding: 5px;
 	width: auto;
-	border-bottom: 2px solid #fff; 
+	border-bottom: 2px solid #fff;
 }
 img.avatar-send{
 	border: none;
@@ -776,6 +776,7 @@ div.send-test table tr td input[type="file"]{
 
 .tableTitle{
 	width: 300px;
+
 }
 .tableCubicle{
 	width: 200px;
