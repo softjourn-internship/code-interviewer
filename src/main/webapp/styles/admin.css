@@ -966,6 +966,15 @@ button.checked{
 	background: #f2f5ee;
 }
 div#chart-profile{
-	width: 40%;
+	width: 600px;
 	height: 300px;
+}
+div#chart-accounts{
+	display: inline-block;
+	position: absolute;
+}
+div#chart-accounts div.chart{
+	display: block;
+	width: 400px;
+	height: 280px;
 }

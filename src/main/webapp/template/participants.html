@@ -44,6 +44,7 @@
 	</div>
 </div>
 
+<section>
 <div class="box">
 	<div>
 		<input type="text" placeholder="Name" onblur="this.placeholder='Name'" onfocus="this.placeholder=''" ng-model="searchNameA">
@@ -74,9 +75,14 @@
 		</tbody>
 	</table>
 	<div class="tool">
-		<button id="add">Add</button>
-		<button>Edit</button>
-		<button>Delete</button>
+		<button id="add">New</button>
 		<span class="clients-length">{{lengthClientsPA.length}} Elements</span>
 	</div>
 </div>
+
+<div id="chart-accounts" ng-controller="ClientsChartsCtrl">
+	<div class="chart" google-chart chart="chartColumn"/>
+	<div class="chart" google-chart chart="chartPie"/>
+</div>
+
+</section>

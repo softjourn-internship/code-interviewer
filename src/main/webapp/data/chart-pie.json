@@ -98,7 +98,8 @@
     ]
   },
   "options": {
-    "pieHole": 0.7,
+    "pieHole": 0.4,
+    "backgroundColor": { "fill":"transparent" },
     "colors": ["#aec785", "#fa8564", "#f4d66c"],
     "title": "Progress",
     "isStacked": "true",

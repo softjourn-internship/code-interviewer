@@ -98,19 +98,16 @@
     ]
   },
   "options": {
+    "backgroundColor": { "fill":"transparent" },
     "colors": ["#fa8564", "#f4d66c", "#8491c7", "#aec785"],
     "title": "Sales per month",
     "isStacked": "true",
     "fill": 20,
     "displayExactValues": true,
     "vAxis": {
-      "title": "Sales unit",
       "gridlines": {
         "count": 6
       }
-    },
-    "hAxis": {
-      "title": "Date"
     }
   },
   "formatters": {},
