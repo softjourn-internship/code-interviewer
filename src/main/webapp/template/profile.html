@@ -11,6 +11,9 @@
 			$(".info-profile").fadeIn("fast");
 			$("div.profile div.info-profile div.details").fadeIn("fast");		
 	});
+	$(".chеck").click(function() {
+			alert();
+	});
 </script>
 <div ng-controller="ClientsProfileCtrl">
 <div class="send-test">
@@ -49,24 +52,79 @@
 	</form>
 	</div>
 </div>
-
-<div class="box profile">
+<section>	
+<div id="x" class="box profile">
 	<img ng-src="images/profiles/id{{client.id}}-bg.jpg" onerror="this.src='images/profiles/default.jpg'">
 	<div class="info-profile">
 		<img class="avatar" ng-src="images/profiles/id{{client.id}}-avatar.jpg" onerror="this.src='images/profiles/error.png';">
 		<div class="general-info">
-			<div class="name">{{client.name}} {{client.surname}}</div>
-			<div class="city">{{client.city}}</div>
+			<div class="name"><input value="{{client.name}} {{client.surname}}"></div>
+			<div class="city">
+				
+				<!-- <input value="{{client.city}}">
+				<input value="{{client.city}}">
+				<input value="{{client.city}}">
+				<input value="{{client.city}}"> -->
+			</div>
 		</div>
 
 	</div>
 
 	<div class="history">
 		<button id="send-profile" class="send">Send test</button>
-		<ul>
+		<!-- <ul>
 			<b>Perfomed tests</b>
 			<li ng-repeat="test in client.perfomedTests"> {{test}} </li>
-		</ul>
+			<li>Birthday: 22.22.15</li>
+			<li>Studied at: KEP</li>
+			<li>Specialty: Dev</li>
+			<li>English level: Intermediate</li>
+		</ul> -->
+		<table>
+			<tr>
+				<td>Birthday</td>
+				<td><input value="{{client.birthday}}"></td>
+			</tr>
+			<tr>
+				<td>City</td>
+				<td><input value="{{client.city}}"></td>
+			</tr>
+			<tr>
+				<td>Contact</td>
+				<td><input value="{{client.email}}"></td>
+			</tr>
+			<tr>
+				<td>Specialty</td>
+				<td><input value="{{client.specialty}}"></td>
+			</tr>
+			<tr>
+				<td>English level</td>
+				<td><input value="{{client.englishLevel}}"></td>
+			</tr>
+		</table>
 	</div>
 </div>
+
+<div id="y"class="box profile">
+	<span>Activity</span>
+	<table id="activity" class="main-table">
+		<thead>
+			<th>Technology</th>
+			<th>Taken</th>
+			<th>Review</th>
+		</thead>
+		<tbody>	
+		<tr class="hover-tr"ng-repeat="act in client.activity">
+			<td>{{act.technology}}</td>
+			<td><img ng-src="images/{{act.taken}}.png" onerror="this.src='images/errTaken.png'"></td>
+			<td><button class="view {{act.review}}"></button></td>
+		</tr>
+		</tbody>
+	</table>
 </div>
+</section>
+
+<div id="chart-dashboard" class="chart" google-chart chart="clientStatistics"/>
+
+</div>
+

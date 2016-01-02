@@ -75,6 +75,11 @@ adminPanelApp.controller('ClientsProfileCtrl', ['$scope', '$http', '$location','
         $http.get(url).success(function(data) {
           $scope.client = data;
         });
+
+        var url = 'data/statistics/'+$routeParams.clientId+'.json';
+        $http.get(url).success(function(data) {
+          $scope.clientStatistics = data;
+        });
   }]);
 
   //TASKS
