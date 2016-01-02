@@ -178,14 +178,9 @@ div.mobile:hover{
 	}
 }
 @media only screen and (min-width: 768px){
-
-	section{
-		white-space:nowrap;
-	}
-	section div.box{
-		display:inline-block;
-	}
-	section #y{
+	section{white-space:nowrap;}
+	section div.box{display:inline-block;}
+	section div#activity{
 		position: absolute;
 		width: 300px;
 		margin-left: 25px;
@@ -372,7 +367,6 @@ div select:hover{
 	border-bottom: 2px solid #34495e;
 }
 div select option:hover{background: #2c3e50;color: #ecf0f1;}
-<<<<<<< HEAD
 table.main-table{
 	/*border-top: 1px solid #e1e1e1;
 	border-bottom: 1px solid #e1e1e1;*/
@@ -385,10 +379,6 @@ table.main-table{
 	width: 100%;
 }
 table.main-table tbody td{
-=======
-
-table#table-dashboard tbody td{
->>>>>>> refs/remotes/origin/master
 	/*padding: 13px;*/
 	/*background: #eee;*/
 	color: #555;
@@ -857,7 +847,7 @@ td input{
 #inputTitle{
 	color: #000;
 }
-<<<<<<< HEAD
+
 table#activity{
 	margin: 0;
 	padding: 15px;
@@ -866,8 +856,6 @@ table#activity tbody tr td{	color: #555; }
 table#activity tbody tr td img{
 	width: 24px;
 }
-=======
-
 
 .toolT{
 	position: absolute;
@@ -916,7 +904,6 @@ table#activity tbody tr td img{
 	left: 70%;
 }
 
->>>>>>> refs/remotes/origin/master
 /*/////////////////////////////////*/
 /*	LOGIN	*/
 form.login{
@@ -958,7 +945,7 @@ form.login button{
 form.login label{
 	color: #444;
 }
-<<<<<<< HEAD
+
 button.view:hover{
 	border: 1px solid #666;
 	background: #666;
@@ -978,5 +965,7 @@ button.checked{
 	color: #828e65;
 	background: #f2f5ee;
 }
-=======
->>>>>>> refs/remotes/origin/master
+div#chart-profile{
+	width: 40%;
+	height: 300px;
+}
