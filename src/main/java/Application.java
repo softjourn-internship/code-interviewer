@@ -8,7 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
  * Created by NicholasG on 18.12.2015.
  */
 @SpringBootApplication
-@ComponentScan("java")
+@ComponentScan("configuration")
 public class Application extends SpringBootServletInitializer {
 
     @Override
