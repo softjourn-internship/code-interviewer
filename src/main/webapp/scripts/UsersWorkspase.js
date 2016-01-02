@@ -8,7 +8,7 @@ function ShowTest () {
 
 function ShowPr () {
 	$('#testEditor').css("z-index",1);
-	$('#programEditor').css("width",'98%');	
+	$('#programEditor').css("width",'98%');
 }
 
 function ShowAll(){
@@ -30,3 +30,24 @@ function ShowLogMessage () {
 		$('#logMess').css("z-index",-2);
 		anableLog=false;}
 }
+
+var clock;
+$(document).ready(function() {
+	var Timer;
+	$.getJSON( "data/tasks.json", function( data ) {
+	   Timer=data.time;
+			var clock = $('.clock').FlipClock(Timer,{
+						clockFace: 'MinuteCounter',
+						autoStart: false,
+						callbacks: {
+							stop: function() {
+								$('.message').html('The clock has stopped!')
+							}
+						}
+				});
+				//clock.setTime(438);
+				console.log(Timer);
+				clock.setCountdown(true);
+				clock.start();
+					});
+		});

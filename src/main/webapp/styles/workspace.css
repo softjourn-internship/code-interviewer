@@ -75,9 +75,9 @@ a{
 	left: 75%;
 	/*top: 3%;*/
 	width: 24%;
-	margin-top: 1%;
+	margin-top: 4%;
 	margin-right: 1%;
-	height: 86%;
+	height: 82%;
 
 	background-color: #fff;
 	border-radius: 6px;
@@ -272,5 +272,15 @@ div#ListTasks table tr:hover {
 .editor {
 	height: 96%;
 	position: absolute;
+}
 
+#Tclock{
+	position: fixed;
+	top: -25px;
+	left: 79%;
+	z-index: 9;
+	background-color: #3498db;
+	border-radius: 4px;
+	padding-left: 5px;
+	padding-top: 5px;
 }

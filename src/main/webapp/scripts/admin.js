@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	
+
 	$("div.mobile").click(function() {
 			$("div.sidebar").fadeToggle();
 	});
@@ -25,7 +25,7 @@ $(document).ready(function() {
 	// if(window.location.hash === '#/' ){
 	// 	$("a#dachboard").css('color', '#fff');
 	// 	$("a#dachboard").css('background-image', 'url(/images/db-h.png)');
-		
+
 	// }
 	// if (window.location.hash === '#/participants' ){
 	// 	$("a#participants").css('color', '#fff');
