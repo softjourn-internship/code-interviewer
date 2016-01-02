@@ -85,38 +85,53 @@ adminPanelApp.controller('ClientsProfileCtrl', ['$scope', '$http', '$location','
   //TASKS
 
   adminPanelApp.controller('TasksCtrl',['$scope','$http',function ($scope,$http){
-    $scope.Visible=true;
-    $http.get("data/AllTasks.json").then(function (response) {
-      $scope.allTasks=response.data;
-
-    });
-
-    $scope.buttonTbox;
-    $scope.CreateOrChangeTask=function(buttonTitle) {
-      $scope.buttonTbox=buttonTitle;
-    }
-    $scope.changeFrame=function(taskId) {
-      if(taskId!='empty'){
-        for(var i=0;i<$scope.allTasks.length;i++){
-        var obj = $scope.allTasks[i];
-        if(taskId==i){
-          $scope.titleTaskC=obj.title;
-          $scope.diffTaskC=obj.level;
-          $scope.techTaskC=obj.language;
-          $scope.TaskC=obj.task;
+      $scope.Visible=true;
+      $scope.visibleMessageDel=false;
+      $scope.getTaskList=function(){
+      $http.get("data/AllTasks.json").then(function (response) {
+        $scope.allTasks=response.data;
+        var v=$scope.allTasks;
+        //console.log(v);
+      });
+    };
+      $scope.buttonTbox;
+      $scope.CreateOrChangeTask=function(buttonTitle) {
+        $scope.buttonTbox=buttonTitle;
+      }
+      $scope.delTask=function(taskId){
+          $scope.visibleMessageDel=true;
+          for(var i=0;i<$scope.allTasks.length;i++){
+          var obj = $scope.allTasks[i];
+          if(taskId==i){
+            $scope.titleTaskDel=obj.title;
+          }
+        }
+      }
+      $scope.changeFrame=function(taskId) {
+        if(taskId!='empty'){
+          for(var i=0;i<$scope.allTasks.length;i++){
+          var obj = $scope.allTasks[i];
+          if(taskId==i){
+            $scope.titleTaskC=obj.title;
+            $scope.diffTaskC=obj.level;
+            $scope.techTaskC=obj.language;
+            $scope.TaskC=obj.task;
+        }
       }
     }
-  }
-  else{
-    $scope.titleTaskC='';
-    $scope.diffTaskC='';
-    $scope.techTaskC='';
-    $scope.TaskC='';
-  }
-    $scope.Visible=!$scope.Visible;
-  }
+    else{
+      $scope.titleTaskC='';
+      $scope.diffTaskC='';
+      $scope.techTaskC='';
+      $scope.TaskC='';
+    }
+      $scope.Visible=!$scope.Visible;
+    }
 
-}]);
+  }]);
+  adminPanelApp.controller("PrCtrl", ["$scope", function($scope) {
+
+  }]);
 
 // config Admin Panel
 
@@ -163,13 +178,12 @@ adminPanelApp.config([
 
 myAppModule.controller('SelectTaskCtrl', function($scope,$http){
   $scope.NumberTask=1;
+  var Timer;
   $http.get("data/tasks.json").then(function (response) {
       if ($scope.NumberTask==1){$scope.TaskShow=response.data.first;}
       if ($scope.NumberTask==2){$scope.TaskShow= response.data.second;}
-      if ($scope.NumberTask==3){$scope.TaskShow= response.data.third;}});
-  $scope.logg=function() {
-    console.log("d");
-  }
+      if ($scope.NumberTask==3){$scope.TaskShow= response.data.third;}
+    });
   $scope.ShowTask=function(){
     $http.get("data/tasks.json").then(function (response) {
       if ($scope.NumberTask==1){$scope.TaskShow=response.data.first; console.log($scope.TaskShow);}
@@ -180,3 +194,6 @@ myAppModule.controller('SelectTaskCtrl', function($scope,$http){
 }
     $scope.TaskListVisible=true;
 });
+myAppModule.controller("testEd",function($scope){
+  $scope.code="";
+})

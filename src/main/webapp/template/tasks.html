@@ -1,6 +1,14 @@
-<div ng-controller="TasksCtrl">
+<div ng-controller="TasksCtrl" ng-init="getTaskList()">
+	<div ng-show="visibleMessageDel">
+		<div id="messageDeleteBox"></div>
+		<div id="messageDelete">
+			<h1>Are you sure that you want to delete the task "{{titleTaskDel}}"?</h1>
+			<div class="buttonMessageDel" id="TDel" ng-click="getTaskList();visibleMessageDel=!visibleMessageDel;"><h1>Delete</h1></div>
+			<div class="buttonMessageDel" id="TCanc" ng-click="visibleMessageDel=!visibleMessageDel;"><h1>Cancel</h1></div>
+		</div>
+</div>
 	<div class="Tbox" ng-show="!Visible">
-		<img src="images/close.png" ng-click="changeFrame(0)" />
+		<img src="images/close.png" ng-click="changeFrame('empty')" />
 		<form method="POST">
 			<table>
 				<tr>
@@ -39,7 +47,7 @@
 
 	<div id="Tbox" ng-show=Visible>
 		<div>
-			<input type="text" placeholder="Title Task" onblur="this.placeholder='Name'" onfocus="this.placeholder=''" ng-model="searchTask">
+			<input type="text" placeholder="Title Task" onblur="this.placeholder='Title Task'" onfocus="this.placeholder=''" ng-model="searchTask">
 			<select class="selectBl" ng-model="technology">
 				<option value="" selected>All</option>
 				<option value="Java">Java</option>
@@ -53,24 +61,43 @@
 				<option value="hard">Hard</option>
 			</select>
 		</div>
+
 		<table id="table-dashboard">
   		<thead>
-				<th>Title task</th>
-  			<th>Technology</th>
-  			<th>Added</th>
-  			<th>Difficalty</th>
+				<th><div class="tableTitle">Title task</div></th>
+				<th><div class="tableCubicle">Technology</div></th>
+				<th><div class="tableCubicle">Last modify</div></th>
+				<th><div class="tableCubicle">Difficalty</div></th>
+				<th><div id="tableRefresh"><img id="refreshImage" src="images/refresh.png" ng-click="getTaskList();" /></div></th>
   		</thead>
-  		<tbody>
-  			<tr class="hover-tr" ng-repeat="task in allTasks | filter:{title:searchTask,language:technology,level:difficalty}">
-  				<td>{{task.title}}</td>
-  				<td>{{task.language}}</td>
-  				<td>{{task.added}}</td>
-  				<td>{{task.level}}</td>
-					<td id="blockEdit"><img ng-click="changeFrame(task.id);CreateOrChangeTask('Change Task');" id="editImage" src="images/edit.jpg" /></td>
-  			</tr>
-  		</tbody>
-  	</table>
-		<div class="tool">
+
+		</table>
+		<div id="boxWithTasks">
+			<table id="table-dashboard">
+				<thead></thead>
+  			<tbody>
+  				<tr class="hover-tr" ng-repeat="task in allTasks | filter:{title:searchTask,language:technology,level:difficalty}">
+						<td><div class="tableTitle">{{task.title}}</div></td>
+						<td><div class="tableCubicle">{{task.language}}</div></td>
+						<td><div class="tableCubicle">{{task.added}}</div></td>
+						<td><div class="tableCubicle">{{task.level}}</div></td>
+						<td id="blockEdit"><img ng-click="changeFrame(task.id);CreateOrChangeTask('Change Task');" id="editImage" src="images/edit.jpg" /></td>
+						<td id="blockEdit"><img ng-click="delTask(task.id);" src="images/trash.png" id="deleteImage" /></td>
+					</tr>
+  			</tbody>
+  		</table>
+		</div>
+		<!--Change view scroll strip -->
+<script>
+	(function($){
+		$(window).load(function(){
+			$('#boxWithTasks').mCustomScrollbar({
+				theme:"minimal-dark"
+			});
+	});
+		})(jQuery);
+	</script>
+		<div class="toolT">
 			<button id="add" ng-click="changeFrame('empty'); CreateOrChangeTask('Create Task');">Add</button>
 		</div>
 	</div>

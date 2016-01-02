@@ -4,11 +4,12 @@
 	<meta charset="UTF-8">
 	<title>Workspaсe</title>
 	<link rel="stylesheet" type="text/css" href="styles/workspace.css">
+	<link rel="stylesheet" href="styles/flipclock.css">
 	<script src="bower_components/jquery/dist/jquery.js"></script>
-
 	<script type="text/javascript" src="bower_components/ace-builds/src-min-noconflict/ace.js"></script>
 	<script type="text/javascript" src="bower_components/angular/angular.js"></script>
 	<script type="text/javascript" src="bower_components/angular-ui-ace/ui-ace.js"></script>
+	<script src="scripts/flipclock.min.js"></script>
 
 
 	<script src="scripts/controllers.js"></script>
@@ -19,8 +20,12 @@
 	<div id="header">
 		<div class="logo">interview<span id="span-logo">.code</span></div>
 		<div class="send-request"></div>
-	</div>
+		<div id="Tclock" class="clock" style="margin:2em;"></div>
 
+		<script type="text/javascript">
+
+		</script>
+	</div>
 	<div id="fullTask" ng-controller="SelectTaskCtrl">
 		<div id="Back"><img src="images/Back.png" alt="" ng-click="TaskListVisible=!TaskListVisible"></div>
 		<div id="titleTask">{{'Task '+NumberTask}}</div>
@@ -58,11 +63,12 @@
 		</div>
 	</div>
 
-	<div id="baseArea">
-		<div id="programEditor">
+	<div id="baseArea" ng-controller="testEd">
+		<div id="programEditor" >
 			<div id="files" > ProgramEditor</div>
-			<div class="editor" ui-ace></div>
+			<div class="editor" ui-ace="{ mode: 'java'}" ng-model="code"></div>
 		</div>
+
 		<div id="testEditor">
 			<div id="files">TestEditor</div>
 			<div class="editor" ui-ace></div>
