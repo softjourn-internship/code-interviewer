@@ -139,11 +139,11 @@ adminPanelApp.config([
   '$routeProvider', '$locationProvider',
   function($routeProvide, $locationProvider){
     $routeProvide
+        // .when('/',{
+        //   templateUrl:'template/login.html',
+        //   controller:'loginCtrl'
+        // })
         .when('/',{
-          templateUrl:'template/login.html',
-          controller:'loginCtrl'
-        })
-        .when('/dashboard',{
           templateUrl:'template/dashboard.html',
           controller:'ClientsListCtrl'
         })
