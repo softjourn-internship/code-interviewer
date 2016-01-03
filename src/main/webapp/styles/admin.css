@@ -181,8 +181,9 @@ div.mobile:hover{
 	section{white-space:nowrap;}
 	section div.box{display:inline-block;}
 	section div#activity{
-		position: absolute;
-		width: 300px;
+		/*position: absolute;*/
+		display: block;
+		width: 450px;
 		margin-left: 25px;
 	}
 	div#chart-dashboard{width: 700px;}
@@ -967,8 +968,9 @@ button.checked{
 	background: #f2f5ee;
 }
 div#chart-profile{
-	width: 600px;
+	width: 500px;
 	height: 300px;
+	margin-left: -45px;
 }
 div#chart-accounts{
 	display: inline-block;
@@ -978,4 +980,9 @@ div#chart-accounts div.chart{
 	display: block;
 	width: 400px;
 	height: 280px;
+}
+div#conteiner-profile{
+	width: auto;
+	position: absolute;
+	display: inline-block;
 }

@@ -4,8 +4,12 @@
 			$("div.profile div.info-profile div.details").fadeOut("fast");
 			$("#send-profile").fadeOut("fast");
 			$(".info-profile").fadeOut("fast");
+			$("#activity").hide();
+			$("#chart-profile").hide();
 	});
 	$("#close").click(function() {
+			$("#activity").show();
+			$("#chart-profile").show();
 			$("div.send-test").fadeOut("fast");
 			$("#send-profile").fadeIn("fast");
 			$(".info-profile").fadeIn("fast");
@@ -59,27 +63,12 @@
 		<img class="avatar" ng-src="images/profiles/id{{client.id}}-avatar.jpg" onerror="this.src='images/profiles/error.png';">
 		<div class="general-info">
 			<div class="name"><input value="{{client.name}} {{client.surname}}"></div>
-			<div class="city">
-				
-				<!-- <input value="{{client.city}}">
-				<input value="{{client.city}}">
-				<input value="{{client.city}}">
-				<input value="{{client.city}}"> -->
-			</div>
 		</div>
 
 	</div>
 
 	<div class="history">
 		<button id="send-profile" class="send">Send test</button>
-		<!-- <ul>
-			<b>Perfomed tests</b>
-			<li ng-repeat="test in client.perfomedTests"> {{test}} </li>
-			<li>Birthday: 22.22.15</li>
-			<li>Studied at: KEP</li>
-			<li>Specialty: Dev</li>
-			<li>English level: Intermediate</li>
-		</ul> -->
 		<table>
 			<tr>
 				<td>Birthday</td>
@@ -105,25 +94,31 @@
 	</div>
 </div>
 
-<div id="activity"class="box profile">
+<div id="conteiner-profile">
+
+<div id="chart-profile" class="chart" google-chart chart="clientStatistics"/>
+
+<div id="activity" class="box profile">
 	<span>Activity</span>
 	<table id="activity" class="main-table">
 		<thead>
 			<th>Technology</th>
 			<th>Taken</th>
+			<th>Complication</th>
 			<th>Review</th>
 		</thead>
 		<tbody>	
 		<tr class="hover-tr"ng-repeat="act in client.activity">
 			<td>{{act.technology}}</td>
 			<td><img ng-src="images/{{act.taken}}.png" onerror="this.src='images/errTaken.png'"></td>
+			<td>{{act.complication}}</td>
 			<td><button class="view {{act.review}}"></button></td>
 		</tr>
 		</tbody>
 	</table>
 </div>
 
-<div id="chart-profile" class="chart" google-chart chart="clientStatistics"/>
+</div>
 
 </section>
 

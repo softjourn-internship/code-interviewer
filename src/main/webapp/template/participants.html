@@ -1,10 +1,18 @@
 <script type="text/javascript">
 	$("#add").click(function() {
-			$("div.send-test").fadeIn();
+			$("div.send-test").fadeIn("fast");
+			$("div.chart").fadeOut("fast");
 	});
 	$("#close").click(function() {
-			$("div.send-test").fadeOut();
+			$("div.send-test").fadeOut("fast");
+			$("div.chart").fadeIn("fast");
 	});
+	// $("#close").keyup(function(e){
+ //   	 	if(e.keyCode == 27){
+ //        	$("div.send-test").fadeOut("fast");
+	// 		$("div.chart").fadeIn("fast");
+ //    	}
+	// });
 </script>
 <div class="send-test">
 	<div>
@@ -32,6 +40,36 @@
 					<td><input type="email" required></td>
 				</tr>
 				<tr>
+					<td class="title">Birthday</td>
+					<td><input type="text" required></td>
+				</tr>
+				<tr>
+					<td class="title">City</td>
+					<td><input type="text" required></td>
+				</tr>
+				<tr>
+					<td class="title">Contact</td>
+					<td><input type="text" required></td>
+				</tr>
+				<tr>
+					<td class="title">Specialty</td>
+					<td><input type="text" required></td>
+				</tr>
+				<tr>
+					<td class="title">English level</td>
+					<td>
+						<select required>
+							<option>Beginner</option>
+							<option>Elementary</option>
+							<option>Pre-Intermediate</option>
+							<option>Intermediate</option>
+							<option>Upper intermediate</option>
+							<option>Advanced</option>
+							<option>Proficient</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
 					<td class="title">Photo</td>
 					<td><input type="file" name="img" accept="image/jpeg,image/png,image/gif"></td>
 				</tr>
@@ -49,11 +87,11 @@
 	<div>
 		<input type="text" placeholder="Name" onblur="this.placeholder='Name'" onfocus="this.placeholder=''" ng-model="searchNameA">
 		<input type="text" placeholder="Email adress" onblur="this.placeholder='Email adress'" onfocus="this.placeholder=''" ng-model="searchEmailA">
-		<select ng-model="selectStatus">
+		<select ng-model="selectTaken">
 			<option value="" selected>All</option>
 			<option value="done">Done</option>
 			<option value="inProcess">In process</option>
-			<option value="false">Not sent</option>
+			<option value="failed">Failed</option>
 		</select>
 	</div>
 	<table class="main-table">
@@ -62,15 +100,15 @@
 			<th>Email</th>
 			<th>Sent</th>
 			<th>Returned</th>
-			<th>Status</th>
+			<th>Taken</th>
 		</thead>
 		<tbody>
-			<tr class="hover-tr" ng-repeat="client in lengthClientsPA = (clients | filter:{name:searchNameA, status:selectStatus, email:searchEmailA} | orderBy:'surname')">
+			<tr class="hover-tr" ng-repeat="client in lengthClientsPA = (clients | filter:{name:searchNameA, taken:selectTaken, email:searchEmailA} | orderBy:'surname')">
 				<td class="td-name"><a href="#/clients/{{client.id}}">{{client.name}} {{client.surname}}</a></td>
 				<td>{{client.email}} </td>
 				<td>{{client.testSent}}</td>
 				<td>{{client.testReturn}}</td>
-				<td class="td-status"><img ng-src="images/{{client.status}}.png"></td>
+				<td class="td-status"><img ng-src="images/{{client.taken}}.png" onerror="this.src='images/at-server-white.png';"></td>
 			</tr>
 		</tbody>
 	</table>
