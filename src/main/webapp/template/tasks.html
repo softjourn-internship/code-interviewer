@@ -1,4 +1,12 @@
-<div ng-controller="TasksCtrl" ng-init="getTaskList()">
+<div ng-controller="TasksCtrl" ng-init="getTaskList()" id="mainTasksBox">
+	<!--Change view scroll strip -->
+	<script>
+	(function($){
+		$('#boxWithTasks').mCustomScrollbar({
+			theme:"minimal-dark"
+		});
+	})(jQuery);
+	</script>
 	<div ng-show="visibleMessageDel">
 		<div id="messageDeleteBox"></div>
 		<div id="messageDelete">
@@ -8,16 +16,16 @@
 		</div>
 </div>
 	<div class="Tbox" ng-show="!Visible">
-		<img src="images/close.png" ng-click="changeFrame('empty')" />
+		<img src="images/close.png" ng-click="changeFrame('empty');changeButtonBack();" />
 		<form method="POST">
 			<table>
 				<tr>
 					<td class="Ttitle">Title task:</td>
-					<td><input id="inputTitle" type="text" ng-model="titleTaskC" required></td>
+					<td><input id="inputTitle" type="text" ng-model="titleTaskC" required ng-change="changeButton()"></td>
 				</tr>
 				<tr>
 					<td class="Ttitle">Difficalty:</td>
-					<td><select class="selectBl" ng-model="diffTaskC" name="difficalty" required>
+					<td><select class="selectBl" ng-model="diffTaskC" name="difficalty" required ng-change="changeButton()">
 						<option value="Eazy">Eazy</option>
 						<option value="Middle">Middle</option>
 						<option value="Hard">Hard</option>
@@ -26,7 +34,7 @@
 				<tr>
 					<td class="Ttitle">Technology:</td>
 					<td>
-					<select class="selectBl" ng-model="techTaskC" name="technology" required>
+					<select class="selectBl" ng-model="techTaskC" name="technology" required ng-change="changeButton()">
 						<option value="Java">Java</option>
 						<option value="PHP">PHP</option>
 						<option value="C#">C#</option>
@@ -40,12 +48,11 @@
 				</tr>
 		</table>
 	</form>
-	<div id="build-editor" ui-ace ng-model="TaskC"></div>
-				<button class="send" ng-click="Visible=!Visible;">{{buttonTbox}}</button>
+	<div id="build-editor" ui-ace ng-model="TaskC" ng-change="changeButton()"></div>
+	<button id="sendT" ng-click="Visible=!Visible;changeButtonBack();">{{buttonTbox}}</button>
 	</div>
 
-
-	<div id="Tbox" ng-show=Visible>
+	<div id="TBox" ng-show=Visible>
 		<div>
 			<input type="text" placeholder="Title Task" onblur="this.placeholder='Title Task'" onfocus="this.placeholder=''" ng-model="searchTask">
 			<select class="selectBl" ng-model="technology">
@@ -61,17 +68,17 @@
 				<option value="hard">Hard</option>
 			</select>
 		</div>
-
+		<div id="boxWithTitle">
 		<table id="table-dashboard">
   		<thead>
 				<td><div class="tableTitle">Title task</div></td>
 				<td><div class="tableCubicle">Technology</div></td>
 				<td><div class="tableCubicle">Last modify</div></td>
 				<td><div class="tableCubicle">Difficalty</div></td>
-				<td><div id="tableRefresh"><img id="refreshImage" src="images/refresh.png" ng-click="getTaskList();" /></div></td>
+				<!-- <td><div id="tableRefresh"><img id="refreshImage" src="images/refresh.png" ng-click="getTaskList();" /></div></td> -->
   		</thead>
-
 		</table>
+		</div>
 		<div id="boxWithTasks">
 			<table id="table-dashboard">
 				<thead></thead>
@@ -87,16 +94,7 @@
   			</tbody>
   		</table>
 		</div>
-		<!--Change view scroll strip -->
-<script>
-	(function($){
-		$(window).load(function(){
-			$('#boxWithTasks').mCustomScrollbar({
-				theme:"minimal-dark"
-			});
-	});
-		})(jQuery);
-	</script>
+
 		<div class="toolT">
 			<button id="add" ng-click="changeFrame('empty'); CreateOrChangeTask('Create Task');">Add</button>
 		</div>

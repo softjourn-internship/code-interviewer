@@ -38,7 +38,7 @@ adminPanelApp.controller('loginCtrl',function($scope, $location) {
 
       function manager() {
           $location.path('/dashboard');
-          // $scope.sideBarShow = true;  
+          // $scope.sideBarShow = true;
           document.getElementById("header").style.display = "block";
           document.getElementById("container").style.display = "block";
           document.getElementById("content").style.marginLeft = "180px";
@@ -98,6 +98,12 @@ adminPanelApp.controller('ClientsProfileCtrl', ['$scope', '$http', '$location','
       $scope.CreateOrChangeTask=function(buttonTitle) {
         $scope.buttonTbox=buttonTitle;
       }
+      $scope.changeButton=function(){
+        document.getElementById("sendT").style.background = 'rgb(100, 135, 181)';
+      }
+      $scope.changeButtonBack=function(){
+        document.getElementById("sendT").style.background = '#a2b57d';
+      }
       $scope.delTask=function(taskId){
           $scope.visibleMessageDel=true;
           for(var i=0;i<$scope.allTasks.length;i++){
@@ -129,9 +135,7 @@ adminPanelApp.controller('ClientsProfileCtrl', ['$scope', '$http', '$location','
     }
 
   }]);
-  adminPanelApp.controller("PrCtrl", ["$scope", function($scope) {
 
-  }]);
 
 // config Admin Panel
 
