@@ -759,20 +759,32 @@ div.send-test table tr td input[type="file"]{
 	box-shadow: 0 0 8px;
 
 }
-#TTBox{
-	width: 80%;
+#TBox{
+	width: 70%;
 	height: 80%;
 	position: absolute;
+	left: 20%;
 	margin: 1%;
-	background-color:#fff;
+	padding: 20px;
+	box-shadow: 0 0 4px;
+	background-color:rgba(51, 86, 107, 0.12));
 	border-radius: 5px;
 }
 #boxWithTasks{
 	position: absolute;
-	height: 65%;
-	width: 1100px;
-	top:22%;
+	height: 70%;
+	width: 1000px;
+	top:20%;
 	overflow: auto;
+	border-radius: 3px;
+	border: solid 1px rgba(19, 24, 28, 0.04);
+}
+#boxWithTitle{
+	position: absolute;
+	width: 1000px;
+	top:13%;
+	border-bottom: solid 3px rgba(30, 164, 49, 0.26);
+	padding-bottom: 2px;
 }
 
 .tableTitle{
@@ -826,6 +838,7 @@ td .selectBl{
 	width: 98%;
 	margin: 2px 1% 1% 1%;
 	border-radius: 5px;
+	font-size: 17px;
 }
 .Ttitle{
 	padding-left: 10px;
@@ -861,7 +874,7 @@ table#activity tbody tr td img{
 
 .toolT{
 	position: absolute;
-	top:90%;
+	top:93%;
 }
 
 #messageDeleteBox{
@@ -904,6 +917,23 @@ table#activity tbody tr td img{
 #TCanc{
 	background-color: rgb(96, 70, 14);
 	left: 70%;
+}
+button#sendT{
+	position: absolute;
+	top: 91%;
+	background: #a2b57d;
+	font-size: 19px;
+	color: #fff;
+	margin-left: 1%;
+	border-radius: 6px;
+	text-shadow: 0 1px 0 #828e65;
+}
+button#sendT:hover{
+	background: #afbc8e;
+	color: #fff;
+}
+button#sendT:active{
+	background: #a2b57d;
 }
 
 /*/////////////////////////////////*/
