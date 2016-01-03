@@ -21,19 +21,18 @@ public class SpringSecurityWebAppConfig extends WebSecurityConfigurerAdapter {
                     .withUser("admin").password("admin").roles("ADMIN");
     }
 
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//        http
-//                .authorizeRequests()
-//                    .antMatchers("/**").permitAll()
-//                    .anyRequest().authenticated()
-//                    .and()
-//                .formLogin()
-//                    .loginPage("template/login.html");
-//
-//        http
-//                .logout()
-//                    .logoutUrl("/logout")
-//                    .logoutSuccessUrl("/");
-//    }
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .csrf().disable()
+                .authorizeRequests()
+                    .anyRequest().authenticated()
+                    .and()
+                .formLogin()
+//                    .loginPage("/login.html")
+                    .permitAll()
+                    .and()
+                .logout()
+                    .permitAll();
+    }
 }
