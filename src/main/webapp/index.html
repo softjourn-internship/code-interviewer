@@ -4,11 +4,15 @@
 	<meta charset="utf-8">
 	<title>Admin Panel</title>
 	<link rel="stylesheet" type="text/css" href="styles/admin.css">
+
     <meta name="viewport" content="width=device-width, initial-scale: 1.0, user-scalabe=0">
     <script type="text/javascript" src="scripts/jquery-1.11.3.min.js"></script>
+
+
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
+
     <script type="text/javascript" src="bower_components/ace-builds/src-min-noconflict/ace.js"></script>
     <script type="text/javascript" src="bower_components/angular-ui-ace/ui-ace.js"></script>
 
@@ -18,6 +22,8 @@
     <script type="text/javascript" src="scripts/jquery-1.11.3.min.js"></script>
 
     <script type="text/javascript" src="scripts/ng-google-chart.js"></script>
+    <script type="text/javascript" src="scripts/jsapi.js"></script>
+
 	<link rel="stylesheet" href="styles/jquery.mCustomScrollbar.css">
 	<script src="scripts/jquery.mCustomScrollbar.concat.min.js"></script>
 </head>
@@ -27,7 +33,7 @@
 		<div class="sidebar">
 			<ul id="nav">
 				<li><a id="dashboard" href="#/dashboard">DASHBOARD</a></li>
-				<li><a id="participants" href="#/participants">ACCOUNTS</a></li>
+				<li><a id="participants" href="#/participants">PARTICIPANTS</a></li>
 				<li><a id="statistics" href="#/statistics">STATISTICS</a></li>
                 <li><a id="tasks" href="#/tasks">TASKS</a></li>
 				<li><a id="workspace" href="workspace.html">WORKSPACE</a></li>
@@ -40,12 +46,13 @@
         <div id="header">
             <div class="mobile"><img src="images/menu.png"></div>
             <div class="search"><input type="text" placeholder="Search for something..." onblur="this.placeholder='Search for something...'"></div>
+
             <div class="logout">
                 Log out
             </div>
         </div>
-
         <div id="view" ng-view></div>
     </div>
+
 </body>
 </html>

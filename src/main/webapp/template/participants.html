@@ -1,28 +1,28 @@
+
 <script type="text/javascript">
-	$("#add").click(function() {
+	$("#new").click(function() {
 			$("div.send-test").fadeIn("fast");
 			$("div.chart").fadeOut("fast");
+			$("div.right-container").fadeOut("fast");
+			$("#filter").fadeOut("fast");
 	});
 	$("#close").click(function() {
 			$("div.send-test").fadeOut("fast");
 			$("div.chart").fadeIn("fast");
+			$("div.right-container").fadeIn("fast");
+			$("#filter").fadeIn("fast");
 	});
-	// $("#close").keyup(function(e){
- //   	 	if(e.keyCode == 27){
- //        	$("div.send-test").fadeOut("fast");
-	// 		$("div.chart").fadeIn("fast");
- //    	}
-	// });
 </script>
+
 <div class="send-test">
 	<div>
 		<div class="head">
 			<table>
 				<tr>
-					<td><span><b>Add a new participant</b></span>
+					<td><span><b>New participants</b></span>
 					<button id="close">Close</button></td>
 				</tr>
-			</table>
+			</table>	
 		</div>
 		<form method="POST">
 		<div class="action">
@@ -84,17 +84,16 @@
 
 <section>
 <div class="box">
-	<div>
-		<input type="text" placeholder="Name" onblur="this.placeholder='Name'" onfocus="this.placeholder=''" ng-model="searchNameA">
-		<input type="text" placeholder="Email adress" onblur="this.placeholder='Email adress'" onfocus="this.placeholder=''" ng-model="searchEmailA">
-		<select ng-model="selectTaken">
-			<option value="" selected>All</option>
-			<option value="done">Done</option>
-			<option value="inProcess">In process</option>
-			<option value="failed">Failed</option>
-		</select>
-	</div>
-	<table class="main-table">
+	
+	<table id="tableData" class="main-table" cellspacing="0" cellpadding="0">
+		<span>Participants
+		<div id="page-size">
+			<select 
+			ng-change="changeAction()" 
+			ng-model="pageSize" 
+			ng-options="opt as opt for opt in pageSizes"></select>
+		</div>
+		</span>
 		<thead>
 			<th>Name</th>
 			<th>Email</th>
@@ -103,24 +102,41 @@
 			<th>Taken</th>
 		</thead>
 		<tbody>
-			<tr class="hover-tr" ng-repeat="client in lengthClientsPA = (clients | filter:{name:searchNameA, taken:selectTaken, email:searchEmailA} | orderBy:'surname')">
+			<tr class="hover-tr" ng-repeat="client in lengthClientsPA = (clients | filter:{name:searchNameA, taken:selectTaken, email:searchEmailA} | orderBy:'surname')" ng-if="$index >= (currentPage * pageSize) && $index < ((currentPage+1)*pageSize)">
 				<td class="td-name"><a href="#/clients/{{client.id}}">{{client.name}} {{client.surname}}</a></td>
 				<td>{{client.email}} </td>
 				<td>{{client.testSent}}</td>
 				<td>{{client.testReturn}}</td>
-				<td class="td-status"><img ng-src="images/{{client.taken}}.png" onerror="this.src='images/at-server-white.png';"></td>
+				<td class="td-status"><img ng-src="images/{{client.taken}}.png" onerror="this.src='images/error.png';"></td>
 			</tr>
 		</tbody>
 	</table>
+
 	<div class="tool">
-		<button id="add">New</button>
-		<span class="clients-length">{{lengthClientsPA.length}} Elements</span>
+		<button id="new">New</button>
+		<button ng-click="currentPage = 0">On start</button>
+		<button ng-click="paging(0)">Previous</button>
+		<button ng-click="paging(1)">Next</button>
+		<button ng-click="currentPage = (pageNumber - 1)">End</button>
 	</div>
+	<span>{{currentPage + 1}} in {{pageNumber}} | {{lengthClientsPA.length}} Elements</span>
 </div>
 
-<div id="chart-accounts" ng-controller="ClientsChartsCtrl">
-	<div class="chart" google-chart chart="chartColumn"/>
-	<div class="chart" google-chart chart="chartPie"/>
+<div id="right-container">
+	<div id="filter" class="box filter">
+		<span>Filter</span>
+		<div id="filter-container">
+			<input type="text" placeholder="Name" onblur="this.placeholder='Name'" onfocus="this.placeholder=''" ng-model="searchNameA"><br>
+			<input type="text" placeholder="Email adress" onblur="this.placeholder='Email adress'" onfocus="this.placeholder=''" ng-model="searchEmailA"><br>
+			<select ng-model="selectTaken">
+				<option value="" selected>All</option>
+				<option value="done">Done</option>
+				<option value="inProcess">In process</option>
+				<option value="failed">Failed</option>
+			</select>
+		</div>
+	</div>
+	<div id="chart-taken" ng-controller="ClientsChartsCtrl" class="chart" google-chart chart="chartPie"/>
 </div>
 
 </section>

@@ -1,6 +1,8 @@
 var adminPanelApp = angular.module("adminPanelApp", ['ngRoute', 'ngResource','googlechart','ui.ace']);
 var myAppModule = angular.module('MyApp', ['ui.ace']);
 
+
+
 /* Controllers Admin*/
 /************************************************************************************/
 
@@ -8,8 +10,38 @@ adminPanelApp.controller('ClientsListCtrl', ['$scope', '$http','$location',
   function ($scope, $http, $location) {
     $http.get('clients/clients.json').success(function(data) {
       $scope.clients = data;
-    });
-  }]);
+    
+
+  $scope.pageSizes = [5, 10, 15, 20];
+  $scope.pageSize = $scope.pageSizes[1];
+  $scope.currentPage = 0;
+  $scope.pageNumber = Math.ceil($scope.clients.length / $scope.pageSize);
+
+  $scope.paging = function (type) {
+    if (type == 0 && $scope.currentPage > 0) {
+      --$scope.currentPage;
+    }
+    else if (type == 1 && $scope.currentPage < $scope.pageNumber-1){
+      ++$scope.currentPage;
+    }
+  }
+
+  $scope.$watchCollection('results', function(){
+    if ($scope.results == undefined) return;
+    $scope.currentPage = 0;
+    $scope.pageNumber =Math.ceil($scope.results.length / $scope.pageSize);
+  });
+
+  $scope.changeAction = function () {
+      $scope.currentPage = 0;
+      $scope.pageNumber = Math.ceil($scope.clients.length / $scope.pageSize);
+  }
+
+  });
+}]);
+
+
+
 // LOGIN
 adminPanelApp.controller('loginCtrl',function($scope, $location) {
     document.getElementById("header").style.display = "none";

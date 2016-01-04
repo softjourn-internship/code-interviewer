@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
 	$("div.mobile").click(function() {
 			$("div.sidebar").fadeToggle();
 	});
@@ -19,31 +18,21 @@ $(document).ready(function() {
 		};
 	};
 
-
-	// alert(window.location.pathname);
-	// alert(window.location.hash);
-	// if(window.location.hash === '#/' ){
-	// 	$("a#dachboard").css('color', '#fff');
-	// 	$("a#dachboard").css('background-image', 'url(/images/db-h.png)');
-
-	// }
-	// if (window.location.hash === '#/participants' ){
-	// 	$("a#participants").css('color', '#fff');
-	// 	$("a#participants").css('background-image', 'url(/images/pib-h.png)');
-	// }
-	// if(window.location.hash != '#/participants'){
-	// 	$("a#participants").css('color', '#577a9d');
-	// 	$("a#participants").css('background-image', 'url(/images/pib.png)');
-	// }
-	// else{alert(window.location.hash );}
-	// alert(window.location.hash);
- //    $('tr.hover-tr').click(function(event){
- //    	info = "<tr><td colspan='5'><p>Test sent: <br>Test return: <br>Completion: <br></p></td></tr>"
-	// 	$('table.info').append(info);
-	// 	return false;
-	// });
-
 	$('button.btnInfo').click(function(event){
     	$('p.info-p').slideToggle('fast');
 	});
 });
+$(document).keyup(function(e){
+   	 	if(e.keyCode == 27){
+        	$("div.send-test").fadeOut("fast");
+			$("div.chart").fadeIn("fast");
+			$("div.right-container").fadeIn("fast");
+			$("#filter").fadeIn("fast");
+			$("#activity").show();
+			$("#chart-profile").show();
+			$("div.send-test").fadeOut("fast");
+			$("#send-profile").fadeIn("fast");
+			$(".info-profile").fadeIn("fast");
+			$("div.profile div.info-profile div.details").fadeIn("fast");	
+    	}
+	});

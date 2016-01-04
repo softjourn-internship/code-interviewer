@@ -259,7 +259,7 @@ div.box {
 	border-radius: 5px;
 	box-shadow: 0 1px 0 #e1e1e1;
 	display: block;
-	padding: 20px;
+	padding: 0;
 	background: #fff;
 	height: auto;
 	-webkit-transition: 0.2s;
@@ -268,13 +268,18 @@ div.box {
 	transition: 0.2s;
 }
 div.box span{
+	/*background: #333;*/
+	width: 100%;
+	margin: 0;
 	border-radius: 5px 5px 0 0;
 	display: block;
-/*	background: #333;
-*/	padding: 5px;
-	padding-left: 10px;
+	padding: 10px;
+	padding-left: 15px;
 	font-size: 12px;
 	color: #888;
+}
+div.box div#page-size{
+	margin-left: 83%;
 }
 div.box span.clients-length{
 	float: right;
@@ -285,6 +290,21 @@ div.box-small{
 	padding: 0;
 	height: 125px;
 	float: left;
+}
+div.filter{
+	/*position: absolute;*/
+	width: 300px;
+	margin-left: 25px;
+	padding: 0;
+}
+div.filter div#filter-container{ 
+	padding: 20px;
+	display: block;
+}
+div.filter input, div.filter select{
+	margin: 0; 
+	width: 100%;
+	margin-bottom: 5px;
 }
 hr {
     border: 0;
@@ -349,7 +369,6 @@ input, select{
 	padding: 6px;
 	padding-left: 12px;
 	font-size: 13px;
-	width: 40%;
 	margin: -3px;
 	-webkit-transition: 0.2s;
 	-moz-transition: 0.2s;
@@ -362,17 +381,16 @@ input:focus{
 }
 div.box div select{
 	padding: 5px;
-	width: 18%;
 }
 div select:hover{
 	border-bottom: 2px solid #34495e;
 }
 div select option:hover{background: #2c3e50;color: #ecf0f1;}
+table {border: none;padding: 20px; padding-top: 0;}
 table.main-table{
 	/*border-top: 1px solid #e1e1e1;
 	border-bottom: 1px solid #e1e1e1;*/
 	/*margin-top: 15px;*/
-	margin-bottom: 15px;
 	border-spacing: none;
 	font-size: 13px;
 	/*font-size: 14px;*/
@@ -463,7 +481,10 @@ ul#list-tb div{border-bottom: 1px solid #eee;};
 :-ms-input-placeholder      {color: silver;}
 
 div.box div.tool{
+	display: block;
 	padding-top: 20px;
+	padding: 0px;
+	padding-left: 20px;
 }
 div.profile{
 	padding: 0;
@@ -562,7 +583,7 @@ img.avatar-send{
 	width: 38px;
 	height: 38px;
 }
-button.send{
+button.send, button#new{
 	background: #a2b57d;
 	border-color: #a2b57d;
 	color: #fff;
@@ -573,24 +594,15 @@ button#send-profile{
 	margin: 25px;
 	margin-top: 0;
 }
-button.send:hover{
+button.send:hover, button#new:hover{
 	background: #afbc8e;
 	border-color: #afbc8e;
 	color: #fff;
 }
-button.send:active{
+button.send:active, button#new:active{
 	background: #a2b57d;
 	border-color: #a2b57d;
 }
-/*div.name, div.city{
-	font-weight: bold;
-	font-size: 15px;
-	display: block;
-	width: auto;
-	position: fixed;
-	margin-top: 30px;
-	margin-left: 115px;
-}*/
 div.profile span img.done{
 	width: 24px;
 }
@@ -673,6 +685,7 @@ div.send-test div div.head #close{
 div.send-test div div.head table{
 	width: 100%;
 	margin: 0;
+	padding: 0;
 }
 div.send-test div div.head table tr td.img{
 	width: 38px;
@@ -1002,14 +1015,14 @@ div#chart-profile{
 	height: 300px;
 	margin-left: -45px;
 }
-div#chart-accounts{
+div#right-container{
 	display: inline-block;
 	position: absolute;
 }
-div#chart-accounts div.chart{
+div#right-container div.chart{
 	display: block;
 	width: 400px;
-	height: 280px;
+	height: 300px;
 }
 div#conteiner-profile{
 	width: auto;
