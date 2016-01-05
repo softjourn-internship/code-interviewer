@@ -1,4 +1,4 @@
-package tasks.domain;
+package com.code.reviewer.tasks.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,7 +12,7 @@ import java.sql.Date;
 public class Task implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     @Column(name = "taskId", nullable = false)
     private Integer taskId;
 

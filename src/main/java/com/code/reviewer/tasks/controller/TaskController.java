@@ -1,4 +1,4 @@
-package tasks.controller;
+package com.code.reviewer.tasks.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 

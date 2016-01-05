@@ -1,4 +1,4 @@
-package configuration;
+package com.code.reviewer.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -29,7 +29,7 @@ public class SpringSecurityWebAppConfig extends WebSecurityConfigurerAdapter {
                     .anyRequest().authenticated()
                     .and()
                 .formLogin()
-//                    .loginPage("/login.html")
+//                    .loginPage("/login")
                     .permitAll()
                     .and()
                 .logout()

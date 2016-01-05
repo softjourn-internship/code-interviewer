@@ -1,7 +1,8 @@
-package user.repository;
+package com.code.reviewer.user.repository;
 
-import user.domain.User;
+import com.code.reviewer.user.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by NicholasG on 17.12.2015.

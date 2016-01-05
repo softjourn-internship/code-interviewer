@@ -1,3 +1,5 @@
+package com.code.reviewer;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -8,7 +10,7 @@ import org.springframework.context.annotation.ComponentScan;
  * Created by NicholasG on 18.12.2015.
  */
 @SpringBootApplication
-@ComponentScan("configuration")
+@ComponentScan
 public class Application extends SpringBootServletInitializer {
 
     @Override
