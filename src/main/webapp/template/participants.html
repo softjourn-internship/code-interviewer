@@ -1,26 +1,14 @@
-
 <script type="text/javascript">
-	$("#new").click(function() {
-			$("div.send-test").fadeIn("fast");
-			$("div.chart").fadeOut("fast");
-			$("div.right-container").fadeOut("fast");
-			$("#filter").fadeOut("fast");
-	});
-	$("#close").click(function() {
-			$("div.send-test").fadeOut("fast");
-			$("div.chart").fadeIn("fast");
-			$("div.right-container").fadeIn("fast");
-			$("#filter").fadeIn("fast");
-	});
+    $("#datepicker").datepicker();
 </script>
-
 <div class="send-test">
 	<div>
 		<div class="head">
 			<table>
 				<tr>
-					<td><span><b>New participants</b></span>
-					<button id="close">Close</button></td>
+					<td class="img"><img class="avatar-send" src="images/profiles/error.png"></td>
+					<td><span>New partipant</span></td>
+					<td><button id="close">Close</button></td>
 				</tr>
 			</table>	
 		</div>
@@ -28,35 +16,34 @@
 		<div class="action">
 			<table>
 				<tr>
-					<td class="title">Name</td>
+					<td>Name</td>
 					<td><input type="text" required></td>
 				</tr>
 				<tr>
-					<td class="title">Surame</td>
+					<td>Surname</td>
 					<td><input type="text" required></td>
 				</tr>
 				<tr>
-					<td class="title">Email</td>
-					<td><input type="email" required></td>
+					<td>Birthday</td>
+					<td><input type="text" id="datepicker" size="30"></td>
 				</tr>
 				<tr>
-					<td class="title">Birthday</td>
-					<td><input type="text" required></td>
+					<td>City</td>
+					<td><input type="date"></td>
 				</tr>
 				<tr>
-					<td class="title">City</td>
-					<td><input type="text" required></td>
+					<td>Specialty</td>
+					<td>
+						<select required>
+							<option>Front-End Developer</option>
+							<option>Java Developer</option>
+							<option>.NET Developer</option>
+							<option>JavaScript Developer</option>
+						</select>
+					</td>
 				</tr>
 				<tr>
-					<td class="title">Contact</td>
-					<td><input type="text" required></td>
-				</tr>
-				<tr>
-					<td class="title">Specialty</td>
-					<td><input type="text" required></td>
-				</tr>
-				<tr>
-					<td class="title">English level</td>
+					<td>English level</td>
 					<td>
 						<select required>
 							<option>Beginner</option>
@@ -70,13 +57,13 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="title">Photo</td>
-					<td><input type="file" name="img" accept="image/jpeg,image/png,image/gif"></td>
+					<td>Contact</td>
+					<td><input type="date" required></td>
 				</tr>
 			</table>
 		</div>
 		<div class="tool">
-			<button class="send">Add participant</button>
+			<button class="send">Send test</button>
 		</div>
 	</form>
 	</div>
@@ -113,7 +100,7 @@
 	</table>
 
 	<div class="tool">
-		<button id="new">New</button>
+		<button class="send">New</button>
 		<button ng-click="currentPage = 0">On start</button>
 		<button ng-click="paging(0)">Previous</button>
 		<button ng-click="paging(1)">Next</button>
@@ -126,7 +113,7 @@
 	<div id="filter" class="box filter">
 		<span>Filter</span>
 		<div id="filter-container">
-			<input type="text" placeholder="Name" onblur="this.placeholder='Name'" onfocus="this.placeholder=''" ng-model="searchNameA"><br>
+			<input type="text" placeholder="Name" onblur="this.placeholder='Name'" onfocus="this.placeholder=''" ng-model="searchNameA" ng-change="pageSize = 20"><br>
 			<input type="text" placeholder="Email adress" onblur="this.placeholder='Email adress'" onfocus="this.placeholder=''" ng-model="searchEmailA"><br>
 			<select ng-model="selectTaken">
 				<option value="" selected>All</option>

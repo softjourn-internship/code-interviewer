@@ -1,24 +1,3 @@
-<script type="text/javascript">
-	$("button.send").click(function() {
-			$("div.send-test").fadeIn("fast");
-			$("div.profile div.info-profile div.details").fadeOut("fast");
-			$("#send-profile").fadeOut("fast");
-			$(".info-profile").fadeOut("fast");
-			$("#activity").hide();
-			$("#chart-profile").hide();
-	});
-	$("#close").click(function() {
-			$("#activity").show();
-			$("#chart-profile").show();
-			$("div.send-test").fadeOut("fast");
-			$("#send-profile").fadeIn("fast");
-			$(".info-profile").fadeIn("fast");
-			$("div.profile div.info-profile div.details").fadeIn("fast");		
-	});
-	$(".chеck").click(function() {
-			alert();
-	});
-</script>
 <div ng-controller="ClientsProfileCtrl">
 <div class="send-test">
 	<div>
@@ -26,8 +5,8 @@
 			<table>
 				<tr>
 					<td class="img"><img class="avatar-send" ng-src="images/profiles/id{{client.id}}-avatar.jpg" onerror="this.src='images/profiles/error.png';"></td>
-					<td><span><b>{{client.email}}</b></span>
-					<button id="close">Close</button></td>
+					<td><span>{{client.email}}</span></td>
+					<td><button id="close">Close</button></td>
 				</tr>
 			</table>	
 		</div>

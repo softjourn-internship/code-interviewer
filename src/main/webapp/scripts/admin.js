@@ -3,14 +3,6 @@ $(document).ready(function() {
 			$("div.sidebar").fadeToggle();
 	});
 
-	// $("div.sidebar").click(function(){
-	// 	$("div.sidebar").fadeOut();
-	// })
-
-	$("#view").click(function() {
-			// $("div.sidebar").fadeOut();
-	});
-
 	window.onresize = function(event) {
 		if ($(window).width() > 700) {
 			$(".sidebar").show();
@@ -25,14 +17,11 @@ $(document).ready(function() {
 $(document).keyup(function(e){
    	 	if(e.keyCode == 27){
         	$("div.send-test").fadeOut("fast");
-			$("div.chart").fadeIn("fast");
-			$("div.right-container").fadeIn("fast");
-			$("#filter").fadeIn("fast");
-			$("#activity").show();
-			$("#chart-profile").show();
-			$("div.send-test").fadeOut("fast");
-			$("#send-profile").fadeIn("fast");
-			$(".info-profile").fadeIn("fast");
-			$("div.profile div.info-profile div.details").fadeIn("fast");	
     	}
 	});
+$(document).on("click","button.send", function(){
+	$("div.send-test").fadeIn("fast");
+});
+$(document).on("click","button#close", function(){
+	$("div.send-test").fadeOut("fast");
+});

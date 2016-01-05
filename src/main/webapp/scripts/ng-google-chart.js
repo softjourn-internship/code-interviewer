@@ -802,7 +802,9 @@
         
     function googleJsapiUrlProvider() {
         var protocol = 'https:';
+
         var url = '//www.google.com/jsapi';
+        // var url = '//localhost:8080/scripts/jsapi.js';
         
         this.setProtocol = function (newProtocol) {
             protocol = newProtocol;

@@ -9,10 +9,11 @@
     "angular": "1.4.x",
     "angular-mocks": "1.4.x",
     "jquery": "~2.1.1",
+    "jquery-ui":"1.x",
     "angular-route": "1.4.x",
     "angular-resource": "1.4.x",
     "angular-animate": "1.4.x",
     "ace":"1.2.x",
-    "angular-ui-ace":"0.2.x",
+    "angular-ui-ace":"0.2.x"
   }
 }

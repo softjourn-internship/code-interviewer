@@ -52,6 +52,7 @@ div#container {
 	/*position: static;*/
 	width: 180px;
 	height: 100%;
+	z-index:9;
 	/*height: calc(100% - 50%);*/
 	/*background: #ecf0f1;*/
 	/*background: #34495e;*/
@@ -188,7 +189,7 @@ div.mobile:hover{
 	}
 	div#chart-dashboard{width: 700px;}
 	div.box{width: 700px;margin: 25px;}
-	div.send-test div{width: 400px;}
+	div.send-test div{width: 500px;}
 	div.profile{width: 600px;}
 	table.main-table{width: auto;}
 	ul#nav{margin-top: 75px;}
@@ -608,6 +609,7 @@ div.profile span img.done{
 }
 
 div.send-test{
+	z-index:10;
 	width: 100%;
 	height: 100%;
 	background: rgba(34,34,34,0.8);
@@ -645,6 +647,9 @@ div.send-test div div.tool{
 	height: auto;
 	margin: 0;
 }
+div.send-test div div.action input{
+	width: 100%;
+}
 div.send-test div div.action{
 	position: relative;
 	font-size: 14px;
@@ -665,12 +670,11 @@ div.send-test div div.head{
 	display: block;
 }
 div.send-test div div.head span{
-	text-align: center;
-	color: #56799c;
+	display: block;
+	color: #fff;
 	font-size: 13px;
-	position: absolute;
-	padding: 5px;
-	margin-left: -10px;
+	/*padding: 6px;*/
+	/*margin-top: -10px;*/
 	/*color: #4e6e87;*/
 }
 div.send-test div div.head #close{
@@ -679,16 +683,19 @@ div.send-test div div.head #close{
 	float: right;
 	color: #415b76;
 	font-weight: normal;
-	/*position: absolute;*/
-	margin-bottom: 10px;
 }
 div.send-test div div.head table{
+	/*background: #333;*/
 	width: 100%;
 	margin: 0;
 	padding: 0;
 }
 div.send-test div div.head table tr td.img{
-	width: 38px;
+	width: 40px;
+}
+div.send-test div div.head table tr td img{
+	display: block;
+	height: 80%;
 }
 div.send-test div div.head #close:hover{color: #56799c;}
 
@@ -745,6 +752,7 @@ div.chart{
 	width: 100%;
 	height: 500px;
 	background: transparent;
+	z-index:8;
 }
 div.send-test table{width: 100%;height: 100%;}
 div.send-test table tr td{
