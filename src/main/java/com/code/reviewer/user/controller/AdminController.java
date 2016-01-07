@@ -10,9 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
 import java.util.Collection;
-import java.util.Properties;
 
 /**
  * Created by NicholasG on 03.01.2016.
@@ -31,12 +29,11 @@ public class AdminController {
     @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 
     public Collection<User> getAllUsers() {
-       // service.save(new User("aaaaa", "saaaaaa", "aaaa", "saaaa", "aaaaa"));
         return service.getAll();
     }
 
 
-   /* @RequestMapping(value = "/new", method = RequestMethod.POST)
+    @RequestMapping(value = "/new", method = RequestMethod.POST)
     public void addUser(
             @RequestParam String firstName,
             @RequestParam String lastName,
@@ -48,14 +45,14 @@ public class AdminController {
         service.save(user);
         LOGGER.info("User '" + firstName + ' ' + lastName + "' has been added");
 
-    }*/
+    }
 
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
     public User getUser(@PathVariable Integer id) {
         return service.findOne(id);
     }
 
-   @RequestMapping(value = "/del/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/del/{id}", method = RequestMethod.DELETE)
     public void deleteUser(@RequestParam Integer id) {
         User user = service.findOne(id);
         user.setIsActive(false);

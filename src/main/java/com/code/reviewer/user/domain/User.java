@@ -1,12 +1,9 @@
 package com.code.reviewer.user.domain;
 
-import com.code.reviewer.user.controller.AdminController;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.io.IOException;
 import java.io.Serializable;
-import java.util.Properties;
 
 /**
  * Created by NicholasG on 17.12.2015.

@@ -1,4 +1,4 @@
-drop table if EXISTS users;
+DROP TABLE IF EXISTS users;
 CREATE TABLE users (
   userId    INTEGER PRIMARY KEY AUTO_INCREMENT,
   firstName VARCHAR(45),
@@ -9,7 +9,7 @@ CREATE TABLE users (
   isActive  BOOLEAN
 );
 
-drop table if EXISTS tasks;
+DROP TABLE IF EXISTS tasks;
 CREATE TABLE tasks (
   taskId     INTEGER PRIMARY KEY AUTO_INCREMENT,
   title      VARCHAR(50),
