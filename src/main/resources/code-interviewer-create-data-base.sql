@@ -1,17 +1,15 @@
-CREATE DATABASE code_interviewer;
-
-USE code_interviewer;
-
+drop table if EXISTS users;
 CREATE TABLE users (
   userId    INTEGER PRIMARY KEY AUTO_INCREMENT,
   firstName VARCHAR(45),
   lastName  VARCHAR(45),
   email     VARCHAR(45),
-  password  VARCHAR(255),
-  role      VARCHAR(10),
+  password  VARCHAR(45),
+  role      VARCHAR(45),
   isActive  BOOLEAN
 );
 
+drop table if EXISTS tasks;
 CREATE TABLE tasks (
   taskId     INTEGER PRIMARY KEY AUTO_INCREMENT,
   title      VARCHAR(50),
@@ -21,4 +19,6 @@ CREATE TABLE tasks (
   addedDate  DATE,
   isActive   BOOLEAN
 );
+
+
 

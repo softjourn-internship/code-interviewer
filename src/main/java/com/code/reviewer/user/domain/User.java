@@ -1,9 +1,12 @@
 package com.code.reviewer.user.domain;
 
+import com.code.reviewer.user.controller.AdminController;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.io.IOException;
 import java.io.Serializable;
+import java.util.Properties;
 
 /**
  * Created by NicholasG on 17.12.2015.
@@ -26,15 +29,15 @@ public class User implements Serializable {
     @Column(name = "email", nullable = false)
     private String email;
 
-    @Column(name = "password", nullable = false)
     @JsonIgnore
+    @Column(name = "password", nullable = false)
     private String password;
 
     @Column(name = "role", nullable = false)
     private String role;
 
     @Column(name = "isActive", nullable = false)
-    private boolean isActive = true;
+    private boolean isActive;
 
     public User() {
 
@@ -48,7 +51,7 @@ public class User implements Serializable {
         this.role = role;
     }
 
-    public int getUserID() {
+    public Integer getUserID() {
         return userID;
     }
 

@@ -1,16 +1,23 @@
 package com.code.reviewer;
 
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+
+import java.io.IOException;
+import java.util.Properties;
 
 /**
  * Created by NicholasG on 18.12.2015.
  */
 @SpringBootApplication
 @ComponentScan
+
 public class Application extends SpringBootServletInitializer {
 
     @Override
