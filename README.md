@@ -12,17 +12,11 @@ This project is a platform for making online interview with writing a code.
 
 2. Maven: apache-maven-3.3.9.
 
-3. SQL Server: MySQL Server 5.6.
+3. SQL Server: MySQL Server 5.5.
 
-4. Node.js
+4. Install Node.js
 
-5. Bower, to install, use "Node.js command prompt" and type:
-
-   npm install -g bower
-
-   5.1. Browse required libraries, then go to ../webapp and type the following:
-
-   bower install
+5. In the project directory, use "npm start"
 
 ### Run server:
 ***************************************************
