@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS users;
 CREATE TABLE users (
-  username  VARCHAR(50) PRIMARY KEY AUTO_INCREMENT,
+  username  VARCHAR(50) PRIMARY KEY,
   firstName VARCHAR(45),
   lastName  VARCHAR(45),
   email     VARCHAR(45),
