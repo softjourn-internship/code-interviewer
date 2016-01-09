@@ -3,6 +3,7 @@ package com.code.reviewer.user.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 /**
@@ -13,9 +14,9 @@ import java.io.Serializable;
 public class User implements Serializable {
 
     @Id
-    @GeneratedValue
-    @Column(name = "userId", nullable = false)
-    private Integer userID;
+    @Size(min = 5, max = 50)
+    @Column(name = "username", nullable = false)
+    private String username;
 
     @Column(name = "firstName", nullable = false)
     private String firstName;
@@ -48,12 +49,12 @@ public class User implements Serializable {
         this.role = role;
     }
 
-    public Integer getUserID() {
-        return userID;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserID(Integer userID) {
-        this.userID = userID;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getFirstName() {
@@ -107,7 +108,7 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return "{" +
-                "userID=" + userID +
+                "username=" + username +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +

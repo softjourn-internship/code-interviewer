@@ -11,7 +11,9 @@ public interface UserService {
 
     Collection<User> getAll();
 
-    User findOne(Integer id);
+    User findOneByUsername(String username);
+
+    User findOneByEmail(String email);
 
     void save(User user);
 }

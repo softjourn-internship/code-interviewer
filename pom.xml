@@ -17,7 +17,6 @@
 
     <properties>
         <java-version>1.8</java-version>
-        <jta-version>1.1</jta-version>
         <mysql-connector-java.version>5.1.37</mysql-connector-java.version>
         <spring-core.version>4.2.4.RELEASE</spring-core.version>
         <slf4j-api.version>1.7.13</slf4j-api.version>
@@ -89,15 +88,6 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql-connector-java.version}</version>
             <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>javax.transaction</groupId>
-            <artifactId>jta</artifactId>
-            <version>${jta-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.inject</groupId>
-            <artifactId>javax.inject</artifactId>
         </dependency>
 
         <!--LOGBACK-->
