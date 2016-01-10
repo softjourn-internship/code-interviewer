@@ -1,13 +1,17 @@
 {
     "id": 2,
     "name": "Ivan",
-    "surname": "Arabhuk",
+    "surname": "Arabchuk",
     "city":"Ivano-Frankivsk",
-    "email":"arabhuk@gmail.com",
-    "complication":["middle","hard","easy"],
-    "testSent":["13.23.2015","15.03.2015","07.11.2015"],
-    "testReturn":["18.12.2015","18.12.2015",false],
-    "perfomedTests":["Java","Html","CSS"],
-    "bgImage":"id1-bg.jpg",
-    "avatar":"id1-avatar.png"
+    "birthday": "08 November 1996",
+    "specialty":"Front-End developer",
+    "englishLevel":"Intermediate",
+    "email":"kutsaniuk@gmail.com",
+    "bgImage":"",
+    "avatar":"id1-avatar.png",
+    "activity":[
+        {"technology":"Java", "taken":"failed","review":"checked","complication":"Hard"},
+        {"technology":"HTML", "taken":"done","review":"checked","complication":"Easy"},
+        {"technology":"CSS", "taken":"inProcess","review": "check","complication":"Middle"}
+    ]
 }

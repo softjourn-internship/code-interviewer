@@ -3,11 +3,16 @@
     "name": "Dmytro",
     "surname": "Mula",
     "city":"Ivano-Frankivsk",
+    "birthday": "08 November 1996",
+    "specialty":"Front-End developer",
+    "englishLevel":"Intermediate",
     "email":"mula@gmail.com",
-    "complication":["middle","hard","easy"],
-    "testSent":["13.23.2015","15.03.2015","07.11.2015"],
-    "testReturn":["18.12.2015","18.12.2015",false],
-    "perfomedTests":["Java","Html","CSS"],
     "bgImage":"id1-bg.jpg",
-    "avatar":"id1-avatar.png"
+    "avatar":"id1-avatar.png",
+    "activity":[
+        {"technology":"Java", "taken":"failed","review":"checked","complication":"Hard"},
+        {"technology":"HTML", "taken":"done","review":"checked","complication":"Easy"},
+        {"technology":"CSS", "taken":"inProcess","review": "check","complication":"Middle"},
+        {"technology":"Java Script", "taken":"failed","review":"check","complication":"Hard"}
+    ]
 }

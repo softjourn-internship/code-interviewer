@@ -5,31 +5,31 @@
     "cols": [
       {
         "id": "month",
-        "label": "Month",
+        "label": "C#",
         "type": "string",
         "p": {}
       },
       {
         "id": "laptop-id",
-        "label": "Laptop",
+        "label": "CSS",
         "type": "number",
         "p": {}
       },
       {
         "id": "desktop-id",
-        "label": "Desktop",
+        "label": "Java Script",
         "type": "number",
         "p": {}
       },
       {
         "id": "server-id",
-        "label": "Server",
+        "label": "HTML",
         "type": "number",
         "p": {}
       },
       {
         "id": "cost-id",
-        "label": "Shipping",
+        "label": "Java",
         "type": "number"
       }
     ],
@@ -40,16 +40,13 @@
             "v": "November"
           },
           {
-            "v": 19,
-            "f": "42 items"
+            "v": 19
           },
           {
-            "v": 12,
-            "f": "Ony 12 items"
+            "v": 12
           },
           {
-            "v": 7,
-            "f": "7 servers"
+            "v": 7
           },
           {
             "v": 4
@@ -65,8 +62,7 @@
             "v": 13
           },
           {
-            "v": 1,
-            "f": "1 unit (Out of stock this month)"
+            "v": 1
           },
           {
             "v": 12
@@ -100,7 +96,7 @@
   "options": {
     "backgroundColor": { "fill":"transparent" },
     "colors": ["#fa8564", "#f4d66c", "#8491c7", "#aec785"],
-    "title": "Sales per month",
+    "title": "Performed tests",
     "isStacked": "true",
     "fill": 20,
     "displayExactValues": true,

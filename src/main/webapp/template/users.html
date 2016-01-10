@@ -16,6 +16,10 @@
 		<div class="action">
 			<table>
 				<tr>
+					<td>Username</td>
+					<td><input type="text" ng-model="userName"></td>
+				</tr>
+				<tr>
 					<td>Name</td>
 					<td><input type="text" ng-model="firstName" required></td>
 				</tr>
@@ -70,7 +74,12 @@
 				<td class="td-name"><b>{{user.name}} {{user.surname}}</b></td>
 				<td>{{user.email}}</td>
 				<td>
-					<div ng-if="user.permission == ''"><button>Change</button></div>
+					<div ng-if="user.permission == ''">
+					<select>
+						<option>Admin</option> 
+						<option>Manager</option>
+						<option>Recruiter</option>
+					</select></div>
 					<div ng-if="user.permission == 'Admin'" style="color: #aec785"><b>Admin</b></div>
 					<div ng-if="user.permission == 'Manager'" style="color: #f4d66c"><b>Manager</b></div>
 					<div ng-if="user.permission == 'Recruiter'" style="color: #8491c7"><b>Recruiter</b></div>
