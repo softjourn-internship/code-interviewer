@@ -8,4 +8,8 @@ import com.code.reviewer.tasks.domain.Task;
  */
 public interface TaskRepository extends JpaRepository<Task, Integer> {
 
+    Task findOneByTaskId(Integer id);
+
+    Task findOneByTitle(String title);
+
 }

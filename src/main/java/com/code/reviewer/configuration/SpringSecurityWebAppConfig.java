@@ -7,6 +7,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
+import javax.sql.DataSource;
+
 /**
  * Created by NicholasG on 02.01.2016.
  */
@@ -15,24 +17,29 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SpringSecurityWebAppConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                .inMemoryAuthentication()
-                    .withUser("admin").password("admin").roles("ADMIN");
+    DataSource dataSource;
+
+    @Autowired
+    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
+        auth.jdbcAuthentication().dataSource(dataSource)
+                .usersByUsernameQuery(
+                        "select username, password, isActive from users where username=?")
+                .authoritiesByUsernameQuery(
+                        "select username, role from users where username=?");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .csrf().disable()
                 .authorizeRequests()
-                    .anyRequest().authenticated()
-                    .and()
-                .formLogin()
+                    .antMatchers("/#/participants").hasAuthority("ROLE_MANAGER")
+                    .antMatchers("/**").authenticated()
+                .and()
+                    .formLogin()
 //                    .loginPage("/login")
                     .permitAll()
-                    .and()
-                .logout()
+                .and()
+                    .logout()
                     .permitAll();
     }
 }
