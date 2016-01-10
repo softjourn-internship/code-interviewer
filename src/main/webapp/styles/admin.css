@@ -235,7 +235,7 @@ div.search input:focus{
 	color: #333;
 	border: none;
 }
-div.logout{
+div.logout a{
 	float: right;
 	display: block;
 	padding: 15px;
@@ -248,7 +248,7 @@ div.logout{
 	-o-transition: 0.2s;
 	transition: 0.2s;
 }
-div.logout:hover{ color: #999; }
+div.logout:hover a{ color: #999; }
 /*	BOX   */
 div#box-main {
 	height: 200px;
