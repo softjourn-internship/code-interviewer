@@ -20,5 +20,20 @@ CREATE TABLE tasks (
   isActive   BOOLEAN
 );
 
+DROP TABLE IF EXISTS participants;
+CREATE TABLE participants (
+  participantId     INTEGER PRIMARY KEY AUTO_INCREMENT,
+  firstName      VARCHAR(50),
+  lastName       VARCHAR(50),
+  email VARCHAR(20),
+  sent DATE,
+  returned  DATE,
+  taken   VARCHAR(10),
+  recruiter VARCHAR (50)
+);
+
+ALTER TABLE participants
+  ADD  FOREIGN KEY (recruiter) REFERENCES users (username);
+
 
 
