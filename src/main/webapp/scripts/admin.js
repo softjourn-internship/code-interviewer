@@ -25,3 +25,14 @@ $(document).on("click","button.send", function(){
 $(document).on("click","button#close", function(){
 	$("div.send-test").fadeOut("fast");
 });
+
+
+$(document).on("mouseover","button.send", function(){
+	$(this).data('timeout', setTimeout( function () {
+		$("div.alt").fadeIn("fast");
+	}, 500));
+	// $("div.alt").fadeOut(500);
+});
+$(document).on("mouseout","button.send", function(){
+	$("div.alt").fadeOut("fast");
+});

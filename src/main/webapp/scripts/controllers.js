@@ -5,32 +5,50 @@ var myAppModule = angular.module('MyApp', ['ui.ace']);
 
 /* Controllers Admin*/
 /************************************************************************************/
+adminPanelApp.controller('UsersListCtrl', ['$scope', '$http','$location',
+  function ($scope, $http, $location) {
+    $http.get('clients/users.json').success(function(data) {
+      $scope.users = data;
+    });
+  }]);
 
 adminPanelApp.controller('ClientsListCtrl', ['$scope', '$http','$location',
   function ($scope, $http, $location) {
     $http.get('clients/clients.json').success(function(data) {
       $scope.clients = data;
-    
+      
+      $scope.addRowAsyncAsJSON = function(){
+        $scope.clients.push({'name': $scope.firstName});
 
-  $scope.pageSizes = [5, 10, 15, 20];
-  $scope.pageSize = $scope.pageSizes[1];
-  $scope.currentPage = 0;
-  $scope.pageNumber = Math.ceil($scope.clients.length / $scope.pageSize);
+        var dataObj = { name: $scope.firstName };
 
-  $scope.paging = function (type) {
-    if (type == 0 && $scope.currentPage > 0) {
-      --$scope.currentPage;
-    }
-    else if (type == 1 && $scope.currentPage < $scope.pageNumber-1){
-      ++$scope.currentPage;
-    }
-  }
+        var res = $http.post('/admin/new', dataObj);
 
-  $scope.$watchCollection('results', function(){
-    if ($scope.results == undefined) return;
-    $scope.currentPage = 0;
-    $scope.pageNumber =Math.ceil($scope.results.length / $scope.pageSize);
-  });
+        res.success(function (data, status, headers, config) {
+          $scope.message = data;
+        });
+        
+      };
+
+        $scope.pageSizes = [5, 10, 15, 20];
+        $scope.pageSize = $scope.pageSizes[1];
+        $scope.currentPage = 0;
+        $scope.pageNumber = Math.ceil($scope.clients.length / $scope.pageSize);
+
+        $scope.paging = function (type) {
+          if (type == 0 && $scope.currentPage > 0) {
+            --$scope.currentPage;
+          }
+          else if (type == 1 && $scope.currentPage < $scope.pageNumber-1){
+            ++$scope.currentPage;
+          }
+        }
+
+        $scope.$watchCollection('results', function(){
+          if ($scope.results == undefined) return;
+          $scope.currentPage = 0;
+          $scope.pageNumber =Math.ceil($scope.results.length / $scope.pageSize);
+        });
 
   $scope.changeAction = function () {
       $scope.currentPage = 0;
@@ -174,6 +192,8 @@ adminPanelApp.controller('ClientsProfileCtrl', ['$scope', '$http', '$location','
 adminPanelApp.config([
   '$routeProvider', '$locationProvider',
   function($routeProvide, $locationProvider){
+    // $locationProvider.html5Mode(true);
+        
     $routeProvide
         // .when('/',{
         //   templateUrl:'template/login.html',
@@ -188,7 +208,7 @@ adminPanelApp.config([
           controller:'ClientsListCtrl'
         })
         .
-        when('/clients/:clientId', {
+        when('/participants/:clientId', {
             templateUrl: 'template/profile.html',
             controller: 'ClientsProfileCtrl'
          })
@@ -197,17 +217,35 @@ adminPanelApp.config([
             templateUrl: 'template/statistics.html',
             controller: 'ClientsChartsCtrl'
          })
-
-         .when('/tasks', {
-             templateUrl: 'template/tasks.html',
-             controller: 'TasksCtrl'
-          })
+        .
+        when('/users', {
+            templateUrl: 'template/users.html',
+            controller: 'ClientsListCtrl'
+        })
+        .
+        when('/tasks', {
+            templateUrl: 'template/tasks.html',
+            controller: 'TasksCtrl'
+        })
         .otherwise({
           redirectTo: '/'
         });
   }
 ]);
+/*   PUSH ON SERVER   */
 
+adminPanelApp.controller("PushDataCtrl", function ($scope, $http){
+  $scope.taskName = null;
+
+  $scope.createTask = function () {
+    var data = { firstName: $scope.taskName };
+    $http.post("/admin/new", data).success(function (data, status, headers){
+      alert("Task added.");
+        // $scope.tasks.push(data);
+    });
+  };
+
+});
 
 /* Controllers UsersWorkspace*/
 /************************************************************************************/

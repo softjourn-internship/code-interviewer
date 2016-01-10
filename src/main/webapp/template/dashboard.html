@@ -2,7 +2,7 @@
 	<div>
 		<span class="clients-length">{{lengthClientsD.length}} Elements</span>
 	</div>
-	<table class="main-table">
+	<table class="main-table" cellspacing="0" cellpadding="0">
 		<thead>
 			<th>Name</th>
 			<th>Email</th>
@@ -11,7 +11,7 @@
 		</thead>
 		<tbody>
 			<tr class="hover-tr" ng-repeat="client in lengthClientsD = (clients | filter:{taken: 'done'})">
-				<td class="td-name"><a href="#/clients/{{client.id}}">{{client.name}} {{client.surname}}</a></td>
+				<td class="td-name"><a href="#/participants/{{client.id}}">{{client.name}} {{client.surname}}</a></td>
 				<td>{{client.email}}</td>
 				<td>{{client.testSent}}</td>
 				<td class="td-status"><img ng-src="images/{{client.taken}}.png"></td>
@@ -19,5 +19,3 @@
 		</tbody>
 	</table>
 </div>
-
-<div id="chart-dashboard" ng-controller="ClientsChartsCtrl" class="chart" google-chart chart="chartColumn"/>

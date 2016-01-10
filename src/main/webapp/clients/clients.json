@@ -8,7 +8,7 @@
         "testSent":"17.12.2015",
         "testReturn":"18.12.2015",
         "perfomedTests": ["Java","Html","CSS","JS"],
-        "image": "id1-bg.jpg"
+        "image": ".jpg"
     },
     {
         "id": 2,
@@ -27,7 +27,8 @@
         "email":"demkiv@gmail.com",
         "taken":"inProcess",
         "testSent":"16.12.2015",
-        "testReturn":"18.12.2015"
+        "testReturn":"18.12.2015",
+        "image":"id3-avatar.jpg"
      },
      {
         "id": 4,
@@ -36,7 +37,8 @@
         "email":"andrusyak@gmail.com",
         "taken":"",
         "testSent":"",
-        "testReturn":""
+        "testReturn":"",
+        "image": ".jpg"
      },
     {
         "id": 5,
@@ -45,7 +47,8 @@
         "email":"grinkevych@gmail.com",
         "taken":"",
         "testSent":"",
-        "testReturn":""
+        "testReturn":"",
+        "image": ".jpg"
      },
      {
         "id": 6,
@@ -54,7 +57,8 @@
         "email":"kartashov@gmail.com",
         "taken":"inProcess",
         "testSent":"18.12.2015",
-        "testReturn":"18.12.2015"
+        "testReturn":"18.12.2015",
+        "image": ".jpg"
      },
      {
         "id": 7,
@@ -63,7 +67,8 @@
         "email":"mymohod@gmail.com",
         "taken":"failed",
         "testSent":"18.12.2015",
-        "testReturn":"18.12.2015"
+        "testReturn":"18.12.2015",
+        "image": ".jpg"
      },
      {
         "id": 8,
@@ -72,7 +77,8 @@
         "email":"myrovysh@gmail.com",
         "taken":"failed",
         "testSent":"18.12.2015",
-        "testReturn":"18.12.2015"
+        "testReturn":"18.12.2015",
+        "image": ".jpg"
      },
      {
         "id": 9,
@@ -81,7 +87,8 @@
         "email":"vershynin@gmail.com",
         "taken":"failed",
         "testSent":"18.12.2015",
-        "testReturn":"18.12.2015"
+        "testReturn":"18.12.2015",
+        "image": ".jpg"
      },
      {
         "id": 10,
@@ -90,7 +97,8 @@
         "email":"mula@gmail.com",
         "taken":"",
         "testSent":"",
-        "testReturn":""
+        "testReturn":"",
+        "image": ".jpg"
      },
      {
         "id": 11,
@@ -101,7 +109,7 @@
         "testSent":"17.12.2015",
         "testReturn":"18.12.2015",
         "perfomedTests": ["Java","Html","CSS","JS"],
-        "image": "id1-bg.jpg"
+        "image": ".jpg"
     },
     {
         "id": 12,
@@ -120,7 +128,8 @@
         "email":"demkiv@gmail.com",
         "taken":"inProcess",
         "testSent":"16.12.2015",
-        "testReturn":"18.12.2015"
+        "testReturn":"18.12.2015",
+        "image": ".jpg"
      },
      {
         "id": 14,
@@ -129,7 +138,8 @@
         "email":"andrusyak@gmail.com",
         "taken":"",
         "testSent":"",
-        "testReturn":""
+        "testReturn":"",
+        "image": ".jpg"
      },
     {
         "id": 15,
@@ -138,7 +148,8 @@
         "email":"grinkevych@gmail.com",
         "taken":"",
         "testSent":"",
-        "testReturn":""
+        "testReturn":"",
+        "image": ".jpg"
      },
      {
         "id": 16,
@@ -147,7 +158,8 @@
         "email":"kartashov@gmail.com",
         "taken":"inProcess",
         "testSent":"18.12.2015",
-        "testReturn":"18.12.2015"
+        "testReturn":"18.12.2015",
+        "image": ".jpg"
      },
      {
         "id": 17,
@@ -156,7 +168,8 @@
         "email":"mymohod@gmail.com",
         "taken":"failed",
         "testSent":"18.12.2015",
-        "testReturn":"18.12.2015"
+        "testReturn":"18.12.2015",
+        "image": ".jpg"
      },
      {
         "id": 18,
@@ -165,7 +178,8 @@
         "email":"myrovysh@gmail.com",
         "taken":"failed",
         "testSent":"18.12.2015",
-        "testReturn":"18.12.2015"
+        "testReturn":"18.12.2015",
+        "image": ".jpg"
      },
      {
         "id": 19,
@@ -174,7 +188,8 @@
         "email":"vershynin@gmail.com",
         "taken":"failed",
         "testSent":"18.12.2015",
-        "testReturn":"18.12.2015"
+        "testReturn":"18.12.2015",
+        "image": ".jpg"
      },
      {
         "id": 20,
@@ -183,6 +198,7 @@
         "email":"mula@gmail.com",
         "taken":"",
         "testSent":"",
-        "testReturn":""
+        "testReturn":"",
+        "image": ".jpg"
      }
   ]
