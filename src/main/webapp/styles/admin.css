@@ -57,6 +57,7 @@ div#container {
 	/*background: #ecf0f1;*/
 	/*background: #34495e;*/
 	background: #2c3e50;
+	/*background: #232B2D;*/
 	float: left;
 }
 a#dashboard, a#participants, a#statistics, a#workspace, a#tasks {
@@ -268,16 +269,49 @@ div.box {
 	-o-transition: 0.2s;
 	transition: 0.2s;
 }
-div.box span{
-	/*background: #333;*/
+div.box table#head, span{
 	width: 100%;
 	margin: 0;
 	border-radius: 5px 5px 0 0;
-	display: block;
-	padding: 10px;
-	padding-left: 15px;
 	font-size: 12px;
 	color: #888;
+}
+div.box table#head td:nth-child(1n), span{
+	padding-left: 10px;
+}
+div.box table#head td:nth-child(2n) select{
+	float: right;
+	border: none;
+}
+div.box div#head div#tool{
+	display: block;
+	width: 70%;
+	background: #888;
+	height: 12px;
+}
+div.box table#tool{
+	padding: 15px;
+	padding-top: 0;
+	padding-left: 0;
+}
+div.box table#tool td:nth-child(1n){
+	width: 100%;
+}
+div.box table#tool td:first-child span{
+	cursor: pointer;
+	font-size: 13px;
+	padding:  5px 10px 5px 10px;
+	border-radius: 2px;
+	background: #eee;
+	color: #222;
+}
+div.box table#tool td:first-child button{
+	border: none;
+	background: none;
+	font-weight: 400;
+}
+div.box table#tool td:first-child button:hover{
+	color: #222;
 }
 div.box div#page-size{
 	margin-left: 83%;
@@ -361,27 +395,27 @@ select{
 	transition: 0.2s;
 }
 input, select{
-	color: silver;
+	color: #333;
 	font-family: Open Sans, Tahoma;
 	background: transparent;
 	border: none;
 	border-bottom: 2px solid #e1e1e1;
-	border-radius: 1px;
 	padding: 6px;
 	padding-left: 12px;
 	font-size: 13px;
-	margin: -3px;
+	font-weight: bold;
 	-webkit-transition: 0.2s;
 	-moz-transition: 0.2s;
 	-o-transition: 0.2s;
 	transition: 0.2s;
 }
+
 input:focus{
 	border-bottom: 2px solid #34495e;
 	color: #34495e;
 }
 div.box div select{
-	padding: 5px;
+	/*padding: 5px;*/
 }
 div select:hover{
 	border-bottom: 2px solid #34495e;
@@ -443,10 +477,11 @@ p.info-p{
 }
 button{
 	background: #f8fafb;
+	background: #eee;
 	border-radius: 2px;
 	border-color: transparent;
-	border: 1px solid silver;
-	color: #666;
+	border: 1px solid #eee;
+	color: #999;
 	font-weight: 300;
 	font-size: 13px;
 	font-family: Open Sans, Tahoma;
@@ -458,10 +493,9 @@ button{
 	transition: 0.1s;
 }
 button:hover{
-	/*background: #1abc9c;*/
-	border: 1px solid #666;
-	background: #666;
-	color: #fff;
+	border: 1px solid #e2e2e2;
+	background: #e2e2e2;
+	/*color: #fff;*/
 }
 button:active{
 	border: 1px solid #555;
@@ -638,15 +672,38 @@ div.send-test div {
 	margin-top: 100px;
 
 }
+div.send-test div#close-box{
+	position: absolute;
+	top: 0;
+	margin: 0;
+	background: transparent;
+	width: 100%;
+	height: 100%;
+}
 div.send-test div div.tool{
 	position: relative;
 	box-shadow: none;
 	padding: 15px;
 	display: inline-block;
-	/*background: #2c3e50;*/
+	/*background: #eee;*/
 	width: 100%;
 	height: auto;
 	margin: 0;
+}
+div.send-test div div.action table td:nth-child(1){
+	color: #444;
+	font-size: 13px;
+}
+div.send-test div div.action table td:nth-child(2) input{
+	margin: 0;
+}
+div.send-test div div.action table td:nth-child(2) input:focus{
+	border-color: #222;
+	color: #222;
+}
+div.send-test div div.action table td:nth-child(2) select:hover{
+	border-color: #222;
+	color: #222;
 }
 div.send-test div div.action input{
 	width: 100%;
@@ -668,12 +725,14 @@ div.send-test div div.head{
 	width: 100%;
 	height: 50px;
 	background: #2c3e50;
+	background: #333;
 	display: block;
 }
 div.send-test div div.head span{
 	display: block;
 	color: #fff;
 	font-size: 13px;
+	font-weight: bold;
 	/*padding: 6px;*/
 	/*margin-top: -10px;*/
 	/*color: #4e6e87;*/
@@ -683,22 +742,27 @@ div.send-test div div.head #close{
 	background: transparent;
 	float: right;
 	color: #415b76;
+	color: #444;
 	font-weight: normal;
 }
+div.send-test div div.head #close:hover{color: #56799c;color: #555}
 div.send-test div div.head table{
 	/*background: #333;*/
 	width: 100%;
 	margin: 0;
 	padding: 0;
+	/*background: #333;*/
 }
 div.send-test div div.head table tr td.img{
-	width: 40px;
+	width: 50px;
+	padding: 0;
 }
 div.send-test div div.head table tr td img{
 	display: block;
-	height: 80%;
+	width: 100%;
+	/*height: 80%;*/
 }
-div.send-test div div.head #close:hover{color: #56799c;}
+
 
 div.send-test div {
 	position: relative;
@@ -723,7 +787,8 @@ div.send-test div div.action input[type="radio"]:checked + label {
 	transition: 0.2s;
 }
 div.send-test div div.action select{
-	width: 70%;
+	margin: 0;
+	width: 100%;
 	color: #333;
 	font-weight: bold;
 }
@@ -864,7 +929,6 @@ td .selectBl{
 }
 .Ttitle{
 	padding-left: 10px;
-	font-family: 'Comic Sans MS';
 }
 td input{
 	margin-left: 5px;

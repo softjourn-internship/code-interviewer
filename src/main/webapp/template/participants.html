@@ -2,11 +2,12 @@
     $("#datepicker").datepicker();
 </script>
 <div class="send-test">
+	<div id="close-box" ></div>
 	<div>
 		<div class="head">
-			<table>
+			<table cellspacing="0" cellpadding="0">
 				<tr>
-					<td class="img"><img class="avatar-send" src="images/profiles/error.png"></td>
+					<td class="img"><img src="images/profiles/error.png"></td>
 					<td><span>New participant</span></td>
 					<td><button id="close">Close</button></td>
 				</tr>
@@ -16,11 +17,11 @@
 		<div class="action">
 			<table>
 				<tr>
-					<td>Name</td>
-					<td><input type="text" ng-model="firstName" required></td>
+					<td>First Name</td>
+					<td><input type="text" ng-model="firstName"></td>
 				</tr>
 				<tr>
-					<td>Surname</td>
+					<td>Last Name</td>
 					<td><input type="text"></td>
 				</tr>
 				<tr>
@@ -29,12 +30,13 @@
 				</tr>
 				<tr>
 					<td>City</td>
-					<td><input type="date"></td>
+					<td><input type="text"></td>
 				</tr>
 				<tr>
-					<td>Specialty</td>
+					<td>Speciality</td>
 					<td>
 						<select>
+							<option selected></option>
 							<option>Front-End Developer</option>
 							<option>Java Developer</option>
 							<option>.NET Developer</option>
@@ -46,6 +48,7 @@
 					<td>English level</td>
 					<td>
 						<select>
+							<option selected></option>
 							<option>Beginner</option>
 							<option>Elementary</option>
 							<option>Pre-Intermediate</option>
@@ -58,12 +61,17 @@
 				</tr>
 				<tr>
 					<td>Contact</td>
-					<td><input type="date"></td>
+					<td><input type="text"></td>
+				</tr>
+				<tr>
+					<td>Email</td>
+					<td><input type="email"></td>
 				</tr>
 			</table>
 		</div>
 		<div class="tool">
-			<button ng-click="addRowAsyncAsJSON()" class="send">Add participant</button>
+			<button style="margin:0" ng-click="addRowAsyncAsJSON()" class="send">Add participant</button>
+			<button id="close" style="float:right">Cancel</button>
 		</div>
 	</form>
 	</div>
@@ -71,23 +79,26 @@
 
 <section>
 <div class="box">
-	
+	<table id="head">
+		<tr>
+			<td>{{clients.length}} Participants</td>
+			<td style="height:35px;">
+				<select 
+					ng-change="changeAction()" 
+					ng-model="pageSize" 
+					ng-options="opt as opt for opt in pageSizes">
+				</select>
+			</td>
+		</tr>
+	</table>
 	<table id="tableData" class="main-table" cellspacing="0" cellpadding="0">
-		<span>Participants
-		<div id="page-size">
-			<select 
-			ng-change="changeAction()" 
-			ng-model="pageSize" 
-			ng-options="opt as opt for opt in pageSizes"></select>
-		</div>
-		</span>
 		<thead>
+			<th style="padding-left:15px">Name</th>
 			<th></th>
-			<th>Name</th>
 			<th>Email</th>
 			<th>Sent</th>
 			<th>Returned</th>
-			<th>Taken</th>
+			<th style="padding-right:15px">Taken</th>
 		</thead>
 		<tbody>
 			<tr class="hover-tr" ng-repeat="client in lengthClientsPA = (clients | filter:{name:searchNameA, taken:selectTaken, email:searchEmailA} | orderBy:'surname')" ng-if="$index >= (currentPage * pageSize) && $index < ((currentPage+1)*pageSize)">
@@ -98,26 +109,30 @@
 				<td>{{client.testReturn}}</td>
 				<td class="td-status"><img ng-src="images/{{client.taken}}.png" onerror="this.src='images/error.png';"></td>
 			</tr>
+			<tr ng-if="lengthClientsPA == 0"><td style="padding-left: 25px;color:#666">No search result</td></tr>
 		</tbody>
 	</table>
 	
-	<div class="tool">
-		<button class="send">New</button>
-		<button ng-click="currentPage = 0">Start</button>
-		<button ng-click="paging(0)">Previous</button>
-		<button ng-click="paging(1)">Next</button>
-		<button ng-click="currentPage = (pageNumber - 1)">End</button>
-	</div>
-	<span>{{currentPage + 1}} in {{pageNumber}} | {{lengthClientsPA.length}} Elements</span>
+	<table id="tool" ng-if="lengthClientsPA != 0">
+		<tr>
+			<td>			
+ 		 		<button ng-click="paging(0)">Prev</button>
+ 				<span ng-click="paging(currentPage + 1)">{{currentPage + 1}}</span>
+				<button ng-click="paging(1)">Next</button>
+ 				</td>
+			<td><button class="send">New</button>
+</td>
+		</tr>
+	</table>
 </div>
 <div class='alt'>Add new participant</div>
 <div id="right-container">
 	<div id="filter" class="box filter">
 		<span>Filter</span>
 		<div id="filter-container">
-			<input type="text" placeholder="Name" onblur="this.placeholder='Name'" onfocus="this.placeholder=''" ng-model="searchNameA" ng-change="pageSize = 20"><br>
-			<input type="text" placeholder="Email adress" onblur="this.placeholder='Email adress'" onfocus="this.placeholder=''" ng-model="searchEmailA"><br>
-			<select ng-model="selectTaken">
+			<input type="text" placeholder="Name" onblur="this.placeholder='Name'" onfocus="this.placeholder=''" ng-model="searchNameA" ng-change="pageSize"><br>
+			<input type="text" placeholder="Email adress" onblur="this.placeholder='Email adress'" onfocus="this.placeholder=''" ng-model="searchEmailA" ng-change="pageSize"><br>
+			<select ng-model="selectTaken" ng-change="pageSize">
 				<option value="" selected>All</option>
 				<option value="done">Done</option>
 				<option value="inProcess">In process</option>
@@ -129,3 +144,5 @@
 </div>
 
 </section>
+
+

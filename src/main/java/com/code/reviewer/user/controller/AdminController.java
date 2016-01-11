@@ -16,7 +16,7 @@ import java.util.Collection;
  * Created by NicholasG on 03.01.2016.
  */
 @RestController
-@Secured("ROLE_ADMIN")
+//@Secured("ROLE_ADMIN")
 @RequestMapping("/admin")
 public class AdminController {
 

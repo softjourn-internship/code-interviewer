@@ -32,8 +32,9 @@ public class SpringSecurityWebAppConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                    .antMatchers("/#/participants").hasAuthority("ROLE_MANAGER")
-                    .antMatchers("/**").authenticated()
+                        .antMatchers("/**").permitAll()
+//                    .antMatchers("/#/participants").hasAuthority("ROLE_MANAGER")
+//                    .antMatchers("/**").authenticated()
                 .and()
                     .formLogin()
 //                    .loginPage("/login")

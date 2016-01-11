@@ -16,11 +16,10 @@ adminPanelApp.controller('ClientsListCtrl', ['$scope', '$http','$location',
   function ($scope, $http, $location) {
     $http.get('clients/clients.json').success(function(data) {
       $scope.clients = data;
-      
       $scope.addRowAsyncAsJSON = function(){
-        $scope.clients.push({'name': $scope.firstName});
+        $scope.clients.push({'username': $scope.firstName});
 
-        var dataObj = { name: $scope.firstName };
+        var dataObj = { username: $scope.firstName };
 
         var res = $http.post('/admin/new', dataObj);
 
