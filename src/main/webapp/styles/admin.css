@@ -332,12 +332,12 @@ div.filter{
 	margin-left: 25px;
 	padding: 0;
 }
-div.filter div#filter-container{ 
+div.filter div#filter-container{
 	padding: 20px;
 	display: block;
 }
 div.filter input, div.filter select{
-	margin: 0; 
+	margin: 0;
 	width: 100%;
 	margin-bottom: 5px;
 }
@@ -847,7 +847,7 @@ div.send-test table tr td input[type="file"]{
 
 }
 #TBox{
-	width: 70%;
+/*	width: 70%;
 	height: 80%;
 	position: absolute;
 	left: 20%;
@@ -855,31 +855,111 @@ div.send-test table tr td input[type="file"]{
 	padding: 20px;
 	box-shadow: 0 0 4px;
 	background-color:rgba(51, 86, 107, 0.12));
-	border-radius: 5px;
+	border-radius: 5px;*/
 }
 #boxWithTasks{
 	position: absolute;
-	height: 70%;
-	width: 1000px;
-	top:20%;
+	height: 77%;
+	width: 860px;
+	top:15%;
 	overflow: auto;
-	border-radius: 3px;
+	border-radius: 5px;
 	border: solid 1px rgba(19, 24, 28, 0.04);
+	box-shadow: 0 0 3px;
 }
 #boxWithTitle{
 	position: absolute;
-	width: 1000px;
-	top:13%;
-	border-bottom: solid 3px rgba(30, 164, 49, 0.26);
-	padding-bottom: 2px;
+	width: 860px;
+	top:10%;
+	height: 30px;
+	border-radius: 5px;
+	border: solid 1px rgba(19, 24, 28, 0.04);
+	box-shadow: 0 0 3px;
 }
-
+#boxFindTask{
+	height: 310px;
+	width: 270px;
+	margin: 0px;
+	top: 10%;
+	position: absolute;
+	left: 1070px;
+	padding: 5px;
+	text-align: center;
+	font-size: 20px;
+	color: rgb(145, 145, 145);
+	border-radius: 5px;
+	border: solid 1px rgba(19, 24, 28, 0.04);
+	box-shadow: 0 0 4px;
+}
+#boxFindTask div{
+	width: 90%;
+	margin: 0px 5% 15px 5%;
+	float: left;
+	text-align: left;
+}
+#boxFindTask div #boxWithDate{
+	margin-left: 0px;
+}
+#boxFindTask h3{
+	margin-bottom: 10px;
+}
+#boxFindTask div select{
+	width: 50%;
+	float: right;
+}
+#boxFindTask div div select{
+	float: left;
+}
+#boxFindTask div input{
+	width: 100%;
+	float: right;
+}
+#boxFindTask div #day{
+	width: 26%;
+	margin: 0px;
+	font-size: 11px;
+	}
+#boxFindTask div  #mounth{
+	width: 42%;
+	font-size: 11px;
+	margin: 0px;
+}
+#boxFindTask div  #year{
+	width: 32%;
+	margin: 0px;
+	font-size: 11px;
+}
+#boxFindTask div #boxFound{
+	text-align: center;
+}
 .tableTitle{
+	padding-left: 4px;
 	width: 300px;
-
+	padding-left: 15px;
 }
 .tableCubicle{
-	width: 200px;
+	width: 150px;
+	text-align: center;
+}
+.tableTitleT{
+	border-radius: 6px;
+	padding-left: 4px;
+	width: 300px;
+	cursor: pointer;
+	border-radius: 4px;
+	padding-left: 15px;
+}
+.tableCubicleT{
+	width: 150px;
+	border-radius: 4px;
+	cursor: pointer;
+	text-align: center;
+}
+.tableCubicleT:hover{
+	background-color: rgba(7, 53, 82, 0.04);
+}
+.tableTitleT:hover{
+	background-color: rgba(7, 53, 82, 0.04);
 }
 #tableRefresh{
 	width: 65px;
@@ -921,7 +1001,7 @@ td .selectBl{
 }
 
 #build-editor{
-	height: 69%;
+	height: 62%;
 	width: 98%;
 	margin: 2px 1% 1% 1%;
 	border-radius: 5px;
@@ -992,6 +1072,7 @@ table#activity tbody tr td img{
 	top: 70%;
 	z-index: 7;
 	text-align: center;
+	font-size: 14px;
 	border-radius: 10px;
 	box-shadow: 0 0 2px;
 	cursor: pointer;
@@ -1006,12 +1087,12 @@ table#activity tbody tr td img{
 button#sendT{
 	position: absolute;
 	top: 91%;
-	background: #a2b57d;
+	background: #d9e8bb;
 	font-size: 19px;
-	color: #fff;
+	color: rgb(50, 49, 48);
 	margin-left: 1%;
 	border-radius: 6px;
-	text-shadow: 0 1px 0 #828e65;
+	text-shadow: 0 1px 0 #808a6a;
 }
 button#sendT:hover{
 	background: #afbc8e;
