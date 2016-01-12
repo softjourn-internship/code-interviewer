@@ -7,7 +7,7 @@ var myAppModule = angular.module('MyApp', ['ui.ace']);
 /************************************************************************************/
 adminPanelApp.controller('UsersListCtrl', ['$scope', '$http','$location',
   function ($scope, $http, $location) {
-    $http.get('clients/users.json').success(function(data) {
+    $http.get('admin').success(function(data) {
       $scope.users = data;
     });
   }]);
@@ -16,6 +16,11 @@ adminPanelApp.controller('ClientsListCtrl', ['$scope', '$http','$location',
   function ($scope, $http, $location) {
     $http.get('clients/clients.json').success(function(data) {
       $scope.clients = data;
+
+      $scope.clearFields = function() {
+        $scope.firstName = null;
+        $scope.lastName = null;
+      };
       $scope.addRowAsyncAsJSON = function(){
         $scope.clients.push({'username': $scope.firstName});
 

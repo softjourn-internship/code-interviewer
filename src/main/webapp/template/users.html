@@ -71,18 +71,12 @@
 		<tbody>
 			<tr class="hover-tr" ng-repeat="user in lengthClientsPA = (users | filter:{name:searchNameA, taken:selectTaken, email:searchEmailA} | orderBy:'surname')" ng-if="$index >= (currentPage * pageSize) && $index < ((currentPage+1)*pageSize)">
 				<td class="td-status"><img ng-src="images/profiles/{{user.image}}" onerror="this.src='images/profiles/error.png';" style="border-radius: 100%"></td>
-				<td class="td-name"><b>{{user.name}} {{user.surname}}</b></td>
+				<td class="td-name"><b>{{user.firstName}} {{user.lastName}}</b></td>
 				<td>{{user.email}}</td>
 				<td>
-					<div ng-if="user.permission == ''">
-					<select>
-						<option>Admin</option> 
-						<option>Manager</option>
-						<option>Recruiter</option>
-					</select></div>
-					<div ng-if="user.permission == 'Admin'" style="color: #aec785"><b>Admin</b></div>
-					<div ng-if="user.permission == 'Manager'" style="color: #f4d66c"><b>Manager</b></div>
-					<div ng-if="user.permission == 'Recruiter'" style="color: #8491c7"><b>Recruiter</b></div>
+					<div ng-if="user.role == 'ROLE_ADMIN'" style="color: #aec785"><b>Admin</b></div>
+					<div ng-if="user.role == 'ROLE_MANAGER'" style="color: #f4d66c"><b>Manager</b></div>
+					<div ng-if="user.role == 'ROLE_RECRUITER'" style="color: #8491c7"><b>Recruiter</b></div>
 				</td>
 			</tr>
 		</tbody>

@@ -7,7 +7,7 @@
     "specialty":"Front-End developer",
     "englishLevel":"Intermediate",
     "email":"kutsaniuk@gmail.com",
-    "bgImage":"id1-bg.jpg",
+    "bgImage":".jpg",
     "avatar":"id1-avatar.png",
     "activity":[
         {"technology":"Java", "taken":"failed","review":"checked","complication":"Hard"},

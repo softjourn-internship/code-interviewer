@@ -1,22 +1,25 @@
 <section>
 <div class="box">
-	
+	<table id="head">
+		<tr>
+			<td>{{lengthClientsPA.length}} Participants</td>
+			<td style="height:35px;">
+				<select 
+					ng-change="changeAction()" 
+					ng-model="pageSize" 
+					ng-options="opt as opt for opt in pageSizes">
+				</select>
+			</td>
+		</tr>
+	</table>
 	<table id="tableData" class="main-table" cellspacing="0" cellpadding="0">
-		<span>Participants
-		<div id="page-size">
-			<select 
-			ng-change="changeAction()" 
-			ng-model="pageSize" 
-			ng-options="opt as opt for opt in pageSizes"></select>
-		</div>
-		</span>
 		<thead>
 			<th></th>
 			<th>Name</th>
 			<th>Email</th>
 			<th>Sent</th>
 			<th>Returned</th>
-			<th>Taken</th>
+			<th style="padding-right:15px">Taken</th>
 		</thead>
 		<tbody>
 			<tr class="hover-tr" ng-repeat="client in lengthClientsPA = (clients | filter:{name:searchNameA, taken:'done', email:searchEmailA} | orderBy:'surname')" ng-if="$index >= (currentPage * pageSize) && $index < ((currentPage+1)*pageSize)">
@@ -27,25 +30,32 @@
 				<td>{{client.testReturn}}</td>
 				<td class="td-status"><img ng-src="images/{{client.taken}}.png" onerror="this.src='images/error.png';"></td>
 			</tr>
+			<tr ng-if="lengthClientsPA == 0"><td style="padding-left: 25px;color:#666">No search result</td></tr>
 		</tbody>
 	</table>
 	
-	<div class="tool">
-		
-	</div>
-	<span>{{currentPage + 1}} in {{pageNumber}} | {{lengthClientsPA.length}} Elements</span>
+	<table id="tool" ng-if="lengthClientsPA != 0">
+		<tr>
+			<td>			
+ 		 		<button ng-click="paging(0)">Prev</button>
+ 				<span ng-click="paging(currentPage + 1)">{{currentPage + 1}}</span>
+				<button ng-click="paging(1)">Next</button>
+ 				</td>
+		</tr>
+	</table>
 </div>
 <div class='alt'>Add new participant</div>
 <div id="right-container">
 	<div id="filter" class="box filter">
 		<span>Filter</span>
 		<div id="filter-container">
-			<input type="text" placeholder="Name" onblur="this.placeholder='Name'" onfocus="this.placeholder=''" ng-model="searchNameA" ng-change="pageSize = 20"><br>
-			<input type="text" placeholder="Email adress" onblur="this.placeholder='Email adress'" onfocus="this.placeholder=''" ng-model="searchEmailA"><br>
-			
+			<input type="text" placeholder="Name" onblur="this.placeholder='Name'" onfocus="this.placeholder=''" ng-model="searchNameA" ng-change="pageSize"><br>
+			<input type="text" placeholder="Email adress" onblur="this.placeholder='Email adress'" onfocus="this.placeholder=''" ng-model="searchEmailA" ng-change="pageSize"><br>
 		</div>
 	</div>
-	<div id="chart-taken" ng-controller="ClientsChartsCtrl" class="chart" google-chart chart="chartPie"/>
+
 </div>
 
 </section>
+
+

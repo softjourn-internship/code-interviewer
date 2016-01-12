@@ -8,7 +8,10 @@
 			<table cellspacing="0" cellpadding="0">
 				<tr>
 					<td class="img"><img src="images/profiles/error.png"></td>
-					<td><span>New participant</span></td>
+					<td>
+						<span ng-if="firstName == null">New participant</span>
+						<span ng-if="firstName != null">{{firstName}} {{lastName}}</span>
+					</td>
 					<td><button id="close">Close</button></td>
 				</tr>
 			</table>	
@@ -22,7 +25,7 @@
 				</tr>
 				<tr>
 					<td>Last Name</td>
-					<td><input type="text"></td>
+					<td><input type="text" ng-model="lastName"></td>
 				</tr>
 				<tr>
 					<td>Birthday</td>
@@ -71,7 +74,7 @@
 		</div>
 		<div class="tool">
 			<button style="margin:0" ng-click="addRowAsyncAsJSON()" class="send">Add participant</button>
-			<button id="close" style="float:right">Cancel</button>
+			<button id="close" style="float:right" ng-click="clearFields()">Cancel</button>
 		</div>
 	</form>
 	</div>
@@ -92,9 +95,9 @@
 		</tr>
 	</table>
 	<table id="tableData" class="main-table" cellspacing="0" cellpadding="0">
-		<thead>
-			<th style="padding-left:15px">Name</th>
+		<thead ng-if="lengthClientsPA != 0">
 			<th></th>
+			<th>Name</th>
 			<th>Email</th>
 			<th>Sent</th>
 			<th>Returned</th>
