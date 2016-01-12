@@ -31,7 +31,7 @@ adminPanelApp.controller('ClientsListCtrl', ['$scope', '$http','$location',
         res.success(function (data, status, headers, config) {
           $scope.message = data;
         });
-        
+
       };
 
         $scope.pageSizes = [5, 10, 15, 20];
@@ -141,11 +141,12 @@ adminPanelApp.controller('ClientsProfileCtrl', ['$scope', '$http', '$location','
   adminPanelApp.controller('TasksCtrl',['$scope','$http',function ($scope,$http){
       $scope.Visible=true;
       $scope.visibleMessageDel=false;
+      $scope.countTaskT;
+      $scope.dateForFilter={};
       $scope.getTaskList=function(){
       $http.get("data/AllTasks.json").then(function (response) {
         $scope.allTasks=response.data;
-        var v=$scope.allTasks;
-        //console.log(v);
+
       });
     };
       $scope.buttonTbox;
@@ -153,19 +154,27 @@ adminPanelApp.controller('ClientsProfileCtrl', ['$scope', '$http', '$location','
         $scope.buttonTbox=buttonTitle;
       }
       $scope.changeButton=function(){
-        document.getElementById("sendT").style.background = 'rgb(100, 135, 181)';
+        document.getElementById("sendT").style.background = '#abdd48';
+        $scope.anableButton=true;
+
       }
       $scope.changeButtonBack=function(){
-        document.getElementById("sendT").style.background = '#a2b57d';
+        document.getElementById("sendT").style.background = '#d9e8bb';
+        $scope.anableButton=false;
       }
       $scope.delTask=function(taskId){
+          $scope.taskIdDeleted=taskId;
           $scope.visibleMessageDel=true;
           for(var i=0;i<$scope.allTasks.length;i++){
           var obj = $scope.allTasks[i];
           if(taskId==i){
             $scope.titleTaskDel=obj.title;
+            break;
           }
         }
+      }
+      $scope.deletedTask=function(){
+        $scope.allTasks.splice($scope.taskIdDeleted,1);
       }
       $scope.changeFrame=function(taskId) {
         if(taskId!='empty'){
@@ -176,17 +185,47 @@ adminPanelApp.controller('ClientsProfileCtrl', ['$scope', '$http', '$location','
             $scope.diffTaskC=obj.level;
             $scope.techTaskC=obj.language;
             $scope.TaskC=obj.task;
+            }
+          }
         }
-      }
+        else{
+          $scope.titleTaskC='';
+          $scope.diffTaskC='';
+          $scope.techTaskC='';
+          $scope.TaskC='';
+        }
+          $scope.Visible=!$scope.Visible;
+        }
+        $scope.dateEndFilter="";
+    $scope.days=[];
+    for (var q=1; q<32;q++){
+      $scope.days.push(q);
     }
-    else{
-      $scope.titleTaskC='';
-      $scope.diffTaskC='';
-      $scope.techTaskC='';
-      $scope.TaskC='';
-    }
-      $scope.Visible=!$scope.Visible;
-    }
+
+    //function for sort
+    $scope.sortBy = function() {
+  var order = [];
+  angular.forEach($scope.tablehead, function(h){
+    if (h.sort>0) order[h.sort-1] = h.name;
+    if (h.sort<0) order[Math.abs(h.sort)-1] = '-'+h.name;
+  });
+  return order;
+};
+$scope.sortReorder = function(col,e) {
+  if (e.shiftKey) {
+    var sortIndex = 0;
+    angular.forEach($scope.tablehead, function(el) {
+      if (Math.abs(el.sort)>sortIndex) sortIndex = Math.abs(el.sort);
+    });
+    angular.forEach($scope.tablehead, function(el) {
+      if (el.name==col) el.sort = el.sort?-el.sort:sortIndex+1;
+    });
+  } else {
+    angular.forEach($scope.tablehead, function(el) {
+      if (el.name==col) el.sort = el.sort>0?-1:1; else el.sort = null;
+    });
+  }
+};
 
   }]);
 
@@ -197,7 +236,7 @@ adminPanelApp.config([
   '$routeProvider', '$locationProvider',
   function($routeProvide, $locationProvider){
     // $locationProvider.html5Mode(true);
-        
+
     $routeProvide
         // .when('/',{
         //   templateUrl:'template/login.html',
