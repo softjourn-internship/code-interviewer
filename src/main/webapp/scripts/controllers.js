@@ -10,6 +10,23 @@ adminPanelApp.controller('UsersListCtrl', ['$scope', '$http','$location',
     $http.get('admin').success(function(data) {
       $scope.users = data;
     });
+
+    // %scope.table = function (data) {
+    //   var openTable = '<table id="tableData" class="main-table" cellspacing="0" cellpadding="0">';
+    //   var closeTable = '</table>';
+    //   var openThead = '<thead ng-if="lengthClientsPA != 0">';
+    //   var closeThead = '</thead>';
+    //   var openTbody = '<tbody>';
+    //   var closeTbody = '</tbody>';
+    //   var noSearch = '<tr ng-if="lengthClientsPA == 0"><td style="padding-left: 25px;color:#666">No search result</td></tr>'
+
+    //   var i = 0;
+
+    //   while(i < data.length){
+
+    //   }
+    // };
+
   }]);
 
 adminPanelApp.controller('ClientsListCtrl', ['$scope', '$http','$location',
@@ -38,13 +55,15 @@ adminPanelApp.controller('ClientsListCtrl', ['$scope', '$http','$location',
         $scope.pageSize = $scope.pageSizes[1];
         $scope.currentPage = 0;
         $scope.pageNumber = Math.ceil($scope.clients.length / $scope.pageSize);
-
+        
         $scope.paging = function (type) {
           if (type == 0 && $scope.currentPage > 0) {
             --$scope.currentPage;
+            document.getElementById("currentPage").style.color = "#222";
           }
           else if (type == 1 && $scope.currentPage < $scope.pageNumber-1){
             ++$scope.currentPage;
+            document.getElementById("currentPage").style.color = "#222";
           }
         }
 
@@ -54,11 +73,11 @@ adminPanelApp.controller('ClientsListCtrl', ['$scope', '$http','$location',
           $scope.pageNumber =Math.ceil($scope.results.length / $scope.pageSize);
         });
 
-  $scope.changeAction = function () {
-      $scope.currentPage = 0;
-      $scope.pageNumber = Math.ceil($scope.clients.length / $scope.pageSize);
-  }
-
+      $scope.changeAction = function () {
+          $scope.currentPage = 0;
+          $scope.pageNumber = Math.ceil($scope.clients.length / $scope.pageSize);
+      }
+      
   });
 }]);
 
@@ -243,10 +262,6 @@ adminPanelApp.config([
         //   controller:'loginCtrl'
         // })
         .when('/',{
-          templateUrl:'template/dashboard.html',
-          controller:'ClientsListCtrl'
-        })
-        .when('/participants',{
           templateUrl:'template/participants.html',
           controller:'ClientsListCtrl'
         })
@@ -313,4 +328,4 @@ myAppModule.controller('SelectTaskCtrl', function($scope,$http){
 });
 myAppModule.controller("testEd",function($scope){
   $scope.code="";
-})
+});

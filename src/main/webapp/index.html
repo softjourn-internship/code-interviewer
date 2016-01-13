@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Admin Panel</title>
+    <link rel="shortcut icon" href="images/icon.png">
 	<link rel="stylesheet" type="text/css" href="styles/admin.css">
 
     <meta name="viewport" content="width=device-width, initial-scale: 1.0, user-scalabe=0">
@@ -37,10 +38,26 @@
 
 	<div id="container">
 		<div class="sidebar">
+            <div class="user">
+                <center>
+                <div>
+                <img src="images/.jpg" onerror="this.src='images/profiles/error.png';">
+                <span>Dmytro Kutsaniuk</span>
+                <span id="role">Manager<img src="images/arrowDown.png"></span>
+                </div>
+                <div id="userMenu" class="menu">
+                    <ul>
+                        <a href="#/participants/1"><li>Profile</li></a>
+                        <a href="#/"><li>Participants</li></a>
+                        <hr>
+                        <a href="/login?logout"><li>Logout</li></a>
+                    </ul>
+                </div>
+                </center>
+            </div>
 			<ul id="nav">
 				<li><a id="dashboard" href="#/dashboard">DASHBOARD</a></li>
-				<li><a id="participants" href="#/participants">PARTICIPANTS</a></li>
-                <li><a id="participants" href="#/users">USERS</a></li>
+                <li><a style="display:none" id="participants" href="#/users">USERS</a></li>
 				<li><a id="statistics" href="#/statistics">STATISTICS</a></li>
                 <li><a id="tasks" href="#/tasks">TASKS</a></li>
 				<li><a id="workspace" href="workspace.html">WORKSPACE</a></li>
@@ -51,12 +68,15 @@
 	<div class="content">
 
         <div id="header">
-            <div class="mobile"><img src="images/menu.png"></div>
+            <div id="mainMobile" class="mobile"></div>
+            <div id="secondMobile" class="mobile"></div>
             <div class="search"><input type="text" placeholder="Search for something..." onblur="this.placeholder='Search for something...'"></div>
-
+            <div id="user">
+                <a href="#/participants/1">
+                <img src="images/.jpg" onerror="this.src='images/profiles/error.png';"></a>
+            </div>
             <div class="logout">
-                <a href="/login?logout">
-                Log out</a>
+                <a href="/login?logout">Log out</a>
             </div>
         </div>
         <div id="view" ng-view></div>

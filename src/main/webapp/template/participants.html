@@ -1,5 +1,6 @@
 <script type="text/javascript">
     $("#datepicker").datepicker();
+    document.title = "Dashboard";
 </script>
 <div class="send-test">
 	<div id="close-box" ></div>
@@ -85,12 +86,15 @@
 	<table id="head">
 		<tr>
 			<td>{{clients.length}} Participants</td>
-			<td style="height:35px;">
-				<select 
-					ng-change="changeAction()" 
-					ng-model="pageSize" 
-					ng-options="opt as opt for opt in pageSizes">
-				</select>
+			<td id="page-size">
+				<div>
+				<input type="radio" id="radio1" name="radios" ng-change="changeAction()"  ng-model="pageSize" value="5">
+			    <label id="label1" for="radio1">5</label>
+			    <input type="radio" id="radio2" name="radios" ng-change="changeAction()"  ng-model="pageSize" value="10" selected>
+			    <label id="label2" for="radio2">10</label>
+			    <input type="radio" id="radio3" name="radios" ng-change="changeAction()"  ng-model="pageSize" value="15">
+			    <label id="label3" for="radio3">15</label>	
+			    </div>
 			</td>
 		</tr>
 	</table>
@@ -120,7 +124,9 @@
 		<tr>
 			<td>			
  		 		<button ng-click="paging(0)">Prev</button>
- 				<span ng-click="paging(currentPage + 1)">{{currentPage + 1}}</span>
+ 				<span id="currentPage" ng-click="paging(currentPage)" style="color:#222">{{currentPage + 1}}</span>
+ 				<span id="currentPage" ng-if="(currentPage + 2) <= pageNumber" ng-click="paging(currentPage)">{{currentPage + 2}}</span>
+ 				<span id="currentPage" ng-if="(currentPage + 3) <= pageNumber" ng-click="paging(currentPage)">{{currentPage + 3}}</span>
 				<button ng-click="paging(1)">Next</button>
  				</td>
 			<td><button class="send">New</button>
@@ -133,14 +139,26 @@
 	<div id="filter" class="box filter">
 		<span>Filter</span>
 		<div id="filter-container">
-			<input type="text" placeholder="Name" onblur="this.placeholder='Name'" onfocus="this.placeholder=''" ng-model="searchNameA" ng-change="pageSize"><br>
-			<input type="text" placeholder="Email adress" onblur="this.placeholder='Email adress'" onfocus="this.placeholder=''" ng-model="searchEmailA" ng-change="pageSize"><br>
-			<select ng-model="selectTaken" ng-change="pageSize">
+			<input type="text" placeholder="Name" onblur="this.placeholder='Name'" onfocus="this.placeholder=''" ng-model="searchNameA" ng-change="changeAction()"><br>
+			<input type="text" placeholder="Email adress" onblur="this.placeholder='Email adress'" onfocus="this.placeholder=''" ng-model="searchEmailA" ng-change="changeAction()"><br>
+			<!-- <select ng-model="selectTaken" ng-change="changeAction()">
 				<option value="" selected>All</option>
 				<option value="done">Done</option>
 				<option value="inProcess">In process</option>
 				<option value="failed">Failed</option>
-			</select>
+			</select> -->
+			<span id="select">
+				<div ng-if="selectTaken == null || selectTaken == ''">All</div>
+				<div ng-if="selectTaken != null">{{selectTaken}}</div>
+			</span>
+			<div id="selectMenu" class="menu">
+                <ul ng-model="selectTaken">
+                    <li ng-click="selectTaken=''">All</li>
+                    <li ng-click="selectTaken='done'">Done</li>
+                    <li ng-click="selectTaken='inProcess'">In process</li>
+                    <li ng-click="selectTaken='failed'">Failed</li>
+                </ul>
+            </div>
 		</div>
 	</div>
 	<div id="chart-taken" ng-controller="ClientsChartsCtrl" class="chart" google-chart chart="chartPie"/>
