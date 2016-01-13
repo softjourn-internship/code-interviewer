@@ -55,7 +55,7 @@ adminPanelApp.controller('ClientsListCtrl', ['$scope', '$http','$location',
         $scope.pageSize = $scope.pageSizes[1];
         $scope.currentPage = 0;
         $scope.pageNumber = Math.ceil($scope.clients.length / $scope.pageSize);
-        
+
         $scope.paging = function (type) {
           if (type == 0 && $scope.currentPage > 0) {
             --$scope.currentPage;
@@ -77,7 +77,7 @@ adminPanelApp.controller('ClientsListCtrl', ['$scope', '$http','$location',
           $scope.currentPage = 0;
           $scope.pageNumber = Math.ceil($scope.clients.length / $scope.pageSize);
       }
-      
+
   });
 }]);
 
@@ -218,7 +218,12 @@ adminPanelApp.controller('ClientsProfileCtrl', ['$scope', '$http', '$location','
         $scope.dateEndFilter="";
     $scope.days=[];
     for (var q=1; q<32;q++){
-      $scope.days.push(q);
+      if(q>0 && q<10){
+        $scope.days.push("0"+q);
+      }
+      else{
+        $scope.days.push(q);
+      }
     }
 
     //sort
