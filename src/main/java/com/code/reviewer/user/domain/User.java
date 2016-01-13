@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by NicholasG on 17.12.2015.
@@ -39,8 +40,11 @@ public class User implements Serializable {
     @Column(name = "isActive", nullable = false)
     private boolean isActive;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "recruiter")
-    private List<Participant> participantList;
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+    @JoinTable(name = "user_participant",
+            joinColumns = @JoinColumn(name = "username"),
+            inverseJoinColumns = @JoinColumn(name = "participantId"))
+    private Set<Participant> participantList;
 
     public User() {
 

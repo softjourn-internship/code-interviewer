@@ -5,7 +5,8 @@ import com.code.reviewer.user.domain.User;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
+import java.util.Set;
 
 /**
  * Created by Iwan on 10.01.2016.
@@ -37,22 +38,24 @@ public class Participant implements Serializable {
     @Column(name = "taken")
     private String taken;
 
-    @ManyToOne(cascade={CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.LAZY)
-    @JoinColumn(name = "username")
-    private User recruiter;
+   @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+    @JoinTable(name = "user_participant",
+            joinColumns = @JoinColumn(name = "participantId"),
+            inverseJoinColumns = @JoinColumn(name = "username"))
+    private Set<User> userSet;
 
     public Participant() {
 
     }
 
-    public Participant (String firstName, String lastName, String email, Date sent, Date returned, String taken, User recruiter) {
+    public Participant (String firstName, String lastName, String email, Date sent, Date returned, String taken) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.sent = sent;
         this.returned = returned;
         this.taken = taken;
-        this.recruiter = recruiter;
+
     }
 
     public Integer getParticipantID() {
@@ -79,9 +82,6 @@ public class Participant implements Serializable {
         return taken;
     }
 
-    public User getUser() {
-        return  recruiter;
-    }
 
     public void setParticipantID( Integer participantID){
         this.participantID = participantID;
@@ -111,9 +111,6 @@ public class Participant implements Serializable {
         this.taken = taken;
     }
 
-    public void setUser(User recruiter) {
-        this.recruiter = recruiter;
-    }
 
     @Override
     public String toString() {
@@ -125,8 +122,6 @@ public class Participant implements Serializable {
                 ", sent='" + sent + '\'' +
                 ", returned='" + returned + '\'' +
                 ", taken=" + taken +
-                "userFirstName = " + recruiter.getFirstName()+
-                "userLastName = " + recruiter.getLastName() +
                 '}';
     }
 
