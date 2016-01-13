@@ -221,30 +221,9 @@ adminPanelApp.controller('ClientsProfileCtrl', ['$scope', '$http', '$location','
       $scope.days.push(q);
     }
 
-    //function for sort
-    $scope.sortBy = function() {
-  var order = [];
-  angular.forEach($scope.tablehead, function(h){
-    if (h.sort>0) order[h.sort-1] = h.name;
-    if (h.sort<0) order[Math.abs(h.sort)-1] = '-'+h.name;
-  });
-  return order;
-};
-$scope.sortReorder = function(col,e) {
-  if (e.shiftKey) {
-    var sortIndex = 0;
-    angular.forEach($scope.tablehead, function(el) {
-      if (Math.abs(el.sort)>sortIndex) sortIndex = Math.abs(el.sort);
-    });
-    angular.forEach($scope.tablehead, function(el) {
-      if (el.name==col) el.sort = el.sort?-el.sort:sortIndex+1;
-    });
-  } else {
-    angular.forEach($scope.tablehead, function(el) {
-      if (el.name==col) el.sort = el.sort>0?-1:1; else el.sort = null;
-    });
-  }
-};
+    //sort
+    $scope.sortType= '';
+    $scope.sortReverse  = true;
 
   }]);
 

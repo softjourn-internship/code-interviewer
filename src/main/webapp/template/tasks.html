@@ -114,10 +114,10 @@
 		<div id="boxWithTitle">
 		<table id="table-dashboard">
   		<thead>
-				<td><div class="tableTitleT">Title task</div></td>
-				<td><div class="tableCubicleT">Technology</div></td>
+				<td><div class="tableTitleT" ng-click="sortType='title';sortReverse=!sortReverse">Title task<img ng-show="sortType == 'title' && sortReverse" class="imageForSort" src="images/sortup.png"><img ng-show="sortType == 'title' && !sortReverse" class="imageForSort" src="images/sortdown.png"></div></td>
+				<td><div class="tableCubicleT" ng-click="sortType='language';sortReverse=!sortReverse">Technology<img ng-show="sortType == 'language' && sortReverse" class="imageForSort" src="images/sortup.png"><img ng-show="sortType == 'language' && !sortReverse" class="imageForSort" src="images/sortdown.png"></div></td>
 				<td><div class="tableCubicleT">Last modify</div></td>
-				<td><div class="tableCubicleT">Difficalty</div></td>
+				<td><div class="tableCubicleT"ng-click="sortType='level';sortReverse=!sortReverse">Difficalty<img ng-show="sortType == 'level' && sortReverse" class="imageForSort" src="images/sortup.png"><img ng-show="sortType == 'level' && !sortReverse" class="imageForSort" src="images/sortdown.png"></div></td>
 				<!-- <td><div id="tableRefresh"><img id="refreshImage" src="images/refresh.png" ng-click="getTaskList();" /></div></td> -->
   		</thead>
 		</table>
@@ -126,7 +126,7 @@
 			<table id="table-dashboard">
 				<thead></thead>
   			<tbody>
-  				<tr class="hover-tr" ng-repeat="task in allTasks | filter:{title:searchTask,language:technology,level:difficalty,day:dayForFilter,mounth:mounthForFilter,year:yearForFilter}" ng-click="sortReorder(task.title,$event)">
+  				<tr class="hover-tr" ng-repeat="task in allTasks | orderBy:sortType:sortReverse | filter:{title:searchTask,language:technology,level:difficalty,day:dayForFilter,mounth:mounthForFilter,year:yearForFilter}" ng-click="sortReorder(task.title,$event)">
 						<td><div class="tableTitle">{{task.title}}</div></td>
 						<td><div class="tableCubicle">{{task.language}}</div></td>
 						<td><div class="tableCubicle">{{task.day+"."+task.mounth+"."+task.year}}</div></td>

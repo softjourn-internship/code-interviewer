@@ -1,0 +1,10 @@
+<!--Email template for notifying a user, that he has been added to app users list, and now can pass authentication -->
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
