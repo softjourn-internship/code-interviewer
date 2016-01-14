@@ -10,13 +10,13 @@
 	<div ng-show="visibleMessageDel">
 		<div id="messageDeleteBox"></div>
 		<div id="messageDelete">
-			<h1>Are you sure that you want to delete the task "{{titleTaskDel}}"?</h1>
-			<div class="buttonMessageDel" id="TDel" ng-click="deletedTask();;visibleMessageDel=!visibleMessageDel;"><h1>Delete</h1></div>
-			<div class="buttonMessageDel" id="TCanc" ng-click="visibleMessageDel=!visibleMessageDel;"><h1>Cancel</h1></div>
+			<span>Are you sure that you want to delete the task "{{titleTaskDel}}"?</span>
+			<div class="buttonMessageDel" id="TDel" ng-click="deletedTask();;visibleMessageDel=!visibleMessageDel;">Delete</div>
+			<div class="buttonMessageDel" id="TCanc" ng-click="visibleMessageDel=!visibleMessageDel;">Cancel</div>
 		</div>
-</div>
+	</div>
 	<div class="Tbox" ng-show="!Visible">
-		<img src="images/close.png" ng-click="changeFrame('empty');changeButtonBack();" />
+		<span ng-click="changeFrame('empty');changeButtonBack();">Cancel</span>
 		<form method="POST">
 			<table>
 				<tr>
@@ -55,7 +55,7 @@
 	<div id="TBox" ng-show=Visible>
 		<!---->
 		<div id="boxFindTask">
-				<h3>Find Task:</h1>
+				<span>Find Task</span>
 			<div>
 				<input type="text" placeholder="Title Task" onblur="this.placeholder='Title Task'" onfocus="this.placeholder=''" ng-model="searchTask"></br>
 			</div>
@@ -111,6 +111,7 @@
 						<div id="boxFound">Found tasks: {{allTasks.length}}</div>
 					</div>
 		</div>
+		<div id="BoxTitleAndTasks">
 		<div id="boxWithTitle">
 		<table id="table-dashboard">
   		<thead>
@@ -131,7 +132,7 @@
 						<td><div class="tableCubicle">{{task.language}}</div></td>
 						<td><div class="tableCubicle">{{task.day+"."+task.mounth+"."+task.year}}</div></td>
 						<td><div class="tableCubicle">{{task.level}}</div></td>
-						<td id="blockEdit"><img ng-click="changeFrame(task.id);CreateOrChangeTask('Change Task');" id="editImage" src="images/edit.jpg" /></td>
+						<td id="blockEdit"><img ng-click="changeFrame(task.id);CreateOrChangeTask('Change Task');" id="editImage" src="images/task-edit.png" /></td>
 						<td id="blockEdit"><img ng-click="delTask(task.id,false);" src="images/trash.png" id="deleteImage" /></td>
 					</tr>
   			</tbody>
@@ -142,6 +143,7 @@
 		<div class="toolT">
 			<button id="add" ng-click="changeFrame('empty'); CreateOrChangeTask('Create Task');">Add</button>
 		</div>
+	</div>
 	</div>
 
 </div>

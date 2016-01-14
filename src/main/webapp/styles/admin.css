@@ -991,17 +991,17 @@ div.send-test table tr td input[type="file"]{
 
 /* css for tasks.html*/
 .Tbox{
-	width: 80%;
-	height: 80%;
+	width: 60%;
+	height: 75%;
 	position: absolute;
 	margin: 1%;
-	background-color: #D3D1F7;
+	background-color: #fff;
 	border-radius: 5px;
-	box-shadow: 0 0 8px;
-
+	font-size: 12px;
+	z-index: 6;
 }
-#TBox{
-/*	width: 70%;
+/*#TBox{
+	width: 70%;
 	height: 80%;
 	position: absolute;
 	left: 20%;
@@ -1009,27 +1009,43 @@ div.send-test table tr td input[type="file"]{
 	padding: 20px;
 	box-shadow: 0 0 4px;
 	background-color:rgba(51, 86, 107, 0.12));
-	border-radius: 5px;*/
+	border-radius: 5px;
+}*/
+
+#BoxTitleAndTasks {
+	float: left;
+	background-color: #fff;
+	position: absolute;
+	top: 10%;
+	height: 80%;
+	width: 62%;
+	border-radius: 5px;
+	border-bottom: 1px solid #E1E1E1;
+
 }
+
 #boxWithTasks{
 	position: absolute;
-	height: 77%;
-	width: 860px;
-	top:15%;
+	height: 80%;
+	width: 100%;
+	top:10%;
 	overflow: auto;
-	border-radius: 5px;
-	border: solid 1px rgba(19, 24, 28, 0.04);
-	box-shadow: 0 0 3px;
+	/*border-radius: 5px;*/
+	/*border: solid 0px rgba(19, 24, 28, 0.04);*/
+	/*box-shadow: 0 0 3px;*/
 }
 #boxWithTitle{
+	background-color: #fff;
 	position: absolute;
-	width: 860px;
-	top:10%;
+	width: 100%;
+	margin-top: 10px;
+	/*top:10%;*/
 	height: 30px;
-	border-radius: 5px;
-	border: solid 1px rgba(19, 24, 28, 0.04);
-	box-shadow: 0 0 3px;
+	/*border-radius: 5px;*/
+	/*border: solid 0px rgba(19, 24, 28, 0.04);*/
+	/*box-shadow: 0 0 3px;*/
 }
+
 #boxFindTask{
 	height: 310px;
 	width: 270px;
@@ -1041,11 +1057,35 @@ div.send-test table tr td input[type="file"]{
 	text-align: center;
 	font-size: 20px;
 	color: rgb(145, 145, 145);
-	border-radius: 5px;
-	border: solid 1px rgba(19, 24, 28, 0.04);
-	box-shadow: 0 0 4px;
+	border-radius: 6px;
+	/*box-shadow: 0 0 4px;*/
 }
+
+#boxWithTasks{
+	background-color: #fff;
+}
+
+#boxWithTasks #table-dashboard{
+	border-collapse: collapse;
+}
+
+#boxWithTasks table tbody tr td{
+	font-size: 13px;
+	padding: 4px 0px;
+}
+
+#boxFindTask {
+	position: absolute;
+	float: right;
+	width: 20%;
+	/*margin-left: 1%;*/
+	background-color: #fff;
+	font-size: 12px;
+	border-bottom: 1px solid #E1E1E1;
+}
+
 #boxFindTask div{
+	background: #fff;
 	width: 90%;
 	margin: 0px 5% 15px 5%;
 	float: left;
@@ -1054,8 +1094,12 @@ div.send-test table tr td input[type="file"]{
 #boxFindTask div #boxWithDate{
 	margin-left: 0px;
 }
-#boxFindTask h3{
-	margin-bottom: 10px;
+#boxFindTask span {
+	color: #888;
+	font-size: 12px;
+	margin-bottom: 25px;
+	text-align: left;
+	float: left;
 }
 #boxFindTask div select{
 	width: 50%;
@@ -1126,11 +1170,12 @@ div.send-test table tr td input[type="file"]{
 }
 
 #editImage{
-	height: 20px;
-	width: 20px;
+	height: 25px;
+	width: 25px;
 	cursor: pointer;
 	float: left;
 }
+
 #refreshImage{
 	height: 30px;
 	width: 30px;
@@ -1168,16 +1213,16 @@ td input{
 	margin-left: 5px;
 	width: 200%;
 }
-.Tbox img{
+.Tbox span{
 	width: 20px;
-	height: 20px;
+	height: 0px;
 	position: absolute;
-	left: 97%;
-	box-shadow:0 0 8px;
+
+	left: 90%;
 	padding: 0px;
-	border-radius: 100%;
-	margin: 6px;
+	margin: 10px;
 	cursor: pointer;
+	color: #000;
 }
 #inputTitle{
 	color: #000;
@@ -1196,6 +1241,26 @@ table#activity tbody tr td img{
 	top:93%;
 }
 
+.toolT #add{
+	margin-left: 10px;
+	background: #A2B57D;
+	color: #fff;
+	/*padding: 4px 12px;*/
+	border-radius: 2px;
+	border-color: #a2b57d;
+	text-shadow: 0 1px 0 #828e65;
+}
+
+button.toolT:hover, button#add:hover{
+	background: #afbc8e;
+	border-color: #afbc8e;
+	color: #fff;
+}
+button.toolT:active, button#add:active{
+	background: #a2b57d;
+	border-color: #a2b57d;
+}
+
 #messageDeleteBox{
 	position: fixed;
 	height: 101%;
@@ -1207,53 +1272,57 @@ table#activity tbody tr td img{
 	z-index: 4;
 }
 #messageDelete{
+	font-size: 14px;
 	position: absolute;
-	height: 30%;
-	width: 50%;
+	height: 20%;
+	width: 40%;
 	top: 30%;
-	left: 26%;
+	left: 30%;
 	z-index: 6;
-	background-color: rgb(9, 55, 78);
+	background-color: #fff;
 	color: rgb(213, 223, 238);
-	border-radius: 10px;
-	box-shadow: 0 0 8px;
+	border-radius: 3px;
 	padding: 2%;
 }
 .buttonMessageDel{
-	height: 20%;
-	width: 25%;
+	/*height: 15%;*/
+	/*width: 15%;*/
 	position: absolute;
 	top: 70%;
 	z-index: 7;
 	text-align: center;
-	font-size: 14px;
-	border-radius: 10px;
-	box-shadow: 0 0 2px;
+	font-size: 12px;
+	/*border-radius: 3px;*/
 	cursor: pointer;
+	color: #000;
 }
 #TDel{
-	background-color: rgb(69, 17, 20);
+	/*background-color: rgb(69, 17, 20);*/
+	left: 60%;
 }
 #TCanc{
-	background-color: rgb(96, 70, 14);
-	left: 70%;
+	/*background-color: #eeeeee;*/
+	left: 80%;
 }
 button#sendT{
 	position: absolute;
 	top: 91%;
-	background: #d9e8bb;
-	font-size: 19px;
-	color: rgb(50, 49, 48);
+	background: #A2B57D;
+	border-color: #A2B57D;
+	font-size: 12px;
+	/*color: rgb(50, 49, 48);*/
 	margin-left: 1%;
-	border-radius: 6px;
-	text-shadow: 0 1px 0 #808a6a;
+	border-radius: 2px;
+	color: #fff;
+	text-shadow: 0 1px 0 #828e65;
+	/*text-shadow: 0 1px 0 #808a6a;*/
 }
 button#sendT:hover{
 	background: #afbc8e;
 	color: #fff;
 }
 button#sendT:active{
-	background: #a2b57d;
+	background: #A2B57D;
 }
 .imageForSort{
 	margin: 6px 8px;
