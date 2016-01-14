@@ -215,13 +215,14 @@ li, li a, a, #select, tr{
 	-o-transition: 0.1s;
 	transition: 0.1s;
 }
+
 tr, button{
 	-webkit-transition: 0.2s;
 	-moz-transition: 0.2s;
 	-o-transition: 0.2s;
 	transition: 0.2s;
 }
-ul#nav li a, li#li-main {
+ul#nav li a, li#li-main, ul.sub li a {
 	color: #577a9d;
 	color: #666;
 	font-family: 'Open Sans', Tahoma;
@@ -231,6 +232,12 @@ ul#nav li a, li#li-main {
 	font-size: 11px;
 	border-left: 5px solid transparent;
 }
+ul#nav ul.sub{
+	display: none;
+	margin-top: -10px;
+	margin-left: 45px;
+}
+ul#nav ul.sub li a{padding: 5px;}
 ul#nav li a:hover {
 	color: #fff;
 	margin-left: 5px;

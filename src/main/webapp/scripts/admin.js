@@ -6,6 +6,10 @@ $(document).ready(function() {
 			else {$("div.content").css("margin-left", 180); fadeToggle = false; }
 	});
 
+	$("#dashboard").click(function() {
+			$("ul#subDashboard").slideToggle('fast');
+	});
+
 	$("div#secondMobile").click(function() {
 			$("div.sidebar").fadeToggle();
 	});
