@@ -5,29 +5,20 @@ var myAppModule = angular.module('MyApp', ['ui.ace']);
 
 /* Controllers Admin*/
 /************************************************************************************/
+adminPanelApp.controller('UserCtrl', ['$scope', '$http','$location',
+  function ($scope, $http, $location) {
+    $http.get('clients/1.json').success(function(data) {
+      $scope.user = data;
+    });
+}]);
+
+
 adminPanelApp.controller('UsersListCtrl', ['$scope', '$http','$location',
   function ($scope, $http, $location) {
     $http.get('admin').success(function(data) {
       $scope.users = data;
     });
-
-    // %scope.table = function (data) {
-    //   var openTable = '<table id="tableData" class="main-table" cellspacing="0" cellpadding="0">';
-    //   var closeTable = '</table>';
-    //   var openThead = '<thead ng-if="lengthClientsPA != 0">';
-    //   var closeThead = '</thead>';
-    //   var openTbody = '<tbody>';
-    //   var closeTbody = '</tbody>';
-    //   var noSearch = '<tr ng-if="lengthClientsPA == 0"><td style="padding-left: 25px;color:#666">No search result</td></tr>'
-
-    //   var i = 0;
-
-    //   while(i < data.length){
-
-    //   }
-    // };
-
-  }]);
+}]);
 
 adminPanelApp.controller('ClientsListCtrl', ['$scope', '$http','$location',
   function ($scope, $http, $location) {

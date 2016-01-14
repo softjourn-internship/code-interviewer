@@ -3,9 +3,9 @@
 <head>
 	<meta charset="utf-8">
 	<title>Admin Panel</title>
-    <link rel="shortcut icon" href="images/icon.png">
+   
 	<link rel="stylesheet" type="text/css" href="styles/admin.css">
-
+     <link rel="shortcut icon" href="images/icon.png">
     <meta name="viewport" content="width=device-width, initial-scale: 1.0, user-scalabe=0">
 
 
@@ -38,16 +38,19 @@
 
 	<div id="container">
 		<div class="sidebar">
-            <div class="user">
+            <div class="user" ng-controller="UserCtrl" style="background-image: url(../images/profiles/{{user.bgImage}})
+">
                 <center>
                 <div>
-                <img src="images/.jpg" onerror="this.src='images/profiles/error.png';">
-                <span>Dmytro Kutsaniuk</span>
-                <span id="role">Manager<img src="images/arrowDown.png"></span>
+                    <a href="#/participants/{{user.id}}">
+                <img src="images/profiles/{{user.avatar}}" onerror="this.src='images/profiles/error.png';"></a>
+                <span>{{user.name}} {{user.surname}}</span>
+                <span id="role">{{user.role}}<img src="images/arrowDown.png"></span>
                 </div>
+
                 <div id="userMenu" class="menu">
                     <ul>
-                        <a href="#/participants/1"><li>Profile</li></a>
+                        <a href="#/participants/{{user.id}}"><li>Profile</li></a>
                         <a href="#/"><li>Participants</li></a>
                         <hr>
                         <a href="/login?logout"><li>Logout</li></a>
@@ -71,9 +74,9 @@
             <div id="mainMobile" class="mobile"></div>
             <div id="secondMobile" class="mobile"></div>
             <div class="search"><input type="text" placeholder="Search for something..." onblur="this.placeholder='Search for something...'"></div>
-            <div id="user">
-                <a href="#/participants/1">
-                <img src="images/.jpg" onerror="this.src='images/profiles/error.png';"></a>
+            <div id="user" ng-controller="UserCtrl">
+                <a href="#/participants/{{user.id}}">
+                <img src="images/profiles/{{user.avatar}}" onerror="this.src='images/profiles/error.png';"></a>
             </div>
             <div class="logout">
                 <a href="/login?logout">Log out</a>

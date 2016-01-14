@@ -4,7 +4,7 @@
 </script>
 <div class="send-test">
 	<div id="close-box" ></div>
-	<div>
+	<div id="main">
 		<div class="head">
 			<table cellspacing="0" cellpadding="0">
 				<tr>
@@ -22,45 +22,57 @@
 			<table>
 				<tr>
 					<td>First Name</td>
-					<td><input type="text" ng-model="firstName"></td>
+					<td><input type="text" ng-model="firstName" size="30"></td>
 				</tr>
 				<tr>
 					<td>Last Name</td>
 					<td><input type="text" ng-model="lastName"></td>
 				</tr>
-				<tr>
+				<!-- <tr>
 					<td>Birthday</td>
 					<td><input type="text" id="datepicker" size="30"></td>
-				</tr>
+				</tr> -->
 				<tr>
 					<td>City</td>
 					<td><input type="text"></td>
 				</tr>
 				<tr>
-					<td>Speciality</td>
+					<td>English level</td>
 					<td>
-						<select>
-							<option selected></option>
-							<option>Front-End Developer</option>
-							<option>Java Developer</option>
-							<option>.NET Developer</option>
-							<option>JavaScript Developer</option>
-						</select>
+						<span id="selectEngLvl" class="select selectNewPart">
+						<div ng-if="selectItemEngLvl == null" id="disabled">Select level</div>
+						<div ng-if="selectItemEngLvl != null">{{selectItemEngLvl}}</div>
+						</span>
+						<div id="menuEngLvl" class="menu selectMenu inSentBox">
+			                <ul ng-model="selectItemEngLvl">
+			                	<li ng-click="selectItemEngLvl= null" id="disabled">Select level</li>
+			                    <li ng-click="selectItemEngLvl='Beginner'">Beginner</li>
+			                    <li ng-click="selectItemEngLvl='Elementary'">Elementary</li>
+			                    <li ng-click="selectItemEngLvl='Pre-Intermediate'">Pre-Intermediate</li>
+			                    <li ng-click="selectItemEngLvl='Intermediate'">Intermediate</li>
+			                    <li ng-click="selectItemEngLvl='Upper intermediate'">Upper intermediate</li>
+			                    <li ng-click="selectItemEngLvl='Advanced'">Advanced</li>
+			                    <li ng-click="selectItemEngLvl='Proficient'">Proficient</li>
+			                </ul>
+			            </div>
 					</td>
 				</tr>
 				<tr>
-					<td>English level</td>
+					<td>Speciality</td>
 					<td>
-						<select>
-							<option selected></option>
-							<option>Beginner</option>
-							<option>Elementary</option>
-							<option>Pre-Intermediate</option>
-							<option>Intermediate</option>
-							<option>Upper intermediate</option>
-							<option>Advanced</option>
-							<option>Proficient</option>
-						</select>
+					<span id="selectSpeciality" class="select selectNewPart">
+						<div ng-if="selectItemSpeciality == null" id="disabled">Select speciality</div>
+						<div ng-if="selectItemSpeciality != null">{{selectItemSpeciality}}</div>
+					</span>
+					<div id="menuSpeciality" class="menu selectMenu inSentBox">
+		                <ul ng-model="selectItemSpeciality">
+		                	<li ng-click="selectItemSpeciality=null" id="disabled">Select speciality</li>
+		                    <li ng-click="selectItemSpeciality='Front-End Developer'">Front-End Developer</li>
+		                    <li ng-click="selectItemSpeciality='Java Developer'">Java Developer</li>
+		                    <li ng-click="selectItemSpeciality='.NET Developer'">.NET Developer</li>
+		                    <li ng-click="selectItemSpeciality='JavaScript Developer'">JavaScript Developer</li>
+		                </ul>
+		            </div>
 					</td>
 				</tr>
 				<tr>
@@ -124,7 +136,7 @@
 		<tr>
 			<td>			
  		 		<button ng-click="paging(0)">Prev</button>
- 				<span id="currentPage" ng-click="paging(currentPage)" style="color:#222">{{currentPage + 1}}</span>
+ 				<span id="currentPage" ng-click="paging(currentPage)">{{currentPage + 1}}</span>
  				<span id="currentPage" ng-if="(currentPage + 2) <= pageNumber" ng-click="paging(currentPage)">{{currentPage + 2}}</span>
  				<span id="currentPage" ng-if="(currentPage + 3) <= pageNumber" ng-click="paging(currentPage)">{{currentPage + 3}}</span>
 				<button ng-click="paging(1)">Next</button>
@@ -137,26 +149,20 @@
 <div class='alt'>Add new participant</div>
 <div id="right-container">
 	<div id="filter" class="box filter">
-		<span>Filter</span>
+		<span id="title">Filter</span>
 		<div id="filter-container">
 			<input type="text" placeholder="Name" onblur="this.placeholder='Name'" onfocus="this.placeholder=''" ng-model="searchNameA" ng-change="changeAction()"><br>
 			<input type="text" placeholder="Email adress" onblur="this.placeholder='Email adress'" onfocus="this.placeholder=''" ng-model="searchEmailA" ng-change="changeAction()"><br>
-			<!-- <select ng-model="selectTaken" ng-change="changeAction()">
-				<option value="" selected>All</option>
-				<option value="done">Done</option>
-				<option value="inProcess">In process</option>
-				<option value="failed">Failed</option>
-			</select> -->
-			<span id="select">
-				<div ng-if="selectTaken == null || selectTaken == ''">All</div>
-				<div ng-if="selectTaken != null">{{selectTaken}}</div>
+			<span id="selectDash" class="select">
+				<div ng-if="selectTaken == null">All</div>
+				<div ng-if="selectTaken != null">{{takenTitle}}</div>
 			</span>
-			<div id="selectMenu" class="menu">
+			<div id="selectFilterDashboard" class="menu selectMenu">
                 <ul ng-model="selectTaken">
-                    <li ng-click="selectTaken=''">All</li>
-                    <li ng-click="selectTaken='done'">Done</li>
-                    <li ng-click="selectTaken='inProcess'">In process</li>
-                    <li ng-click="selectTaken='failed'">Failed</li>
+                    <li ng-click="selectTaken='';takenTitle='All'">All</li>
+                    <li ng-click="selectTaken='done';takenTitle='Done'">Done</li>
+                    <li ng-click="selectTaken='inProcess';takenTitle='In process'">In process</li>
+                    <li ng-click="selectTaken='failed';takenTitle='Failed'">Failed</li>
                 </ul>
             </div>
 		</div>

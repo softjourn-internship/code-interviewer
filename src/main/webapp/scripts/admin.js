@@ -10,11 +10,16 @@ $(document).ready(function() {
 			$("div.sidebar").fadeToggle();
 	});
 	$("div#userMenu").hide();
-	$("div#selectMenu").hide();
+	$("div#selectFilterDashboard").hide();
 
 	$("span#role").click(function() {
-			$("div#userMenu").slideToggle('fast');
+			$("div#userMenu").fadeToggle('fast'); 
 	});
+
+	// $("span#role").hover(function() {
+	// 		if (!fadeToggle) {$("div#userMenu").fadeIn('fast'); fadeToggle = true;}
+	// 		else {$("div#userMenu").fadeOut('fast'); fadeToggle = false;}
+	// });
 
 	window.onresize = function(event) {
 		if ($(window).width() > 768) {
@@ -34,12 +39,13 @@ $(document).ready(function() {
 $(document).keyup(function(e){
    	 	if(e.keyCode == 27){
         	$("div.send-test").fadeOut("fast");
-        	$("div#selectMenu").fadeOut('fast');
+        	$("div#selectFilterDashboard").fadeOut('fast');
         	$("div#userMenu").fadeOut('fast');
     	}
 	});
 $(document).on("click","button.send", function(){
 	$("div.send-test").fadeIn("fast");
+	$("span.select").css("color","#e2e2e2");
 });
 $(document).on("click","button#close", function(){
 	$("div.send-test").fadeOut("fast");
@@ -47,16 +53,26 @@ $(document).on("click","button#close", function(){
 $(document).on("click","div#close-box", function(){
 	$("div.send-test").fadeOut("fast");
 });
-$(document).on("click","span#select", function(){
-	$("div#selectMenu").fadeToggle('fast');
-	$("span#select").css("color","#333")
+$(document).on("click","span#selectDash", function(){
+	$("div#selectFilterDashboard").fadeToggle('fast');
+	$("span#selectDash").css("color","#333")
 });
 $(document).on("click","div.content",function() {
 			$("div#userMenu").fadeOut('fast');
 	});
-$(document).on("click","div#selectMenu",function() {
-			$("div#selectMenu").fadeOut('fast');
+$(document).on("click","div.selectMenu",function() {
+			$("div.selectMenu").fadeOut('fast');
 	});
+
+$(document).on("click","span#selectSpeciality", function(){
+	$("div#menuSpeciality").fadeToggle('fast');
+	$("span#selectSpeciality").css("color","#333");
+});
+
+$(document).on("click","span#selectEngLvl", function(){
+	$("div#menuEngLvl").fadeToggle('fast');
+	$("span#selectEngLvl").css("color","#333");
+});
 // $(document).on("mouseover","button.send", function(){
 // 	$(this).data('timeout', setTimeout( function () {
 // 		$("div.alt").fadeIn("fast");
