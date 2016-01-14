@@ -13,7 +13,7 @@ public class Task implements Serializable {
 
     @Id
     @GeneratedValue
-    @Column(name = "taskId", nullable = false)
+    @Column(name = "taskId")
     private Integer taskId;
 
     @Column(name = "title")
@@ -31,26 +31,31 @@ public class Task implements Serializable {
     @Column(name = "addedDate")
     private Date addedDate;
 
+    @Column(name = "active")
+    private boolean active = true;
+
     public Task() {
     }
 
-    public Task(String title, String task, String technology, String difficulty, Date addedDate) {
+    public Task(String title, String task, String technology, String difficulty, Date addedDate, boolean active) {
         this.title = title;
         this.task = task;
         this.technology = technology;
         this.difficulty = difficulty;
         this.addedDate = addedDate;
+        this.active = active;
     }
 
     @Override
     public String toString() {
-        return "{" +
+        return "Task{" +
                 "taskId=" + taskId +
                 ", title='" + title + '\'' +
                 ", task='" + task + '\'' +
                 ", technology='" + technology + '\'' +
                 ", difficulty='" + difficulty + '\'' +
                 ", addedDate=" + addedDate +
+                ", active=" + active +
                 '}';
     }
 
@@ -100,5 +105,13 @@ public class Task implements Serializable {
 
     public void setAddedDate(Date addedDate) {
         this.addedDate = addedDate;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }

@@ -7,7 +7,7 @@
         </encoder>
     </appender>
 
-    <logger name="com.code.reviewer.user.controller.AdminController" level="DEBUG" additivity="false">
+    <logger name="com.code.reviewer.user.controller.UserController" level="DEBUG" additivity="false">
         <appender-ref ref="STDOUT"/>
     </logger>
 

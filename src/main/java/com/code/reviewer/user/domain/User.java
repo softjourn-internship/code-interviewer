@@ -4,9 +4,9 @@ import com.code.reviewer.participants.domain.Participant;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.swing.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -18,27 +18,33 @@ public class User implements Serializable {
 
     @Id
     @Size(min = 5, max = 50)
-    @Column(name = "username", nullable = false)
+    @Column(name = "username")
     private String username;
 
-    @Column(name = "firstName", nullable = false)
+    @Column(name = "firstName")
     private String firstName;
 
-    @Column(name = "lastName", nullable = false)
+    @Column(name = "lastName")
     private String lastName;
 
-    @Column(name = "email", nullable = false)
+    @Column(name = "email")
     private String email;
 
     @JsonIgnore
-    @Column(name = "password", nullable = false)
+    @Column(name = "password")
     private String password;
 
-    @Column(name = "role", nullable = false)
+    @Column(name = "role")
     private String role;
 
-    @Column(name = "isActive", nullable = false)
-    private boolean isActive;
+    @Column(name = "active")
+    private boolean active = true;
+
+    @Column(name = "image")
+    private ImageIcon image;
+
+    @Column(name = "background")
+    private ImageIcon background;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     @JoinTable(name = "user_participant",
@@ -107,11 +113,27 @@ public class User implements Serializable {
     }
 
     public boolean isActive() {
-        return isActive;
+        return active;
     }
 
-    public void setIsActive(boolean isActive) {
-        this.isActive = isActive;
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public ImageIcon getImage() {
+        return image;
+    }
+
+    public void setImage(ImageIcon image) {
+        this.image = image;
+    }
+
+    public ImageIcon getBackground() {
+        return background;
+    }
+
+    public void setBackground(ImageIcon background) {
+        this.background = background;
     }
 
     @Override
@@ -123,7 +145,7 @@ public class User implements Serializable {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", role='" + role + '\'' +
-                ", isActive=" + isActive +
+                ", active=" + active +
                 '}';
     }
 }

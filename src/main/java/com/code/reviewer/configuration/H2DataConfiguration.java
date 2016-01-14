@@ -1,14 +1,10 @@
 package com.code.reviewer.configuration;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.rest.core.annotation.HandleAfterCreate;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
-
-import javax.annotation.PreDestroy;
 
 /**
  * Created by Iwan on 06.01.2016.
@@ -17,13 +13,13 @@ import javax.annotation.PreDestroy;
 @Configuration
 public class H2DataConfiguration {
 
-  @Bean
+    @Bean
     public EmbeddedDatabase dataSource() {
         return new EmbeddedDatabaseBuilder().
                 setType(EmbeddedDatabaseType.H2).
                 addScript("create-table.sql").
-               // addScript("ref.sql").
+                addScript("ref.sql").
                 addScript("code-interviewer-data-initialization.sql").
-              build();
+                build();
     }
 }

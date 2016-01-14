@@ -23,7 +23,7 @@ public class SpringSecurityWebAppConfig extends WebSecurityConfigurerAdapter {
     public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication().dataSource(dataSource)
                 .usersByUsernameQuery(
-                        "select username, password, isActive from users where username=?")
+                        "select username, password, active from users where username=?")
                 .authoritiesByUsernameQuery(
                         "select username, role from users where username=?");
     }
@@ -32,9 +32,7 @@ public class SpringSecurityWebAppConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                        .antMatchers("/**").permitAll()
-//                    .antMatchers("/#/participants").hasAuthority("ROLE_MANAGER")
-//                    .antMatchers("/**").authenticated()
+                    .antMatchers("/**").authenticated()
                 .and()
                     .formLogin()
 //                    .loginPage("/login")
