@@ -61,7 +61,7 @@
                         <a href="/user/{{user.username}}"><li>Profile</li></a>
                         <a href="/"><li>Participants</li></a>
                         <hr>
-                        <a href="/login?logout"><li>Logout</li></a>
+                        <a id="logout" href="/login?logout"><li>Logout</li></a>
                     </ul>
                 </div>
                 </center>
@@ -91,7 +91,7 @@
                 <img src="images/profiles/{{user.image}}" onerror="this.src='images/profiles/error.png';"></a>
             </div>
             <div class="logout">
-                <a href="/login?logout">Log out</a>
+                <a id="logout"  href="/login?logout">Log out</a>
             </div>
         </div>
         <div id="view" ng-view></div>

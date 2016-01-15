@@ -276,9 +276,9 @@ adminPanelApp.config([
             templateUrl: 'template/tasks.html',
             controller: 'TasksCtrl'
         })
-        .otherwise({
-          redirectTo: '/'
-        });
+        .
+        when('/login?logout', {})
+        
         $locationProvider.html5Mode(true);
   }
 ]);

@@ -1,4 +1,3 @@
-// window.location.assign("/participants");
 $(document).ready(function() {
 	var fadeToggle = false;
 	$("div#mainMobile").click(function() {
@@ -82,7 +81,9 @@ $(document).on("click","span#selectLang", function(){
 		$("div#menuLang").fadeToggle('fast');
 		$("span#selectLang").css("color","#333");
 });
-
+$(document).on("click","#logout", function(){
+		window.location.assign('login?logout');
+});
 // $(document).on("mouseover","button.send", function(){
 // 	$(this).data('timeout', setTimeout( function () {
 // 		$("div.alt").fadeIn("fast");
