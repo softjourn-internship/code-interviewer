@@ -1,27 +1,37 @@
 package com.code.reviewer.configuration;
 
+import freemarker.template.TemplateException;
 import org.springframework.context.annotation.Bean;
-import freemarker.template.Configuration;
-import freemarker.template.TemplateExceptionHandler;
-
-import java.io.File;
+import org.springframework.ui.freemarker.FreeMarkerConfigurationFactory;
+import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
+import java.io.IOException;
 
 /**
  * Created by Yurii on 12.01.2016.
  */
+
 @org.springframework.context.annotation.Configuration
-public class FreeMarkerConfiguration {
-    public void freeMarkerCfg() {
-        Configuration cfg = new Configuration(Configuration.VERSION_2_3_21);
-
-        try {
-            cfg.setDirectoryForTemplateLoading(new File("/resources/mails"));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        cfg.setDefaultEncoding("UTF-8");
-        cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
-
+public class FreeMarkerConfiguration extends WebMvcConfigurerAdapter {
+    @Bean
+    public ViewResolver viewResolver() {
+        FreeMarkerViewResolver resolver = new FreeMarkerViewResolver();
+        resolver.setCache(true);
+        resolver.setPrefix("");
+        resolver.setSuffix(".ftl");
+        resolver.setContentType("text/html; charset=UTF-8");
+        return resolver;
     }
 
+    @Bean
+    public FreeMarkerConfigurer freemarkerConfig() throws IOException, TemplateException {
+        FreeMarkerConfigurationFactory factory = new FreeMarkerConfigurationFactory();
+        factory.setTemplateLoaderPath("classpath:resources/mails");
+        factory.setDefaultEncoding("UTF-8");
+        FreeMarkerConfigurer result = new FreeMarkerConfigurer();
+        result.setConfiguration(factory.createConfiguration());
+        return result;
+    }
 }
