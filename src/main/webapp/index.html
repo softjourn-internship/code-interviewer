@@ -37,11 +37,11 @@
     <link rel="stylesheet" href="bower_components/air-datepicker/dist/css/datepicker.css">
     
 </head>
-<body ng-controller="ClientsListCtrl">
+<body ng-controller="UserCtrl">
 
 	<div id="container">
 		<div class="sidebar">
-            <div class="user" ng-controller="UserCtrl" style="background-image: url(../images/profiles/id1-bg.jpg
+            <div class="user" style="background-image: url(../images/profiles/id1-bg.jpg
 ">
                 <center>
                 <div>
@@ -67,14 +67,14 @@
                 </center>
             </div>
 			<ul id="nav">
-				<li><a id="dashboard" href="/">DASHBOARD</a></li>
+				<li><a id="dashboard" href="data/participants" ng-click="dataTable = participants" ng-show=dashboardVisible>DASHBOARD</a></li>
                 <ul id="subDashboard" class="sub">
                     <li><a href="/participants">My participants</a></li>
                     <li><a href="">All participants</a></li>
                 </ul>
-                <li><a id="participants" href="/users">USERS</a></li>
-				<li><a id="statistics" href="/statistics">STATISTICS</a></li>
-                <li><a id="tasks" href="/tasks">TASKS</a></li>
+                <li><a id="participants" href="data/users" ng-click="dataTable = users" ng-show=usersVisible>USERS</a></li>
+				<li><a id="statistics" href="/statistics" ng-show=statisticsVisible>STATISTICS</a></li>
+                <li><a id="tasks" href="/tasks" ng-show=tasksVisible>TASKS</a></li>
 				<li><a id="workspace" href="workspace.html" target="_blank">WORKSPACE</a></li>
 			</ul>
 		</div>

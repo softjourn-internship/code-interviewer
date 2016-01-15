@@ -10,26 +10,42 @@ adminPanelApp.controller('UserCtrl', ['$scope', '$http','$location','$routeParam
     $http.get('api/users/current').success(function(data) {
       $scope.user = data;
       $scope.username = $routeParams.username;
+
+      if (data.role == 'ROLE_ADMIN') { 
+          $scope.usersVisible=true;
+          $scope.dashboardVisible=false; 
+          $scope.tasksVisible=false;
+          $scope.statisticsVisible=false;
+        };
+      if (data.role == 'ROLE_MANAGER') { 
+          $scope.usersVisible=false; 
+          $scope.dashboardVisible=true;
+          $scope.tasksVisible=true;
+          $scope.statisticsVisible=true;
+       };
+      if (data.role == 'ROLE_RECRUITER') { 
+          $scope.usersVisible=false; 
+          $scope.dashboardVisible=true; 
+          $scope.tasksVisible=true;
+          $scope.statisticsVisible=false;
+      };
+
     });
 }]);
 
 
-adminPanelApp.controller('UsersListCtrl', ['$scope', '$http','$location',
-  function ($scope, $http, $location) {
-    $http.get('api/users').success(function(data) {
-      $scope.users = data;
-    });
+adminPanelApp.controller('UsersListCtrl', ['$scope', '$http','$location','$routeParams',
+  function ($scope, $http, $location, $routeParams) {
+   $routeParams.dataTable = 'users'
 }]);
 
-adminPanelApp.controller('ClientsListCtrl', ['$scope', '$http','$location',
-  function ($scope, $http, $location) {
+adminPanelApp.controller('ClientsListCtrl', ['$scope', '$http','$location','$routeParams',
+  function ($scope, $http, $location, $routeParams) {
+
     $http.get('clients/clients.json').success(function(data) {
       $scope.clients = data;
+      data = $routeParams.clients;
 
-      $scope.clearFields = function() {
-        $scope.firstName = null;
-        $scope.lastName = null;
-      };
       $scope.addRowAsyncAsJSON = function(){
         $scope.clients.push({'username': $scope.firstName});
 
@@ -43,32 +59,7 @@ adminPanelApp.controller('ClientsListCtrl', ['$scope', '$http','$location',
 
       };
 
-        $scope.pageSizes = [5, 10, 15, 20];
-        $scope.pageSize = $scope.pageSizes[1];
-        $scope.currentPage = 0;
-        $scope.pageNumber = Math.ceil($scope.clients.length / $scope.pageSize);
-
-        $scope.paging = function (type) {
-          if (type == 0 && $scope.currentPage > 0) {
-            --$scope.currentPage;
-            document.getElementById("currentPage").style.color = "#222";
-          }
-          else if (type == 1 && $scope.currentPage < $scope.pageNumber-1){
-            ++$scope.currentPage;
-            document.getElementById("currentPage").style.color = "#222";
-          }
-        }
-
-        $scope.$watchCollection('results', function(){
-          if ($scope.results == undefined) return;
-          $scope.currentPage = 0;
-          $scope.pageNumber =Math.ceil($scope.results.length / $scope.pageSize);
-        });
-
-      $scope.changeAction = function () {
-          $scope.currentPage = 0;
-          $scope.pageNumber = Math.ceil($scope.clients.length / $scope.pageSize);
-      }
+        
 
   });
 }]);
@@ -80,40 +71,7 @@ adminPanelApp.controller('loginCtrl',function($scope, $location) {
     document.getElementById("header").style.display = "none";
     document.getElementById("container").style.display = "none";
 
-    $scope.sumbit = function() {
-      var username = $scope.username;
-      var password = $scope.password;
 
-      function admin() {
-          $location.path('/participants');
-          // $scope.sideBarShow = false;
-          document.getElementById("header").style.display = "block";
-          document.getElementById("container").style.display = "none";
-          document.getElementById("content").style.marginLeft = "0px";
-      };
-
-      function recruiter() {
-          $location.path('/dashboard');
-          // $scope.sideBarShow = true;
-          document.getElementById("header").style.display = "block";
-          document.getElementById("container").style.display = "block";
-          document.getElementById("content").style.marginLeft = "180px";
-
-      };
-
-      function manager() {
-          $location.path('/dashboard');
-          // $scope.sideBarShow = true;
-          document.getElementById("header").style.display = "block";
-          document.getElementById("container").style.display = "block";
-          document.getElementById("content").style.marginLeft = "180px";
-      };
-
-      if(username == 'admin' && password == 'admin'){ admin(); }
-      else if(username == 'recruiter' && password == 'recruiter'){ recruiter(); }
-      else if(username == 'manager' && password == 'manager'){ manager(); }
-      else alert("Wrong staff");
-    };
 });
 // CHARTS
 
@@ -147,6 +105,58 @@ adminPanelApp.controller('ClientsProfileCtrl', ['$scope', '$http', '$location','
         });
   }]);
 
+
+adminPanelApp.controller('DataCtrl', ['$scope', '$http', '$location','$routeParams',
+  function ($scope, $http, $location, $routeParams) {
+
+        $scope.dataTable = $routeParams.dataTable;
+        var url = 'data/'+$routeParams.dataTable+'.json';
+
+        $http.get('data/chart-pie-'+$routeParams.dataTable+'.json').success(function(data) {
+          $scope.chartPieData = data;
+        });
+
+        $http.get(url).success(function(data) {
+          $scope.dataTableList = data;
+        
+        $scope.titleTable = $scope.dataTable;
+
+        if ($scope.dataTable == 'participants') {
+            $scope.selectTakenVisible = true; 
+            $scope.selectRoleVisible = false;
+        }
+        if ($scope.dataTable == 'users') {
+            $scope.selectTakenVisible = false; 
+            $scope.selectRoleVisible = true;
+        }
+
+        $scope.pageSizes = [5, 10, 15, 20];
+        $scope.pageSize = $scope.pageSizes[1];
+        $scope.currentPage = 0;
+        $scope.pageNumber = Math.ceil($scope.dataTableList.length / $scope.pageSize);
+
+        $scope.paging = function (type) {
+          if (type == 0 && $scope.currentPage > 0) {
+            --$scope.currentPage;
+            document.getElementById("currentPage").style.color = "#222";
+          }
+          else if (type == 1 && $scope.currentPage < $scope.pageNumber-1){
+            ++$scope.currentPage;
+            document.getElementById("currentPage").style.color = "#222";
+          }
+        }
+
+      $scope.changeAction = function () {
+          $scope.currentPage = 0;
+          $scope.pageNumber = Math.ceil($scope.dataTableList.length / $scope.pageSize);
+      }
+    });
+
+    $scope.clearFields = function() {
+        $scope.firstName = null;
+        $scope.lastName = null;
+      };
+  }]);
   //TASKS
 
   adminPanelApp.controller('TasksCtrl',['$scope','$http',function ($scope,$http){
@@ -237,8 +247,8 @@ adminPanelApp.config([
         //   templateUrl:'template/login.html',
         //   controller:'loginCtrl'
         // })
-        .when('/',{
-          templateUrl:'template/participants.html',
+        .when('/data/:dataTable',{
+          templateUrl:'template/data.html',
           controller:'ClientsListCtrl'
         })
         .
@@ -252,7 +262,7 @@ adminPanelApp.config([
             controller: 'ClientsChartsCtrl'
          })
         .
-        when('/users', {
+        when('/usersі', {
             templateUrl: 'template/users.html',
             controller: 'ClientsListCtrl'
         })

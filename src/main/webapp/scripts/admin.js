@@ -1,3 +1,4 @@
+// window.location.assign("/participants");
 $(document).ready(function() {
 	var fadeToggle = false;
 	$("div#mainMobile").click(function() {
