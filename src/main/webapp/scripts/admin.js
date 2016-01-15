@@ -6,9 +6,9 @@ $(document).ready(function() {
 			else {$("div.content").css("margin-left", 180); fadeToggle = false; }
 	});
 
-	$("#dashboard").click(function() {
-			$("ul#subDashboard").slideToggle('fast');
-	});
+	// $("#dashboard").click(function() {
+	// 		$("ul#subDashboard").slideToggle('fast');
+	// });
 
 	$("div#secondMobile").click(function() {
 			$("div.sidebar").fadeToggle();
@@ -49,7 +49,7 @@ $(document).keyup(function(e){
 	});
 $(document).on("click","button.send", function(){
 	$("div.send-test").fadeIn("fast");
-	$("span.select").css("color","#e2e2e2");
+	// $("span.select").css("color","#e2e2e2");
 });
 $(document).on("click","button#close", function(){
 	$("div.send-test").fadeOut("fast");
@@ -77,6 +77,11 @@ $(document).on("click","span#selectEngLvl", function(){
 	$("div#menuEngLvl").fadeToggle('fast');
 	$("span#selectEngLvl").css("color","#333");
 });
+$(document).on("click","span#selectLang", function(){
+		$("div#menuLang").fadeToggle('fast');
+		$("span#selectLang").css("color","#333");
+});
+
 // $(document).on("mouseover","button.send", function(){
 // 	$(this).data('timeout', setTimeout( function () {
 // 		$("div.alt").fadeIn("fast");

@@ -5,17 +5,18 @@ var myAppModule = angular.module('MyApp', ['ui.ace']);
 
 /* Controllers Admin*/
 /************************************************************************************/
-adminPanelApp.controller('UserCtrl', ['$scope', '$http','$location',
-  function ($scope, $http, $location) {
-    $http.get('clients/1.json').success(function(data) {
+adminPanelApp.controller('UserCtrl', ['$scope', '$http','$location','$routeParams',
+  function ($scope, $http, $location, $routeParams) {
+    $http.get('api/users/current').success(function(data) {
       $scope.user = data;
+      $scope.username = $routeParams.username;
     });
 }]);
 
 
 adminPanelApp.controller('UsersListCtrl', ['$scope', '$http','$location',
   function ($scope, $http, $location) {
-    $http.get('admin').success(function(data) {
+    $http.get('api/users').success(function(data) {
       $scope.users = data;
     });
 }]);
@@ -256,6 +257,11 @@ adminPanelApp.config([
             controller: 'ClientsListCtrl'
         })
         .
+        when('/user/:username', {
+            templateUrl: 'template/profile.html',
+            controller: 'ClientsListCtrl'
+        })
+        .
         when('/tasks', {
             templateUrl: 'template/tasks.html',
             controller: 'TasksCtrl'
@@ -263,6 +269,7 @@ adminPanelApp.config([
         .otherwise({
           redirectTo: '/'
         });
+        $locationProvider.html5Mode(true);
   }
 ]);
 /*   PUSH ON SERVER   */

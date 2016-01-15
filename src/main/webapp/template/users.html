@@ -1,13 +1,18 @@
 <script type="text/javascript">
     $("#datepicker").datepicker();
+    document.title = "Dashboard";
 </script>
 <div class="send-test">
-	<div>
+	<div id="close-box" ></div>
+	<div id="main">
 		<div class="head">
-			<table>
+			<table cellspacing="0" cellpadding="0">
 				<tr>
-					<td class="img"><img class="avatar-send" src="images/profiles/error.png"></td>
-					<td><span>New user</span></td>
+					<td class="img"><img src="images/profiles/error.png"></td>
+					<td>
+						<span ng-if="firstName == null">New participant</span>
+						<span ng-if="firstName != null">{{firstName}} {{lastName}}</span>
+					</td>
 					<td><button id="close">Close</button></td>
 				</tr>
 			</table>	
@@ -16,35 +21,73 @@
 		<div class="action">
 			<table>
 				<tr>
-					<td>Username</td>
-					<td><input type="text" ng-model="userName"></td>
+					<td>First Name</td>
+					<td><input type="text" ng-model="firstName" size="30"></td>
 				</tr>
 				<tr>
-					<td>Name</td>
-					<td><input type="text" ng-model="firstName" required></td>
+					<td>Last Name</td>
+					<td><input type="text" ng-model="lastName"></td>
 				</tr>
+				<!-- <tr>
+					<td>Birthday</td>
+					<td><input type="text" id="datepicker" size="30"></td>
+				</tr> -->
 				<tr>
-					<td>Surname</td>
+					<td>City</td>
 					<td><input type="text"></td>
 				</tr>
 				<tr>
-					<td>Permissions</td>
+					<td>English level</td>
 					<td>
-						<select>
-							<option>Admin</option>
-							<option>Manager</option>
-							<option>Recruiter</option>
-						</select>
+						<span id="selectEngLvl" class="select selectNewPart">
+						<div ng-if="selectItemEngLvl == null" id="disabled">Select level</div>
+						<div ng-if="selectItemEngLvl != null">{{selectItemEngLvl}}</div>
+						</span>
+						<div id="menuEngLvl" class="menu selectMenu inSentBox">
+			                <ul ng-model="selectItemEngLvl">
+			                	<li ng-click="selectItemEngLvl= null" id="disabled">Select level</li>
+			                    <li ng-click="selectItemEngLvl='Beginner'">Beginner</li>
+			                    <li ng-click="selectItemEngLvl='Elementary'">Elementary</li>
+			                    <li ng-click="selectItemEngLvl='Pre-Intermediate'">Pre-Intermediate</li>
+			                    <li ng-click="selectItemEngLvl='Intermediate'">Intermediate</li>
+			                    <li ng-click="selectItemEngLvl='Upper intermediate'">Upper intermediate</li>
+			                    <li ng-click="selectItemEngLvl='Advanced'">Advanced</li>
+			                    <li ng-click="selectItemEngLvl='Proficient'">Proficient</li>
+			                </ul>
+			            </div>
+					</td>
+				</tr>
+				<tr>
+					<td>Speciality</td>
+					<td>
+					<span id="selectSpeciality" class="select selectNewPart">
+						<div ng-if="selectItemSpeciality == null" id="disabled">Select speciality</div>
+						<div ng-if="selectItemSpeciality != null">{{selectItemSpeciality}}</div>
+					</span>
+					<div id="menuSpeciality" class="menu selectMenu inSentBox">
+		                <ul ng-model="selectItemSpeciality">
+		                	<li ng-click="selectItemSpeciality=null" id="disabled">Select speciality</li>
+		                    <li ng-click="selectItemSpeciality='Front-End Developer'">Front-End Developer</li>
+		                    <li ng-click="selectItemSpeciality='Java Developer'">Java Developer</li>
+		                    <li ng-click="selectItemSpeciality='.NET Developer'">.NET Developer</li>
+		                    <li ng-click="selectItemSpeciality='JavaScript Developer'">JavaScript Developer</li>
+		                </ul>
+		            </div>
 					</td>
 				</tr>
 				<tr>
 					<td>Contact</td>
-					<td><input type="date"></td>
+					<td><input type="text"></td>
+				</tr>
+				<tr>
+					<td>Email</td>
+					<td><input type="email"></td>
 				</tr>
 			</table>
 		</div>
 		<div class="tool">
-			<button ng-click="addRowAsyncAsJSON()" class="send">Add user</button>
+			<button style="margin:0" ng-click="addRowAsyncAsJSON()" class="send">Add participant</button>
+			<button id="close" style="float:right" ng-click="clearFields()">Cancel</button>
 		</div>
 	</form>
 	</div>
@@ -52,60 +95,78 @@
 
 <section>
 <div class="box" ng-controller="UsersListCtrl">
-	
+	<table id="head">
+		<tr>
+			<td>{{users.length}} Users</td>
+			<td id="page-size">
+				<div>
+				<input type="radio" id="radio1" name="radios" ng-change="changeAction()"  ng-model="pageSize" value="5">
+			    <label id="label1" for="radio1">5</label>
+			    <input type="radio" id="radio2" name="radios" ng-change="changeAction()"  ng-model="pageSize" value="10" selected>
+			    <label id="label2" for="radio2">10</label>
+			    <input type="radio" id="radio3" name="radios" ng-change="changeAction()"  ng-model="pageSize" value="15">
+			    <label id="label3" for="radio3">15</label>	
+			    </div>
+			</td>
+		</tr>
+	</table>
 	<table id="tableData" class="main-table" cellspacing="0" cellpadding="0">
-		<span>Users
-		<div id="page-size">
-			<select 
-			ng-change="changeAction()" 
-			ng-model="pageSize" 
-			ng-options="opt as opt for opt in pageSizes"></select>
-		</div>
-		</span>
-		<thead>
+		<thead ng-if="lengthClientsPA != 0">
 			<th></th>
 			<th>Name</th>
 			<th>Email</th>
-			<th>Permissions</th>
+			<th>Role</th>
 		</thead>
 		<tbody>
-			<tr class="hover-tr" ng-repeat="user in lengthClientsPA = (users | filter:{name:searchNameA, taken:selectTaken, email:searchEmailA} | orderBy:'surname')" ng-if="$index >= (currentPage * pageSize) && $index < ((currentPage+1)*pageSize)">
-				<td class="td-status"><img ng-src="images/profiles/{{user.image}}" onerror="this.src='images/profiles/error.png';" style="border-radius: 100%"></td>
-				<td class="td-name"><b>{{user.firstName}} {{user.lastName}}</b></td>
-				<td>{{user.email}}</td>
-				<td>
-					<div ng-if="user.role == 'ROLE_ADMIN'" style="color: #aec785"><b>Admin</b></div>
-					<div ng-if="user.role == 'ROLE_MANAGER'" style="color: #f4d66c"><b>Manager</b></div>
-					<div ng-if="user.role == 'ROLE_RECRUITER'" style="color: #8491c7"><b>Recruiter</b></div>
-				</td>
+			<tr class="hover-tr" ng-repeat="user in lengthClientsPA = (users | filter:{firstName:searchNameA, taken:selectTaken, email:searchEmailA} | orderBy:'surname')" ng-if="$index >= (currentPage * pageSize) && $index < ((currentPage+1)*pageSize)">
+				<td class="td-status"><a href="#/participants/{{client.id}}"><img ng-src="images/profiles/{{client.image}}" onerror="this.src='images/profiles/error.png';" style="border-radius: 100%;"></a></td>
+				<td class="td-name"><a href="#/participants/{{client.id}}">{{user.firstName}} {{user.lastName}}</a></td>
+				<td>{{user.email}} </td>
+				<td>{{user.role}}</td>
+				<td>{{client.testReturn}}</td>
 			</tr>
+			<tr ng-if="lengthClientsPA == 0"><td style="padding-left: 25px;color:#666">No search result</td></tr>
 		</tbody>
 	</table>
 	
-	<div class="tool">
-		<button class="send">Add</button>
-		<button ng-click="currentPage = 0">Start</button>
-		<button ng-click="paging(0)">Previous</button>
-		<button ng-click="paging(1)">Next</button>
-		<button ng-click="currentPage = (pageNumber - 1)">End</button>
-	</div>
-	<span>{{currentPage + 1}} in {{pageNumber}} | {{lengthClientsPA.length}} Elements</span>
+	<table id="tool" ng-if="lengthClientsPA != 0" ng-controller="ClientsListCtrl">
+		<tr>
+			<td>			
+ 		 		<button ng-click="paging(0)">Prev</button>
+ 				<span id="currentPage" ng-click="paging(currentPage)">{{currentPage + 1}}</span>
+ 				<span id="currentPage" ng-if="(currentPage + 2) <= pageNumber" ng-click="paging(currentPage)">{{currentPage + 2}}</span>
+ 				<span id="currentPage" ng-if="(currentPage + 3) <= pageNumber" ng-click="paging(currentPage)">{{currentPage + 3}}</span>
+				<button ng-click="paging(1)">Next</button>
+ 				</td>
+			<td><button class="send">New</button>
+</td>
+		</tr>
+	</table>
 </div>
-<div class='alt'>Add new user</div>
+<div class='alt'>Add new participant</div>
 <div id="right-container">
 	<div id="filter" class="box filter">
-		<span>Filter</span>
+		<span id="title">Filter</span>
 		<div id="filter-container">
-			<input type="text" placeholder="Name" onblur="this.placeholder='Name'" onfocus="this.placeholder=''" ng-model="searchNameA" ng-change="pageSize = 20"><br>
-			<input type="text" placeholder="Email adress" onblur="this.placeholder='Email adress'" onfocus="this.placeholder=''" ng-model="searchEmailA"><br>
-			<select ng-model="selectTaken">
-				<option value="" selected>All</option>
-				<option value="done">Done</option>
-				<option value="inProcess">In process</option>
-				<option value="failed">Failed</option>
-			</select>
+			<input type="text" placeholder="Name" onblur="this.placeholder='Name'" onfocus="this.placeholder=''" ng-model="searchNameA" ng-change="changeAction()"><br>
+			<input type="text" placeholder="Email adress" onblur="this.placeholder='Email adress'" onfocus="this.placeholder=''" ng-model="searchEmailA" ng-change="changeAction()"><br>
+			<span id="selectDash" class="select">
+				<div ng-if="selectTaken == null">All</div>
+				<div ng-if="selectTaken != null">{{takenTitle}}</div>
+			</span>
+			<div id="selectFilterDashboard" class="menu selectMenu">
+                <ul ng-model="selectTaken">
+                    <li ng-click="selectTaken='';takenTitle='All'">All</li>
+                    <li ng-click="selectTaken='done';takenTitle='Done'">Done</li>
+                    <li ng-click="selectTaken='inProcess';takenTitle='In process'">In process</li>
+                    <li ng-click="selectTaken='failed';takenTitle='Failed'">Failed</li>
+                </ul>
+            </div>
 		</div>
 	</div>
+	<div id="chart-taken" ng-controller="ClientsChartsCtrl" class="chart" google-chart chart="chartPie"/>
 </div>
 
 </section>
+
+

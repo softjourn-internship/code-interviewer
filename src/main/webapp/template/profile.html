@@ -1,6 +1,7 @@
 <div ng-controller="ClientsProfileCtrl">
 <div class="send-test">
-	<div>
+	<div id="close-box" ></div>
+	<div id="main">
 		<div class="head">
 			<table cellspacing="0" cellpadding="0">
 				<tr>
@@ -12,25 +13,44 @@
 		</div>
 		<form method="POST">
 		<div class="action">
-			Language
-			<select required>
-				<option>Java</option>
-				<option>JavaSript</option>
-				<option>HTML</option>
-				<option>CSS</option>
-			</select><br>
-			<br>Сomplication  
-			    <input type="radio" id="radio1" name="radios" value="hard" required>
-			    <label for="radio1">Hard</label>
-			    <input type="radio" id="radio2" name="radios"value="middle">
-			    <label for="radio2">Middle</label>
-			    <input type="radio" id="radio3" name="radios" value="easy">
-			    <label for="radio3">Easy</label> <br>
-			<br>Message<br>
-			<textarea rows="6" autofocus></textarea>
+			<table>
+				<tr>	
+					<td>Language</td>
+					<td>
+						<span id="selectLang" class="select selectNewPart">
+						<div ng-if="selectItemLang == null" id="disabled">Select language</div>
+						<div ng-if="selectItemLang != null">{{selectItemLang}}</div>
+						</span>
+						<div id="menuLang" class="menu selectMenu inSentBox">
+			                <ul ng-model="selectItemLang">
+			                	<li id="disabled">Select language</li>
+			                    <li ng-click="selectItemLang='Java'">Java</li>
+			                    <li ng-click="selectItemLang='JavaSript'">JavaSript</li>
+			                    <li ng-click="selectItemLang='HTML'">HTML</li>
+			                    <li ng-click="selectItemLang='CSS'">CSS</li>
+			                </ul>
+			            </div>
+					</td>
+				</tr>
+				<tr>
+					<td>Сomplication</td>
+					<td class="radio-td">
+						<input type="radio" id="radio1" name="radios" value="hard">
+					    <label for="radio1">Hard</label>
+					    <input type="radio" id="radio2" name="radios"value="middle">
+					    <label for="radio2">Middle</label>
+					    <input type="radio" id="radio3" name="radios" value="easy">
+					    <label for="radio3">Easy</label>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">Message<br><br><textarea class="textarea" rows="6" autofocus></textarea></td>
+				</tr>
+			</table>	
 		</div>
 		<div class="tool">
 			<button class="send">Send test</button>
+			<button id="close" style="float:right" ng-click="clearFields()">Cancel</button>
 		</div>
 	</form>
 	</div>
@@ -49,10 +69,10 @@
 	<div class="history">
 		<button id="send-profile" class="send">Send test</button>
 		<table>
-			<tr>
+			<!-- <tr>
 				<td>Birthday</td>
 				<td><input value="{{client.birthday}}"></td>
-			</tr>
+			</tr> -->
 			<tr>
 				<td>City</td>
 				<td><input value="{{client.city}}"></td>
@@ -75,7 +95,11 @@
 <div id="profile-send-alt" class='alt'>Send test to {{client.name}}</div>
 <div id="conteiner-profile">
 <div id="activity" class="box profile">
-	<span>Activity</span>
+	<table id="head">
+		<tr>
+			<td>Activity</td>
+		</tr>
+	</table>
 	<table id="activity" class="main-table" cellspacing="0" cellpadding="0">
 		<thead>
 			<th>Technology</th>

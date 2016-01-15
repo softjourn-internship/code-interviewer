@@ -25,6 +25,7 @@ div#header {
 	background: #fff;
 	margin: 0 auto;
 	box-shadow: 0 1px 0 #e1e1e1;
+	z-index: 8;
 }
 
 .logo {
@@ -94,6 +95,7 @@ div.sidebar div.user span#role img{
 	width: 16px;
 	margin-top:2px;
 }
+div.sidebar div.user span#role div{display: inline-block;}
 div.sidebar div.user span{
 	/*position: absolute;*/
 	font-family: Open Sans;
@@ -152,12 +154,26 @@ span.select:hover{
 	color: #333;
 	background-image: url(../images//arrowDownSel-h.png);
 }
-span.selectNewPart{
+span.selectNewPart, .textarea{
 	border: 1px solid #eee;
 	background-color: #fff;
+	color: #d8d8d8;
+}
+	
+span.selectNewPart:hover,.textarea:hover{border-color: #d8d8d8;color: #333; }
+.textarea{
+	width: 100%;
+	padding: 10px;
+	padding-left: 10px;
+	font-family: Open Sans, Tahoma;
+	font-size: 13px;
+	resize: none;
+	font-weight: normal;
 	color: #333;
 }
-span.selectNewPart:hover{border-color: #d8d8d8 }
+#menuLang{
+	width: 62%;
+}
 div.selectMenu{
 	display: none;
 	margin: 0;
@@ -173,9 +189,9 @@ div.selectMenu{
 	/*background: rgba(255,255,255,0.8);*/
 }
 div.inSentBox{width: 69%;}
-div.selectMenu #disabled{
-	color: #d8d8d8;
-}
+div.selectMenu #disabled{color: #d8d8d8;}
+div.selectMenu #disabled:hover{background: transparent;cursor: default;}
+
 #select, div.selectMenu li{
 	cursor: pointer;
 }
@@ -194,9 +210,9 @@ a#dashboard, a#participants, a#statistics, a#workspace, a#tasks {
 }
 a#dashboard:hover{background-image:url(../images/db-h.svg);}
 a#dashboard:focus{background-image:url(../images/db-h.svg);}
-a#participants{background-image:url(../images/pib.png);}
-a#participants:hover{background-image:url(../images/pib-h.png);}
-a#participants:focus{background-image:url(../images/pib-h.png);}
+a#participants{background-image:url(../images/u.svg);}
+a#participants:hover{background-image:url(../images/u-h.svg);}
+a#participants:focus{background-image:url(../images/u-h.svg);}
 a#statistics{background-image:url(../images/s.svg);}
 a#statistics:hover{background-image:url(../images/s-h.svg);}
 a#statistics:focus{background-image:url(../images/s-h.svg);}
@@ -216,7 +232,7 @@ li, li a, a, #select, tr{
 	transition: 0.1s;
 }
 
-tr, button{
+tr, button, textarea, label{
 	-webkit-transition: 0.2s;
 	-moz-transition: 0.2s;
 	-o-transition: 0.2s;
@@ -283,6 +299,7 @@ div.mobile:hover{
 }
 /*	RESIZE	*/
 @media only screen and (max-width: 768px){
+	div#header{position: fixed;box-shadow: 0 0 3px #888;}
 	div#header div#user{display: block;}
 	div.user{display: none;}
 	div#chart-dashboard{width: 100%;}
@@ -599,6 +616,7 @@ table.main-table tbody tr td a{
 th {text-align: left;padding: 10px;color: #222;font-size: 13px;}
 table.main-table tbody tr:hover{
 	background: #eee;
+	/*box-shadow: 0 1px #d8d8d8;*/
 }
 div.top{
 	display: block;
@@ -626,7 +644,7 @@ button{
 	border-radius: 2px;
 	border-color: transparent;
 	border: 1px solid #e2e2e2;
-	color: #b1b1b1;
+	color: #999;
 	font-weight: 300;
 	font-size: 13px;
 	font-family: Open Sans, Tahoma;
@@ -763,24 +781,24 @@ img.avatar-send{
 }
 button.send, button#new{
 	background: #a2b57d;
-	background: #c2d49a;
-	border-color: #c2d49a;
-	color: #fff;
+	background: #AEC785;
+	border-color: #AEC785;
 	margin-left: 1%;
-	text-shadow: 0 1px 0 #a2bd64;
+	color: #fff;
+	text-shadow: 0 1px 0 #a2b57d;	
 }
 button#send-profile{
 	margin: 25px;
 	margin-top: 0;
 }
 button.send:hover, button#new:hover{
-	background: #afbc8e;
-	border-color: #afbc8e;
+	background: #a2b57d;
+	border-color: #a2b57d;
 	color: #fff;
 }
 button.send:active, button#new:active{
-	background: #a2b57d;
-	border-color: #a2b57d;
+	background: #96ac6d;
+	border-color: #96ac6d;
 }
 div.profile span img.done{
 	width: 24px;
@@ -801,7 +819,7 @@ div.send-test{
 	bottom: 0;
 }
 div.send-test div#main {
-	position: fixed;
+	position: absolute;
 	/*border-radius: 2px;*/
 	/*box-shadow: 0 0 2px rgba(34,34,34,0.5);*/
 	background: #f6f6f6;
@@ -885,12 +903,11 @@ div.send-test div#main div.head #close{
 	border: none;
 	background: transparent;
 	float: right;
-	color: #415b76;
 	color: #555;
 	font-weight: normal;
 }
-div.send-test div div.head #close:hover{color: #56799c;color: #666}
-div.send-test div div.head table{
+div.send-test div#main div.head #close:hover{color: #666}
+div.send-test div#main div.head table{
 	/*background: #333;*/
 	width: 100%;
 	margin: 0;
@@ -918,18 +935,30 @@ input[type="radio"] {
 label {
     display:inline-block;
     background-color:#ddd;
-    padding:4px 11px;
-    color: #333;
+    padding:5px 15px;
     margin: 0;
     font-size:13px;
 }
 input[type="radio"]:checked + label {
-    background-color:#bbb;
     -webkit-transition: 0.2s;
 	-moz-transition: 0.2s;
 	-o-transition: 0.2s;
 	transition: 0.2s;
 }
+td.radio-td label{
+	padding: 6px;
+	padding-left: 12px;
+	padding-right: 12px;
+	cursor: pointer;
+	border: 1px solid #eee;
+	background-color: #fff;
+	color: #d8d8d8;
+}
+td.radio-td input[type="radio"]:checked + label{
+    /*border-color:#d8d8d8;*/
+    color: #333;
+}
+td.radio-td label:hover{color: #666;border-color:#d8d8d8;}
 td#page-size{
 	width: 90px;
 
@@ -946,20 +975,6 @@ td#page-size input[type="radio"]:checked + label{
 	 /*background-color:#eee;*/
 	 color: #666;
 	 font-weight: bold;
-}
-div.send-test div div.action select{
-	margin: 0;
-	width: 100%;
-	color: #333;
-	font-weight: bold;
-}
-div.send-test div div.action textarea{
-	margin-top: 15px;
-	width: 100%;
-	height: 100%;
-	padding: 15px;
-	font-family: Open Sans, Tahoma;
-	border: 2px solid #e1e1e1;
 }
 div.profile div.history{
 	margin: 0;

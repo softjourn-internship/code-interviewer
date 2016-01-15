@@ -1,7 +1,7 @@
 <script type="text/javascript">
     $("#datepicker").datepicker();
-    document.title = "Dashboard";
 </script>
+
 <div class="send-test">
 	<div id="close-box" ></div>
 	<div id="main">
@@ -45,7 +45,7 @@
 						</span>
 						<div id="menuEngLvl" class="menu selectMenu inSentBox">
 			                <ul ng-model="selectItemEngLvl">
-			                	<li ng-click="selectItemEngLvl= null" id="disabled">Select level</li>
+			                	<li id="disabled">Select level</li>
 			                    <li ng-click="selectItemEngLvl='Beginner'">Beginner</li>
 			                    <li ng-click="selectItemEngLvl='Elementary'">Elementary</li>
 			                    <li ng-click="selectItemEngLvl='Pre-Intermediate'">Pre-Intermediate</li>
@@ -66,7 +66,7 @@
 					</span>
 					<div id="menuSpeciality" class="menu selectMenu inSentBox">
 		                <ul ng-model="selectItemSpeciality">
-		                	<li ng-click="selectItemSpeciality=null" id="disabled">Select speciality</li>
+		                	<li id="disabled">Select speciality</li>
 		                    <li ng-click="selectItemSpeciality='Front-End Developer'">Front-End Developer</li>
 		                    <li ng-click="selectItemSpeciality='Java Developer'">Java Developer</li>
 		                    <li ng-click="selectItemSpeciality='.NET Developer'">.NET Developer</li>
@@ -121,8 +121,8 @@
 		</thead>
 		<tbody>
 			<tr class="hover-tr" ng-repeat="client in lengthClientsPA = (clients | filter:{name:searchNameA, taken:selectTaken, email:searchEmailA} | orderBy:'surname')" ng-if="$index >= (currentPage * pageSize) && $index < ((currentPage+1)*pageSize)">
-				<td class="td-status"><a href="#/participants/{{client.id}}"><img ng-src="images/profiles/{{client.image}}" onerror="this.src='images/profiles/error.png';" style="border-radius: 100%;"></a></td>
-				<td class="td-name"><a href="#/participants/{{client.id}}">{{client.name}} {{client.surname}}</a></td>
+				<td class="td-status"><a href="/participants/{{client.id}}"><img ng-src="images/profiles/{{client.image}}" onerror="this.src='images/profiles/error.png';" style="border-radius: 100%;"></a></td>
+				<td class="td-name"><a href="/participants/{{client.id}}">{{client.name}} {{client.surname}}</a></td>
 				<td>{{client.email}} </td>
 				<td>{{client.testSent}}</td>
 				<td>{{client.testReturn}}</td>
