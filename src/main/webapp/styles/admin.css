@@ -145,14 +145,14 @@ span.select{
 	padding-left: 12px;
 	padding-right: 12px;
 	background-repeat: no-repeat;
-	background-size: 16px;
-	background-image: url(../images//arrowDownSel.png);
+	background-size: 18px;
+	background-image: url(../images/arrowDownSel.svg);
 	background-position: right;
 }
 span.select:hover{
 	/*border-bottom: 2px solid #34495e;*/
 	color: #333;
-	background-image: url(../images//arrowDownSel-h.png);
+	background-image: url(../images/arrowDownSel-h.svg);
 }
 span.selectNewPart, .textarea{
 	border: 1px solid #eee;
@@ -232,7 +232,7 @@ li, li a, a, #select, tr{
 	transition: 0.1s;
 }
 
-tr, button, textarea, label{
+tr, button, textarea, label, th, div.logout a, input, select, span{
 	-webkit-transition: 0.2s;
 	-moz-transition: 0.2s;
 	-o-transition: 0.2s;
@@ -408,10 +408,6 @@ div.logout a{
 	font-size: 13px;
 	font-weight: bold;
 	cursor: pointer;
-	-webkit-transition: 0.2s;
-	-moz-transition: 0.2s;
-	-o-transition: 0.2s;
-	transition: 0.2s;
 }
 div.logout:hover a{ color: #999; }
 div#header div#user{
@@ -439,10 +435,6 @@ div.box {
 	padding: 0;
 	background: #fff;
 	height: auto;
-	-webkit-transition: 0.2s;
-	-moz-transition: 0.2s;
-	-o-transition: 0.2s;
-	transition: 0.2s;
 }
 div.box table#head, div.box table#head span, div#filter span#title{
 	width: 100%;
@@ -555,12 +547,6 @@ div.box div ul li button{
 }*/
 .clearBoth { clear:both; }
 
-select, span{
-	-webkit-transition: 0.2s;
-	-moz-transition: 0.2s;
-	-o-transition: 0.2s;
-	transition: 0.2s;
-}
 input, select{
 	color: #333;
 	font-family: Open Sans, Tahoma;
@@ -571,10 +557,6 @@ input, select{
 	padding-left: 12px;
 	font-size: 13px;
 	font-weight: bold;
-	-webkit-transition: 0.2s;
-	-moz-transition: 0.2s;
-	-o-transition: 0.2s;
-	transition: 0.2s;
 }
 
 input:focus,input:hover{
@@ -613,7 +595,26 @@ table.main-table tbody tr td a{
 	color: #555;
 	font-weight: bold;
 }
-th {text-align: left;padding: 10px;color: #222;font-size: 13px;}
+th#emtry{background-image: none;}
+th.sort-up{
+	background-image: url(../images/arrowUp.svg);
+}
+th.sort-down{	
+	background-image: url(../images/arrowDown.svg);
+}
+th {
+	cursor: pointer;
+	text-align: left;
+	padding: 10px;
+	color: #222;
+	font-size: 13px;
+	background-size: 11px;
+	background-repeat: no-repeat;
+	background-position: 90% 50%;
+}
+th:hover {
+	text-decoration: underline;
+}
 table.main-table tbody tr:hover{
 	background: #eee;
 	/*box-shadow: 0 1px #d8d8d8;*/
@@ -1433,7 +1434,7 @@ div#conteiner-profile{
 	display: inline-block;
 }
 div.alt{
-	margin-top: -110px;
+	margin-top: -50px;
 	z-index: 8;
 	position: absolute;
 	display: block;
@@ -1445,6 +1446,7 @@ div.alt{
 	font-weight: bold;
 	border-radius: 2px;
 	padding: 5px 10px 5px 10px;
+
 	display: none;
 }
 

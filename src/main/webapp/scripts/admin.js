@@ -86,7 +86,7 @@ $(document).on("click","#logout", function(){
 });
 // $(document).on("mouseover","button.send", function(){
 // 	$(this).data('timeout', setTimeout( function () {
-// 		$("div.alt").fadeIn("fast");
+// 		$("div.altContainer").html("<div class='alt'>Add new participant</div>");
 // 	}, 500));
 // 	// $("div.alt").fadeOut(500);
 // });

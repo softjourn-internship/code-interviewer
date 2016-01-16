@@ -121,6 +121,28 @@ adminPanelApp.controller('DataCtrl', ['$scope', '$http', '$location','$routePara
         
         $scope.titleTable = $scope.dataTable;
 
+        // Sort
+        $scope.sortField = undefined;
+        $scope.reverse = false;
+
+        $scope.sort = function(fieldName) {
+          if ($scope.sortField === fieldName) {
+            $scope.reverse = !$scope.reverse;
+          }
+          else {
+            $scope.sortField = fieldName;
+            $scope.reverse = false;          
+          }
+        };
+
+        $scope.isSortUp = function(fieldName) {
+          return $scope.sortField === fieldName && !$scope.reverse;
+        };
+
+        $scope.isSortDown = function(fieldName) {
+          return $scope.sortField === fieldName && $scope.reverse;
+        };
+
         if ($scope.dataTable == 'participants') {
             $scope.selectTakenVisible = true; 
             $scope.selectRoleVisible = false;
@@ -144,11 +166,17 @@ adminPanelApp.controller('DataCtrl', ['$scope', '$http', '$location','$routePara
             ++$scope.currentPage;
             document.getElementById("currentPage").style.color = "#222";
           }
-        }
+      }
 
       $scope.changeAction = function () {
           $scope.currentPage = 0;
           $scope.pageNumber = Math.ceil($scope.dataTableList.length / $scope.pageSize);
+      }
+
+      $scope.changeActionFilter = function () {
+          $scope.currentPage = 0;
+          $scope.pageNumber = Math.ceil($scope.lengthClientsPA.length / $scope.pageSize);
+          alert($scope.pageNumber+"\n"+$scope.lengthClientsPA.length+"\n"+$scope.pageSize);
       }
     });
 
