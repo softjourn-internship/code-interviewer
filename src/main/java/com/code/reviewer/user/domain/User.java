@@ -120,7 +120,7 @@ public class User implements Serializable {
         this.active = active;
     }
 
-    public ImageIcon getImage() {
+   public ImageIcon getImage() {
         return image;
     }
 
