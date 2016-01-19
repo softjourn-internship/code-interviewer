@@ -17,12 +17,13 @@
 	<div id="header">
 		<div class="logo">interview<span id="span-logo">.code</span></div>
 		<div class="send-request"></div>
-		<div timer id="Tclock" class="clock" style="margin:2em;"></div>
+		<!-- <div timer id="Tclock" class="clock" style="margin:2em;"></div> -->
 
 		<script type="text/javascript">
 
 		</script>
 	</div>
+	<div id="tasksBox">
 	<div id="fullTask" ng-controller="SelectTaskCtrl">
 		<div id="Back"><img src="images/Back.png" alt="" ng-click="TaskListVisible=!TaskListVisible"></div>
 		<div id="titleTask">{{'Task '+NumberTask}}</div>
@@ -45,19 +46,29 @@
 		</table>
 		</div>
 	</div>
+	<div id="runAndAtServer">
+		<div id="atServer">
+			<button id="buttonAtServer">AT SERVER</button>
+		</div>
+		<div id="run">
+			<button id="buttonRun">RUN</button>
+		</div>
+		<!-- <img class="Icons" id="at-server" alt="" title="Send programs at server"> -->
+	</div>
+	</div>
 
 <div ng-controller="changeSpace">
 	<div id="menuBar">
 		<div class="menuBox">
-			<img class="Icons" id="code-editor" src="images/code-editor.png" alt="" title="Show program editor" ng-click="ShowPr()">
-			<img class="Icons" id="test-editor" src="images/test-editor.png" title="Show test editor" ng-click="ShowTest()">
-			<img class="Icons" id="test-code-editor" src="images/test-code-editor.png" alt="" title="Show all editors" ng-click="ShowAll()">
-			<img class="Icons" id="compiled" src="images/compiled.png" alt="" title="Show debug message" ng-click="ShowLogMessage()">
+			<img class="Icons" id="code-editor" src="images/code-editor.svg" alt="" title="Show program editor" ng-click="ShowPr()">
+			<img class="Icons" id="test-editor" src="images/test-editor.svg" title="Show test editor" ng-click="ShowTest()">
+			<img class="Icons" id="test-code-editor" src="images/test-code-editor.svg" alt="" title="Show all editors" ng-click="ShowAll()">
+			<img class="Icons" id="compiled" src="images/compiled.svg" alt="" title="Show debug message" ng-click="ShowLogMessage()">
 
 		</div>
-		<div  class="menuBox">
+		<!-- <div  class="menuBox">
 				<img class="Icons" id="at-server" src="images/at-server.png" alt="" title="Send programs at server">
-		</div>
+		</div> -->
 	</div>
 
 	<div id="baseArea" >
