@@ -1,5 +1,5 @@
 var adminPanelApp = angular.module("adminPanelApp", ['ngRoute', 'ngResource','googlechart','ui.ace']);
-var myAppModule = angular.module('MyApp', ['ui.ace']);
+
 
 
 
@@ -11,21 +11,21 @@ adminPanelApp.controller('UserCtrl', ['$scope', '$http','$location','$routeParam
       $scope.user = data;
       $scope.username = $routeParams.username;
 
-      if (data.role == 'ROLE_ADMIN') { 
+      if (data.role == 'ROLE_ADMIN') {
           $scope.usersVisible=true;
-          $scope.dashboardVisible=false; 
+          $scope.dashboardVisible=false;
           $scope.tasksVisible=false;
           $scope.statisticsVisible=false;
         };
-      if (data.role == 'ROLE_MANAGER') { 
-          $scope.usersVisible=false; 
+      if (data.role == 'ROLE_MANAGER') {
+          $scope.usersVisible=false;
           $scope.dashboardVisible=true;
           $scope.tasksVisible=true;
           $scope.statisticsVisible=true;
        };
-      if (data.role == 'ROLE_RECRUITER') { 
-          $scope.usersVisible=false; 
-          $scope.dashboardVisible=true; 
+      if (data.role == 'ROLE_RECRUITER') {
+          $scope.usersVisible=false;
+          $scope.dashboardVisible=true;
           $scope.tasksVisible=true;
           $scope.statisticsVisible=false;
       };
@@ -59,7 +59,7 @@ adminPanelApp.controller('ClientsListCtrl', ['$scope', '$http','$location','$rou
 
       };
 
-        
+
 
   });
 }]);
@@ -118,7 +118,7 @@ adminPanelApp.controller('DataCtrl', ['$scope', '$http', '$location','$routePara
 
         $http.get(url).success(function(data) {
           $scope.dataTableList = data;
-        
+
         $scope.titleTable = $scope.dataTable;
 
         // Sort
@@ -131,7 +131,7 @@ adminPanelApp.controller('DataCtrl', ['$scope', '$http', '$location','$routePara
           }
           else {
             $scope.sortField = fieldName;
-            $scope.reverse = false;          
+            $scope.reverse = false;
           }
         };
 
@@ -144,11 +144,11 @@ adminPanelApp.controller('DataCtrl', ['$scope', '$http', '$location','$routePara
         };
 
         if ($scope.dataTable == 'participants') {
-            $scope.selectTakenVisible = true; 
+            $scope.selectTakenVisible = true;
             $scope.selectRoleVisible = false;
         }
         if ($scope.dataTable == 'users') {
-            $scope.selectTakenVisible = false; 
+            $scope.selectTakenVisible = false;
             $scope.selectRoleVisible = true;
         }
 
@@ -306,7 +306,7 @@ adminPanelApp.config([
         })
         .
         when('/login?logout', {})
-        
+
         $locationProvider.html5Mode(true);
   }
 ]);
@@ -327,25 +327,82 @@ adminPanelApp.controller("PushDataCtrl", function ($scope, $http){
 
 /* Controllers UsersWorkspace*/
 /************************************************************************************/
-
+var myAppModule = angular.module('MyApp', ['ui.ace']);
 myAppModule.controller('SelectTaskCtrl', function($scope,$http){
   $scope.NumberTask=1;
-  var Timer;
   $http.get("data/tasks.json").then(function (response) {
-      if ($scope.NumberTask==1){$scope.TaskShow=response.data.first;}
-      if ($scope.NumberTask==2){$scope.TaskShow= response.data.second;}
-      if ($scope.NumberTask==3){$scope.TaskShow= response.data.third;}
+      $scope.taskForUser=response.data;
+      $scope.TaskShow=$scope.taskForUser[1].task;
+      console.log($scope.taskForUser);
     });
+    console.log("k");
   $scope.ShowTask=function(){
-    $http.get("data/tasks.json").then(function (response) {
-      if ($scope.NumberTask==1){$scope.TaskShow=response.data.first; console.log($scope.TaskShow);}
-      if ($scope.NumberTask==2){$scope.TaskShow= response.data.second;}
-      if ($scope.NumberTask==3){$scope.TaskShow= response.data.third;}
-
-  });
+      if ($scope.NumberTask==1){$scope.TaskShow=$scope.taskForUser[1].task; }
+      if ($scope.NumberTask==2){$scope.TaskShow=$scope.taskForUser[2].task;}
+      if ($scope.NumberTask==3){$scope.TaskShow=$scope.taskForUser[3].task;}
 }
-    $scope.TaskListVisible=true;
+    $scope.TaskListVisible=false;
 });
-myAppModule.controller("testEd",function($scope){
-  $scope.code="";
+
+
+
+myAppModule.controller('changeSpace',function($scope){
+  var anableLog=false;
+   $scope.ShowTest = function() {
+  	$('#testEditor').css("z-index",4);
+  	$('#testEditor').css("width",'98%');
+  	$('#testEditor').css("left",'0%');
+  	$('#IconProg').css("scr","images/Icon1.jpg");
+  }
+
+   $scope.ShowPr = function() {
+  	$('#testEditor').css("z-index",1);
+  	$('#programEditor').css("width",'98%');
+  }
+  $scope.ShowAll= function(){
+
+  	$('#testEditor').css("width",'48%');
+  	$('#programEditor').css("width",'48%');
+  	$('#testEditor').css("left",'50%');
+  	$("#IconAll").attr("scr","images/Icon3active.jpg");
+  }
+
+   $scope.ShowLogMessage = function () {
+  	if (!anableLog){
+  		$('#testEditor').css("height",'65%');
+  		$('#programEditor').css("height",'65%');
+  		$('#logMess').css("z-index",7);
+  		anableLog=true;}
+  	else{
+  		$('#testEditor').css("height",'96%');
+  		$('#programEditor').css("height",'96%');
+  		$('#logMess').css("z-index",-2);
+  		anableLog=false;}
+    }
+
+});
+myAppModule.directive("timer", function () {
+    return function (scope, element, attrs) {
+    var clock;
+      $(document).ready(function() {
+        var Timer;
+        $.getJSON( "data/tasks.json", function( data ) {
+           Timer=data[0].time;
+          // console.log(Timer);
+            var clock = $('.clock').FlipClock(Timer,{
+                  clockFace: 'MinuteCounter',
+                  autoStart: false,
+                  callbacks: {
+                    stop: function() {
+                      $('.message').html('The clock has stopped!')
+                    }
+                  }
+              });
+              //clock.setTime(438);
+              //console.log(Timer);
+              clock.setCountdown(true);
+              clock.start();
+                });
+          });
+        }
 });

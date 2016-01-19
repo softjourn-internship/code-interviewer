@@ -277,7 +277,7 @@ div#ListTasks table tr:hover {
 #Tclock{
 	position: fixed;
 	top: -25px;
-	left: 79%;
+	left: 77%;
 	z-index: 9;
 	background-color: #3498db;
 	border-radius: 4px;

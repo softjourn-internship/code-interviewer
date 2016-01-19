@@ -10,17 +10,14 @@
 	<script type="text/javascript" src="bower_components/angular/angular.js"></script>
 	<script type="text/javascript" src="bower_components/angular-ui-ace/ui-ace.js"></script>
 	<script src="scripts/flipclock.min.js"></script>
-
-
 	<script src="scripts/controllers.js"></script>
-	<script src="scripts/UsersWorkspase.js"></script>
 </head>
 <body>
 	</div>
 	<div id="header">
 		<div class="logo">interview<span id="span-logo">.code</span></div>
 		<div class="send-request"></div>
-		<div id="Tclock" class="clock" style="margin:2em;"></div>
+		<div timer id="Tclock" class="clock" style="margin:2em;"></div>
 
 		<script type="text/javascript">
 
@@ -49,13 +46,13 @@
 		</div>
 	</div>
 
-
+<div ng-controller="changeSpace">
 	<div id="menuBar">
 		<div class="menuBox">
-			<img class="Icons" id="code-editor" src="images/code-editor.png" alt="" title="Show program editor" onclick="ShowPr()">
-			<img class="Icons" id="test-editor" src="images/test-editor.png" title="Show test editor" onclick="ShowTest()">
-			<img class="Icons" id="test-code-editor" src="images/test-code-editor.png" alt="" title="Show all editors" onclick="ShowAll()">
-			<img class="Icons" id="compiled" src="images/compiled.png" alt="" title="Show debug message" onclick="ShowLogMessage()">
+			<img class="Icons" id="code-editor" src="images/code-editor.png" alt="" title="Show program editor" ng-click="ShowPr()">
+			<img class="Icons" id="test-editor" src="images/test-editor.png" title="Show test editor" ng-click="ShowTest()">
+			<img class="Icons" id="test-code-editor" src="images/test-code-editor.png" alt="" title="Show all editors" ng-click="ShowAll()">
+			<img class="Icons" id="compiled" src="images/compiled.png" alt="" title="Show debug message" ng-click="ShowLogMessage()">
 
 		</div>
 		<div  class="menuBox">
@@ -63,7 +60,7 @@
 		</div>
 	</div>
 
-	<div id="baseArea" ng-controller="testEd">
+	<div id="baseArea" >
 		<div id="programEditor" >
 			<div id="files" > ProgramEditor</div>
 			<div class="editor" ui-ace="{ mode: 'java'}" ng-model="code"></div>
@@ -76,5 +73,6 @@
 		<div id="logMess"></div>
 
 	</div>
+</div>
 </body>
 </html>
