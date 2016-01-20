@@ -12,8 +12,7 @@
 	<script src="scripts/flipclock.min.js"></script>
 	<script src="scripts/controllers.js"></script>
 </head>
-<body>
-	</div>
+<body ng-controller="mainCTRL" ng-init="initTaskText()">
 	<div id="header">
 		<div class="logo">interview<span id="span-logo">.code</span></div>
 		<div class="send-request"></div>
@@ -24,22 +23,22 @@
 		</script>
 	</div>
 	<div id="tasksBox">
-	<div id="fullTask" ng-controller="SelectTaskCtrl">
+	<div id="fullTask">
 		<div id="Back"><img src="images/Back.png" alt="" ng-click="TaskListVisible=!TaskListVisible"></div>
 		<div id="titleTask">{{'Task '+NumberTask}}</div>
 
 		<div id="Task"><p>{{ TaskShow }}</p></div>
 		<div id="ListTasks" ng-show="TaskListVisible">
 		<table>
-			<tr  ng-click="TaskListVisible=!TaskListVisible; NumberTask=1; ShowTask();">
+			<tr  ng-click="changeText(NumberTask); TaskListVisible=!TaskListVisible; NumberTask=1; ShowTask(); newText(NumberTask);">
 				<td class="width-td"><div class="taskButton">1</div></td>
 				<td>Task</td>
 			</tr>
-			<tr  ng-click="TaskListVisible=!TaskListVisible; NumberTask=2; ShowTask()">
+			<tr  ng-click="changeText(NumberTask); TaskListVisible=!TaskListVisible; NumberTask=2; ShowTask(); newText(NumberTask);">
 				<td><div class="taskButton">2</div></td>
 				<td>Task</td>
 			</tr>
-			<tr ng-click="TaskListVisible=!TaskListVisible; NumberTask=3; ShowTask()">
+			<tr ng-click="changeText(NumberTask); TaskListVisible=!TaskListVisible; NumberTask=3; ShowTask(); newText(NumberTask);">
 				<td><div class="taskButton">3</div></td>
 				<td>Task</td>
 			</tr>
@@ -57,7 +56,7 @@
 	</div>
 	</div>
 
-<div ng-controller="changeSpace">
+<div>
 	<div id="menuBar">
 		<div class="menuBox">
 			<img class="Icons" id="code-editor" src="images/code-editor.svg" alt="" title="Show program editor" ng-click="ShowPr()">
@@ -74,14 +73,14 @@
 	<div id="baseArea" >
 		<div id="programEditor" >
 			<div id="files" > ProgramEditor</div>
-			<div class="editor" ui-ace="{ mode: 'java'}" ng-model="code"></div>
+			<div class="editor" ui-ace="{ mode: 'java'}" ng-model="programText"></div>
 		</div>
 
 		<div id="testEditor">
 			<div id="files">TestEditor</div>
-			<div class="editor" ui-ace></div>
+			<div class="editor" ui-ace ng-model="testText"></div>
 		</div>
-		<div id="logMess"></div>
+		<div id="logMess" ng-model="logText"></div>
 
 	</div>
 </div>

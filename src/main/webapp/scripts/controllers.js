@@ -195,9 +195,8 @@ adminPanelApp.controller('DataCtrl', ['$scope', '$http', '$location','$routePara
       $scope.getTaskList=function(){
       $http.get("data/AllTasks.json").then(function (response) {
         $scope.allTasks=response.data;
-
-      });
-    };
+        });
+      };
       $scope.buttonTbox;
       $scope.CreateOrChangeTask=function(buttonTitle) {
         $scope.buttonTbox=buttonTitle;
@@ -328,59 +327,72 @@ adminPanelApp.controller("PushDataCtrl", function ($scope, $http){
 /* Controllers UsersWorkspace*/
 /************************************************************************************/
 var myAppModule = angular.module('MyApp', ['ui.ace']);
-myAppModule.controller('SelectTaskCtrl', function($scope,$http){
-  $scope.NumberTask=1;
-  $http.get("data/tasks.json").then(function (response) {
-      $scope.taskForUser=response.data;
-      $scope.TaskShow=$scope.taskForUser[1].task;
-      console.log($scope.taskForUser);
+
+myAppModule.controller('mainCTRL',['$scope','$http',function($scope,$http){
+    var anableLog=false;
+    $scope.NumberTask=1;
+    $http.get("data/tasks.json").then(function (response) {
+        $scope.taskForUser=response.data;
+        $scope.TaskShow=$scope.taskForUser[1].task;
+        $scope.programText=$scope.taskForUser[1].program;
+        $scope.testText=$scope.taskForUser[1].test;
+        $scope.logText=$scope.taskForUser[1].log;
     });
-    console.log("k");
-  $scope.ShowTask=function(){
-      if ($scope.NumberTask==1){$scope.TaskShow=$scope.taskForUser[1].task; }
-      if ($scope.NumberTask==2){$scope.TaskShow=$scope.taskForUser[2].task;}
-      if ($scope.NumberTask==3){$scope.TaskShow=$scope.taskForUser[3].task;}
-}
-    $scope.TaskListVisible=false;
-});
+    $scope.changeText=function(idTask){
+      //console.log($scope.taskForUser[idTask].program);
+      $scope.taskForUser[idTask].program=$scope.programText;
+      $scope.taskForUser[idTask].test=$scope.testText;
+      $scope.taskForUser[idTask].log=$scope.logText;
+      //console.log($scope.taskForUser[idTask].program);
+    };
 
+    $scope.newText=function(idTask){
+    $scope.programText=$scope.taskForUser[idTask].program;
+    $scope.testText=$scope.taskForUser[idTask].test;
+    $scope.logText=$scope.taskForUser[idTask].log;
+  };
 
-
-myAppModule.controller('changeSpace',function($scope){
-  var anableLog=false;
-   $scope.ShowTest = function() {
-  	$('#testEditor').css("z-index",4);
-  	$('#testEditor').css("width",'98%');
-  	$('#testEditor').css("left",'0%');
-  	$('#IconProg').css("scr","images/Icon1.jpg");
+    $scope.ShowTask=function(){
+        if ($scope.NumberTask==1){$scope.TaskShow=$scope.taskForUser[1].task;}
+        if ($scope.NumberTask==2){$scope.TaskShow=$scope.taskForUser[2].task;}
+        if ($scope.NumberTask==3){$scope.TaskShow=$scope.taskForUser[3].task;}
   }
+      $scope.TaskListVisible=false;
 
-   $scope.ShowPr = function() {
-  	$('#testEditor').css("z-index",1);
-  	$('#programEditor').css("width",'98%');
-  }
-  $scope.ShowAll= function(){
 
-  	$('#testEditor').css("width",'48%');
-  	$('#programEditor').css("width",'48%');
-  	$('#testEditor').css("left",'50%');
-  	$("#IconAll").attr("scr","images/Icon3active.jpg");
-  }
-
-   $scope.ShowLogMessage = function () {
-  	if (!anableLog){
-  		$('#testEditor').css("height",'65%');
-  		$('#programEditor').css("height",'65%');
-  		$('#logMess').css("z-index",7);
-  		anableLog=true;}
-  	else{
-  		$('#testEditor').css("height",'96%');
-  		$('#programEditor').css("height",'96%');
-  		$('#logMess').css("z-index",-2);
-  		anableLog=false;}
+    $scope.ShowTest = function() {
+    	$('#testEditor').css("z-index",4);
+    	$('#testEditor').css("width",'98%');
+    	$('#testEditor').css("left",'0%');
+    	$('#IconProg').css("scr","images/Icon1.jpg");
     }
 
-});
+    $scope.ShowPr = function() {
+    	$('#testEditor').css("z-index",1);
+    	$('#programEditor').css("width",'98%');
+    }
+    $scope.ShowAll= function(){
+
+    	$('#testEditor').css("width",'48%');
+    	$('#programEditor').css("width",'48%');
+    	$('#testEditor').css("left",'50%');
+    	$("#IconAll").attr("scr","images/Icon3active.jpg");
+    }
+
+    $scope.ShowLogMessage = function () {
+    	if (!anableLog){
+    		$('#testEditor').css("height",'65%');
+    		$('#programEditor').css("height",'65%');
+    		$('#logMess').css("z-index",7);
+    		anableLog=true;}
+    	else{
+    		$('#testEditor').css("height",'96%');
+    		$('#programEditor').css("height",'96%');
+    		$('#logMess').css("z-index",-2);
+    		anableLog=false;}
+    }
+
+}]);
 myAppModule.directive("timer", function () {
     return function (scope, element, attrs) {
     var clock;
