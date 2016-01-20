@@ -1,12 +1,14 @@
-package com.code.reviewer.participants.domain;
+package com.code.reviewer.user.domain;
 
 
 import com.code.reviewer.user.domain.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.swing.*;
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -19,7 +21,7 @@ public class Participant implements Serializable {
     @Id
     @GeneratedValue
     @Column(name = "participantId")
-    private Integer participantId;
+    private Long participantId;
 
     @Column(name = "firstName")
     private String firstName;
@@ -45,13 +47,9 @@ public class Participant implements Serializable {
     @Column(name = "image")
     private ImageIcon image;
 
-    /*@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "user_participant",
-            joinColumns = @JoinColumn(name = "participantId"),
-            inverseJoinColumns = @JoinColumn(name = "username"))*/
-    @ManyToMany
-    @JoinTable(name = "user_participant")
-    private Set<User> userSet;
+    @JsonIgnore
+    @ManyToMany(targetEntity = User.class, mappedBy = "participants")
+    private Set<User> users = new HashSet<>();
 
     public Participant() {
 
@@ -66,11 +64,11 @@ public class Participant implements Serializable {
         this.taken = taken;
     }
 
-    public Integer getParticipantId() {
+    public Long getParticipantId() {
         return participantId;
     }
 
-    public void setParticipantId(Integer participantId) {
+    public void setParticipantId(Long participantId) {
         this.participantId = participantId;
     }
 
@@ -138,12 +136,12 @@ public class Participant implements Serializable {
         this.image = image;
     }
 
-    public Set<User> getUserSet() {
-        return userSet;
+    public Set<User> getUsers() {
+        return users;
     }
 
-    public void setUserSet(Set<User> userSet) {
-        this.userSet = userSet;
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 
     @Override

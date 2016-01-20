@@ -1,19 +1,11 @@
 INSERT INTO users(username, first_name, last_name, email, password, role, active, image, background)
-    VALUES ('admin', 'Mykola', 'Grynkevych', 'koly@mail.com', 'admin', 'ROLE_ADMIN', TRUE, NULL, NULL);
+    VALUES ('admin', 'Admin', 'Admin', 'admin@gmail.com', 'admin', 'ROLE_ADMIN', TRUE, NULL, NULL);
 INSERT INTO users(username, first_name, last_name, email, password, role, active, image, background)
-    VALUES ('NicholasG', 'Mykola', 'Grynkevych', 'koly@mail.com', '32342', 'ROLE_MANAGER', TRUE, NULL, NULL);
+    VALUES ('recruiter', 'Recruiter', 'Recruiter', 'recruiter@gmail.com', 'recruiter', 'ROLE_RECRUITER', TRUE, NULL, NULL);
 INSERT INTO users(username, first_name, last_name, email, password, role, active, image, background)
-    VALUES ('recruiter', 'Iwan', 'Arabchuk', 'iwan@gmail.com', 'recruiter', 'ROLE_RECRUITER', TRUE, NULL, NULL);
+    VALUES ('manager', 'Manager', 'Manager', 'manager@gmail.com', 'manager', 'ROLE_MANAGER', TRUE, NULL, NULL);
 INSERT INTO users(username, first_name, last_name, email, password, role, active, image, background)
-    VALUES ('kutsaniuk', 'Dmytro', 'Kutsaniuk', 'dmytro@gmail.com', 'kutsaniuk', 'ROLE_MANAGER', TRUE, NULL, NULL);
-INSERT INTO users(username, first_name, last_name, email, password, role, active, image, background)
-    VALUES ('demy4', 'Yuriy', 'Demkiv', 'yuriy@gmail.com', '32342', 'ROLE_ADMIN', TRUE, NULL, NULL);
-INSERT INTO users(username, first_name, last_name, email, password, role, active, image, background)
-    VALUES ('andrusyakA', 'Vitaliy', 'Andrusyak', 'vitaliy@gmail.com', '32342', 'ROLE_RECRUITER', TRUE, NULL, NULL);
-INSERT INTO users(username, first_name, last_name, email, password, role, active, image, background)
-    VALUES ('Pushkedra', 'Grugoriy', 'Pushkedra', 'grygoriy@gmail.com', '32342', 'ROLE_MANAGER', FALSE, NULL, NULL);
-INSERT INTO users(username, first_name, last_name, email, password, role, active, image, background)
-    VALUES ('MulaDmytro', 'Dmytro', 'Mula', 'mula@gmail.com', '32342', 'ROLE_RECRUITER', TRUE, NULL, NULL);
+    VALUES ('reviewer', 'Reviewer', 'Reviewer', 'reviewer@gmail.com', 'reviewer', 'ROLE_REVIEWER', TRUE, NULL, NULL);
 
 
 INSERT INTO participants(participant_id, first_name, last_name, email, sent, returned, taken, active, image)
@@ -39,25 +31,25 @@ INSERT INTO participants(participant_id, first_name, last_name, email, sent, ret
 INSERT INTO participants(participant_id, first_name, last_name, email, sent, returned, taken, active, image)
     VALUES (11, 'Denus', 'Kaznodiy', 'iDen@mail.ru', '2016-01-14', '2016-01-15', 'done', TRUE, NULL) ;
 
-INSERT INTO user_participant(user_set_username, participant_set_participantId)
-    VALUES('recruiter', 1);
-INSERT INTO user_participant(user_set_username, participant_set_participantId)
-    VALUES('recruiter', 3);
-INSERT INTO user_participant(user_set_username, participant_set_participantId)
-    VALUES('recruiter', 8);
-INSERT INTO user_participant(user_set_username, participant_set_participantId)
-    VALUES('recruiter', 11);
-INSERT INTO user_participant(user_set_username, participant_set_participantId)
-    VALUES('andrusyakA', 5);
-INSERT INTO user_participant(user_set_username, participant_set_participantId)
-    VALUES('andrusyakA', 6);
-INSERT INTO user_participant(user_set_username, participant_set_participantId)
-    VALUES('andrusyakA', 9);
-INSERT INTO user_participant(user_set_username, participant_set_participantId)
-    VALUES('MulaDmytro', 2);
-INSERT INTO user_participant(user_set_username, participant_set_participantId)
-    VALUES('MulaDmytro', 4);
-INSERT INTO user_participant(user_set_username, participant_set_participantId)
-    VALUES('MulaDmytro', 7);
-INSERT INTO user_participant(user_set_username, participant_set_participantId)
-    VALUES('MulaDmytro', 8);
+INSERT INTO users_participants(users_userId, participants_participantId)
+    VALUES(2, 1);
+INSERT INTO users_participants(users_userId, participants_participantId)
+    VALUES(2, 3);
+INSERT INTO users_participants(users_userId, participants_participantId)
+    VALUES(2, 8);
+-- INSERT INTO user_participant(user_set_username, participant_set_participantId)
+--     VALUES('recruiter', 11);
+-- INSERT INTO user_participant(user_set_username, participant_set_participantId)
+--     VALUES('andrusyakA', 5);
+-- INSERT INTO user_participant(user_set_username, participant_set_participantId)
+--     VALUES('andrusyakA', 6);
+-- INSERT INTO user_participant(user_set_username, participant_set_participantId)
+--     VALUES('andrusyakA', 9);
+-- INSERT INTO user_participant(user_set_username, participant_set_participantId)
+--     VALUES('MulaDmytro', 2);
+-- INSERT INTO user_participant(user_set_username, participant_set_participantId)
+--     VALUES('MulaDmytro', 4);
+-- INSERT INTO user_participant(user_set_username, participant_set_participantId)
+--     VALUES('MulaDmytro', 7);
+-- INSERT INTO user_participant(user_set_username, participant_set_participantId)
+--     VALUES('MulaDmytro', 8);

@@ -1,6 +1,6 @@
-package com.code.reviewer.participants.service;
+package com.code.reviewer.user.service;
 
-import com.code.reviewer.participants.domain.Participant;
+import com.code.reviewer.user.domain.Participant;
 
 import java.util.Collection;
 

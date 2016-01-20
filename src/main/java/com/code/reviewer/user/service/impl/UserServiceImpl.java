@@ -1,6 +1,6 @@
 package com.code.reviewer.user.service.impl;
 
-import com.code.reviewer.participants.domain.Participant;
+import com.code.reviewer.user.domain.Participant;
 import com.code.reviewer.security.SecurityUtils;
 import com.code.reviewer.user.domain.User;
 import com.code.reviewer.user.repository.UserRepository;
@@ -26,6 +26,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User findOneByUserId(Long id) {
+        return userRepository.findOneByUserId(id);
+    }
+
+    @Override
     public User findOneByUsername(String username) {
         return userRepository.findOneByUsername(username);
     }
@@ -42,7 +47,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Collection<Participant> getParticipants(String username) {
-        return userRepository.findOneByUsername(username).getParticipantSet();
+        return userRepository.findOneByUsername(username).getParticipants();
     }
 
     @Override

@@ -1,6 +1,6 @@
-package com.code.reviewer.participants.repository;
+package com.code.reviewer.user.repository;
 
-import com.code.reviewer.participants.domain.Participant;
+import com.code.reviewer.user.domain.Participant;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

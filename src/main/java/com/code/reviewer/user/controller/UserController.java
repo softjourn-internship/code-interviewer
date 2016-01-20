@@ -1,7 +1,7 @@
 package com.code.reviewer.user.controller;
 
-import com.code.reviewer.participants.domain.Participant;
-import com.code.reviewer.participants.service.ParticipantService;
+import com.code.reviewer.user.domain.Participant;
+import com.code.reviewer.user.service.ParticipantService;
 import com.code.reviewer.security.SecurityUtils;
 import com.code.reviewer.user.domain.User;
 import com.code.reviewer.user.service.UserService;
@@ -40,8 +40,8 @@ public class UserController {
         return userService.getAll();
     }
 
-    @RequestMapping(value = "/users/new",
-            method = {RequestMethod.POST, RequestMethod.GET},
+    @RequestMapping(value = "/users",
+            method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
     public User addUser(@RequestBody User user) {
@@ -60,40 +60,47 @@ public class UserController {
 
     @RequestMapping(value = "/users/update",
             method = RequestMethod.PUT,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+            produces = MediaType.APPLICATION_JSON_VALUE,
+            consumes = MediaType.APPLICATION_JSON_VALUE)
     public User updateUser(@RequestBody User user) {
         userService.save(user);
         return user;
     }
 
-    @RequestMapping(value = "/users/{username}",
+    @RequestMapping(value = "/users/{id}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public User getUser(@PathVariable String username) {
-        return userService.findOneByUsername(username);
+    public User getUser(@PathVariable Long id) {
+        return userService.findOneByUserId(id);
     }
 
-    @RequestMapping(value = "/users/delete",
+    @RequestMapping(value = "/users/{id}",
             method = RequestMethod.DELETE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public void deleteUser(@PathVariable String username) {
-        User user = userService.findOneByUsername(username);
-        user.setActive(false);
-        userService.save(user);
-        LOGGER.info("User '" + user.getUsername() + "' has been deactivated.");
+    public User deleteUser(@PathVariable Long id) {
+        User user = userService.findOneByUserId(id);
+        if (user == null) {
+            LOGGER.warn("User '" + user.getUsername() + "' not found!");
+            return null;
+        } else {
+            user.setActive(false);
+            userService.save(user);
+            LOGGER.info("User '" + user.getUsername() + "' has been deactivated.");
+            return user;
+        }
     }
 
-    @RequestMapping(value = "/users/restore/{username}",
+    @RequestMapping(value = "/users/restore/{id}",
             method = RequestMethod.PUT,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public User restoreUser(@PathVariable String username) {
-        User deletedUser = userService.findOneByUsername(username);
-        if (deletedUser != null) {
-            deletedUser.setActive(true);
-            LOGGER.info("User '" + deletedUser.getUsername() + "' has been restored.");
-            return deletedUser;
+    public User restoreUser(@PathVariable Long id) {
+        User user = userService.findOneByUserId(id);
+        if (user != null) {
+            user.setActive(true);
+            LOGGER.info("User '" + user.getUsername() + "' has been restored.");
+            return user;
         } else {
-            LOGGER.warn("User '" + username + "' is not found!");
+            LOGGER.warn("User not found!");
             return null;
         }
     }
@@ -102,29 +109,28 @@ public class UserController {
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public User getCurrentLogin() {
-        return userService.findOneByUsername(SecurityUtils.getCurrentUserLogin());
+        return userService.getCurrentUser();
     }
 
     @RequestMapping(value = "/participants",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public Set<Participant> getParticipants() {
-        return userService.getCurrentUser().getParticipantSet();
+        return userService.getCurrentUser().getParticipants();
     }
 
-    @RequestMapping(value = "/participants/new",
+    @RequestMapping(value = "/participants",
             method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE
-    )
+            consumes = MediaType.APPLICATION_JSON_VALUE)
     public Participant addParticipant(@RequestBody Participant participant) {
         if (participantService.findOneByEmail(participant.getEmail()) != null) {
             LOGGER.warn("Email" + participant.getEmail() + " already in use!");
             return null;
         } else {
             User currentUser = userService.getCurrentUser();
-            participant.getUserSet().add(currentUser);
+            participant.getUsers().add(currentUser);
             participantService.save(participant);
-            currentUser.getParticipantSet().add(participant);
+            currentUser.getParticipants().add(participant);
             LOGGER.info("Participant '" + participant.getFirstName() + ' ' + participant.getLastName() + "' has been added");
             return participant;
         }
