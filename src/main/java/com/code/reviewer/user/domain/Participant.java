@@ -1,12 +1,14 @@
-package com.code.reviewer.participants.domain;
+package com.code.reviewer.user.domain;
 
 
 import com.code.reviewer.user.domain.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.swing.*;
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -19,7 +21,7 @@ public class Participant implements Serializable {
     @Id
     @GeneratedValue
     @Column(name = "participantId")
-    private Integer participantID;
+    private Long participantId;
 
     @Column(name = "firstName")
     private String firstName;
@@ -45,11 +47,9 @@ public class Participant implements Serializable {
     @Column(name = "image")
     private ImageIcon image;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
-    @JoinTable(name = "user_participant",
-            joinColumns = @JoinColumn(name = "participantId"),
-            inverseJoinColumns = @JoinColumn(name = "username"))
-    private Set<User> userSet;
+    @JsonIgnore
+    @ManyToMany(targetEntity = User.class, mappedBy = "participants")
+    private Set<User> users = new HashSet<>();
 
     public Participant() {
 
@@ -64,12 +64,12 @@ public class Participant implements Serializable {
         this.taken = taken;
     }
 
-    public Integer getParticipantID() {
-        return participantID;
+    public Long getParticipantId() {
+        return participantId;
     }
 
-    public void setParticipantID(Integer participantID) {
-        this.participantID = participantID;
+    public void setParticipantId(Long participantId) {
+        this.participantId = participantId;
     }
 
     public String getFirstName() {
@@ -136,10 +136,18 @@ public class Participant implements Serializable {
         this.image = image;
     }
 
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
+
     @Override
     public String toString() {
         return "{" +
-                "participantID=" + participantID +
+                "participantId=" + participantId +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +

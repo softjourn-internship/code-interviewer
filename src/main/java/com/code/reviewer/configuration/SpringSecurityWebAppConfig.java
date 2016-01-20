@@ -1,5 +1,6 @@
 package com.code.reviewer.configuration;
 
+import com.code.reviewer.security.AuthoritiesConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -31,16 +32,19 @@ public class SpringSecurityWebAppConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .csrf().disable()
                 .authorizeRequests()
-                    .antMatchers("/**").authenticated()
+//                        .antMatchers("/**").permitAll()
+                .antMatchers("/**").authenticated()
+                .antMatchers("/data/participants/**").hasAuthority(AuthoritiesConstants.RECRUITER)
                 .and()
-                    .formLogin()
-                    .loginProcessingUrl("/api/authentication")
-                    .usernameParameter("username")
-                    .passwordParameter("password")
-                    .permitAll()
+                .formLogin()
+                .loginProcessingUrl("/api/authentication")
+                .usernameParameter("username")
+                .passwordParameter("password")
+                .permitAll()
                 .and()
-                    .logout()
-                    .permitAll();
+                .logout()
+                .permitAll();
     }
 }
