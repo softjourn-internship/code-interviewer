@@ -1,12 +1,12 @@
 <div ng-controller="TasksCtrl" ng-init="getTaskList()" id="mainTasksBox">
 	<!--Change view scroll strip -->
 	<script>
-	(function($){
+
 		$('#boxWithTasks').mCustomScrollbar({
 			theme:"minimal-dark"
 		});
-	})(jQuery);
-	</script>
+		console.log(:"s");
+		</script>
 	<div ng-show="visibleMessageDel">
 		<div id="messageDeleteBox"></div>
 		<div id="messageDelete">
