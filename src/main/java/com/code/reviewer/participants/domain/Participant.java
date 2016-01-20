@@ -19,7 +19,7 @@ public class Participant implements Serializable {
     @Id
     @GeneratedValue
     @Column(name = "participantId")
-    private Integer participantID;
+    private Integer participantId;
 
     @Column(name = "firstName")
     private String firstName;
@@ -45,10 +45,12 @@ public class Participant implements Serializable {
     @Column(name = "image")
     private ImageIcon image;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+    /*@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "user_participant",
             joinColumns = @JoinColumn(name = "participantId"),
-            inverseJoinColumns = @JoinColumn(name = "username"))
+            inverseJoinColumns = @JoinColumn(name = "username"))*/
+    @ManyToMany
+    @JoinTable(name = "user_participant")
     private Set<User> userSet;
 
     public Participant() {
@@ -64,12 +66,12 @@ public class Participant implements Serializable {
         this.taken = taken;
     }
 
-    public Integer getParticipantID() {
-        return participantID;
+    public Integer getParticipantId() {
+        return participantId;
     }
 
-    public void setParticipantID(Integer participantID) {
-        this.participantID = participantID;
+    public void setParticipantId(Integer participantId) {
+        this.participantId = participantId;
     }
 
     public String getFirstName() {
@@ -136,10 +138,18 @@ public class Participant implements Serializable {
         this.image = image;
     }
 
+    public Set<User> getUserSet() {
+        return userSet;
+    }
+
+    public void setUserSet(Set<User> userSet) {
+        this.userSet = userSet;
+    }
+
     @Override
     public String toString() {
         return "{" +
-                "participantID=" + participantID +
+                "participantId=" + participantId +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +

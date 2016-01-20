@@ -46,17 +46,16 @@ public class User implements Serializable {
     @Column(name = "background")
     private ImageIcon background;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
-    @JoinTable(name = "user_participant",
-            joinColumns = @JoinColumn(name = "username"),
-            inverseJoinColumns = @JoinColumn(name = "participantId"))
-    private Set<Participant> participantList;
+//    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "userSet")
+    @ManyToMany(mappedBy = "userSet")
+    private Set<Participant> participantSet;
 
     public User() {
 
     }
 
-    public User(String firstName, String lastName, String email, String password, String role) {
+    public User(String username, String firstName, String lastName, String email, String password, String role) {
+        this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -134,6 +133,14 @@ public class User implements Serializable {
 
     public void setBackground(ImageIcon background) {
         this.background = background;
+    }
+
+    public Set<Participant> getParticipantSet() {
+        return participantSet;
+    }
+
+    public void setParticipantSet(Set<Participant> participantSet) {
+        this.participantSet = participantSet;
     }
 
     @Override

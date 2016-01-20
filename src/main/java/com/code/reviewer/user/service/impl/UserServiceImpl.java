@@ -1,11 +1,14 @@
 package com.code.reviewer.user.service.impl;
 
+import com.code.reviewer.participants.domain.Participant;
+import com.code.reviewer.security.SecurityUtils;
 import com.code.reviewer.user.domain.User;
 import com.code.reviewer.user.repository.UserRepository;
 import com.code.reviewer.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -35,6 +38,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public void save(User user) {
         userRepository.save(user);
+    }
+
+    @Override
+    public Collection<Participant> getParticipants(String username) {
+        return userRepository.findOneByUsername(username).getParticipantSet();
+    }
+
+    @Override
+    public User getCurrentUser() {
+        return findOneByUsername(SecurityUtils.getCurrentUserLogin());
     }
 
 }

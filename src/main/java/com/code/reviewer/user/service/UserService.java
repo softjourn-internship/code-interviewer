@@ -1,5 +1,6 @@
 package com.code.reviewer.user.service;
 
+import com.code.reviewer.participants.domain.Participant;
 import com.code.reviewer.user.domain.User;
 
 import java.util.Collection;
@@ -16,4 +17,8 @@ public interface UserService {
     User findOneByEmail(String email);
 
     void save(User user);
+
+    Collection<Participant> getParticipants(String username);
+
+    User getCurrentUser();
 }

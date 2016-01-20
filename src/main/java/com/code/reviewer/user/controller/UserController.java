@@ -1,5 +1,7 @@
 package com.code.reviewer.user.controller;
 
+import com.code.reviewer.participants.domain.Participant;
+import com.code.reviewer.participants.service.ParticipantService;
 import com.code.reviewer.security.SecurityUtils;
 import com.code.reviewer.user.domain.User;
 import com.code.reviewer.user.service.UserService;
@@ -11,6 +13,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
+import java.util.Set;
 
 /**
  * Created by NicholasG on 03.01.2016.
@@ -24,27 +27,32 @@ public class UserController {
 
     @Autowired
     @Qualifier(value = "userService")
-    private UserService service;
+    private UserService userService;
+
+    @Autowired
+    @Qualifier(value = "participantService")
+    private ParticipantService participantService;
 
     @RequestMapping(value = "/users",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public Collection<User> getAllUsers() {
-        return service.getAll();
+        return userService.getAll();
     }
 
     @RequestMapping(value = "/users/new",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+            method = {RequestMethod.POST, RequestMethod.GET},
+            produces = MediaType.APPLICATION_JSON_VALUE,
+            consumes = MediaType.APPLICATION_JSON_VALUE)
     public User addUser(@RequestBody User user) {
-        if (service.findOneByUsername(user.getUsername()) != null) {
+        if (userService.findOneByUsername(user.getUsername()) != null) {
             LOGGER.warn("Username '" + user.getUsername() + "' already in use!");
             return null;
-        } else if (service.findOneByEmail(user.getEmail()) != null) {
+        } else if (userService.findOneByEmail(user.getEmail()) != null) {
             LOGGER.warn("Email '" + user.getEmail() + "' already in use!");
             return null;
         } else {
-            service.save(user);
+            userService.save(user);
             LOGGER.info("User '" + user.getUsername() + "' has been added");
             return user;
         }
@@ -54,7 +62,7 @@ public class UserController {
             method = RequestMethod.PUT,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public User updateUser(@RequestBody User user) {
-        service.save(user);
+        userService.save(user);
         return user;
     }
 
@@ -62,16 +70,16 @@ public class UserController {
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public User getUser(@PathVariable String username) {
-        return service.findOneByUsername(username);
+        return userService.findOneByUsername(username);
     }
 
     @RequestMapping(value = "/users/delete",
             method = RequestMethod.DELETE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public void deleteUser(@PathVariable String username) {
-        User user = service.findOneByUsername(username);
+        User user = userService.findOneByUsername(username);
         user.setActive(false);
-        service.save(user);
+        userService.save(user);
         LOGGER.info("User '" + user.getUsername() + "' has been deactivated.");
     }
 
@@ -79,7 +87,7 @@ public class UserController {
             method = RequestMethod.PUT,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public User restoreUser(@PathVariable String username) {
-        User deletedUser = service.findOneByUsername(username);
+        User deletedUser = userService.findOneByUsername(username);
         if (deletedUser != null) {
             deletedUser.setActive(true);
             LOGGER.info("User '" + deletedUser.getUsername() + "' has been restored.");
@@ -94,6 +102,32 @@ public class UserController {
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public User getCurrentLogin() {
-        return service.findOneByUsername(SecurityUtils.getCurrentUserLogin());
+        return userService.findOneByUsername(SecurityUtils.getCurrentUserLogin());
     }
+
+    @RequestMapping(value = "/participants",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public Set<Participant> getParticipants() {
+        return userService.getCurrentUser().getParticipantSet();
+    }
+
+    @RequestMapping(value = "/participants/new",
+            method = RequestMethod.POST,
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public Participant addParticipant(@RequestBody Participant participant) {
+        if (participantService.findOneByEmail(participant.getEmail()) != null) {
+            LOGGER.warn("Email" + participant.getEmail() + " already in use!");
+            return null;
+        } else {
+            User currentUser = userService.getCurrentUser();
+            participant.getUserSet().add(currentUser);
+            participantService.save(participant);
+            currentUser.getParticipantSet().add(participant);
+            LOGGER.info("Participant '" + participant.getFirstName() + ' ' + participant.getLastName() + "' has been added");
+            return participant;
+        }
+    }
+
 }
