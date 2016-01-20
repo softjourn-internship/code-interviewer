@@ -1,12 +1,12 @@
 package com.code.reviewer.user.domain;
 
-import com.code.reviewer.participants.domain.Participant;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.swing.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -17,6 +17,10 @@ import java.util.Set;
 public class User implements Serializable {
 
     @Id
+    @Column(name = "userId")
+    @GeneratedValue
+    private Long userId;
+
     @Size(min = 5, max = 50)
     @Column(name = "username")
     private String username;
@@ -46,22 +50,32 @@ public class User implements Serializable {
     @Column(name = "background")
     private ImageIcon background;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+    /*@ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(name = "user_participant",
-            joinColumns = @JoinColumn(name = "username"),
-            inverseJoinColumns = @JoinColumn(name = "participantId"))
-    private Set<Participant> participantList;
+            joinColumns = {@JoinColumn(name = "userId")},
+            inverseJoinColumns = {@JoinColumn(name = "participantId")})*/
+    @ManyToMany(targetEntity = Participant.class)
+    private Set<Participant> participants = new HashSet<>();
 
     public User() {
 
     }
 
-    public User(String firstName, String lastName, String email, String password, String role) {
+    public User(String username, String firstName, String lastName, String email, String password, String role) {
+        this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.role = role;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public String getUsername() {
@@ -120,7 +134,7 @@ public class User implements Serializable {
         this.active = active;
     }
 
-   public ImageIcon getImage() {
+    public ImageIcon getImage() {
         return image;
     }
 
@@ -134,6 +148,14 @@ public class User implements Serializable {
 
     public void setBackground(ImageIcon background) {
         this.background = background;
+    }
+
+    public Set<Participant> getParticipants() {
+        return participants;
+    }
+
+    public void setParticipants(Set<Participant> participants) {
+        this.participants = participants;
     }
 
     @Override
