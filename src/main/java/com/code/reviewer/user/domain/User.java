@@ -50,10 +50,7 @@ public class User implements Serializable {
     @Column(name = "background")
     private ImageIcon background;
 
-    /*@ManyToMany(cascade = {CascadeType.ALL})
-    @JoinTable(name = "user_participant",
-            joinColumns = {@JoinColumn(name = "userId")},
-            inverseJoinColumns = {@JoinColumn(name = "participantId")})*/
+    @JsonIgnore
     @ManyToMany(targetEntity = Participant.class)
     private Set<Participant> participants = new HashSet<>();
 

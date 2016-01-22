@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface ParticipantRepository extends JpaRepository<Participant, Integer> {
 
-    Participant findOneByParticipantId(Integer id);
+    Participant findOneByParticipantId(Long id);
 
     Participant findOneByEmail(String email);
 

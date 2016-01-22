@@ -36,7 +36,7 @@ public class SpringSecurityWebAppConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
 //                        .antMatchers("/**").permitAll()
                 .antMatchers("/**").authenticated()
-                .antMatchers("/data/participants/**").hasAuthority(AuthoritiesConstants.RECRUITER)
+                .antMatchers("/api/participants/**").hasAuthority(AuthoritiesConstants.RECRUITER)
                 .and()
                 .formLogin()
                 .loginProcessingUrl("/api/authentication")
