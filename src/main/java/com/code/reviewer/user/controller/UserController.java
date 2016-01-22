@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -19,7 +20,6 @@ import java.util.Set;
  * Created by NicholasG on 03.01.2016.
  */
 @RestController
-//@Secured({AuthoritiesConstants.ADMIN, AuthoritiesConstants.RECRUITER})
 @RequestMapping("/api")
 public class UserController {
 
@@ -33,6 +33,7 @@ public class UserController {
     @Qualifier(value = "participantService")
     private ParticipantService participantService;
 
+    /*<USERS>*/
     @RequestMapping(value = "/users",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -58,7 +59,7 @@ public class UserController {
         }
     }
 
-    @RequestMapping(value = "/users/update",
+    @RequestMapping(value = "/users",
             method = RequestMethod.PUT,
             produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -112,15 +113,25 @@ public class UserController {
         return userService.getCurrentUser();
     }
 
-    @RequestMapping(value = "/participants",
+    @RequestMapping(value = "/users/current/participants",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public Set<Participant> getParticipants() {
         return userService.getCurrentUser().getParticipants();
     }
+    /*</USERS>*/
+
+    /*<PARTICIPANTS>*/
+    @RequestMapping(value = "/participants",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public Collection<Participant> getAllParticipants() {
+        return participantService.getAll();
+    }
 
     @RequestMapping(value = "/participants",
             method = RequestMethod.POST,
+            produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
     public Participant addParticipant(@RequestBody Participant participant) {
         if (participantService.findOneByEmail(participant.getEmail()) != null) {
@@ -129,11 +140,50 @@ public class UserController {
         } else {
             User currentUser = userService.getCurrentUser();
             participant.getUsers().add(currentUser);
-            participantService.save(participant);
             currentUser.getParticipants().add(participant);
+            participantService.save(participant);
             LOGGER.info("Participant '" + participant.getFirstName() + ' ' + participant.getLastName() + "' has been added");
             return participant;
         }
     }
+
+    @RequestMapping(value = "/participants",
+            method = RequestMethod.PUT,
+            produces = MediaType.APPLICATION_JSON_VALUE,
+            consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Participant updateParticipant(@RequestBody Participant participant) {
+        participantService.save(participant);
+        return participant;
+    }
+
+    @RequestMapping(value = "/participants/{id}",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public Participant getParticipant(@PathVariable Long id) {
+        Participant participant = participantService.findOneByParticipantId(id);
+        if (participant == null) {
+            LOGGER.warn("Participant not found!");
+            return null;
+        } else {
+            LOGGER.info("Get participant. Id = " + id);
+            return participant;
+        }
+    }
+
+    @RequestMapping(value = "/participants/{id}",
+            method = RequestMethod.DELETE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public Participant deleteParticipant(@PathVariable Long id) {
+        Participant participant = participantService.findOneByParticipantId(id);
+        if (participant == null) {
+            LOGGER.warn("Participant not found!");
+            return null;
+        } else {
+            participant.setActive(false);
+            LOGGER.info("Participant '" + participant.getFirstName() + ' ' + participant.getLastName() + "' has been deleted");
+            return participant;
+        }
+    }
+    /*<PARTICIPANTS>*/
 
 }

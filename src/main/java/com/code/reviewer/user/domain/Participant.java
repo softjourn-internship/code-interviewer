@@ -47,7 +47,6 @@ public class Participant implements Serializable {
     @Column(name = "image")
     private ImageIcon image;
 
-    @JsonIgnore
     @ManyToMany(targetEntity = User.class, mappedBy = "participants")
     private Set<User> users = new HashSet<>();
 
