@@ -1,11 +1,10 @@
-<div ng-controller="ClientsProfileCtrl">
 <div class="send-test">
 	<div id="close-box" ></div>
 	<div id="main">
 		<div class="head">
 			<table cellspacing="0" cellpadding="0">
 				<tr>
-					<td class="img"><img ng-src="images/profiles/id{{client.id}}-avatar.jpg" onerror="this.src='images/profiles/error.png';"></td>
+					<td class="img"><img ng-src="images/profiles/avatar.jpg" onerror="this.src='images/profiles/error.png';"></td>
 					<td><span>{{client.email}}</span></td>
 					<td><button id="close">Close</button></td>
 				</tr>
@@ -57,11 +56,11 @@
 </div>
 <section>	
 <div id="x" class="box profile">
-	<img ng-src="images/profiles/id{{client.id}}-bg.jpg" onerror="this.src='images/profiles/default.jpg'">
+	<img ng-src="images/profiles/bg.jpg" onerror="this.src='images/profiles/default.jpg'">
 	<div class="info-profile">
-		<img class="avatar" ng-src="images/profiles/id{{client.id}}-avatar.jpg" onerror="this.src='images/profiles/error.png';">
+		<img class="avatar" ng-src="images/profiles/id{{client.image}}" onerror="this.src='images/profiles/error.png';">
 		<div class="general-info">
-			<div class="name"><input value="{{client.name}} {{client.surname}}"></div>
+			<div class="name"><input value="{{client.firstName}} {{client.lastName}}"></div>
 		</div>
 
 	</div>
@@ -124,7 +123,3 @@
 </div>
 
 </section>
-
-
-</div>
-

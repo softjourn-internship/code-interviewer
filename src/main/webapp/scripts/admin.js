@@ -1,3 +1,5 @@
+var adminPanelApp = angular.module("adminPanelApp", ['ngRoute', 'ngResource','googlechart','ui.ace','ui.router']);
+
 $(document).ready(function() {
 	var fadeToggle = false;
 	$("div#mainMobile").click(function() {
