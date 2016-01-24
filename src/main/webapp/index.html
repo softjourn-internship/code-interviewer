@@ -16,9 +16,9 @@
 
     <script type="text/javascript" src="bower_components/ace-builds/src-min-noconflict/ace.js"></script>
     <script type="text/javascript" src="bower_components/angular-ui-ace/ui-ace.js"></script>
-
+    <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     
-    <script src="scripts/controllers.js"></script>
+    
 
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="bower_components/jquery-ui/jquery-ui.js"></script>
@@ -26,6 +26,12 @@
 
 
     <script type="text/javascript" src="scripts/admin.js"></script>
+
+    <script src="scripts/controllers/User.js"></script>
+    <script src="scripts/controllers/Data.js"></script>
+    <script src="scripts/controllers/Tasks.js"></script>
+
+    <script src="scripts/config.js"></script>
 
     
     <script type="text/javascript" src="scripts/ng-google-chart.js"></script>
@@ -45,7 +51,7 @@
 ">
                 <center>
                 <div>
-                    <a href="/user/{{user.username}}">
+                    <a href="/users/{{user.userId}}">
                 <img src="images/profiles/{{user.image}}" onerror="this.src='images/profiles/error.png';"></a>
                 <span>{{user.firstName}} {{user.lastName}}</span>
                 <span id="role">
@@ -58,7 +64,7 @@
 
                 <div id="userMenu" class="menu">
                     <ul>
-                        <a href="/user/{{user.username}}"><li>Profile</li></a>
+                        <a href="/users/{{user.userId}}"><li>Profile</li></a>
                         <a href="/"><li>Participants</li></a>
                         <hr>
                         <a id="logout" href="/login?logout"><li>Logout</li></a>
@@ -67,7 +73,7 @@
                 </center>
             </div>
 			<ul id="nav">
-				<li><a id="dashboard" href="data/participants" ng-click="dataTable = participants" ng-show=dashboardVisible>DASHBOARD</a></li>
+				<li><a id="dashboard" href="data/participants" ng-click="dataTable = 'participants'" ng-show=dashboardVisible>DASHBOARD</a></li>
                 <ul id="subDashboard" class="sub">
                     <li><a href="/participants">My participants</a></li>
                     <li><a href="">All participants</a></li>
@@ -87,14 +93,15 @@
             <div id="secondMobile" class="mobile"></div>
             <div class="search"><input type="text" placeholder="Search for something..." onblur="this.placeholder='Search for something...'"></div>
             <div id="user" ng-controller="UserCtrl">
-                <a href="#/participants/{{user.username}}">
+                <a href="#/users/{{user.userId}}">
                 <img src="images/profiles/{{user.image}}" onerror="this.src='images/profiles/error.png';"></a>
             </div>
             <div class="logout">
                 <a id="logout" href="/login?logout">Log out</a>
             </div>
         </div>
-        <div id="view" ng-view></div>
+        <!-- <div id="view" ng-view></div> -->
+        <div id="view" ui-view></div>
     </div>
 
 </body>

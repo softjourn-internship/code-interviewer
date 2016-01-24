@@ -1,4 +1,4 @@
-var adminPanelApp = angular.module("adminPanelApp", ['ngRoute', 'ngResource','googlechart','ui.ace']);
+// var adminPanelApp = angular.module("adminPanelApp", ['ngRoute', 'ngResource','googlechart','ui.ace','ui.router']);
 
 
 
@@ -18,6 +18,7 @@ adminPanelApp.controller('UserCtrl', ['$scope', '$http','$location','$routeParam
           $scope.statisticsVisible=false;
         };
       if (data.role == 'ROLE_MANAGER') {
+          $scope.dataTable = 'participants';
           $scope.usersVisible=false;
           $scope.dashboardVisible=true;
           $scope.tasksVisible=true;
@@ -34,45 +35,6 @@ adminPanelApp.controller('UserCtrl', ['$scope', '$http','$location','$routeParam
 }]);
 
 
-adminPanelApp.controller('UsersListCtrl', ['$scope', '$http','$location','$routeParams',
-  function ($scope, $http, $location, $routeParams) {
-   $routeParams.dataTable = 'users'
-}]);
-
-adminPanelApp.controller('ClientsListCtrl', ['$scope', '$http','$location','$routeParams',
-  function ($scope, $http, $location, $routeParams) {
-
-    $http.get('clients/clients.json').success(function(data) {
-      $scope.clients = data;
-      data = $routeParams.clients;
-
-      $scope.addRowAsyncAsJSON = function(){
-        $scope.clients.push({'username': $scope.firstName});
-
-        var dataObj = { username: $scope.firstName };
-
-        var res = $http.post('/admin/new', dataObj);
-
-        res.success(function (data, status, headers, config) {
-          $scope.message = data;
-        });
-
-      };
-
-
-
-  });
-}]);
-
-
-
-// LOGIN
-adminPanelApp.controller('loginCtrl',function($scope, $location) {
-    document.getElementById("header").style.display = "none";
-    document.getElementById("container").style.display = "none";
-
-
-});
 // CHARTS
 
 adminPanelApp.controller('ClientsChartsCtrl', ['$scope', '$http','$location',
@@ -89,30 +51,13 @@ adminPanelApp.controller('ClientsChartsCtrl', ['$scope', '$http','$location',
 
   }]);
 
-// PROFILE
-adminPanelApp.controller('ClientsProfileCtrl', ['$scope', '$http', '$location','$routeParams',
-  function ($scope, $http, $location, $routeParams) {
-        $scope.clientId = $routeParams.clientId;
+adminPanelApp.controller('DataCtrl', ['$scope', '$http', '$location','$routeParams', '$stateParams',
+  function ($scope, $http, $location, $routeParams, $stateParams) {
 
-        var url = 'clients/'+$routeParams.clientId+'.json';
-        $http.get(url).success(function(data) {
-          $scope.client = data;
-        });
+        $scope.dataTable = $stateParams.dataTable;
+        var url = 'api/'+$stateParams.dataTable;
 
-        var url = 'data/statistics/'+$routeParams.clientId+'.json';
-        $http.get(url).success(function(data) {
-          $scope.clientStatistics = data;
-        });
-  }]);
-
-
-adminPanelApp.controller('DataCtrl', ['$scope', '$http', '$location','$routeParams',
-  function ($scope, $http, $location, $routeParams) {
-
-        $scope.dataTable = $routeParams.dataTable;
-        var url = 'data/'+$routeParams.dataTable+'.json';
-
-        $http.get('data/chart-pie-'+$routeParams.dataTable+'.json').success(function(data) {
+        $http.get('data/chart-pie-'+$stateParams.dataTable+'.json').success(function(data) {
           $scope.chartPieData = data;
         });
 
@@ -265,46 +210,53 @@ adminPanelApp.controller('DataCtrl', ['$scope', '$http', '$location','$routePara
 // config Admin Panel
 
 adminPanelApp.config([
-  '$routeProvider', '$locationProvider',
-  function($routeProvide, $locationProvider){
-    // $locationProvider.html5Mode(true);
+  '$routeProvider', '$locationProvider', '$stateProvider', '$urlRouterProvider',
+  function($routeProvide, $locationProvider, $stateProvider, $urlRouterProvider){
 
-    $routeProvide
-        // .when('/',{
-        //   templateUrl:'template/login.html',
-        //   controller:'loginCtrl'
-        // })
-        .when('/data/:dataTable',{
-          templateUrl:'template/data.html',
-          controller:'ClientsListCtrl'
+
+  $urlRouterProvider.otherwise('/');
+    
+    $stateProvider
+        .state('data', {
+            url: '/data/:dataTable',
+            templateUrl: 'template/data.html',
+            controller: 'DataCtrl'
         })
-        .
-        when('/participants/:clientId', {
+        .state('participants', {
+            url: '/participants/:clientId',
             templateUrl: 'template/profile.html',
-            controller: 'ClientsProfileCtrl'
-         })
-        .
-        when('/statistics', {
+            controller: function($scope, $http, $stateParams) {
+              $scope.clientId = $stateParams.clientId;
+              var url = 'api/participants/'+$stateParams.clientId;
+
+              $http.get(url).success(function(data) {
+                $scope.client = data;
+              });
+            }
+        })
+        .state('users', {
+            url: '/users/:clientId',
+            templateUrl: 'template/profile.html',
+            // controller: 'DataCtrl'
+            controller: function($scope, $http, $stateParams) {
+              $scope.clientId = $stateParams.clientId;
+              var url = 'api/users/'+$stateParams.clientId;
+
+              $http.get(url).success(function(data) {
+                $scope.client = data;
+              });
+            }
+        })
+        .state('statistics', {
+            url: '/statistics',
             templateUrl: 'template/statistics.html',
             controller: 'ClientsChartsCtrl'
-         })
-        .
-        when('/usersі', {
-            templateUrl: 'template/users.html',
-            controller: 'ClientsListCtrl'
         })
-        .
-        when('/user/:username', {
-            templateUrl: 'template/profile.html',
-            controller: 'ClientsListCtrl'
-        })
-        .
-        when('/tasks', {
+        .state('tasks', {
+            url: '/tasks',
             templateUrl: 'template/tasks.html',
             controller: 'TasksCtrl'
         })
-        .
-        when('/login?logout', {})
 
         $locationProvider.html5Mode(true);
   }

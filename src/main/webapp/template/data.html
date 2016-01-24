@@ -118,7 +118,7 @@
 <div class="box">
 	<table id="head">
 		<tr>
-			<td>{{dataTableList.length}}{{lengthClientsPA.length}}<span>{{titleTable}}</span></td>
+			<td>{{lengthClientsPA.length}} {{titleTable}}</td>
 			<td id="page-size">
 				<div>
 				<input type="radio" id="radio1" name="radios" ng-change="changeAction()"  ng-model="pageSize" value="5">
@@ -145,7 +145,10 @@
 			<tr class="hover-tr" ng-repeat="dataColumn in lengthClientsPA = (dataTableList | filter:{firstName:searchNameA, taken:selectTaken, email:searchEmailA, role:selectRole} | orderBy: sortField:reverse)" ng-if="$index >= (currentPage * pageSize) && $index < ((currentPage+1)*pageSize)">
 
 				<td class="td-status"><a href="/participants/{{dataColumn.id}}"><img ng-src="images/profiles/{{dataColumn.image}}" onerror="this.src='images/profiles/error.png';" style="border-radius: 100%;"></a></td>
-				<td class="td-name"><a href="/participants/{{dataColumn.id}}">{{dataColumn.firstName}} {{dataColumn.lastName}}</a></td>
+				<td class="td-name">
+					<b ng-if="dataTable === 'participants'"><a href="/participants/{{dataColumn.participantId}}"></b>
+					<!-- <b ng-if="dataTable === 'users'"><a href="/users/{{dataColumn.userId}}"></b> -->
+					{{dataColumn.firstName}} {{dataColumn.lastName}}</a></td>
 				<td>{{dataColumn.email}} </td>
 				<td ng-if="dataTable == 'users'">
 					<div>
@@ -154,8 +157,8 @@
 						<div ng-if="dataColumn.role == 'ROLE_RECRUITER'">Recruiter</div>
 					</div>
 				</td>
-				<td ng-if="dataTable == 'participants'">{{dataColumn.testSent}}</td>
-				<td ng-if="dataTable == 'participants'">{{dataColumn.testReturn}}</td>
+				<td ng-if="dataTable == 'participants'">{{dataColumn.sent}}</td>
+				<td ng-if="dataTable == 'participants'">{{dataColumn.returned}}</td>
 				<td ng-if="dataTable == 'participants'" class="td-status"><img ng-src="images/{{dataColumn.taken}}.png" onerror="this.src='images/error.png';"></td>
 			</tr>
 			<tr ng-if="lengthClientsPA == 0"><td style="padding-left: 25px;color:#666">No search result</td></tr>
