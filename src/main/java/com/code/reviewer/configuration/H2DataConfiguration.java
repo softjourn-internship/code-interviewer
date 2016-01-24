@@ -1,20 +1,36 @@
 package com.code.reviewer.configuration;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationListener;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
-import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import java.util.Properties;
 
 
 /**
  * Created by Iwan on 06.01.2016.
  */
-@Component
+@Configuration
 @Profile("dev")
+@PropertySource("classpath:/dev.properties")
+@EnableTransactionManagement
 public class H2DataConfiguration implements ApplicationListener<ContextRefreshedEvent> {
+
+    @Value("${spring.jpa.database-platform}")
+    private String dbPlatform;
+
+    @Value("${spring.jpa.hibernate.ddl-auto}")
+    private String dbDDL;
+
+    @Value("${spring.jpa.show-sql}")
+    private String dbShowSql;
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
@@ -32,4 +48,14 @@ public class H2DataConfiguration implements ApplicationListener<ContextRefreshed
         cpds.setAcquireRetryAttempts(1);
         cpds.setNumHelperThreads(3);
     }
+
+    @Bean
+    public Properties hibernateProperties() {
+        Properties hibernateProperties = new Properties();
+        hibernateProperties.put("spring.jpa.database-platform", dbPlatform);
+        hibernateProperties.put("spring.jpa.hibernate.ddl-auto", dbDDL);
+        hibernateProperties.put("spring.jpa.show-sql", dbShowSql);
+        return hibernateProperties;
+    }
+
 }
