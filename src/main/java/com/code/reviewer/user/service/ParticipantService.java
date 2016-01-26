@@ -11,7 +11,7 @@ public interface ParticipantService {
 
     Collection<Participant> getAll();
 
-    Participant findOneByParticipantId(Long id);
+    Participant findOne(Long id);
 
     Participant findOneByEmail(String email);
 

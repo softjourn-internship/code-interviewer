@@ -1,15 +1,14 @@
 package com.code.reviewer.user.domain;
 
 
-import com.code.reviewer.user.domain.User;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import javax.swing.*;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
+
+import static javax.persistence.CascadeType.ALL;
 
 /**
  * Created by Iwan on 10.01.2016.
@@ -20,14 +19,23 @@ public class Participant implements Serializable {
 
     @Id
     @GeneratedValue
-    @Column(name = "participantId")
-    private Long participantId;
+    @Column(name = "id")
+    private Long id;
 
     @Column(name = "firstName")
     private String firstName;
 
     @Column(name = "lastName")
     private String lastName;
+
+    @Column(name = "city")
+    private String city;
+
+    @Column(name = "speciality")
+    private String speciality;
+
+    @Column(name = "englishLevel")
+    private String englishLevel;
 
     @Column(name = "email")
     private String email;
@@ -47,28 +55,61 @@ public class Participant implements Serializable {
     @Column(name = "image")
     private ImageIcon image;
 
+    @Column(name = "background")
+    private ImageIcon background;
+
     @ManyToMany(targetEntity = User.class, mappedBy = "participants")
     private Set<User> users = new HashSet<>();
+
+    @OneToMany(targetEntity = Activity.class, cascade = ALL, mappedBy = "participant")
+    private Set<Activity> activity = new HashSet<>();
 
     public Participant() {
 
     }
 
-    public Participant(String firstName, String lastName, String email, Date sent, Date returned, String taken) {
+    public Participant(
+            String firstName,
+            String lastName,
+            String city,
+            String speciality,
+            String englishLevel,
+            String email
+    ) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.city = city;
+        this.speciality = speciality;
+        this.englishLevel = englishLevel;
         this.email = email;
-        this.sent = sent;
-        this.returned = returned;
-        this.taken = taken;
     }
 
-    public Long getParticipantId() {
-        return participantId;
+    public Participant(
+            String firstName,
+            String lastName,
+            String city,
+            String speciality,
+            String englishLevel,
+            String email,
+            ImageIcon image,
+            ImageIcon background
+    ) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.city = city;
+        this.speciality = speciality;
+        this.englishLevel = englishLevel;
+        this.email = email;
+        this.image = image;
+        this.background = background;
     }
 
-    public void setParticipantId(Long participantId) {
-        this.participantId = participantId;
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -143,10 +184,50 @@ public class Participant implements Serializable {
         this.users = users;
     }
 
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getSpeciality() {
+        return speciality;
+    }
+
+    public void setSpeciality(String speciality) {
+        this.speciality = speciality;
+    }
+
+    public String getEnglishLevel() {
+        return englishLevel;
+    }
+
+    public void setEnglishLevel(String englishLevel) {
+        this.englishLevel = englishLevel;
+    }
+
+    public ImageIcon getBackground() {
+        return background;
+    }
+
+    public void setBackground(ImageIcon background) {
+        this.background = background;
+    }
+
+    public Set<Activity> getActivity() {
+        return activity;
+    }
+
+    public void setActivity(Set<Activity> activity) {
+        this.activity = activity;
+    }
+
     @Override
     public String toString() {
         return "{" +
-                "participantId=" + participantId +
+                "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +

@@ -12,7 +12,7 @@ public interface UserService {
 
     Collection<User> getAll();
 
-    User findOneByUserId(Long id);
+    User findOne(Long id);
 
     User findOneByUsername(String username);
 

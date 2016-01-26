@@ -23,8 +23,8 @@ public class ParticipantServiceImpl implements ParticipantService {
     }
 
     @Override
-    public Participant findOneByParticipantId(Long id) {
-        return repository.findOneByParticipantId(id);
+    public Participant findOne(Long id) {
+        return repository.findOne(id);
     }
 
     @Override

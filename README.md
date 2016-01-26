@@ -27,3 +27,13 @@ This project is a platform for making online interview with writing a code.
 ***************************************************
 
    http://localhost:8080/
+
+### Log in with:
+***************************************************
+   Role           Username       Password
+
+   ADMIN          admin          admin
+   MANAGER        manager        manager
+   RECRUITER      recruiter      recruiter
+   REVIEWER       reviewer       reviewer
+   INTERVIEWER    interviewer    interviewer

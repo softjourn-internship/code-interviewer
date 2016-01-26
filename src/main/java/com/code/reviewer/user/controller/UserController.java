@@ -2,7 +2,6 @@ package com.code.reviewer.user.controller;
 
 import com.code.reviewer.user.domain.Participant;
 import com.code.reviewer.user.service.ParticipantService;
-import com.code.reviewer.security.SecurityUtils;
 import com.code.reviewer.user.domain.User;
 import com.code.reviewer.user.service.UserService;
 import org.slf4j.Logger;
@@ -10,7 +9,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -72,14 +70,14 @@ public class UserController {
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public User getUser(@PathVariable Long id) {
-        return userService.findOneByUserId(id);
+        return userService.findOne(id);
     }
 
     @RequestMapping(value = "/users/{id}",
             method = RequestMethod.DELETE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public User deleteUser(@PathVariable Long id) {
-        User user = userService.findOneByUserId(id);
+        User user = userService.findOne(id);
         if (user == null) {
             LOGGER.warn("User '" + user.getUsername() + "' not found!");
             return null;
@@ -95,7 +93,7 @@ public class UserController {
             method = RequestMethod.PUT,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public User restoreUser(@PathVariable Long id) {
-        User user = userService.findOneByUserId(id);
+        User user = userService.findOne(id);
         if (user != null) {
             user.setActive(true);
             LOGGER.info("User '" + user.getUsername() + "' has been restored.");
@@ -160,7 +158,7 @@ public class UserController {
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public Participant getParticipant(@PathVariable Long id) {
-        Participant participant = participantService.findOneByParticipantId(id);
+        Participant participant = participantService.findOne(id);
         if (participant == null) {
             LOGGER.warn("Participant not found!");
             return null;
@@ -174,7 +172,7 @@ public class UserController {
             method = RequestMethod.DELETE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public Participant deleteParticipant(@PathVariable Long id) {
-        Participant participant = participantService.findOneByParticipantId(id);
+        Participant participant = participantService.findOne(id);
         if (participant == null) {
             LOGGER.warn("Participant not found!");
             return null;
