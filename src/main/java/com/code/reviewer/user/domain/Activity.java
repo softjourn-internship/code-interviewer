@@ -14,6 +14,7 @@ import java.io.Serializable;
 public class Activity implements Serializable {
 
     @Id
+    @JsonIgnore
     @GeneratedValue
     @Column(name = "id")
     private Long id;
