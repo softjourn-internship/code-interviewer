@@ -17,9 +17,9 @@ import java.util.Set;
 public class User implements Serializable {
 
     @Id
-    @Column(name = "userId")
+    @Column(name = "id")
     @GeneratedValue
-    private Long userId;
+    private Long id;
 
     @Size(min = 5, max = 50)
     @Column(name = "username")
@@ -67,12 +67,12 @@ public class User implements Serializable {
         this.role = role;
     }
 
-    public Long getUserId() {
-        return userId;
+    public Long getId() {
+        return id;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getUsername() {

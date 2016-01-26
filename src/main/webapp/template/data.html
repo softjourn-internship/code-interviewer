@@ -152,8 +152,8 @@
 			filter:{ firstName:searchNameA, taken:selectTaken, email:searchEmailA, role:selectRole} | 
 			orderBy: sortField:reverse)" 
 			ng-if="$index >= (currentPage * pageSize) && $index < ((currentPage+1)*pageSize)" 
-			ng-click="currentItem(dataColumn.participantId, false)" 
-			ng-dblclick="currentItem(dataColumn.participantId, true)">
+			ng-click="currentItem(dataColumn.id, false)"
+			ng-dblclick="currentItem(dataColumn.id, true)">
 
 				<td class="td-status">
 					<a href="/participants/{{dataColumn.id}}">
