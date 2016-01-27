@@ -160,7 +160,7 @@
 					<img ng-src="images/profiles/{{dataColumn.image}}" onerror="this.src='images/profiles/error.png';" style="border-radius: 100%;">
 				</a></td>
 				<td class="td-name">
-					<b ng-if="dataTable === 'participants'"><a href="/participants/{{dataColumn.participantId}}"></b>
+					<b ng-if="dataTable === 'participants'"><a href="/participants/{{dataColumn.participant}}"></b>
 					<!-- <b ng-if="dataTable === 'users'"><a href="/users/{{dataColumn.userId}}"></b> -->
 					{{dataColumn.firstName}} {{dataColumn.lastName}}</a></td>
 				<td>{{dataColumn.email}} </td>

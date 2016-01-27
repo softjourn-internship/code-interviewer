@@ -10,8 +10,8 @@ import java.io.Serializable;
  * Created by NicholasG on 26.01.2016.
  */
 @Entity
-@Table(name = "activity")
-public class Activity implements Serializable {
+@Table(name = "exams")
+public class Exam implements Serializable {
 
     @Id
     @JsonIgnore
@@ -36,10 +36,10 @@ public class Activity implements Serializable {
     @JoinColumn(name = "participantsId", nullable = false)
     private Participant participant;
 
-    public Activity() {
+    public Exam() {
     }
 
-    public Activity(String technology, String taken, String status, String complication) {
+    public Exam(String technology, String taken, String status, String complication) {
         this.technology = technology;
         this.taken = taken;
         this.status = status;
