@@ -1,4 +1,4 @@
-var adminPanelApp = angular.module("adminPanelApp", ['ngRoute', 'ngResource','googlechart','ui.ace','ui.router']);
+var adminPanelApp = angular.module("adminPanelApp", ['ui.ace','ngRoute', 'ngResource','googlechart','ui.router']);
 
 $(document).ready(function() {
 	var fadeToggle = false;
@@ -19,7 +19,7 @@ $(document).ready(function() {
 	$("div#selectFilterDashboard").hide();
 
 	$("span#role").click(function() {
-			$("div#userMenu").fadeToggle('fast'); 
+			$("div#userMenu").fadeToggle('fast');
 	});
 
 	// $("span#role").hover(function() {
@@ -104,3 +104,19 @@ $(document).on("click","div.box-item-info", function(e){
 // $(document).on("mouseout","button.send", function(){
 // 	$("div.alt").fadeOut("fast");
 // });
+
+adminPanelApp.controller('swichCTRL', ['$scope', '$http','$location','$routeParams',
+  function ($scope, $http, $location, $routeParams) {
+    $http.get('api/users/current').success(function(data) {
+      if(data.role == 'ROLE_INTERVIEWER'){
+        console.log(data.role);
+        $scope.interviewerVisible=true;
+      }
+      else{
+        console.log(data.role);
+        $scope.interviewerVisible=false;
+      };
+
+
+    });
+}]);

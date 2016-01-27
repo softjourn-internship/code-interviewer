@@ -3,7 +3,6 @@ adminPanelApp.controller('UserCtrl', ['$scope', '$http','$location','$routeParam
     $http.get('api/users/current').success(function(data) {
       $scope.user = data;
       $scope.username = $routeParams.username;
-
       if (data.role == 'ROLE_ADMIN') {
           $scope.usersVisible=true;
           $scope.dashboardVisible=false;
@@ -23,6 +22,5 @@ adminPanelApp.controller('UserCtrl', ['$scope', '$http','$location','$routeParam
           $scope.tasksVisible=true;
           $scope.statisticsVisible=false;
       };
-
     });
 }]);
