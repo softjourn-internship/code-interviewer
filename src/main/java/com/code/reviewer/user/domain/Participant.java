@@ -61,8 +61,11 @@ public class Participant implements Serializable {
     @ManyToMany(targetEntity = User.class, mappedBy = "participants")
     private Set<User> users = new HashSet<>();
 
-    @OneToMany(targetEntity = Activity.class, cascade = ALL, mappedBy = "participant")
-    private Set<Activity> activity = new HashSet<>();
+    @OneToMany(targetEntity = Exam.class, cascade = ALL, mappedBy = "participant")
+    private Set<Exam> activity = new HashSet<>();
+
+    @OneToMany(targetEntity = Test.class, cascade = ALL, mappedBy = "participant")
+    private Set<Test> tests = new HashSet<>();
 
     public Participant() {
 
@@ -216,11 +219,11 @@ public class Participant implements Serializable {
         this.background = background;
     }
 
-    public Set<Activity> getActivity() {
+    public Set<Exam> getActivity() {
         return activity;
     }
 
-    public void setActivity(Set<Activity> activity) {
+    public void setActivity(Set<Exam> activity) {
         this.activity = activity;
     }
 
