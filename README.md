@@ -37,3 +37,19 @@ This project is a platform for making online interview with writing a code.
    RECRUITER      recruiter      recruiter
    REVIEWER       reviewer       reviewer
    INTERVIEWER    interviewer    interviewer
+
+### commands for create user
+   create user "codeinterviewer"@"localhost" identified by "codeinterviewer";
+   grant all on . to "codeinterviewer"@"localhost"
+
+### commands for create a database in MySql
+   create database codereviewer;
+
+### using prod profile for run an application:
+   1. Please open a terminal
+   2. Write to him following commands:
+      mvn clean package (#Enter)
+      -java jar target/code-reviewer.war --spring.profiles.active=prod (#Enter)
+
+
+
