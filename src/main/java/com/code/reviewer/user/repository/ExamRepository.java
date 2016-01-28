@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 /**
  * Created by NicholasG on 26.01.2016.
  */
-public interface ActivityRepository extends JpaRepository<Exam, Long> {
+public interface ExamRepository extends JpaRepository<Exam, Long> {
 
 
 
