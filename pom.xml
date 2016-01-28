@@ -26,6 +26,7 @@
         <spring-context.version>4.2.4.RELEASE</spring-context.version>
         <c3p0.version>0.9.1.2</c3p0.version>
 
+        <commons-lang.version>2.3</commons-lang.version>
     </properties>
 
     <dependencyManagement>
@@ -133,6 +134,12 @@
             <groupId>org.freemarker</groupId>
             <artifactId>freemarker</artifactId>
             <version>${freemarker.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>${commons-lang.version}</version>
         </dependency>
     </dependencies>
 

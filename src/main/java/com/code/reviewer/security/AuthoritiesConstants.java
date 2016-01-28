@@ -15,6 +15,8 @@ public final class AuthoritiesConstants {
 
     public static final String INTERVIEWER = "ROLE_INTERVIEWER";
 
+    public static final String PARTICIPANT = "ROLE_PARTICIPANT";
+
     private AuthoritiesConstants() {
     }
 
