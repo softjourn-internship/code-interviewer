@@ -17,7 +17,7 @@ a{
 #view{
 		padding: 25px;
 	}
-div#header {
+div.content div#header {
 	width: 100%;
 	height: 50px;
 	/*background: #3498db;*/
