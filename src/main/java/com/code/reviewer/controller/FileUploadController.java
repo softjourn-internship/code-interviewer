@@ -1,4 +1,4 @@
-package com.code.reviewer.user.controller;
+package com.code.reviewer.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
