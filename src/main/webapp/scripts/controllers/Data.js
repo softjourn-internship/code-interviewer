@@ -93,4 +93,44 @@ adminPanelApp.controller('DataCtrl', ['$scope', '$http', '$location','$routePara
 
         if (edit) {$("div.send-test").fadeIn("fast"); $('div.box-item-info').hide();}
       }
+
+    var validation = false;
+    $scope.validationInput = function (id, pattern) {
+
+      var text = document.getElementById(id).value;
+
+      if (pattern.test(text) && text !== null) {$('input#' + id).css('border-color','#AEC785'); validation = true;}
+      else {
+        // $scope.firstName = $scope.firstName.replace(/[0-9]/g, '');
+        $('input#' + id).css('border-color','#FA8564');
+        $('input#' + id).focus();
+        validation = false;
+      }
+    }
+
+    $scope.validationSelect = function (id, value, failedValue) {
+
+      if (value !== failedValue) {$('span#' + id).css('border-color','#AEC785'); validation = true;}
+      else {
+        $('span#' + id).css('border-color','#FA8564');
+        validation = false;
+      }
+    }
+
+    $scope.validation = function () {
+      $scope.validationInput('firstName', /^[_a-zA-Zа-яА-Я ]+$/);
+      $scope.validationInput('lastName', /^[_a-zA-Zа-яА-Я ]+$/);
+      $scope.validationInput('city', /^[_a-zA-Zа-яА-Я ]+$/);
+      $scope.validationSelect('selectengLevel', value_engLevel, 'Select engLevel');
+      $scope.validationSelect('selectspeciality', value_speciality, 'Select speciality');
+      $scope.validationInput('email', /^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$/);
+    }
+
+    $scope.sumbit = function () {
+      $scope.validation();
+
+      if (validation) {
+        alert('Sent');
+      }
+    }
   }]);

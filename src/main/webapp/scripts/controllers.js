@@ -1,11 +1,11 @@
-// var adminPanelApp = angular.module("adminPanelApp", ['ngRoute', 'ngResource','googlechart','ui.ace','ui.router']);
+//var adminPanelApp = angular.module("adminPanelApp", ['ngRoute', 'ngResource','googlechart','ui.ace','ui.router']);
 
 
 
 
 /* Controllers Admin*/
 /************************************************************************************/
-adminPanelApp.controller('UserCtrl', ['$scope', '$http','$location','$routeParams',
+/*adminPanelApp.controller('UserCtrl', ['$scope', '$http','$location','$routeParams',
   function ($scope, $http, $location, $routeParams) {
     $http.get('api/users/current').success(function(data) {
       $scope.user = data;
@@ -215,7 +215,7 @@ adminPanelApp.config([
 
 
   $urlRouterProvider.otherwise('/');
-    
+
     $stateProvider
         .state('data', {
             url: '/data/:dataTable',
@@ -263,7 +263,7 @@ adminPanelApp.config([
 ]);
 /*   PUSH ON SERVER   */
 
-adminPanelApp.controller("PushDataCtrl", function ($scope, $http){
+/*adminPanelApp.controller("PushDataCtrl", function ($scope, $http){
   $scope.taskName = null;
 
   $scope.createTask = function () {
@@ -278,10 +278,11 @@ adminPanelApp.controller("PushDataCtrl", function ($scope, $http){
 
 /* Controllers UsersWorkspace*/
 /************************************************************************************/
-var myAppModule = angular.module('MyApp', ['ui.ace']);
+var myAppModule = angular.module('MyApp',['ngRoute', 'ngResource','ui.ace','ui.router']);
 
 myAppModule.controller('mainCTRL',['$scope','$http',function($scope,$http){
     var anableLog=false;
+    console.log("s");
     $scope.NumberTask=1;
     $http.get("data/tasks.json").then(function (response) {
         $scope.taskForUser=response.data;

@@ -1,8 +1,13 @@
 package com.code.reviewer.tasks.domain;
 
+import com.code.reviewer.user.domain.Test;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by NicholasG on 31.12.2015.
@@ -33,6 +38,10 @@ public class Task implements Serializable {
 
     @Column(name = "active")
     private boolean active = true;
+
+    @JsonIgnore
+    @ManyToMany(targetEntity = Test.class)
+    private Set<Test> tests = new HashSet<>();
 
     public Task() {
     }
@@ -113,5 +122,13 @@ public class Task implements Serializable {
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    public Set<Test> getTests() {
+        return tests;
+    }
+
+    public void setTests(Set<Test> tests) {
+        this.tests = tests;
     }
 }

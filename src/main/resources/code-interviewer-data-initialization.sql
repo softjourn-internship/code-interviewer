@@ -34,7 +34,7 @@ INSERT INTO participants(first_name, last_name, email, sent, returned, taken, ac
     VALUES ('Denus', 'Kaznodiy', 'iDen@mail.ru', '2016-01-14', '2016-01-15', 'done', TRUE, NULL);
 
 
-INSERT INTO activity(technology, taken, status, complication, participants_id)
+INSERT INTO exams(technology, taken, status, complication, participants_id)
     VALUES ('Java', 'failed', 'checked', 'Hard', 1);
 
 

@@ -16,8 +16,8 @@
 				<tr>
 					<td class="img"><img src="images/profiles/error.png"></td>
 					<td>
-						<span ng-if="firstName == null">New participant</span>
-						<span ng-if="firstName != null">{{firstName}} {{lastName}}</span>
+						<span ng-if="firstName === null">New participant</span>
+						<span ng-if="firstName !== null">{{firstName}} {{lastName}}</span>
 					</td>
 					<td><button id="close">Close</button></td>
 				</tr>
@@ -28,92 +28,44 @@
 			<table>
 				<tr ng-if="dataTable === 'users'">
 					<td>Username</td>
-					<td><input type="text" ng-model="username" size="30"></td>
+					<td><input id="userName" type="text" ng-model="username" size="30"></td>
 				</tr>
 				<tr>
 					<td>First Name</td>
-					<td><input type="text" ng-model="firstName" size="30"></td>
+					<td><input id="firstName" type="text" ng-model="firstName" size="30"></td>
 				</tr>
 				<tr>
 					<td>Last Name</td>
-					<td><input type="text" ng-model="lastName"></td>
+					<td><input id="lastName" type="text" ng-model="lastName"></td>
 				</tr>
-				<!-- <tr>
-					<td>Birthday</td>
-					<td><input type="text" id="datepicker" size="30"></td>
-				</tr> -->
-				<tr ng-if="dataTable != 'users'">
+				<tr ng-if="dataTable !== 'users'">
 					<td>City</td>
-					<td><input type="text" ng-model="city"></td>
+					<td><input id="city" type="text" ng-model="city"></td>
 				</tr>
-				<tr ng-if="dataTable == 'users'">
+				<tr ng-if="dataTable === 'users'">
 					<td>Role</td>
-					<td>
-						<span id="selectEngLvl" class="select selectNewPart">
-						<div ng-if="selectItemRole == null" id="disabled">Select role</div>
-						<div ng-if="selectItemRole != null">{{selectItemRole}}</div>
-						</span>
-						<div id="menuEngLvl" class="menu selectMenu inSentBox">
-			                <ul ng-model="selectItemRole">
-			                	<li id="disabled">Select role</li>
-			                    <li ng-click="selectItemRole='Admin'">Admin</li>
-			                    <li ng-click="selectItemRole='Manager'">Manager</li>
-			                    <li ng-click="selectItemRole='Recruter'">Recruter</li>
-			                </ul>
-			            </div>
-					</td>
+					<td><div id="select_role"  ng-controller="CustomSelect" ng-init="createSelect('role')"/></td>
 				</tr>
-				<tr ng-if="dataTable != 'users'">
+				<tr ng-if="dataTable !== 'users'">
 					<td>English level</td>
-					<td>
-						<span id="selectEngLvl" class="select selectNewPart">
-						<div ng-if="selectItemEngLvl == null" id="disabled">Select level</div>
-						<div ng-if="selectItemEngLvl != null">{{selectItemEngLvl}}</div>
-						</span>
-						<div id="menuEngLvl" class="menu selectMenu inSentBox">
-			                <ul ng-model="selectItemEngLvl">
-			                	<li id="disabled">Select level</li>
-			                    <li ng-click="selectItemEngLvl='Beginner'">Beginner</li>
-			                    <li ng-click="selectItemEngLvl='Elementary'">Elementary</li>
-			                    <li ng-click="selectItemEngLvl='Pre-Intermediate'">Pre-Intermediate</li>
-			                    <li ng-click="selectItemEngLvl='Intermediate'">Intermediate</li>
-			                    <li ng-click="selectItemEngLvl='Upper intermediate'">Upper intermediate</li>
-			                    <li ng-click="selectItemEngLvl='Advanced'">Advanced</li>
-			                    <li ng-click="selectItemEngLvl='Proficient'">Proficient</li>
-			                </ul>
-			            </div>
-					</td>
+					<td><div id="select_engLevel"  ng-controller="CustomSelect" ng-init="createSelect('engLevel')"/></td>
 				</tr>
-				<tr ng-if="dataTable != 'users'">
+				<tr ng-if="dataTable !== 'users'">
 					<td>Speciality</td>
-					<td>
-					<span id="selectSpeciality" class="select selectNewPart">
-						<div ng-if="selectItemSpeciality == null" id="disabled">Select speciality</div>
-						<div ng-if="selectItemSpeciality != null">{{selectItemSpeciality}}</div>
-					</span>
-					<div id="menuSpeciality" class="menu selectMenu inSentBox">
-		                <ul ng-model="selectItemSpeciality">
-		                	<li id="disabled">Select speciality</li>
-		                    <li ng-click="selectItemSpeciality='Front-End Developer'">Front-End Developer</li>
-		                    <li ng-click="selectItemSpeciality='Java Developer'">Java Developer</li>
-		                    <li ng-click="selectItemSpeciality='.NET Developer'">.NET Developer</li>
-		                    <li ng-click="selectItemSpeciality='JavaScript Developer'">JavaScript Developer</li>
-		                </ul>
-		            </div>
-					</td>
+					<td><div id="select_speciality" ng-controller="CustomSelect" ng-init="createSelect('speciality')"/></td>
 				</tr>
-				<tr ng-if="dataTable != 'users'">
+				<tr ng-if="dataTable !== 'users'">
 					<td>Contact</td>
-					<td><input type="text"></td>
+					<td><input id="contact" type="text" ng-model="contact"></td>
 				</tr>
 				<tr>
 					<td>Email</td>
-					<td><input type="email" ng-model="email"></td>
+					<td><input id="email" type="text" ng-model="email"></td>
 				</tr>
 			</table>
 		</div>
 		<div class="tool">
-			<button style="margin:0" ng-click="addRowAsyncAsJSON()" class="send">Add participant</button>
+			<button style="margin:0" ng-click="sumbit()" class="send">Add participant</button>
 			<button id="close" style="float:right" ng-click="clearFields()">Cancel</button>
 		</div>
 	</form>
@@ -152,7 +104,6 @@
 			filter:{ firstName:searchNameA, taken:selectTaken, email:searchEmailA, role:selectRole} | 
 			orderBy: sortField:reverse)" 
 			ng-if="$index >= (currentPage * pageSize) && $index < ((currentPage+1)*pageSize)" 
-			ng-click="currentItem(dataColumn.id, false)"
 			ng-dblclick="currentItem(dataColumn.id, true)">
 
 				<td class="td-status">
@@ -160,7 +111,7 @@
 					<img ng-src="images/profiles/{{dataColumn.image}}" onerror="this.src='images/profiles/error.png';" style="border-radius: 100%;">
 				</a></td>
 				<td class="td-name">
-					<b ng-if="dataTable === 'participants'"><a href="/participants/{{dataColumn.participantId}}"></b>
+					<b ng-if="dataTable === 'participants'"><a href="/participants/{{dataColumn.id}}"></b>
 					<!-- <b ng-if="dataTable === 'users'"><a href="/users/{{dataColumn.userId}}"></b> -->
 					{{dataColumn.firstName}} {{dataColumn.lastName}}</a></td>
 				<td>{{dataColumn.email}} </td>

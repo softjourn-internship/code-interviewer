@@ -15,21 +15,7 @@
 			<table>
 				<tr>	
 					<td>Language</td>
-					<td>
-						<span id="selectLang" class="select selectNewPart">
-						<div ng-if="selectItemLang == null" id="disabled">Select language</div>
-						<div ng-if="selectItemLang != null">{{selectItemLang}}</div>
-						</span>
-						<div id="menuLang" class="menu selectMenu inSentBox">
-			                <ul ng-model="selectItemLang">
-			                	<li id="disabled">Select language</li>
-			                    <li ng-click="selectItemLang='Java'">Java</li>
-			                    <li ng-click="selectItemLang='JavaSript'">JavaSript</li>
-			                    <li ng-click="selectItemLang='HTML'">HTML</li>
-			                    <li ng-click="selectItemLang='CSS'">CSS</li>
-			                </ul>
-			            </div>
-					</td>
+					<td><div id="select_langProg" ng-controller="CustomSelect" ng-init="createSelect('langProg')"/></td>
 				</tr>
 				<tr>
 					<td>Сomplication</td>

@@ -4,7 +4,7 @@ adminPanelApp.config([
 
 
   $urlRouterProvider.otherwise('/');
-    
+
     $stateProvider
         .state('data', {
             url: '/data/:dataTable',
