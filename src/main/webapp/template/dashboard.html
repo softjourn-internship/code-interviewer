@@ -2,11 +2,11 @@
 <div class="box">
 	<table id="head">
 		<tr>
-			<td>{{lengthClientsPA.length}} Participants</td>
+			<td>{{lengthClientsPA.length}} <span translate>PARTICIPANTS</span></td>
 			<td style="height:35px;">
-				<select 
-					ng-change="changeAction()" 
-					ng-model="pageSize" 
+				<select
+					ng-change="changeAction()"
+					ng-model="pageSize"
 					ng-options="opt as opt for opt in pageSizes">
 				</select>
 			</td>
@@ -15,10 +15,10 @@
 	<table id="tableData" class="main-table" cellspacing="0" cellpadding="0">
 		<thead>
 			<th></th>
-			<th>Name</th>
+			<th translate>NAME</th>
 			<th>Email</th>
-			<th>Sent</th>
-			<th>Returned</th>
+			<th translate>SENT</th>
+			<th translate>RETURNED</th>
 			<th style="padding-right:15px">Taken</th>
 		</thead>
 		<tbody>
@@ -33,10 +33,10 @@
 			<tr ng-if="lengthClientsPA == 0"><td style="padding-left: 25px;color:#666">No search result</td></tr>
 		</tbody>
 	</table>
-	
+
 	<table id="tool" ng-if="lengthClientsPA != 0">
 		<tr>
-			<td>			
+			<td>
  		 		<button ng-click="paging(0)">Prev</button>
  				<span ng-click="paging(currentPage + 1)">{{currentPage + 1}}</span>
 				<button ng-click="paging(1)">Next</button>
@@ -47,7 +47,7 @@
 <div class='alt'>Add new participant</div>
 <div id="right-container">
 	<div id="filter" class="box filter">
-		<span>Filter</span>
+		<span translate>FILTER</span>
 		<div id="filter-container">
 			<input type="text" placeholder="Name" onblur="this.placeholder='Name'" onfocus="this.placeholder=''" ng-model="searchNameA" ng-change="pageSize"><br>
 			<input type="text" placeholder="Email adress" onblur="this.placeholder='Email adress'" onfocus="this.placeholder=''" ng-model="searchEmailA" ng-change="pageSize"><br>
@@ -57,5 +57,3 @@
 </div>
 
 </section>
-
-
