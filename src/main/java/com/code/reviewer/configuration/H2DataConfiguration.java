@@ -32,6 +32,15 @@ public class H2DataConfiguration implements ApplicationListener<ContextRefreshed
     @Value("${spring.jpa.show-sql}")
     private String dbShowSql;
 
+    @Value("${db.password}")
+    private String dbPassword;
+
+    @Value("${db.url}")
+    private String dbUrl;
+
+    @Value("${db.username}")
+    private String dbUsername;
+    
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         new EmbeddedDatabaseBuilder()
@@ -40,9 +49,9 @@ public class H2DataConfiguration implements ApplicationListener<ContextRefreshed
                 .build();
 
         ComboPooledDataSource cpds = new ComboPooledDataSource();
-        cpds.setJdbcUrl("jdbc:h2:mem:testdb");
-        cpds.setUser("sa");
-        cpds.setPassword("");
+        cpds.setJdbcUrl(dbUrl);
+        cpds.setUser(dbUsername);
+        cpds.setPassword(dbPassword);
         cpds.setMaxPoolSize(15);
         cpds.setMaxIdleTime(100);
         cpds.setAcquireRetryAttempts(1);
