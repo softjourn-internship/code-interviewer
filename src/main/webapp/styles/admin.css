@@ -91,7 +91,7 @@ div.sidebar div.user span#role{
 	z-index: 6;
 }
 div.sidebar div.user span#role img{
-	position: absolute; 
+	position: absolute;
 	width: 16px;
 	margin-top:2px;
 }
@@ -99,7 +99,7 @@ div.sidebar div.user span#role div{display: inline-block;}
 div.sidebar div.user span{
 	/*position: absolute;*/
 	font-family: Open Sans;
-	border-radius: 0; 
+	border-radius: 0;
 	font-weight: bold;
 	z-index: 6;
 	display: block;
@@ -113,7 +113,7 @@ div.menu{
 	margin-top: 5px;
 	margin-left: 25px;
 	position: absolute;
-	background: #fff;	
+	background: #fff;
 	box-shadow: 0 0 2px #333;
 	border-radius: 2px;
 	width: 110px;
@@ -159,7 +159,7 @@ span.selectNewPart, .textarea{
 	background-color: #fff;
 	color: #d8d8d8;
 }
-	
+
 span.selectNewPart:hover,.textarea:hover{border-color: #d8d8d8;color: #333; }
 .textarea{
 	width: 100%;
@@ -409,6 +409,14 @@ div.logout a{
 	font-weight: bold;
 	cursor: pointer;
 }
+div.logout img{
+	float: right;
+	padding: 15px;
+	height: 50px;
+	width: 60px;
+	cursor: pointer;
+}
+
 div.logout:hover a{ color: #999; }
 div#header div#user{
 	float: right;
@@ -416,11 +424,12 @@ div#header div#user{
 	height: 50px;
 	/*width: 300px;*/
 	text-align: center;
-} 
+}
 div#header div#user img{width: 50px;}
 div#header div#user span{
 	margin: 0;
 }
+
 /*	BOX   */
 div#box-main {
 	height: 200px;
@@ -599,7 +608,7 @@ th#emtry{background-image: none;}
 th.sort-up{
 	background-image: url(../images/arrowUp.svg);
 }
-th.sort-down{	
+th.sort-down{
 	background-image: url(../images/arrowDown.svg);
 }
 th {
@@ -786,7 +795,7 @@ button.send, button#new{
 	border-color: #AEC785;
 	margin-left: 1%;
 	color: #fff;
-	text-shadow: 0 1px 0 #a2b57d;	
+	text-shadow: 0 1px 0 #a2b57d;
 }
 button#send-profile{
 	margin: 25px;
@@ -1149,6 +1158,7 @@ div.send-test table tr td input[type="file"]{
 	cursor: pointer;
 	border-radius: 4px;
 	padding-left: 15px;
+	text-align: center;
 }
 .tableCubicleT{
 	width: 150px;

@@ -5,6 +5,7 @@
     <base href="/">
 	<title>Admin Panel</title>
 
+
 	<link rel="stylesheet" type="text/css" href="styles/admin.css">
 	<link rel="stylesheet" type="text/css" href="styles/workspace.css">
     <link rel="shortcut icon" href="images/icon.png">
@@ -18,7 +19,8 @@
     <script type="text/javascript" src="bower_components/ace-builds/src-min-noconflict/ace.js"></script>
     <script type="text/javascript" src="bower_components/angular-ui-ace/ui-ace.js"></script>
     <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-
+		<script type="text/javascript" src="bower_components/angular-translate/angular-translate.js"></script>
+		<script type="text/javascript" src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
 
 
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
@@ -30,8 +32,11 @@
     <script src="scripts/controllers/User.js"></script>
     <script src="scripts/controllers/Data.js"></script>
     <script src="scripts/controllers/Tasks.js"></script>
-    <script src="scripts/controllers/CustomSelect.js"></script>
-	<script src="scripts/controllers/Workspase.js"></script>
+
+		<script src="scripts/controllers/Workspase.js"></script>
+		<script src="scripts/controllers/CustomSelect.js"></script>
+		<script src="scripts/providers/translate.js"></script>
+
 
     <script src="scripts/config.js"></script>
 
@@ -56,32 +61,32 @@
 	                <img src="images/profiles/{{user.image}}" onerror="this.src='images/profiles/error.png';"></a>
 	                <span>{{user.firstName}} {{user.lastName}}</span>
 	                <span id="role">
-	                    <div ng-if="user.role == 'ROLE_ADMIN'">Admin</div>
-	                    <div ng-if="user.role == 'ROLE_MANAGER'">Manager</div>
-	                    <div ng-if="user.role == 'ROLE_RECRUITER'">Recruiter</div>
+	                    <div ng-if="user.role == 'ROLE_ADMIN'" translate>ADMIN</div>
+	                    <div ng-if="user.role == 'ROLE_MANAGER'" translate>MANAGER</div>
+	                    <div ng-if="user.role == 'ROLE_RECRUITER'" translate>RECRUITER</div>
 	                <img src="images/arrowDown.png">
 	                </span>
 	                </div>
 
 	                <div id="userMenu" class="menu">
 	                    <ul>
-	                        <a href="/users/{{user.userId}}"><li>Profile</li></a>
-	                        <a href="/"><li>Participants</li></a>
+	                        <a href="/users/{{user.userId}}"><li translate>PROFILE</li></a>
+	                        <a href="/"><li translate>PARTICIPANTS</li></a>
 	                        <hr>
-	                        <a id="logout" href="/login?logout"><li>Logout</li></a>
+	                        <a id="logout" href="/login?logout"><li translate>LOGOUT</li></a>
 	                    </ul>
 	                </div>
 	                </center>
 	            </div>
 				<ul id="nav">
-					<li><a id="dashboard" href="data/participants" ng-click="dataTable = 'participants'" ng-show=dashboardVisible>DASHBOARD</a></li>
+					<li><a id="dashboard" href="data/participants" ng-click="dataTable = 'participants'" ng-show=dashboardVisible translate>DASHBOARD</a></li>
 	                <ul id="subDashboard" class="sub">
 	                    <li><a href="/participants">My participants</a></li>
 	                    <li><a href="">All participants</a></li>
 	                </ul>
-	        <li><a id="participants" href="data/users" ng-click="dataTable = users" ng-show=usersVisible>USERS</a></li>
-					<li><a id="statistics" href="/statistics" ng-show=statisticsVisible>STATISTICS</a></li>
-	        <li><a id="tasks" href="/tasks" ng-show=tasksVisible>TASKS</a></li>
+	        <li><a id="participants" href="data/users" ng-click="dataTable = users" ng-show=usersVisible translate>USERS</a></li>
+					<li><a id="statistics" href="/statistics" ng-show=statisticsVisible translate>STATISTICS</a></li>
+	        <li><a id="tasks" href="/tasks" ng-show=tasksVisible translate>TASKS</a></li>
 				</ul>
 			</div>
 	    </div>
@@ -96,8 +101,9 @@
 	                <a href="#/users/{{user.userId}}">
 	                <img src="images/profiles/{{user.image}}" onerror="this.src='images/profiles/error.png';"></a>
 	            </div>
-	            <div class="logout">
-	                <a id="logout" href="/login?logout">Log out</a>
+	            <div class="logout" ng-controller="translateCTRL">
+									<img ng-click="setLang()" ng-src={{translateImageSrc}} />
+	                <a id="logout" href="/login?logout" translate>LOGOUT</a>
 	            </div>
 	        </div>
 	        <!-- <div id="view" ng-view></div> -->
