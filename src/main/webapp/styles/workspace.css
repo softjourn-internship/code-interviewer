@@ -21,10 +21,9 @@ body{
 /*Header here!*/
 
 #header{
-	height: 7%;
+
 	display: table;
 	width: 100%;
-	padding: 10px;
 	text-align: center;
 	/*padding-bottom: 10px;*/
 
