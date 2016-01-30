@@ -3,9 +3,8 @@ var adminPanelApp = angular.module("adminPanelApp", ['ui.ace','ngRoute', 'ngReso
 $(document).ready(function() {
 	var fadeToggle = false;
 	$("div#mainMobile").click(function() {
-			$("div.sidebar").toggle();
-			if (!fadeToggle) {$("div.content").css("margin-left", 0); fadeToggle = true; }
-			else {$("div.content").css("margin-left", 180); fadeToggle = false; }
+			if (!fadeToggle) {$("div.content").css("margin-left", 0); fadeToggle = true; $("div.sidebar").hide();}
+			else {$("div.content").css("margin-left", 180); fadeToggle = false; $("div.sidebar").show();}
 	});
 
 	// $("#dashboard").click(function() {
