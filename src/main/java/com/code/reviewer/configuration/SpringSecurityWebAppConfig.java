@@ -1,6 +1,6 @@
 package com.code.reviewer.configuration;
 
-import com.code.reviewer.security.AuthoritiesConstants;
+import com.code.reviewer.security.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -45,7 +45,7 @@ public class SpringSecurityWebAppConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
 //                        .antMatchers("/**").permitAll()
                 .antMatchers("/**").authenticated()
-                .antMatchers("/api/participants/**").hasAuthority(AuthoritiesConstants.RECRUITER)
+                .antMatchers("/api/participants/**").hasAuthority(Role.RECRUITER.toString())
 //                .antMatchers("../webapp/**").permitAll()
                 .and()
                 .formLogin()
