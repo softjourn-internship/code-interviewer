@@ -112,6 +112,16 @@ adminPanelApp.controller('DataCtrl', ['$scope', '$http', '$location','$routePara
       }
     }
 
+    notification = function(message) {
+      $('div#notifPart').html('<div class="notification">' + message + '</div>');
+      $(this).data('timeout', setTimeout( function () {
+        $('div.notification').fadeIn('fast');
+      }, 500));
+      $(this).data('timeout', setTimeout( function () {
+        $('div.notification').fadeOut();
+      }, 2500));
+    }
+
     $scope.validationSelect = function (id, value, failedValue) {
 
       if (value !== failedValue) {$('span#' + id).css('border-color','#AEC785'); return true;}
@@ -152,7 +162,8 @@ adminPanelApp.controller('DataCtrl', ['$scope', '$http', '$location','$routePara
         }
 
         $http.post("/api/participants", data).success(function (data, status, headers){
-          alert('Sent');
+          $("div.send-test").fadeOut("fast");
+          notification('<b>' + $scope.firstName + ' ' + $scope.lastName + '</b> has been added');
         });
       }
     }

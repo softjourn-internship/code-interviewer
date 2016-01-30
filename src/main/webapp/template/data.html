@@ -73,6 +73,7 @@
 </div>
 
 <section>
+<div id="notifPart"></div>
 <div class="box">
 	<table id="head">
 		<tr>
@@ -126,7 +127,10 @@
 				<td ng-if="dataTable == 'participants'">{{dataColumn.returned}}</td>
 				<td ng-if="dataTable == 'participants'" class="td-status"><img ng-src="images/{{dataColumn.taken}}.png" onerror="this.src='images/error.png';"></td>
 			</tr>
-			<tr ng-if="lengthClientsPA == 0"><td style="padding-left: 25px;color:#666">No search result</td></tr>
+			<tr id="no-hover" ng-if="lengthClientsPA == 0"><td style="padding-left: 25px;color:#666">
+				<div id="noSrchResults"></div>
+				<div id="titleNoSrchResults">No search results</div>
+			</td></tr>
 		</tbody>
 	</table>
 	
