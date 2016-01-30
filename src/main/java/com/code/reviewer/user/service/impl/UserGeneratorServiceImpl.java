@@ -10,6 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.NotNull;
+import java.util.HashMap;
 
 /**
  * Created by NicholasG on 28.01.2016.
@@ -17,7 +18,8 @@ import javax.validation.constraints.NotNull;
 @Component("userGeneratorService")
 public class UserGeneratorServiceImpl implements UserGeneratorService {
 
-    private static final int LENGTH = 20;
+    private static final int PASSWORD_LENGTH = 20;
+    private static final int USERNAME_LENGTH = 10;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -29,25 +31,33 @@ public class UserGeneratorServiceImpl implements UserGeneratorService {
     @Override
     public User generateUser(@NotNull final String role) {
         User user = new User();
-        String username = generateUsername();
-        String encryptedPassword = passwordEncoder.encode(generatePassword());
+        String username = generateUsername(),
+                password = generatePassword(),
+                encryptedPassword = passwordEncoder.encode(password);
 
         user.setUsername(username);
         user.setPassword(encryptedPassword);
         user.setRole(role);
         userService.save(user);
 
+        usernameAndPasswordMap.put(username, password);
+
         return user;
     }
 
     @Override
-    public String generateUsername() {
-        return RandomStringUtils.randomAlphabetic(LENGTH);
+    public synchronized String generateUsername() {
+        return RandomStringUtils.randomAlphabetic(USERNAME_LENGTH);
     }
 
     @Override
-    public String generatePassword() {
-        return RandomStringUtils.randomAlphanumeric(LENGTH);
+    public synchronized String generatePassword() {
+        return RandomStringUtils.randomAlphanumeric(PASSWORD_LENGTH);
+    }
+
+    @Override
+    public HashMap<String, String> getUsernameAndPasswordMap() {
+        return usernameAndPasswordMap;
     }
 
 }

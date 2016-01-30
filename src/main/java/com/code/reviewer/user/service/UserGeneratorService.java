@@ -2,15 +2,21 @@ package com.code.reviewer.user.service;
 
 import com.code.reviewer.user.domain.User;
 
+import java.util.HashMap;
+
 /**
  * Created by NicholasG on 28.01.2016.
  */
 public interface UserGeneratorService {
 
-    public User generateUser(final String role);
+    HashMap<String, String> usernameAndPasswordMap = new HashMap<>();
 
-    public String generatePassword();
+    User generateUser(final String role);
 
-    public String generateUsername();
+    String generatePassword();
+
+    String generateUsername();
+
+    HashMap<String, String> getUsernameAndPasswordMap();
 
 }
