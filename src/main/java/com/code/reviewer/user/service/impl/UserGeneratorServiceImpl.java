@@ -1,5 +1,6 @@
 package com.code.reviewer.user.service.impl;
 
+import com.code.reviewer.security.Role;
 import com.code.reviewer.user.domain.User;
 import com.code.reviewer.user.service.UserGeneratorService;
 import com.code.reviewer.user.service.UserService;
@@ -9,7 +10,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import javax.validation.constraints.NotNull;
 import java.util.HashMap;
 
 /**
@@ -29,7 +29,7 @@ public class UserGeneratorServiceImpl implements UserGeneratorService {
     private UserService userService;
 
     @Override
-    public User generateUser(@NotNull final String role) {
+    public User generateUser(Role role) {
         User user = new User();
         String username = generateUsername(),
                 password = generatePassword(),
@@ -37,7 +37,7 @@ public class UserGeneratorServiceImpl implements UserGeneratorService {
 
         user.setUsername(username);
         user.setPassword(encryptedPassword);
-        user.setRole(role);
+        user.setRole(role.toString());
         userService.save(user);
 
         usernameAndPasswordMap.put(username, password);

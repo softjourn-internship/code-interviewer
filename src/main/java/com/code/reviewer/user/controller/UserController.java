@@ -3,6 +3,7 @@ package com.code.reviewer.user.controller;
 import com.code.reviewer.user.domain.Participant;
 import com.code.reviewer.user.domain.User;
 import com.code.reviewer.user.service.ParticipantService;
+import com.code.reviewer.user.service.UserGeneratorService;
 import com.code.reviewer.user.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,6 +31,10 @@ public class UserController {
     @Autowired
     @Qualifier(value = "participantService")
     private ParticipantService participantService;
+
+    @Autowired
+    @Qualifier("userGeneratorService")
+    private UserGeneratorService userGeneratorService;
 
     /*<USERS>*/
     @RequestMapping(value = "/users",

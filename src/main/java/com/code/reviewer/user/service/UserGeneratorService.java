@@ -1,5 +1,6 @@
 package com.code.reviewer.user.service;
 
+import com.code.reviewer.security.Role;
 import com.code.reviewer.user.domain.User;
 
 import java.util.HashMap;
@@ -11,7 +12,7 @@ public interface UserGeneratorService {
 
     HashMap<String, String> usernameAndPasswordMap = new HashMap<>();
 
-    User generateUser(final String role);
+    User generateUser(Role role);
 
     String generatePassword();
 
