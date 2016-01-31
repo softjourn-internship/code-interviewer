@@ -19,43 +19,43 @@
 						<span ng-if="firstName === null">New participant</span>
 						<span ng-if="firstName !== null">{{firstName}} {{lastName}}</span>
 					</td>
-					<td><button id="close">Close</button></td>
+					<td><button id="close" translate>CLOSE</button></td>
 				</tr>
-			</table>	
+			</table>
 		</div>
 		<form method="POST">
 		<div class="action">
 			<table>
 				<tr ng-if="dataTable === 'users'">
-					<td>Username</td>
+					<td translate>USERNAME</td>
 					<td><input id="userName" type="text" ng-model="userName" size="30"></td>
 				</tr>
 				<tr>
-					<td>First Name</td>
+					<td translate>FIRST_NAME</td>
 					<td><input id="firstName" type="text" ng-model="firstName" size="30"></td>
 				</tr>
 				<tr>
-					<td>Last Name</td>
+					<td translate>LAST_NAME</td>
 					<td><input id="lastName" type="text" ng-model="lastName"></td>
 				</tr>
 				<tr ng-if="dataTable !== 'users'">
-					<td>City</td>
+					<td translate>CITY</td>
 					<td><input id="city" type="text" ng-model="city"></td>
 				</tr>
 				<tr ng-if="dataTable === 'users'">
-					<td>Role</td>
+					<td translate>ROLE</td>
 					<td><div id="select_role"  ng-controller="CustomSelect" ng-init="createSelect('role')"/></td>
 				</tr>
 				<tr ng-if="dataTable !== 'users'">
-					<td>English level</td>
+					<td translate>ENGLISH_LEVEL</td>
 					<td><div id="select_engLevel"  ng-controller="CustomSelect" ng-init="createSelect('engLevel')"/></td>
 				</tr>
 				<tr ng-if="dataTable !== 'users'">
-					<td>Speciality</td>
+					<td translate>SPECIALITY</td>
 					<td><div id="select_speciality" ng-controller="CustomSelect" ng-init="createSelect('speciality')"/></td>
 				</tr>
 				<tr ng-if="dataTable !== 'users'">
-					<td>Contact</td>
+					<td translate>CONTACT</td>
 					<td><input id="contact" type="text" ng-model="contact"></td>
 				</tr>
 				<tr>
@@ -65,8 +65,8 @@
 			</table>
 		</div>
 		<div class="tool">
-			<button style="margin:0" ng-click="sumbit()" class="send">Add participant</button>
-			<button id="close" style="float:right" ng-click="clearFields()">Cancel</button>
+			<button style="margin:0" ng-click="sumbit()" class="send" translate>ADD_PARTICIPANT</button>
+			<button id="close" style="float:right" ng-click="clearFields()" translate>CANSEL</button>
 		</div>
 	</form>
 	</div>
@@ -85,7 +85,7 @@
 			    <input type="radio" id="radio2" name="radios" ng-change="changeAction()"  ng-model="pageSize" value="10" selected>
 			    <label id="label2" for="radio2">10</label>
 			    <input type="radio" id="radio3" name="radios" ng-change="changeAction()"  ng-model="pageSize" value="15">
-			    <label id="label3" for="radio3">15</label>	
+			    <label id="label3" for="radio3">15</label>
 			    </div>
 			</td>
 		</tr>
@@ -93,18 +93,18 @@
 	<table id="tableData" class="main-table" cellspacing="0" cellpadding="0">
 		<thead ng-if="lengthClientsPA != 0">
 			<th id="emtry"></th>
-			<th ng-class = "{'sort-up':isSortUp('firstName'), 'sort-down':isSortDown('firstName')}" ng-click="sort('firstName')">Name</th>
+			<th ng-class = "{'sort-up':isSortUp('firstName'), 'sort-down':isSortDown('firstName')}" ng-click="sort('firstName')" translate>NAME</th>
 			<th ng-class = "{'sort-up':isSortUp('email'), 'sort-down':isSortDown('email')}" ng-click="sort('email')">Email</th>
-			<th ng-class = "{'sort-up':isSortUp('role'), 'sort-down':isSortDown('role')}" ng-click="sort('role')" ng-if="dataTable == 'users'" style="padding-right:35px">Role</th>
-			<th ng-class = "{'sort-up':isSortUp('testSent'), 'sort-down':isSortDown('testSent')}" ng-click="sort('testSent')" ng-if="dataTable == 'participants'">Sent</th>
-			<th ng-class = "{'sort-up':isSortUp('testReturn'), 'sort-down':isSortDown('testReturn')}" ng-click="sort('testReturn')" ng-if="dataTable == 'participants'">Returned</th>
-			<th ng-class = "{'sort-up':isSortUp('taken'), 'sort-down':isSortDown('taken')}" ng-click="sort('taken')" ng-if="dataTable == 'participants'" style="padding-right:15px">Taken</th>
+			<th ng-class = "{'sort-up':isSortUp('role'), 'sort-down':isSortDown('role')}" ng-click="sort('role')" ng-if="dataTable == 'users'" style="padding-right:35px" translate>ROLE</th>
+			<th ng-class = "{'sort-up':isSortUp('testSent'), 'sort-down':isSortDown('testSent')}" ng-click="sort('testSent')" ng-if="dataTable == 'participants'" translate>SENT</th>
+			<th ng-class = "{'sort-up':isSortUp('testReturn'), 'sort-down':isSortDown('testReturn')}" ng-click="sort('testReturn')" ng-if="dataTable == 'participants'" translate>RETURNED</th>
+			<th ng-class = "{'sort-up':isSortUp('taken'), 'sort-down':isSortDown('taken')}" ng-click="sort('taken')" ng-if="dataTable == 'participants'" style="padding-right:15px" >TAKEN</th>
 		</thead>
 		<tbody>
-			<tr class="hover-tr" ng-repeat="dataColumn in lengthClientsPA = (dataTableList | 
-			filter:{ firstName:searchNameA, taken:selectTaken, email:searchEmailA, role:selectRole} | 
-			orderBy: sortField:reverse)" 
-			ng-if="$index >= (currentPage * pageSize) && $index < ((currentPage+1)*pageSize)" 
+			<tr class="hover-tr" ng-repeat="dataColumn in lengthClientsPA = (dataTableList |
+			filter:{ firstName:searchNameA, taken:selectTaken, email:searchEmailA, role:selectRole} |
+			orderBy: sortField:reverse)"
+			ng-if="$index >= (currentPage * pageSize) && $index < ((currentPage+1)*pageSize)"
 			ng-dblclick="currentItem(dataColumn.id, true)">
 
 				<td class="td-status">
@@ -118,9 +118,9 @@
 				<td>{{dataColumn.email}} </td>
 				<td ng-if="dataTable == 'users'">
 					<div>
-						<div ng-if="dataColumn.role == 'ROLE_ADMIN'">Admin</div>
-						<div ng-if="dataColumn.role == 'ROLE_MANAGER'">Manager</div>
-						<div ng-if="dataColumn.role == 'ROLE_RECRUITER'">Recruiter</div>
+						<div ng-if="dataColumn.role == 'ROLE_ADMIN'" translate>ADMIN</div>
+						<div ng-if="dataColumn.role == 'ROLE_MANAGER'" translate>MANAGER</div>
+						<div ng-if="dataColumn.role == 'ROLE_RECRUITER'" translate>RECRUITER</div>
 					</div>
 				</td>
 				<td ng-if="dataTable == 'participants'">{{dataColumn.sent}}</td>
@@ -129,27 +129,27 @@
 			</tr>
 			<tr id="no-hover" ng-if="lengthClientsPA == 0"><td style="padding-left: 25px;color:#666">
 				<div id="noSrchResults"></div>
-				<div id="titleNoSrchResults">No search results</div>
+				<div id="titleNoSrchResults" translate>NO_SEARCH_RESULTS</div>
 			</td></tr>
 		</tbody>
 	</table>
-	
+
 	<table id="tool" ng-if="lengthClientsPA != 0">
 		<tr>
-			<td>			
- 		 		<button ng-click="paging(0)">Prev</button>
+			<td>
+ 		 		<button ng-click="paging(0)" translate>PREV</button>
  				<span id="currentPage" ng-click="paging(currentPage)">{{currentPage + 1}}</span>
  				<span id="currentPage" ng-if="(currentPage + 2) <= pageNumber" ng-click="paging(currentPage)">{{currentPage + 2}}</span>
  				<span id="currentPage" ng-if="(currentPage + 3) <= pageNumber" ng-click="paging(currentPage)">{{currentPage + 3}}</span>
-				<button ng-click="paging(1)">Next</button>
+				<button ng-click="paging(1)" translate>NEXT</button>
  				</td>
-			<td><div class="altContainer"></div><button class="send" ng-click="clearFields()">New</button></td>
+			<td><div class="altContainer"></div><button class="send" ng-click="clearFields()" translate>NEW</button></td>
 		</tr>
 	</table>
 </div>
 <div id="right-container">
 	<div id="filter" class="box filter">
-		<span id="title">Filter</span>
+		<span id="title" translate>FILTER</span>
 		<div id="filter-container">
 			<input type="text" placeholder="Name" onblur="this.placeholder='Name'" onfocus="this.placeholder=''" ng-model="searchNameA" ng-change="changeAction()"><br>
 			<input type="text" placeholder="Email adress" onblur="this.placeholder='Email adress'" onfocus="this.placeholder=''" ng-model="searchEmailA" ng-change="changeAction()"><br>
@@ -160,24 +160,24 @@
 			</span>
 			<div id="selectFilterDashboard" class="menu selectMenu">
                 <ul ng-model="selectTaken">
-                    <li ng-click="selectTaken='';takenTitle='All'">All</li>
-                    <li ng-click="selectTaken='done';takenTitle='Done'">Done</li>
-                    <li ng-click="selectTaken='inProcess';takenTitle='In process'">In process</li>
-                    <li ng-click="selectTaken='failed';takenTitle='Failed';">Failed</li>
+                    <li ng-click="selectTaken='';takenTitle='All'" translate>ALL</li>
+                    <li ng-click="selectTaken='done';takenTitle='Done'" translate>DONE</li>
+                    <li ng-click="selectTaken='inProcess';takenTitle='In process'" translate>IN_PROCESS</li>
+                    <li ng-click="selectTaken='failed';takenTitle='Failed';" translate>FAILED</li>
                 </ul>
             </div>
             </div>
             <div ng-show=selectRoleVisible>
 			<span id="selectDash" class="select">
-				<div ng-if="selectRole == null">All</div>
+				<div ng-if="selectRole == null" translate>ALL</div>
 				<div ng-if="selectRole != null">{{titleRole}}</div>
 			</span>
 			<div id="selectFilterDashboard" class="menu selectMenu">
                 <ul ng-model="selectRole">
-                    <li ng-click="selectRole='';titleRole='All'">All</li>
-                    <li ng-click="selectRole='ROLE_ADMIN';titleRole='Admin'">Admin</li>
-                    <li ng-click="selectRole='ROLE_MANAGER';titleRole='Manager'">Manager</li>
-                    <li ng-click="selectRole='ROLE_RECRUITER';titleRole='Recruiter'">Recruiter</li>
+                    <li ng-click="selectRole='';titleRole='All'" translate>ALL</li>
+                    <li ng-click="selectRole='ROLE_ADMIN';titleRole='Admin'" translate>ADMIN</li>
+                    <li ng-click="selectRole='ROLE_MANAGER';titleRole='Manager'" translate>MANAGER</li>
+                    <li ng-click="selectRole='ROLE_RECRUITER';titleRole='Recruiter'" translate>RECRUITER</li>
                 </ul>
             </div>
             </div>

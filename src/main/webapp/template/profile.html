@@ -6,19 +6,19 @@
 				<tr>
 					<td class="img"><img ng-src="images/profiles/avatar.jpg" onerror="this.src='images/profiles/error.png';"></td>
 					<td><span>{{client.email}}</span></td>
-					<td><button id="close">Close</button></td>
+					<td><button id="close" translate>CLOSE</button></td>
 				</tr>
-			</table>	
+			</table>
 		</div>
 		<form method="POST">
 		<div class="action">
 			<table>
-				<tr>	
-					<td>Language</td>
+				<tr>
+					<td translate>LANGUAGE</td>
 					<td><div id="select_langProg" ng-controller="CustomSelect" ng-init="createSelect('langProg')"/></td>
 				</tr>
 				<tr>
-					<td>Сomplication</td>
+					<td translate>DIFFICULTY</td>
 					<td class="radio-td">
 						<input type="radio" id="radio1" name="radios" value="hard">
 					    <label for="radio1">Hard</label>
@@ -29,18 +29,18 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2">Message<br><br><textarea class="textarea" rows="6" autofocus></textarea></td>
+					<td colspan="2" translate>MESSAGE<br><br><textarea class="textarea" rows="6" autofocus></textarea></td>
 				</tr>
-			</table>	
+			</table>
 		</div>
 		<div class="tool">
-			<button class="send">Send test</button>
+			<button class="send" translate>SEND_TEST</button>
 			<button id="close" style="float:right" ng-click="clearFields()">Cancel</button>
 		</div>
 	</form>
 	</div>
 </div>
-<section>	
+<section>
 <div id="x" class="box profile">
 	<img ng-src="images/profiles/bg.jpg" onerror="this.src='images/profiles/default.jpg'">
 	<div class="info-profile">
@@ -52,26 +52,26 @@
 	</div>
 
 	<div class="history">
-		<button id="send-profile" class="send">Send test</button>
+		<button id="send-profile" class="send" translate>SEND_TEST</button>
 		<table>
 			<!-- <tr>
 				<td>Birthday</td>
 				<td><input value="{{client.birthday}}"></td>
 			</tr> -->
 			<tr>
-				<td>City</td>
+				<td translate>CITY</td>
 				<td><input value="{{client.city}}"></td>
 			</tr>
 			<tr>
-				<td>Contact</td>
+				<td translate>CONTACT</td>
 				<td><input value="{{client.email}}"></td>
 			</tr>
 			<tr>
-				<td>Specialty</td>
+				<td translate>SPECIALITY</td>
 				<td><input value="{{client.specialty}}"></td>
 			</tr>
 			<tr>
-				<td>English level</td>
+				<td translate>ENGLISH_LEVEL</td>
 				<td><input value="{{client.englishLevel}}"></td>
 			</tr>
 		</table>
@@ -82,17 +82,17 @@
 <div id="activity" class="box profile">
 	<table id="head">
 		<tr>
-			<td>Activity</td>
+			<td translate>ACTIVITY</td>
 		</tr>
 	</table>
 	<table id="activity" class="main-table" cellspacing="0" cellpadding="0">
 		<thead>
-			<th>Technology</th>
-			<th>Taken</th>
+			<th translate>TECHNOLOGY</th>
+			<th translate>TAKEN</th>
 			<th>Complication</th>
-			<th>Review</th>
+			<th translate>REVIEW</th>
 		</thead>
-		<tbody>	
+		<tbody>
 		<tr class="hover-tr"ng-repeat="act in client.activity">
 			<td>{{act.technology}}</td>
 			<td><img ng-src="images/{{act.taken}}.png" onerror="this.src='images/errTaken.png'"></td>

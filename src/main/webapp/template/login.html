@@ -1,18 +1,18 @@
 <!doctype html>
 <head>
     <link rel="stylesheet" href="/styles/admin.css">
-    <title>Login</title>
+    <title translate>LOGIN</title>
     <meta charset="utf-8">
 </head>
 <body>
 <center>
     <form class="login" ng-controller="loginCtrl">
         <div>
-        <p><label for="username">Login</label></p>
+        <p><label for="username" translate>LOGIN</label></p>
         <input type="text" id="username" ng-model="username" required>
-        <p><label for="password">Password</label></p>
+        <p><label for="password" translate>PASSWORD</label></p>
         <input type="password" id="password" ng-model="password" required>
-        <br><button ng-click="sumbit()">Login</button>
+        <br><button ng-click="sumbit()" translate>LOGINING</button>
         </div>
     </form>
 </center>
