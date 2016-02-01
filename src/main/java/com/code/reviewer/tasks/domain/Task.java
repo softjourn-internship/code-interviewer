@@ -1,6 +1,7 @@
 package com.code.reviewer.tasks.domain;
 
 import com.code.reviewer.user.domain.Test;
+import com.code.reviewer.user.domain.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -17,8 +18,8 @@ import java.util.Set;
 public class Task implements Serializable {
 
     @Id
-    @GeneratedValue
     @Column(name = "taskId")
+    @GeneratedValue
     private Integer taskId;
 
     @Column(name = "title")
@@ -68,11 +69,11 @@ public class Task implements Serializable {
                 '}';
     }
 
-    public Integer getTaskId() {
+    public Integer getId() {
         return taskId;
     }
 
-    public void setTaskId(Integer taskId) {
+    public void setId(Integer taskId) {
         this.taskId = taskId;
     }
 
