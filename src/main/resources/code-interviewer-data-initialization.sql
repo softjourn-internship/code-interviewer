@@ -33,10 +33,8 @@ INSERT INTO participants(first_name, last_name, email, sent, returned, taken, ac
 INSERT INTO participants(first_name, last_name, email, sent, returned, taken, active, image)
     VALUES ('Denus', 'Kaznodiy', 'iDen@mail.ru', '2016-01-14', '2016-01-15', 'done', TRUE, NULL);
 
-
 INSERT INTO exams(technology, taken, status, complication, participants_id)
     VALUES ('Java', 'failed', 'checked', 'Hard', 1);
-
 
 INSERT INTO users_participants(users_id, participants_id)
     VALUES(2, 1);
@@ -44,3 +42,8 @@ INSERT INTO users_participants(users_id, participants_id)
     VALUES(2, 3);
 INSERT INTO users_participants(users_id, participants_id)
     VALUES(2, 8);
+
+INSERT INTO tasks(title, task, technology, difficulty, added_date, active)
+    VALUES ('title', 'task', 'tech', 'hard', '2016-01-04', TRUE);
+INSERT INTO tasks(title, task, technology, difficulty, added_date, active)
+    VALUES ('title2', 'task2', 'tech2', 'hard', '2016-01-05', TRUE);

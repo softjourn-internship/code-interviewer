@@ -40,7 +40,7 @@ public class H2DataConfiguration implements ApplicationListener<ContextRefreshed
 
     @Value("${db.username}")
     private String dbUsername;
-    
+
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         new EmbeddedDatabaseBuilder()
