@@ -17,9 +17,9 @@ import java.util.Set;
 public class Task implements Serializable {
 
     @Id
+    @Column(name = "id")
     @GeneratedValue
-    @Column(name = "taskId")
-    private Integer taskId;
+    private Long id;
 
     @Column(name = "title")
     private String title;
@@ -58,7 +58,7 @@ public class Task implements Serializable {
     @Override
     public String toString() {
         return "Task{" +
-                "taskId=" + taskId +
+                "taskId=" + id +
                 ", title='" + title + '\'' +
                 ", task='" + task + '\'' +
                 ", technology='" + technology + '\'' +
@@ -68,12 +68,12 @@ public class Task implements Serializable {
                 '}';
     }
 
-    public Integer getTaskId() {
-        return taskId;
+    public Long getId() {
+        return id;
     }
 
-    public void setTaskId(Integer taskId) {
-        this.taskId = taskId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitle() {
