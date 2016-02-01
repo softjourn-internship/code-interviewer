@@ -11,10 +11,11 @@ public interface TaskService {
 
     Collection<Task> getAll();
 
-    Task findById(Integer id);
+    Task findById(Long id);
 
     Task findByTaskTitle(String title);
 
     void save(Task task);
 
+    void delete(Task task);
 }

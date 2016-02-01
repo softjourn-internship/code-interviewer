@@ -23,8 +23,8 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public Task findById(Integer id) {
-        return repository.findOneByTaskId(id);
+    public Task findById(Long id) {
+        return repository.findOne(id);
     }
 
     @Override
@@ -35,5 +35,10 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public void save(Task task) {
         repository.save(task);
+    }
+
+    @Override
+    public void delete(Task task) {
+        repository.delete(task);
     }
 }

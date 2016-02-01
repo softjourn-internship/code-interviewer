@@ -6,9 +6,9 @@ import com.code.reviewer.tasks.domain.Task;
 /**
  * Created by NicholasG on 31.12.2015.
  */
-public interface TaskRepository extends JpaRepository<Task, Integer> {
+public interface TaskRepository extends JpaRepository<Task, Long> {
 
-    Task findOneByTaskId(Integer id);
+    Task findOne(Long id);
 
     Task findOneByTitle(String title);
 
