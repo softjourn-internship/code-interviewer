@@ -36,9 +36,6 @@ public class Task implements Serializable {
     @Column(name = "addedDate")
     private Date addedDate;
 
-    @Column(name = "active")
-    private boolean active = true;
-
     @JsonIgnore
     @ManyToMany(targetEntity = Test.class)
     private Set<Test> tests = new HashSet<>();
@@ -46,13 +43,12 @@ public class Task implements Serializable {
     public Task() {
     }
 
-    public Task(String title, String task, String technology, String difficulty, Date addedDate, boolean active) {
+    public Task(String title, String task, String technology, String difficulty, Date addedDate) {
         this.title = title;
         this.task = task;
         this.technology = technology;
         this.difficulty = difficulty;
         this.addedDate = addedDate;
-        this.active = active;
     }
 
     @Override
@@ -64,7 +60,6 @@ public class Task implements Serializable {
                 ", technology='" + technology + '\'' +
                 ", difficulty='" + difficulty + '\'' +
                 ", addedDate=" + addedDate +
-                ", active=" + active +
                 '}';
     }
 
@@ -114,14 +109,6 @@ public class Task implements Serializable {
 
     public void setAddedDate(Date addedDate) {
         this.addedDate = addedDate;
-    }
-
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
     }
 
     public Set<Test> getTests() {

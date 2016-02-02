@@ -66,9 +66,14 @@ public class TaskController {
     @RequestMapping(value = "/tasks/{id}",
             method = RequestMethod.DELETE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public Task deleteTask(@PathVariable Long id) {
+    public boolean deleteTask(@PathVariable Long id) {
         Task task = taskService.findById(id);
-        taskService.delete(task);
-        return task;
+        if (task == null) {
+            LOGGER.warn("task id = '" + id + "' is not found");
+            return false;
+        } else {
+            taskService.delete(task);
+            return true;
+        }
     }
 }
