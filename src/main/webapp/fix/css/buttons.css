@@ -1,0 +1,115 @@
+button {
+  background: #e2e2e2;
+  border-radius: 2px;
+  border-color: transparent;
+  border: 1px solid #e2e2e2;
+  color: #999;
+  font-weight: 300;
+  font-size: 13px;
+  font-family: Open Sans, Tahoma;
+  padding: 2.5px 10px 2.5px 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  border: 1px solid #d8d8d8;
+  background: #d8d8d8;
+  color: #9d9d9d;
+}
+
+button:active {
+  border: 1px solid #cecece;
+  background: #cecece;
+  color: #808080;
+}
+
+div.profile div.history button {
+  float: right;
+}
+
+button#add:hover {
+  background: #afbc8e;
+  border-color: #afbc8e;
+  color: #fff;
+}
+
+button#add:active {
+  background: #a2b57d;
+  border-color: #a2b57d;
+}
+
+button#sendT {
+  position: absolute;
+  top: 91%;
+  background: #A2B57D;
+  border-color: #A2B57D;
+  font-size: 12px;
+  /*color: rgb(50, 49, 48);*/
+  margin-left: 1%;
+  border-radius: 2px;
+  color: #fff;
+  text-shadow: 0 1px 0 #828e65;
+  /*text-shadow: 0 1px 0 #808a6a;*/
+}
+
+button#sendT:hover {
+  background: #afbc8e;
+  color: #fff;
+}
+
+button#sendT:active {
+  background: #A2B57D;
+}
+
+button.send {
+  background: #a2b57d;
+  background: #AEC785;
+  border-color: #AEC785;
+  margin-left: 1%;
+  color: #fff;
+  text-shadow: 0 1px 0 #a2b57d;
+}
+
+button#send-profile {
+  margin: 25px;
+  margin-top: 0;
+}
+
+button.send:hover {
+  background: #a2b57d;
+  border-color: #a2b57d;
+  color: #fff;
+}
+
+button.send:active {
+  background: #96ac6d;
+  border-color: #96ac6d;
+}
+
+button.view:hover {
+  border: 1px solid #666;
+  background: #666;
+  color: #fff;
+}
+
+button.view:hover:before {
+  content: "View";
+}
+
+button.view:before {
+  content: "View";
+}
+
+div.box table#tool td:first-child button {
+  border: none;
+  background: none;
+  font-weight: 400;
+}
+
+div.box table#tool td:first-child button:hover {
+  color: #222;
+}
+
+form.login button {
+  margin-top: 10px;
+}
