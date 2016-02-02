@@ -1,0 +1,62 @@
+div.box {
+  /*border: 3px solid #fff; */
+  margin: 0;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  box-shadow: 0 1px 0 #e1e1e1;
+  display: block;
+  padding: 0;
+  background: #fff;
+  height: auto;
+}
+
+div.box table#head,
+div.box table#head span,
+div#filter span#title {
+  width: 100%;
+  margin: 0;
+  border-radius: 5px 5px 0 0;
+  font-size: 12px;
+  color: #888;
+  height: 35px;
+}
+
+div.box table#head td:nth-child(1n),
+span {
+  padding-left: 10px;
+}
+
+div.box table#head td:nth-child(2n) select {
+  float: right;
+  border: none;
+}
+
+div.box table#tool {
+  padding: 15px;
+  padding-top: 0;
+  padding-left: 0;
+}
+
+div.box table#tool td:nth-child(1n) {
+  width: 100%;
+}
+
+div.box table#tool td:first-child span {
+  /*cursor: pointer;*/
+  font-size: 13px;
+  padding: 5px 10px 5px 10px;
+  border-radius: 2px;
+  /*background: #eee;*/
+  font-weight: bold;
+  color: #d8d8d8;
+}
+
+div.box table#tool td:first-child button {
+  border: none;
+  background: none;
+  font-weight: 400;
+}
+
+div.box table#tool td:first-child button:hover {
+  color: #222;
+}

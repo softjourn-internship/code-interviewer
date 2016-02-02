@@ -4,7 +4,7 @@
 		<div class="head">
 			<table cellspacing="0" cellpadding="0">
 				<tr>
-					<td class="img"><img ng-src="images/profiles/avatar.jpg" onerror="this.src='images/profiles/error.png';"></td>
+					<td class="img"><img ng-src="images/profiles/avatar.jpg" onerror="this.src='dist/images/profiles/error.png';"></td>
 					<td><span>{{client.email}}</span></td>
 					<td><button id="close" translate>CLOSE</button></td>
 				</tr>
@@ -42,9 +42,9 @@
 </div>
 <section>
 <div id="x" class="box profile">
-	<img ng-src="images/profiles/bg.jpg" onerror="this.src='images/profiles/default.jpg'">
+	<img ng-src="images/profiles/bg.jpg" onerror="this.src='dist/images/profiles/default.jpg'">
 	<div class="info-profile">
-		<img class="avatar" ng-src="images/profiles/id{{client.image}}" onerror="this.src='images/profiles/error.png';">
+		<img class="avatar" ng-src="images/profiles/id{{client.image}}" onerror="this.src='dist/images/profiles/error.png';">
 		<div class="general-info">
 			<div class="name"><input value="{{client.firstName}} {{client.lastName}}"></div>
 		</div>
@@ -95,7 +95,7 @@
 		<tbody>
 		<tr class="hover-tr"ng-repeat="act in client.activity">
 			<td>{{act.technology}}</td>
-			<td><img ng-src="images/{{act.taken}}.png" onerror="this.src='images/errTaken.png'"></td>
+			<td><img ng-src="images/{{act.taken}}.png" onerror="this.src='dist/images/error.png'"></td>
 			<td>{{act.complication}}</td>
 			<td><button class="view {{act.review}}"></button></td>
 		</tr>

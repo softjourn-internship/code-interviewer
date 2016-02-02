@@ -1,8 +1,8 @@
 <div ng-controller="DataCtrl">
 
 <div class="box box-item-info">
-	<img class="avatar" ng-src="images/profiles/{{image}}" onerror="this.src='images/profiles/error.png';">
-	<img class="bg" ng-src="images/profiles/bg.jpg" onerror="this.src='images/profiles/default.jpg'">
+	<img class="avatar" ng-src="images/profiles/{{image}}" onerror="this.src='dist/images/profiles/error.png';">
+	<img class="bg" ng-src="images/profiles/bg.jpg" onerror="this.src='dist/images/profiles/default.jpg'">
 	<a href="/participants/{{itemId}}">
 		<span>{{firstName}} {{lastName}}</span>
 	</a>
@@ -109,7 +109,7 @@
 
 				<td class="td-status">
 					<a href="/participants/{{dataColumn.id}}">
-					<img ng-src="images/profiles/{{dataColumn.image}}" onerror="this.src='images/profiles/error.png';" style="border-radius: 100%;">
+					<img ng-src="images/profiles/{{dataColumn.image}}" onerror="this.src='dist/images/profiles/error.png';" style="border-radius: 100%;">
 				</a></td>
 				<td class="td-name">
 					<b ng-if="dataTable === 'participants'"><a href="/participants/{{dataColumn.id}}"></b>
@@ -125,7 +125,7 @@
 				</td>
 				<td ng-if="dataTable == 'participants'">{{dataColumn.sent}}</td>
 				<td ng-if="dataTable == 'participants'">{{dataColumn.returned}}</td>
-				<td ng-if="dataTable == 'participants'" class="td-status"><img ng-src="images/{{dataColumn.taken}}.png" onerror="this.src='images/error.png';"></td>
+				<td ng-if="dataTable == 'participants'" class="td-status"><img ng-src="images/{{dataColumn.taken}}.png" onerror="this.src='dist/images/error.png';"></td>
 			</tr>
 			<tr id="no-hover" ng-if="lengthClientsPA == 0"><td style="padding-left: 25px;color:#666">
 				<div id="noSrchResults"></div>

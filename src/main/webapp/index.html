@@ -6,8 +6,11 @@
 	<title>Admin Panel</title>
 		<meta name="viewport" content="width=device-width, initial-scale: 1.0, user-scalabe=0">
 
-	<link rel="stylesheet" type="text/css" href="styles/admin.css">
-	<link rel="stylesheet" type="text/css" href="styles/workspace.css">
+	<!-- <link rel="stylesheet" type="text/css" href="styles/admin.css">
+	<link rel="stylesheet" type="text/css" href="styles/workspace.css"> -->
+
+	<link rel="stylesheet" type="text/css" href="dist/styles/main.min.css">
+
     <link rel="shortcut icon" href="images/icon.png">
 
 
@@ -45,17 +48,17 @@
 	<div ng-controller="UserCtrl"  ng-if="!interviewerVisible">
 		<div id="container">
 			<div class="sidebar">
-	            <div class="user" style="background-image: url(../images/profiles/id1-bg.jpg">
+	            <div class="user" style="background-image: url(../dist/images/profiles/id1-bg.jpg">
 	                <center>
 	                <div>
 	                    <a href="/users/{{user.userId}}">
-	                <img src="images/profiles/{{user.image}}" onerror="this.src='images/profiles/error.png';"></a>
+	                <img src="images/profiles/{{user.image}}" onerror="this.src='dist/images/profiles/error.png';"></a>
 	                <span>{{user.firstName}} {{user.lastName}}</span>
 	                <span id="role">
 	                    <div ng-if="user.role == 'ROLE_ADMIN'" translate>ADMIN</div>
 	                    <div ng-if="user.role == 'ROLE_MANAGER'" translate>MANAGER</div>
 	                    <div ng-if="user.role == 'ROLE_RECRUITER'" translate>RECRUITER</div>
-	                <img src="images/arrowDown.png">
+	                <img src="dist/images/arrowDown.png">
 	                </span>
 	                </div>
 
@@ -90,7 +93,7 @@
 	            <div class="search"><input type="text" placeholder="Search for something..." onblur="this.placeholder='Search for something...'"></div>
 	            <div id="user" ng-controller="UserCtrl">
 	                <a href="#/users/{{user.userId}}">
-	                <img src="images/profiles/{{user.image}}" onerror="this.src='images/profiles/error.png';"></a>
+	                <img src="images/profiles/{{user.image}}" onerror="this.src='dist/images/profiles/error.png';"></a>
 	            </div>
 	            <div class="logout" ng-controller="translateCTRL">
 									<img ng-click="setLang()" ng-src={{translateImageSrc}} />

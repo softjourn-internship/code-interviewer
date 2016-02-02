@@ -226,16 +226,10 @@ ul#nav li {
 	list-style: none;
 }
 li, li a, a, #select, tr{
-	-webkit-transition: 0.1s;
-	-moz-transition: 0.1s;
-	-o-transition: 0.1s;
 	transition: 0.1s;
 }
 
 tr, button, textarea, label, th, div.logout a, input, select, span{
-	-webkit-transition: 0.2s;
-	-moz-transition: 0.2s;
-	-o-transition: 0.2s;
 	transition: 0.2s;
 }
 ul#nav li a, li#li-main, ul.sub li a {
@@ -539,21 +533,7 @@ div.box-small p{
 	color: #666;
 	font-weight: 300;
 }
-div.box div{
-/*	width: 100%;
-	display: inline;
-*/
-}
-/*div.box div ul { list-style: none; }
-div.box div ul li{ display: inline;padding: 0; }
-div.box div ul li button{
-	padding-left: 10px;
-	padding-right: 10px;
-	border-radius: 0 3px 3px 0;
-	margin: 0;
-	margin-left: -7px;
-	height: 33.5px;
-}*/
+
 .clearBoth { clear:both; }
 
 input, select{
@@ -572,9 +552,7 @@ input:focus,input:hover{
 	/*border-bottom: 2px solid #34495e;*/
 	color: #333;
 }
-div.box div select{
-	/*padding: 5px;*/
-}
+
 div select:hover{
 	border-bottom: 2px solid #34495e;
 }
@@ -699,10 +677,7 @@ ul#list-tb div{border-bottom: 1px solid #eee;};
 	display: block;
 }
 /* PLACEHOLDER */
-::-webkit-input-placeholder {color: silver;}
-::-moz-placeholder          {color: silver;}/* Firefox 19+ */
-:-moz-placeholder           {color: silver;}/* Firefox 18- */
-:-ms-input-placeholder      {color: silver;}
+	placeholder {color: silver;}
 
 div.box div.tool{
 	display: block;
@@ -968,9 +943,6 @@ label {
     font-size:13px;
 }
 input[type="radio"]:checked + label {
-    -webkit-transition: 0.2s;
-	-moz-transition: 0.2s;
-	-o-transition: 0.2s;
 	transition: 0.2s;
 }
 td.radio-td label{
@@ -1527,24 +1499,4 @@ div.box-item-info span{
 	font-size: 14px;
 	color: #222;
 	padding-bottom: 5px;
-}
-
-div.notification{
-	/*display: none;*/
-	position: absolute;
-	z-index: 8;
-	margin: auto;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	width: 30%;
-	height: 100px;
-	background: rgba(34, 34, 34, 0.7);
-	border-radius: 5px;
-	color: #fff;
-	margin-top: 70px;
-	font-size: 14px;
-	padding: 25px;
-	box-shadow: 0 0 5px #999;
 }
