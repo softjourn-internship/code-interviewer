@@ -45,7 +45,7 @@ INSERT INTO users_participants(users_id, participants_id)
 INSERT INTO users_participants(users_id, participants_id)
     VALUES(2, 8);
 
-INSERT INTO tasks(title, task, technology, difficulty, added_date, active)
-    VALUES ('title1', 'task1', 'tech', 'hard', '2016-01-04', TRUE);
-INSERT INTO tasks(title, task, technology, difficulty, added_date, active)
-    VALUES ('title2', 'task2', 'tech', 'hard', '2016-01-04', TRUE);
+INSERT INTO tasks(title, task, technology, difficulty, added_date)
+    VALUES ('title1', 'task1', 'tech', 'hard', '2016-01-04');
+INSERT INTO tasks(title, task, technology, difficulty, added_date)
+    VALUES ('title2', 'task2', 'tech', 'hard', '2016-01-04');
