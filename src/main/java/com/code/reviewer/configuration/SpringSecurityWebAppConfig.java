@@ -1,5 +1,7 @@
 package com.code.reviewer.configuration;
 
+import com.code.reviewer.security.AuthenticationFailureHandler;
+import com.code.reviewer.security.AuthenticationSuccessHandler;
 import com.code.reviewer.security.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -22,6 +24,12 @@ public class SpringSecurityWebAppConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     DataSource dataSource;
+
+    @Autowired
+    private AuthenticationSuccessHandler authenticationSuccessHandler;
+
+    @Autowired
+    private AuthenticationFailureHandler authenticationFailureHandler;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -46,11 +54,11 @@ public class SpringSecurityWebAppConfig extends WebSecurityConfigurerAdapter {
 //                        .antMatchers("/**").permitAll()
                 .antMatchers("/**").authenticated()
                 .antMatchers("/api/participants/**").hasAuthority(Role.RECRUITER.toString())
-//                .antMatchers("../webapp/**").permitAll()
                 .and()
                 .formLogin()
-//                .loginPage("/login")
                 .loginProcessingUrl("/api/authentication")
+                .successHandler(authenticationSuccessHandler)
+                .failureHandler(authenticationFailureHandler)
                 .usernameParameter("username")
                 .passwordParameter("password")
                 .permitAll()
