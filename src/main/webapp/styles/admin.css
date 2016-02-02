@@ -292,84 +292,7 @@ div.mobile:hover{
 	/*background-image: url(D:/Mockup-interview/images/menu.png); */
 }
 /*	RESIZE	*/
-@media only screen and (max-width: 768px){
-	div#header{position: fixed;box-shadow: 0 0 3px #888;}
-	div#header div#user{display: block;}
-	div.user{display: none;}
-	div#chart-dashboard{width: 100%;}
-	div.send-test div#main{width: 80%;}
-	div.box{width: 100%;}
-	table.main-table{width: 100%;}
-	a#dashboard,a#participants,a#statistics,a#dashboard:hover,
-	a#participants:hover,a#statistics:hover,a#dashboard:focus,
-	a#participants:focus,a#statistics:focus,a#workspace,a#workspace:hover,
-	a#workspace:focus,a#tasks,a#tasks:hover,a#tasks:focus
-	{background-image:none;text-indent:0%;}
-	ul#nav{margin-top: 0px;}
-	/*div.search{margin-left: 125px;}*/
-	div.box-small{
-		margin-bottom: 15px;
-		width: 100%;
-	}
-	.logo{
-		/*margin-left: 50px;*/
-		position: absolute;
-	}
-	.sidebar{
-		margin-top:50px;
-		position: absolute;
-		height: auto;
-		width: 100%;
-		display: none;
-		text-align: center;
-	}
-	div.content {
-		margin-left: 0px;
-	}
-	#mainMobile{
-		display: none;
-	}
-}
-@media only screen and (min-width: 768px){
-	div#header div#user{display: none;}
-	div.user{display: block;}
-	section{white-space:nowrap;}
-	section div.box{display:inline-block;}
-	section div#activity{
-		/*position: absolute;*/
-		display: block;
-		width: 450px;
-		margin-left: 25px;
-	}
-	div#chart-dashboard{width: 700px;}
-	div.box{width: 700px;margin: 25px;}
-	div.send-test div#main{width: 500px;}
-	div.profile{width: 600px;}
-	table.main-table{width: auto;}
-	ul#nav{margin-top: 15px;}
-	/*div.search{margin-left: 0px;}*/
-	div.box-small{
-		width: 200px;
-		margin-left: 15px;
-	}
-	div.mobile{
-		display: none;
-	}
-	#mainMobile{
-		display: block;
-	}
-	div.top{
 
-		/*max-height: 150px;*/
-	}
-	div.sidebar{
-		/*background: #333;*/
-		/*margin-top: -50px;*/
-		position: fixed;
-		height: 100%;
-		display: block;
-	}
-}
 
 /*	SEARCH	*/
 
@@ -677,7 +600,7 @@ ul#list-tb div{border-bottom: 1px solid #eee;};
 	display: block;
 }
 /* PLACEHOLDER */
-	placeholder {color: silver;}
+	placeholder {color: #e2e2e2;}
 
 div.box div.tool{
 	display: block;
@@ -767,7 +690,6 @@ div.profile table tr td:nth-child(2n){
 }
 div.profile table tr td:nth-child(1n){
 	color: #999;
-	width: 125px;
 }
 div.profile table tr td input{
 	font-size: 14px;
@@ -835,12 +757,12 @@ div.send-test div#main {
 	margin-top: 70px;
 
 }
-div.send-test input{
+div.send-test input, form.login input{
 	background: #fff;
 	border: 1px solid #eee;
 	border-radius: 1px;
 }
-div.send-test input:hover, div.send-test input:focus{ border-color: #d8d8d8 }
+div.send-test input:hover,form.login input:hover, div.send-test input:focus, form.login input:focus{ border-color: #d8d8d8 }
 div.send-test div#close-box{
 	position: absolute;
 	top: 0;
@@ -1375,47 +1297,6 @@ button#sendT:active{
 	width: 10px;
 	height: 10px;
 	float: right;
-}
-/*/////////////////////////////////*/
-/*	LOGIN	*/
-form.login{
-	display: block;
-	background: #fff;
-	width: 500px;
-	height: 300px;
-	position: absolute;
-	margin: auto;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	font-family: Open Sans;
-	box-shadow: 0 1px 0 #e1e1e1;
-}
-form.login div{
-	position: absolute;
-	display: block;
-	background: #fff;
-	margin: auto;
-	width: 50%;
-	height: 55%;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-}
-form.login input{
-	margin: 0;
-	width: 100%;
-	color: #34495e;
-	font-weight: bold;
-	margin-bottom: 15px;
-}
-form.login button{
-	margin-top: 10px;
-}
-form.login label{
-	color: #444;
 }
 
 button.view:hover{

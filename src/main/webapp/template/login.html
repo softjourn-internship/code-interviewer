@@ -1,19 +1,21 @@
 <!doctype html>
 <head>
-    <link rel="stylesheet" href="/styles/admin.css">
-    <title translate>LOGIN</title>
+    <link rel="stylesheet" href="../dist/styles/main.min.css">
+    <title translate>Login</title>
     <meta charset="utf-8">
 </head>
 <body>
 <center>
     <form class="login" ng-controller="loginCtrl">
         <div>
-        <p><label for="username" translate>LOGIN</label></p>
-        <input type="text" id="username" ng-model="username" required>
-        <p><label for="password" translate>PASSWORD</label></p>
-        <input type="password" id="password" ng-model="password" required>
-        <br><button ng-click="sumbit()" translate>LOGINING</button>
+            <span id="logo">CI</span>
+            <span id="title">Welcome to code interview</span>
+            <span id="description"><p>This project is a platform for making online interview with writing a code</p><p>Login. To see it in action.</p></span>
         </div>
+        <input type="text" id="username" ng-model="username" placeholder="username">
+        <input type="password" id="password" ng-model="password" placeholder="password">
+        <br><button class="send" ng-click="sumbit()" translate>Login</button>
+        
     </form>
 </center>
 </body>
