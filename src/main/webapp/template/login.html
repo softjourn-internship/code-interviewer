@@ -1,22 +1,22 @@
-<!doctype html>
+<!doctype>
+<html>
 <head>
-    <link rel="stylesheet" href="../dist/styles/main.min.css">
-    <title translate>Login</title>
-    <meta charset="utf-8">
+	<title>Login Page</title>
+	<link rel="stylesheet" type="text/css" href="/dist/styles/main.min.css">
 </head>
 <body>
-<center>
-    <form class="login" ng-controller="loginCtrl">
-        <div>
-            <span id="logo">CI</span>
-            <span id="title">Welcome to code interview</span>
-            <span id="description"><p>This project is a platform for making online interview with writing a code</p><p>Login. To see it in action.</p></span>
-        </div>
-        <input type="text" id="username" ng-model="username" placeholder="username">
-        <input type="password" id="password" ng-model="password" placeholder="password">
-        <br><button class="send" ng-click="sumbit()" translate>Login</button>
-        
-    </form>
-</center>
+
+
+<form class="login" ng-controller="UserCtrl">
+    <div>
+        <span id="logo">CI</span>
+        <span id="title">Welcome to code interview</span>
+        <span id="description"><p>This project is a platform for making online interview with writing a code</p><p>Login. To see it in action.</p></span>
+    </div>
+    <input type="text" id="username" ng-model="username" placeholder="username">
+    <input type="password" id="password" ng-model="password" placeholder="password">
+    <br><button class="send" ng-click="authf()" translate>Login</button>  
+</form>
+
 </body>
 </html>
