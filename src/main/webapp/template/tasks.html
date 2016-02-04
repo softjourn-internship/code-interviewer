@@ -4,7 +4,7 @@
 		<div id="messageDeleteBox"></div>
 		<div id="messageDelete">
 			<span translate>RESPONSE_BEFOR_DELETE</span><span>"{{titleTaskDel}}"?</span>
-			<div class="buttonMessageDel" id="TDel" ng-click="deletedTask();;visibleMessageDel=!visibleMessageDel;" translate>DELETE</div>
+			<div class="buttonMessageDel" id="TDel" ng-click="deletedTask();" translate>DELETE</div>
 			<div class="buttonMessageDel" id="TCanc" ng-click="visibleMessageDel=!visibleMessageDel;" translate>CANSEL</div>
 		</div>
 	</div>
@@ -45,8 +45,56 @@
 	<button id="sendT" ng-disabled="!anableButton" ng-click="Visible=!Visible;changeButtonBack();">{{buttonTbox}}</button>
 	</div>
 
-	<div id="TBox" ng-show=Visible>
-		<!---->
+<div class="box">
+	<table id="head">
+		<tr>
+			<td>{{allTasks.length}} Tasks</td>
+			<td id="page-size">
+				<div>
+				<input type="radio" id="radio1" name="radios" ng-change="changeAction()"  ng-model="pageSize" value="5">
+			    <label id="label1" for="radio1">5</label>
+			    <input type="radio" id="radio2" name="radios" ng-change="changeAction()"  ng-model="pageSize" value="10" selected>
+			    <label id="label2" for="radio2">10</label>
+			    <input type="radio" id="radio3" name="radios" ng-change="changeAction()"  ng-model="pageSize" value="15">
+			    <label id="label3" for="radio3">15</label>
+			    </div>
+			</td>
+		</tr>
+	</table>
+			<table id="tableData" class="main-table" cellspacing="0" cellpadding="0">
+				<thead>
+					<th></th>
+					<th translate>TITLE_TASK</th>
+					<th translate>TECHNOLOGY</th>
+					<th translate>LAST_MODIFY</th>
+					<th translate>DIFFICULTY</th>
+				</thead>
+				<tbody>
+					<tr class="hover-tr" ng-repeat="task in allTasks | orderBy:sortType:sortReverse | filter:{title:searchTask,language:technology,level:difficalty,day:dayForFilter,mounth:mounthForFilter,year:yearForFilter}" ng-click="sortReorder(task.title,$event)">
+						<td class="td-status"><img src="dist/images/task.png" /></td>
+						<td class="td-name">{{task.title}}</td>
+						<td>{{task.technology}} </td>
+						<td>{{task.addedDate}}</td>
+						<td>{{task.difficulty}}</td>
+						<td><img ng-click="changeFrame(task.id);CreateOrChangeTask('CHANGE_TASK');" id="editImage" src="dist/images/task-edit.png" /></td>
+						<td><img ng-click="delTask(task.id,false);" src="dist/images/trash.png" id="deleteImage" /></td>
+					</tr>
+				</tbody>
+			</table>
+			<table id="tool" ng-if="lengthClientsPA != 0">
+				<tr>
+					<td>
+						<button ng-click="paging(0)" translate>PREV</button>
+						<span id="currentPage" ng-click="paging(currentPage)">{{currentPage + 1}}</span>
+						<span id="currentPage" ng-if="(currentPage + 2) <= pageNumber" ng-click="paging(currentPage)">{{currentPage + 2}}</span>
+						<span id="currentPage" ng-if="(currentPage + 3) <= pageNumber" ng-click="paging(currentPage)">{{currentPage + 3}}</span>
+						<button ng-click="paging(1)" translate>NEXT</button>
+						</td>
+					<td><button class="send" ng-click="changeFrame('empty'); CreateOrChangeTask('CREANE_TASK');" translate>NEW</button>
+			</td>
+				</tr>
+			</table>
+		</div>
 		<div id="boxFindTask">
 				<span translate>FIND_TASK</span>
 			<div>
@@ -103,39 +151,4 @@
 						</div>
 					</div>
 		</div>
-		<div id="BoxTitleAndTasks">
-		<div id="boxWithTitle">
-		<table id="table-dashboard">
-  		<thead>
-				<td><div class="tableTitleT" ng-click="sortType='title';sortReverse=!sortReverse"><span translate>TITLE_TASK</span><img ng-show="sortType == 'title' && sortReverse" class="imageForSort" src="images/sortup.png"><img ng-show="sortType == 'title' && !sortReverse" class="imageForSort" src="images/sortdown.png"></div></td>
-				<td><div class="tableCubicleT" ng-click="sortType='language';sortReverse=!sortReverse"><span translate>TECHNOLOGY</span><img ng-show="sortType == 'language' && sortReverse" class="imageForSort" src="images/sortup.png"><img ng-show="sortType == 'language' && !sortReverse" class="imageForSort" src="images/sortdown.png"></div></td>
-				<td><div class="tableCubicleT" translate>LAST_MODIFY</div></td>
-				<td><div class="tableCubicleT"ng-click="sortType='level';sortReverse=!sortReverse"><span translate>DIFFICULTY</span><img ng-show="sortType == 'level' && sortReverse" class="imageForSort" src="images/sortup.png"><img ng-show="sortType == 'level' && !sortReverse" class="imageForSort" src="images/sortdown.png"></div></td>
-				<!-- <td><div id="tableRefresh"><img id="refreshImage" src="images/refresh.png" ng-click="getTaskList();" /></div></td> -->
-  		</thead>
-		</table>
-		</div>
-		<div id="boxWithTasks">
-			<table id="table-dashboard">
-				<thead></thead>
-  			<tbody>
-  				<tr class="hover-tr" ng-repeat="task in allTasks | orderBy:sortType:sortReverse | filter:{title:searchTask,language:technology,level:difficalty,day:dayForFilter,mounth:mounthForFilter,year:yearForFilter}" ng-click="sortReorder(task.title,$event)">
-						<td><div class="tableTitle">{{task.title}}</div></td>
-						<td><div class="tableCubicle">{{task.language}}</div></td>
-						<td><div class="tableCubicle">{{task.day+"."+task.mounth+"."+task.year}}</div></td>
-						<td><div class="tableCubicle">{{task.level}}</div></td>
-						<td id="blockEdit"><img ng-click="changeFrame(task.id);CreateOrChangeTask('CHANGE_TASK');" id="editImage" src="images/task-edit.png" /></td>
-						<td id="blockEdit"><img ng-click="delTask(task.id,false);" src="images/trash.png" id="deleteImage" /></td>
-					</tr>
-  			</tbody>
-  		</table>
-			<script>console.log(window.countTask)</script>
-		</div>
-
-		<div class="toolT">
-			<button id="add" ng-click="changeFrame('empty'); CreateOrChangeTask('CREANE_TASK');" translate>ADD</button>
-		</div>
-	</div>
-	</div>
-
 </div>

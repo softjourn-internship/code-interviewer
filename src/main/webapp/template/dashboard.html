@@ -19,7 +19,7 @@
 			<th>Email</th>
 			<th translate>SENT</th>
 			<th translate>RETURNED</th>
-			<th style="padding-right:15px">Taken</th>
+			<th style="padding-right:15px" translate>TAKEN</th>
 		</thead>
 		<tbody>
 			<tr class="hover-tr" ng-repeat="client in lengthClientsPA = (clients | filter:{name:searchNameA, taken:'done', email:searchEmailA} | orderBy:'surname')" ng-if="$index >= (currentPage * pageSize) && $index < ((currentPage+1)*pageSize)">

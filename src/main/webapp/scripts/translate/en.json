@@ -56,5 +56,6 @@
     "MESSAGE":"Message",
     "SEND_TEST":"Send test",
     "ACTIVITY":"Activity",
-    "REVIEW":"Review"
+    "REVIEW":"Review",
+    "TAKEN":"Taken"
 }

@@ -555,7 +555,7 @@ div.top{
 	padding: 25px;
 }
 tr.info td{ padding: 0;}
-tr.info{ 
+tr.info{
 	background-color: #eee;
 	height: auto;
 }
@@ -947,7 +947,7 @@ div.send-test table tr td input[type="file"]{
 
 #BoxTitleAndTasks {
 	/*float: left;*/
-	background-color: #fff;
+	background-color: #ba4845;
 	position: absolute;
 	top: 10%;
 	height: 80%;
