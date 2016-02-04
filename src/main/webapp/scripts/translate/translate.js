@@ -4,7 +4,7 @@ adminPanelApp.config(['$translateProvider', function($translateProvider,$http){
   // So, the module will search missing translation tables under the specified urls.
   // Those urls are [prefix][langKey][suffix].
   $translateProvider.useStaticFilesLoader({
-    prefix: '/scripts/providers/',
+    prefix: '/scripts/translate/',
     suffix: '.json'
   });
 

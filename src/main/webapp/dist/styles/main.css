@@ -1443,13 +1443,10 @@ div.send-test table tr td input[type="file"] {
 
 #BoxTitleAndTasks {
   /*float: left;*/
-  background-color: #fff;
-  position: absolute;
-  top: 10%;
-  height: 80%;
   width: 62%;
+  background-color: rgb(126, 212, 238);
   border-radius: 5px;
-  border-bottom: 1px solid #E1E1E1;
+  padding-right: 20px;
 }
 
 #boxWithTasks {

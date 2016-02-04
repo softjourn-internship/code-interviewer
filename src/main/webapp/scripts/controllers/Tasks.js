@@ -4,7 +4,8 @@ adminPanelApp.controller('TasksCtrl',['$scope','$http',function ($scope,$http){
       $scope.countTaskT;
       $scope.dateForFilter={};
       $scope.getTaskList=function(){
-      $http.get("data/AllTasks.json").then(function (response) {
+      $http.get("/api/tasks").then(function (response) {
+        console.log(response.data);
         $scope.allTasks=response.data;
         });
       };
@@ -33,6 +34,8 @@ adminPanelApp.controller('TasksCtrl',['$scope','$http',function ($scope,$http){
         }
       }
       $scope.deletedTask=function(){
+        $scope.visibleMessageDel=!$scope.visibleMessageDel;
+        console.log($scope.visibleMessageDel);
         $scope.allTasks.splice($scope.taskIdDeleted,1);
       }
       $scope.changeFrame=function(taskId) {
