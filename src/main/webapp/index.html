@@ -47,7 +47,7 @@
 
 	<div ng-controller="UserCtrl"  ng-if="!interviewerVisible">
 		<div id="container">
-			<div class="sidebar">
+			<div class="sidebar" ng-show=sidebarVisible>
 	            <div class="user" style="background-image: url(../dist/images/profiles/id1-bg.jpg">
 	                <center>
 	                <div>
@@ -81,13 +81,15 @@
 	        <li><a id="participants" href="data/users" ng-click="dataTable = users" ng-show=usersVisible translate>USERS</a></li>
 					<li><a id="statistics" href="/statistics" ng-show=statisticsVisible translate>STATISTICS</a></li>
 	        <li><a id="tasks" href="/tasks" ng-show=tasksVisible translate>TASKS</a></li>
+	        <li><a href="/template/login.html" target="_blank">Login Page</a></li>
+	        <li><a href="/bootstrap.html" target="_blank">Bootstrap Soon</a></li>
 				</ul>
 			</div>
 	    </div>
 
 		<div class="content">
 
-	        <div id="header">
+	        <div id="header" ng-show=headerVisible>
 	            <div id="mainMobile" class="mobile"></div>
 	            <div id="secondMobile" class="mobile"></div>
 	            <div class="search"><input type="text" placeholder="Search for something..." onblur="this.placeholder='Search for something...'"></div>

@@ -9,7 +9,7 @@ adminPanelApp.config([
         .state('data', {
             url: '/data/:dataTable',
             templateUrl: 'template/data.html',
-            controller: 'DataCtrl'
+            controller: 'DataCtrl',
         })
         .state('participants', {
             url: '/participants/:clientId',
@@ -39,7 +39,7 @@ adminPanelApp.config([
         .state('statistics', {
             url: '/statistics',
             templateUrl: 'template/statistics.html',
-            controller: 'ClientsChartsCtrl'
+            controller: 'ClientsChartsCtrl',
         })
         .state('tasks', {
             url: '/tasks',

@@ -555,7 +555,7 @@ div.top{
 	padding: 25px;
 }
 tr.info td{ padding: 0;}
-tr.info{
+tr.info{ 
 	background-color: #eee;
 	height: auto;
 }
