@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="main">
+<html lang="en">
 <head>
 	<meta charset="utf-8">
     <base href="/">
@@ -29,89 +29,29 @@
     <script type="text/javascript" src="bower_components/jquery-ui/jquery-ui.js"></script>
     <link rel="stylesheet" type="text/css" href="/bower_components/jquery-ui/themes/smoothness/jquery-ui.css">
 
-    <!--<script type="text/javascript" src="scripts/admin.js"></script>-->
+    <script type="text/javascript" src="scripts/admin.js"></script>
 	<!--<script src="scripts/config.js"></script>-->
-    <script src="scripts/controllers/User.js"></script>
-    <script src="scripts/controllers/Data.js"></script>
-    <script src="scripts/controllers/Tasks.js"></script>
-    <script src="scripts/controllers/CustomSelect.js"></script>
-	<script src="scripts/controllers/Workspase.js"></script>
-	<script src="scripts/translate/translate.js"></script>
+    <!--<script src="scripts/controllers/User.js"></script>-->
+    <!--<script src="scripts/controllers/Data.js"></script>-->
+    <!--<script src="scripts/controllers/Tasks.js"></script>-->
+    <!--<script src="scripts/controllers/CustomSelect.js"></script>-->
+	<!--<script src="scripts/controllers/Workspase.js"></script>-->
+	<!--<script src="scripts/translate/translate.js"></script>-->
 
     <script type="text/javascript" src="scripts/ng-google-chart.js"></script>
 
 	<!-- V2 -->
-	<script src="v2/modules/main.mdl.js"></script>
+	<script src="/bower_components/angular-acl/angular-acl.min.js"></script>
+	<script src="/v2/modules/main.mdl.js"></script>
+	<script src="/v2/resources/acl.resource.js"></script>
 
+
+	<script src="/v2/modules/tasks/tasks.mdl.js"></script>
+	<script src="/v2/modules/tasks/list/list.ctrl.js"></script>
 
 
 </head>
-<body ng-controller="swichCTRL">
-
-	<div ng-include="'template/workspase.html'" ng-if="interviewerVisible"></div>
-
-	<div ng-controller="UserCtrl"  ng-if="!interviewerVisible">
-		<div id="container">
-			<div class="sidebar" ng-show=sidebarVisible>
-	            <div class="user" style="background-image: url(../dist/images/profiles/id1-bg.jpg)">
-	                <center>
-	                <div>
-	                    <a href="/users/{{user.userId}}">
-	                <img src="images/profiles/{{user.image}}" onerror="this.src='dist/images/profiles/error.png';"></a>
-	                <span>{{user.firstName}} {{user.lastName}}</span>
-	                <span id="role">
-	                    <div ng-if="user.role == 'ROLE_ADMIN'" translate>ADMIN</div>
-	                    <div ng-if="user.role == 'ROLE_MANAGER'" translate>MANAGER</div>
-	                    <div ng-if="user.role == 'ROLE_RECRUITER'" translate>RECRUITER</div>
-	                <img src="dist/images/arrowDown.png">
-	                </span>
-	                </div>
-
-	                <div id="userMenu" class="menu">
-	                    <ul>
-	                        <a href="/users/{{user.userId}}"><li translate>PROFILE</li></a>
-	                        <a href="/"><li translate>PARTICIPANTS</li></a>
-	                        <hr>
-	                        <a id="logout" href="/login?logout"><li translate>LOGOUT</li></a>
-	                    </ul>
-	                </div>
-	                </center>
-	            </div>
-				<ul id="nav">
-					<li><a id="dashboard" href="data/participants" ng-click="dataTable = 'participants'" ng-show=dashboardVisible translate>DASHBOARD</a></li>
-	                <ul id="subDashboard" class="sub">
-	                    <li><a href="/participants">My participants</a></li>
-	                    <li><a href="">All participants</a></li>
-	                </ul>
-	        <li><a id="participants" href="data/users" ng-click="dataTable = users" ng-show=usersVisible translate>USERS</a></li>
-					<li><a id="statistics" href="/statistics" ng-show=statisticsVisible translate>STATISTICS</a></li>
-	        <li><a id="tasks" href="/tasks" ng-show=tasksVisible translate>TASKS</a></li>
-	        <li><a href="/template/login.html" target="_blank">Login Page</a></li>
-	        <li><a href="/bootstrap.html" target="_blank">Bootstrap Soon</a></li>
-				</ul>
-			</div>
-	    </div>
-
-		<div class="content">
-
-	        <div id="header" ng-show=headerVisible>
-	            <div id="mainMobile" class="mobile"></div>
-	            <div id="secondMobile" class="mobile"></div>
-	            <div class="search"><input type="text" placeholder="Search for something..." onblur="this.placeholder='Search for something...'"></div>
-	            <div id="user" ng-controller="UserCtrl">
-	                <a href="#/users/{{user.userId}}">
-	                <img src="images/profiles/{{user.image}}" onerror="this.src='dist/images/profiles/error.png';"></a>
-	            </div>
-	            <div class="logout" ng-controller="translateCTRL">
-									<img ng-click="setLang()" ng-src="dist/	{{translateImageSrc}}" />
-	                <a id="logout" href="/login?logout" translate>LOGOUT</a>
-	            </div>
-	        </div>
-	        <!-- <div id="view" ng-view></div> -->
-	        <div id="view" ui-view></div>
-	    </div>
-	</div>
-
-
+<body>
+	<ui-view></ui-view>
 </body>
 </html>

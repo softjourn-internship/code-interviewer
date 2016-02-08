@@ -1,0 +1,8 @@
+<div ng-show="visibleMessageDel">
+	<div id="messageDeleteBox"></div>
+	<div id="messageDelete">
+		<span translate>RESPONSE_BEFOR_DELETE</span><span>"{{titleTaskDel}}"?</span>
+		<div class="buttonMessageDel" id="TDel" ng-click="deletedTask();" translate>DELETE</div>
+		<div class="buttonMessageDel" id="TCanc" ng-click="visibleMessageDel=!visibleMessageDel;" translate>CANSEL</div>
+	</div>
+</div>
