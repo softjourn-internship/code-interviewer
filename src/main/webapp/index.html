@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="adminPanelApp">
+<html lang="en" ng-app="main">
 <head>
 	<meta charset="utf-8">
     <base href="/">
@@ -29,8 +29,8 @@
     <script type="text/javascript" src="bower_components/jquery-ui/jquery-ui.js"></script>
     <link rel="stylesheet" type="text/css" href="/bower_components/jquery-ui/themes/smoothness/jquery-ui.css">
 
-    <script type="text/javascript" src="scripts/admin.js"></script>
-	<script src="scripts/config.js"></script>
+    <!--<script type="text/javascript" src="scripts/admin.js"></script>-->
+	<!--<script src="scripts/config.js"></script>-->
     <script src="scripts/controllers/User.js"></script>
     <script src="scripts/controllers/Data.js"></script>
     <script src="scripts/controllers/Tasks.js"></script>
@@ -40,6 +40,11 @@
 
     <script type="text/javascript" src="scripts/ng-google-chart.js"></script>
 
+	<!-- V2 -->
+	<script src="v2/modules/main.mdl.js"></script>
+
+
+
 </head>
 <body ng-controller="swichCTRL">
 
@@ -48,7 +53,7 @@
 	<div ng-controller="UserCtrl"  ng-if="!interviewerVisible">
 		<div id="container">
 			<div class="sidebar" ng-show=sidebarVisible>
-	            <div class="user" style="background-image: url(../dist/images/profiles/id1-bg.jpg">
+	            <div class="user" style="background-image: url(../dist/images/profiles/id1-bg.jpg)">
 	                <center>
 	                <div>
 	                    <a href="/users/{{user.userId}}">

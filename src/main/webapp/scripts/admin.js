@@ -1,4 +1,25 @@
-var adminPanelApp = angular.module("adminPanelApp", ['ui.ace','ngRoute', 'ngResource','googlechart','ui.router','pascalprecht.translate']);
+var adminPanelApp = angular.module("adminPanelApp", [
+		'ui.ace',
+		'ngRoute',
+		'ngResource',
+		'googlechart',
+		'ui.router',
+		'pascalprecht.translate'
+	]).controller('swichCTRL', ['$scope', '$http','$location','$routeParams',
+	function ($scope, $http, $location, $routeParams) {
+		$http.get('api/users/current').success(function(data) {
+			if(data.role == 'ROLE_INTERVIEWER'){
+				console.log(data.role);
+				$scope.interviewerVisible=true;
+			}
+			else{
+				console.log(data.role);
+				$scope.interviewerVisible=false;
+			};
+
+
+		});
+	}]);
 
 $(document).ready(function() {
 	var fadeToggle = false;
@@ -94,19 +115,3 @@ $(document).on("click","#logout", function(){
 // $(document).on("mouseout","button.send", function(){
 // 	$("div.alt").fadeOut("fast");
 // });
-
-adminPanelApp.controller('swichCTRL', ['$scope', '$http','$location','$routeParams',
-  function ($scope, $http, $location, $routeParams) {
-    $http.get('api/users/current').success(function(data) {
-      if(data.role == 'ROLE_INTERVIEWER'){
-        console.log(data.role);
-        $scope.interviewerVisible=true;
-      }
-      else{
-        console.log(data.role);
-        $scope.interviewerVisible=false;
-      };
-
-
-    });
-}]);
