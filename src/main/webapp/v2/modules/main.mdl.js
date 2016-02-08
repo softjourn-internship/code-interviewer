@@ -17,6 +17,10 @@
 		$urlRouterProvider.otherwise('/');
 
 		$stateProvider
+			.state('main', {
+				abstract: true,
+				template: '<ui-view></ui-view>'
+			})
 			.state('data', {
 				url: '/data/:dataTable',
 				templateUrl: 'template/data.html',
@@ -25,11 +29,11 @@
 			.state('participants', {
 				url: '/participants/:clientId',
 				templateUrl: 'template/profile.html',
-				controller: function($scope, $http, $stateParams) {
+				controller: function ($scope, $http, $stateParams) {
 					$scope.clientId = $stateParams.clientId;
-					var url = 'api/participants/'+$stateParams.clientId;
+					var url = 'api/participants/' + $stateParams.clientId;
 
-					$http.get(url).success(function(data) {
+					$http.get(url).success(function (data) {
 						$scope.client = data;
 					});
 				}
@@ -38,11 +42,11 @@
 				url: '/users/:clientId',
 				templateUrl: 'template/profile.html',
 				// controller: 'DataCtrl'
-				controller: function($scope, $http, $stateParams) {
+				controller: function ($scope, $http, $stateParams) {
 					$scope.clientId = $stateParams.clientId;
-					var url = 'api/users/'+$stateParams.clientId;
+					var url = 'api/users/' + $stateParams.clientId;
 
-					$http.get(url).success(function(data) {
+					$http.get(url).success(function (data) {
 						$scope.client = data;
 					});
 				}
