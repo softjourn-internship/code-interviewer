@@ -1,0 +1,39 @@
+<nav class="navbar" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle navbar-inverse collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"></button>
+      <div class="image"><img src="dist/images/profiles/{{user.image}}" onerror="this.src='dist/images/profiles/error.png'"></div>
+      <div class="title">{{user.firstName}}</div>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="navbar-admin">
+      <li><a href="/data/participants">DASHBOARD</a></li>
+      <li><a href="/statistics">STATISTICS</a></li>
+      <li><a href="/tasks">TASKS</a></li>
+      <li><a href="/logout?logout">LOG OUT</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+    <div class="user-info-admin" style="background-image: url(/dist/images/profiles/default.jpg">
+      <center>
+        <img src="dist/images/profiles/{{user.image}}" onerror="this.src='dist/images/profiles/error.png'">
+        <div class="title">{{user.firstName}} {{user.lastName}}</div>
+        <div class="role">{{user.role}}</div>
+      </center>
+    </div>
+    <ul class="nav-sidebar-admin">
+      <li><a id="dashboard" href="data/participants" ng-click="dataTable = 'participants'" translate>DASHBOARD</a></li>
+      <li><a id="participants" href="data/users" ng-click="dataTable = users" translate>USERS</a></li>
+      <li><a id="statistics" href="/statistics" translate>STATISTICS</a></li>
+      <li><a id="tasks" href="/tasks" translate>TASKS</a></li>
+    </ul>
+    <div class="logout-admin"><button class="logout" ng-click="logOut()">Log out</button></div>
+    </div>
+    <div ui-view="content"></div>
+  </div>
+</div>

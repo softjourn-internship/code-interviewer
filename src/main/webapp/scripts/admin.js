@@ -1,4 +1,4 @@
-var adminPanelApp = angular.module("adminPanelApp", ['ui.ace','ngRoute', 'ngResource','googlechart','ui.router','pascalprecht.translate']);
+var adminPanelApp = angular.module("adminPanelApp", ['ui.ace','ngRoute', 'ngResource','ui.router','pascalprecht.translate']);
 
 $(document).ready(function() {
 	var fadeToggle = false;
@@ -43,20 +43,23 @@ $(document).ready(function() {
 });
 $(document).keyup(function(e){
    	 	if(e.keyCode == 27){
-        	$("div.send-test").fadeOut("fast");
+        	$(".frame-containar").fadeOut("fast");
         	$("div#selectFilterDashboard").fadeOut('fast');
         	$("div#userMenu").fadeOut('fast');
     	}
 	});
-$(document).on("click","button.send", function(){
-	$("div.send-test").fadeIn("fast");
+$(document).on("click","#addParticipants", function(){
+	$(".frame-containar").fadeIn("fast");
 	// $("span.select").css("color","#e2e2e2");
 });
-$(document).on("click","button#close", function(){
-	$("div.send-test").fadeOut("fast");
+$(document).on("click","#close", function(){
+	$(".frame-containar").fadeOut("fast");
 });
-$(document).on("click","div#close-box", function(){
-	$("div.send-test").fadeOut("fast");
+$(document).on("click","#close-box", function(){
+	$(".frame-containar").fadeOut("fast");
+});
+$(document).on("click","#cancel", function(){
+	$(".frame-containar").fadeOut("fast");
 });
 $(document).on("click","span#selectDash", function(){
 	$("div#selectFilterDashboard").fadeToggle('fast');
