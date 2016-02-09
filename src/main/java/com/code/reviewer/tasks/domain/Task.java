@@ -1,6 +1,6 @@
 package com.code.reviewer.tasks.domain;
 
-import com.code.reviewer.user.domain.Test;
+import com.code.reviewer.test.domain.Test;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
