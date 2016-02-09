@@ -8,41 +8,42 @@
 			<div class="buttonMessageDel" id="TCanc" ng-click="visibleMessageDel=!visibleMessageDel;" translate>CANSEL</div>
 		</div>
 	</div>
-	<div class="Tbox" ng-show="!Visible">
-		<span ng-click="changeFrame('empty');changeButtonBack();" translate>CANSEL</span>
-		<form method="POST">
-			<table>
-				<tr>
-					<td class="Ttitle" translate>TITLE_TASK</td>
-					<td><input id="inputTitle" type="text" ng-model="titleTaskC" required ng-change="changeButton()"></td>
-				</tr>
-				<tr>
-					<td class="Ttitle" translate>DIFFICULTY</td>
-					<td><select class="selectBl" ng-model="diffTaskC" name="difficalty" required ng-change="changeButton()">
-						<option value="Eazy">Eazy</option>
-						<option value="Middle">Middle</option>
-						<option value="Hard">Hard</option>
-					</select></td>
-				</tr>
-				<tr>
-					<td class="Ttitle" translate>TECHNOLOGY</td>
-					<td>
-					<select class="selectBl" ng-model="techTaskC" name="technology" required ng-change="changeButton()">
-						<option value="Java">Java</option>
-						<option value="PHP">PHP</option>
-						<option value="C#">C#</option>
-					</select>
-					</td>
-				</tr>
-				<tr>
-					<td class="Ttitle" translate>
-						TASK
-					</td>
-				</tr>
-		</table>
-	</form>
-	<div id="build-editor" ui-ace ng-model="TaskC" ng-change="changeButton()"></div>
-	<button id="sendT" ng-disabled="!anableButton" ng-click="Visible=!Visible;changeButtonBack();">{{buttonTbox}}</button>
+	<div ng-show="!Visible">
+		<div id="messageDeleteBox"></div>
+		<div class="Tbox">
+			<span ng-click="changeButtonBack();changeFrame('empty');" translate>CANSEL</span>
+				<table>
+					<tr>
+						<td class="Ttitle" translate>TITLE_TASK</td>
+						<td><input id="inputTitle" type="text" ng-model="titleTaskC" required ng-change="changeButton()"></td>
+					</tr>
+					<tr>
+						<td class="Ttitle" translate>DIFFICULTY</td>
+						<td><select class="selectBl" ng-model="diffTaskC" name="difficalty" required ng-change="changeButton()">
+							<option value="Eazy">Eazy</option>
+							<option value="Middle">Middle</option>
+							<option value="Hard">Hard</option>
+						</select></td>
+					</tr>
+					<tr>
+						<td class="Ttitle" translate>TECHNOLOGY</td>
+						<td>
+						<select class="selectBl" ng-model="techTaskC" name="technology" required ng-change="changeButton()">
+							<option value="Java">Java</option>
+							<option value="PHP">PHP</option>
+							<option value="C#">C#</option>
+						</select>
+						</td>
+					</tr>
+					<tr>
+						<td class="Ttitle" translate>
+							TASK
+						</td>
+					</tr>
+			</table>
+			<!--<div ckeditor ng-model="content"></div>-->
+			<button id="sendT" ng-disabled="!anableButton" ng-click="changeButtonBack();">{{buttonTbox}}</button>
+		</div>
 	</div>
 
 <div class="box">
@@ -70,7 +71,7 @@
 					<th translate>DIFFICULTY</th>
 				</thead>
 				<tbody>
-					<tr class="hover-tr" ng-repeat="task in allTasks | orderBy:sortType:sortReverse | filter:{title:searchTask,language:technology,level:difficalty,day:dayForFilter,mounth:mounthForFilter,year:yearForFilter}" ng-click="sortReorder(task.title,$event)">
+					<tr class="hover-tr" ng-repeat="task in allTasks | orderBy:sortType:sortReverse | filter:{title:searchTask,technology:technology,difficulty:difficalty,day:dayForFilter,mounth:mounthForFilter,year:yearForFilter}" ng-click="sortReorder(task.title,$event)">
 						<td class="td-status"><img src="dist/images/task.png" /></td>
 						<td class="td-name">{{task.title}}</td>
 						<td>{{task.technology}} </td>

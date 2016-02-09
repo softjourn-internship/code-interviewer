@@ -1,12 +1,13 @@
 adminPanelApp.controller('TasksCtrl',['$scope','$http',function ($scope,$http){
+      //CKEDITOR.replace( 'build-editor' );
       $scope.Visible=true;
       $scope.visibleMessageDel=false;
       $scope.countTaskT;
       $scope.dateForFilter={};
       $scope.getTaskList=function(){
-      $http.get("/api/tasks").then(function (response) {
-        console.log(response.data);
-        $scope.allTasks=response.data;
+        $http.get("/api/tasks").then(function (response) {
+          console.log(response.data);
+          $scope.allTasks=response.data;
         });
       };
       $scope.buttonTbox;
@@ -19,15 +20,22 @@ adminPanelApp.controller('TasksCtrl',['$scope','$http',function ($scope,$http){
 
       }
       $scope.changeButtonBack=function(){
+        $scope.Visible=!$scope.Visible;
         document.getElementById("sendT").style.background = '#d9e8bb';
         $scope.anableButton=false;
+        var taskObj;
+        taskObj.title=$scope.titleTaskC;
+        taskObj.id=$scope.idTaskForChange;
+        taskObj.difficulty=$scope.diffTaskC;
+        taskObj.technology=$scope.techTaskC;
+        taskObj.task=$scope.TaskC;
       }
       $scope.delTask=function(taskId){
-          $scope.taskIdDeleted=taskId;
+          $scope.taskIdDeleted=taskId-1;
           $scope.visibleMessageDel=true;
           for(var i=0;i<$scope.allTasks.length;i++){
           var obj = $scope.allTasks[i];
-          if(taskId==i){
+          if($scope.taskIdDeleted==i){
             $scope.titleTaskDel=obj.title;
             break;
           }
@@ -35,17 +43,24 @@ adminPanelApp.controller('TasksCtrl',['$scope','$http',function ($scope,$http){
       }
       $scope.deletedTask=function(){
         $scope.visibleMessageDel=!$scope.visibleMessageDel;
-        console.log($scope.visibleMessageDel);
+        console.log($scope.taskIdDeleted);
+        var urlDel=$scope.taskIdDeleted+1;
+        $http.delete('/api/tasks/'+urlDel).then(function (response) {
         $scope.allTasks.splice($scope.taskIdDeleted,1);
+        });
       }
+      $scope.options = {
+        language: 'en'
+      };
       $scope.changeFrame=function(taskId) {
+        $scope.idTaskForChange=taskId;
         if(taskId!='empty'){
           for(var i=0;i<$scope.allTasks.length;i++){
           var obj = $scope.allTasks[i];
-          if(taskId==i){
+          if(taskId==i+1){
             $scope.titleTaskC=obj.title;
-            $scope.diffTaskC=obj.level;
-            $scope.techTaskC=obj.language;
+            $scope.diffTaskC=obj.difficulty;
+            $scope.techTaskC=obj.technology;
             $scope.TaskC=obj.task;
             }
           }
@@ -68,7 +83,6 @@ adminPanelApp.controller('TasksCtrl',['$scope','$http',function ($scope,$http){
         $scope.days.push(q);
       }
     }
-
     //sort
     $scope.sortType= '';
     $scope.sortReverse  = true;
