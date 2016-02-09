@@ -1,112 +1,72 @@
 <!doctype html>
-<html lang="en" ng-app="adminPanelApp">
+<html lang="en" ng-app="app">
 <head>
 	<meta charset="utf-8">
-    <base href="/">
 	<title>Admin Panel</title>
-		<meta name="viewport" content="width=device-width, initial-scale: 1.0, user-scalabe=0">
+	<meta name="viewport" content="width=device-width, initial-scale: 1.0, user-scalabe=0">
 
-	<!-- <link rel="stylesheet" type="text/css" href="styles/admin.css">
-	<link rel="stylesheet" type="text/css" href="styles/workspace.css"> -->
+	<link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
-	<link rel="stylesheet" type="text/css" href="dist/styles/main.min.css">
+	<link href="css/template.css" rel="stylesheet">
+    <link href="css/sidebar.css" rel="stylesheet">
+    <link href="css/panel.css" rel="stylesheet">
+    <link href="css/table.css" rel="stylesheet">
+    <link href="css/buttons.css" rel="stylesheet">
+    <link href="css/frame.css" rel="stylesheet">
+    <link href="css/input.css" rel="stylesheet">
+    <link href="css/select.css" rel="stylesheet">
+    <link href="css/login.css" rel="stylesheet">
+    <link href="css/alert.css" rel="stylesheet">
 
-    <link rel="shortcut icon" href="images/icon.png">
+    <link href="css/workspace.css" rel="stylesheet">
+
+<body>
+
+
+    <div ui-view></div>
 
 
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-animate/angular-animate.min.js"></script>
 
     <script type="text/javascript" src="bower_components/ace-builds/src-min-noconflict/ace.js"></script>
     <script type="text/javascript" src="bower_components/angular-ui-ace/ui-ace.js"></script>
     <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 	<script type="text/javascript" src="bower_components/angular-translate/angular-translate.js"></script>
 	<script type="text/javascript" src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 
-
-    <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>  
     <script type="text/javascript" src="bower_components/jquery-ui/jquery-ui.js"></script>
     <link rel="stylesheet" type="text/css" href="/bower_components/jquery-ui/themes/smoothness/jquery-ui.css">
 
-    <script type="text/javascript" src="scripts/admin.js"></script>
-	<script src="scripts/config.js"></script>
-    <script src="scripts/controllers/User.js"></script>
-    <script src="scripts/controllers/Data.js"></script>
-    <script src="scripts/controllers/Tasks.js"></script>
-    <script src="scripts/controllers/CustomSelect.js"></script>
-	<script src="scripts/controllers/Workspase.js"></script>
-	<script src="scripts/translate/translate.js"></script>
+	<script src="js/app.js"></script>
 
-    <script type="text/javascript" src="scripts/ng-google-chart.js"></script>
+    <script src="js/controllers/login.controller.js"></script>
+  	<script src="js/services/authentication.service.js"></script>
 
-</head>
-<body ng-controller="swichCTRL">
+    <script src="js/controllers/user.controller.js"></script>
+    <script src="js/services/user.service.js"></script>
 
-	<div ng-include="'template/workspase.html'" ng-if="interviewerVisible"></div>
+    <script src="js/controllers/popupdialog.controller.js"></script>
+    <script src="js/directives/popupdialog.directive.js"></script>
 
-	<div ng-controller="UserCtrl"  ng-if="!interviewerVisible">
-		<div id="container">
-			<div class="sidebar" ng-show=sidebarVisible>
-	            <div class="user" style="background-image: url(../dist/images/profiles/id1-bg.jpg">
-	                <center>
-	                <div>
-	                    <a href="/users/{{user.userId}}">
-	                <img src="images/profiles/{{user.image}}" onerror="this.src='dist/images/profiles/error.png';"></a>
-	                <span>{{user.firstName}} {{user.lastName}}</span>
-	                <span id="role">
-	                    <div ng-if="user.role == 'ROLE_ADMIN'" translate>ADMIN</div>
-	                    <div ng-if="user.role == 'ROLE_MANAGER'" translate>MANAGER</div>
-	                    <div ng-if="user.role == 'ROLE_RECRUITER'" translate>RECRUITER</div>
-	                <img src="dist/images/arrowDown.png">
-	                </span>
-	                </div>
+    <script src="js/controllers/table.controller.js"></script>
+    <script src="js/directives/table.directive.js"></script>
 
-	                <div id="userMenu" class="menu">
-	                    <ul>
-	                        <a href="/users/{{user.userId}}"><li translate>PROFILE</li></a>
-	                        <a href="/"><li translate>PARTICIPANTS</li></a>
-	                        <hr>
-	                        <a id="logout" href="/login?logout"><li translate>LOGOUT</li></a>
-	                    </ul>
-	                </div>
-	                </center>
-	            </div>
-				<ul id="nav">
-					<li><a id="dashboard" href="data/participants" ng-click="dataTable = 'participants'" ng-show=dashboardVisible translate>DASHBOARD</a></li>
-	                <ul id="subDashboard" class="sub">
-	                    <li><a href="/participants">My participants</a></li>
-	                    <li><a href="">All participants</a></li>
-	                </ul>
-	        <li><a id="participants" href="data/users" ng-click="dataTable = users" ng-show=usersVisible translate>USERS</a></li>
-					<li><a id="statistics" href="/statistics" ng-show=statisticsVisible translate>STATISTICS</a></li>
-	        <li><a id="tasks" href="/tasks" ng-show=tasksVisible translate>TASKS</a></li>
-	        <li><a href="/template/login.html" target="_blank">Login Page</a></li>
-	        <li><a href="/bootstrap.html" target="_blank">Bootstrap Soon</a></li>
-				</ul>
-			</div>
-	    </div>
+    <script src="js/services/participant.service.js"></script>
 
-		<div class="content">
+    <script src="js/services/Login.js"></script>
 
-	        <div id="header" ng-show=headerVisible>
-	            <div id="mainMobile" class="mobile"></div>
-	            <div id="secondMobile" class="mobile"></div>
-	            <div class="search"><input type="text" placeholder="Search for something..." onblur="this.placeholder='Search for something...'"></div>
-	            <div id="user" ng-controller="UserCtrl">
-	                <a href="#/users/{{user.userId}}">
-	                <img src="images/profiles/{{user.image}}" onerror="this.src='dist/images/profiles/error.png';"></a>
-	            </div>
-	            <div class="logout" ng-controller="translateCTRL">
-									<img ng-click="setLang()" ng-src="dist/	{{translateImageSrc}}" />
-	                <a id="logout" href="/login?logout" translate>LOGOUT</a>
-	            </div>
-	        </div>
-	        <!-- <div id="view" ng-view></div> -->
-	        <div id="view" ui-view></div>
-	    </div>
-	</div>
-
+ 	<script src="js/controllers/Login.js"></script>
+ 	<script src="js/controllers/Data.js"></script>
+ 	<script src="js/controllers/CustomSelect.js"></script>
+ 	<!-- // <script src="js/directives.js"></script> -->
+ 	<!-- // <script src="scripts/providers/translate.js"></script> -->
 
 </body>
 </html>

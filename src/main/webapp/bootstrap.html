@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- saved from url=(0043)http://twbs.docs.org.ua/examples/dashboard/ -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="en" ng-app="adminPanelApp"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,7 +18,8 @@
     <link href="css/admin/sidebar.css" rel="stylesheet">
     <link href="css/admin/panel.css" rel="stylesheet">
     <link href="css/admin/table.css" rel="stylesheet">
-
+    <link href="css/admin/buttons.css" rel="stylesheet">
+    <link href="css/admin/frame.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -28,7 +29,7 @@
     <![endif]-->
   </head>
 
-  <body>
+  <body ng-controller="swichCTRL">
 
     <nav class="navbar" role="navigation">
       <div class="container-fluid">
@@ -50,14 +51,31 @@
       </div>
     </nav>
 
+
+  <div class="frame-containar">
+        <div class="frame">
+          <div class="head">
+            <span class="left"><img src="/dist/images/profiles/error.png"></span>
+            <span class="left title">New participant</span>
+            <span class="right"><button>Close</button></span>
+          </div>
+          <div class="main"></div>
+          <div class="tool">
+            <span class="left"><button class="btn succes">Save</button></span>
+          </div>
+        </div>
+      </div>
+
     <div class="container-fluid">
-      <div class="row">
+      
+
+      <div class="row" ng-controller="DataCtrl">
         <div class="col-sm-3 col-md-2 sidebar">
           <div class="user-info-admin" style="background-image: url(/dist/images/profiles/default.jpg">
             <center>
             <img src="/dist/images/profiles/error.png">
             <div class="title">Dmytro Kutsaniuk</div>
-            <div class="role">Manager</div>
+            <div class="role">{{1+1}}</div>
             </center>
           </div>
           <ul class="nav-sidebar-admin">
@@ -67,66 +85,53 @@
           </ul>
           <div class="logout-admin"><button>Log out</button></div>
         </div>
-
-        <div class="col-sm-9 col-sm-offset-3 col-md-6 col-md-offset-2 main">
-          <div class="panel-admin">
+          <div class="col-lg-7 col-md-7 col-md-offset-2 col-sm-6 col-sm-offset-2 col-xs-12">
+            <div class="panel-admin">
             <div class="title"><span class="left">11 participants</span><span class="right">10 15 25</span></div>
             <div class="main table-responsive">
-              <table class="table-admin" >
-                <thead>
-                  <th></th>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Sent</th>
-                  <th>Returned</th>
-                  <th>Taken</th>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="image"><img src="/dist/images/profiles/error.png"></td>
-                    <td><a href="">Dmytro Kutsaniuk</a></td>
-                    <td>12</td>
-                    <td>taken</td>
-                    <td>name</td>
-                    <td>email</td>
-                  </tr>
-                  <tr>
-                    <td class="image"><img src="/dist/images/profiles/error.png"></td>
-                    <td><a href="">ascasc</a></td>
-                    <td>12</td>
-                    <td>taken</td>
-                    <td>name</td>
-                    <td>email</td>
-                  </tr>
-                  <tr>
-                    <td class="image"><img src="/dist/images/profiles/error.png"></td>
-                    <td><a href="">ascasc</a></td>
-                    <td>12</td>
-                    <td>taken</td>
-                    <td>name</td>
-                    <td>email</td>
-                  </tr>
-                  <tr>
-                    <td class="image"><img src="/dist/images/profiles/error.png"></td>
-                    <td><a href="">ascasc</a></td>
-                    <td>12</td>
-                    <td>taken</td>
-                    <td>name</td>
-                    <td>email</td>
-                  </tr>
-
-                </tbody>
-              </table>
             </div>
+            <div class="tool">
+              <span class="right"><button class="btn succes">New</button></span>
+            </div>
+          </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+            <div class="panel-admin">
+            <div class="title"><span class="left">Filter</span></div>
+            <div class="main table-responsive"></div>
             <div class="tool"></div>
+            </div>
           </div>
         </div>
     </div>
-
     <!-- JavaScript-ядро Bootstrap
     ================================================== -->
     <!-- Розміщуйте підключення JavaScript в кінці документа щоб сторінки завантажувались швидше -->
+
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>  
+
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script type="text/javascript" src="bower_components/angular-animate/angular-animate.min.js"></script>
+
+    <script type="text/javascript" src="bower_components/ace-builds/src-min-noconflict/ace.js"></script>
+    <script type="text/javascript" src="bower_components/angular-ui-ace/ui-ace.js"></script>
+    <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script type="text/javascript" src="bower_components/angular-translate/angular-translate.js"></script>
+  <script type="text/javascript" src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
+
+    <script type="text/javascript" src="scripts/admin.js"></script>
+    <script type="text/javascript" src="scripts/config.js"></script>
+    <script type="text/javascript" src="scripts/controllers/User.js"></script>
+    <script type="text/javascript" src="scripts/controllers/Data.js"></script>
+    <script type="text/javascript" src="scripts/controllers/Tasks.js"></script>
+    <script type="text/javascript" src="scripts/controllers/CustomSelect.js"></script>
+    <script type="text/javascript" src="scripts/controllers/Workspase.js"></script>
+    <script type="text/javascript" src="scripts/providers/translate.js"></script>
+
+
+    
 
 </body></html>

@@ -1,190 +1,53 @@
-<div ng-controller="DataCtrl">
+<div > <!-- ng-controller="DataCtrl" -->
 
-<div class="box box-item-info">
-	<img class="avatar" ng-src="dist/images/profiles/{{image}}" onerror="this.src='dist/images/profiles/error.png';">
-	<img class="bg" ng-src="images/profiles/bg.jpg" onerror="this.src='dist/images/profiles/default.jpg'">
-	<a href="/participants/{{itemId}}">
-		<span>{{firstName}} {{lastName}}</span>
-	</a>
+<pop-up-dialog></pop-up-dialog>
+
+<div class="col-lg-7 col-lg-offset-2 col-md-6 col-md-offset-2 col-sm-12 col-xs-12">
+	<table-main></table-main>
 </div>
 
-<div class="send-test">
-	<div id="close-box" ></div>
-	<div id="main">
-		<div class="head">
-			<table cellspacing="0" cellpadding="0">
-				<tr>
-					<td class="img"><img src="dist/images/profiles/error.png"></td>
-					<td>
-						<span ng-if="firstName === null">New participant</span>
-						<span ng-if="firstName !== null">{{firstName}} {{lastName}}</span>
-					</td>
-					<td><button id="close" translate>CLOSE</button></td>
-				</tr>
-			</table>
+</div>
+<div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
+	<div class="panel-admin">
+	<div class="title"><span class="left">Filter</span></div>
+	<div class="main table-responsive">
+		<div class="filter">
+		<input type="text" placeholder="Name" onblur="this.placeholder='Name'" onfocus="this.placeholder=''" ng-model="searchNameA" ng-change="changeAction()"><br>
+				<input type="text" placeholder="Email adress" onblur="this.placeholder='Email adress'" onfocus="this.placeholder=''" ng-model="searchEmailA" ng-change="changeAction()"><br>
+				<select class="form-control" ng-model="selectTaken">
+					<option value="">All</option>
+					<option value="Done">Done</option>
+					<option value="inProcess">In process</option>
+					<option value="failed">Failed</option>
+				</select>
+	            <div ng-show=selectRoleVisible>
+				<span id="selectDash" class="select">
+					<div ng-if="selectRole == null" translate>ALL</div>
+					<div ng-if="selectRole != null">{{titleRole}}</div>
+				</span>
+				<div id="selectFilterDashboard" class="menu selectMenu">
+	                <ul ng-model="selectRole">
+	                    <li ng-click="selectRole='';titleRole='All'" translate>ALL</li>
+	                    <li ng-click="selectRole='ROLE_ADMIN';titleRole='Admin'" translate>ADMIN</li>
+	                    <li ng-click="selectRole='ROLE_MANAGER';titleRole='Manager'" translate>MANAGER</li>
+	                    <li ng-click="selectRole='ROLE_RECRUITER';titleRole='Recruiter'" translate>RECRUITER</li>
+	                </ul>
+	            </div>
+				</div>
 		</div>
-		<form method="POST">
-		<div class="action">
-			<table>
-				<tr ng-if="dataTable === 'users'">
-					<td translate>USERNAME</td>
-					<td><input id="userName" type="text" ng-model="userName" size="30"></td>
-				</tr>
-				<tr>
-					<td translate>FIRST_NAME</td>
-					<td><input id="firstName" type="text" ng-model="firstName" size="30"></td>
-				</tr>
-				<tr>
-					<td translate>LAST_NAME</td>
-					<td><input id="lastName" type="text" ng-model="lastName"></td>
-				</tr>
-				<tr ng-if="dataTable !== 'users'">
-					<td translate>CITY</td>
-					<td><input id="city" type="text" ng-model="city"></td>
-				</tr>
-				<tr ng-if="dataTable === 'users'">
-					<td translate>ROLE</td>
-					<td><div id="select_role"  ng-controller="CustomSelect" ng-init="createSelect('role')"/></td>
-				</tr>
-				<tr ng-if="dataTable !== 'users'">
-					<td translate>ENGLISH_LEVEL</td>
-					<td><div id="select_engLevel"  ng-controller="CustomSelect" ng-init="createSelect('engLevel')"/></td>
-				</tr>
-				<tr ng-if="dataTable !== 'users'">
-					<td translate>SPECIALITY</td>
-					<td><div id="select_speciality" ng-controller="CustomSelect" ng-init="createSelect('speciality')"/></td>
-				</tr>
-				<tr ng-if="dataTable !== 'users'">
-					<td translate>CONTACT</td>
-					<td><input id="contact" type="text" ng-model="contact"></td>
-				</tr>
-				<tr>
-					<td>Email</td>
-					<td><input id="email" type="text" ng-model="email"></td>
-				</tr>
-			</table>
-		</div>
-		<div class="tool">
-			<button style="margin:0" ng-click="sumbit()" class="send" translate>ADD_PARTICIPANT</button>
-			<button id="close" style="float:right" ng-click="clearFields()" translate>CANSEL</button>
-		</div>
-	</form>
+	</div>
+		<div class="tool"></div>
+	</div>
+	<div class="panel-admin chart">
+	<div class="title"><span class="left"><a href="#/charts">Chart</a></span></div>
+	<div class="main table-responsive">
+		<img src="/dist/images/chartt.png">
+	</div>
+	<div class="tool"></div>
 	</div>
 </div>
+</div>
 
-<section>
 <div id="notifPart"></div>
-<div class="box">
-	<table id="head">
-		<tr>
-			<td>{{lengthClientsPA.length}} {{titleTable}}</td>
-			<td id="page-size">
-				<div>
-				<input type="radio" id="radio1" name="radios" ng-change="changeAction()"  ng-model="pageSize" value="5">
-			    <label id="label1" for="radio1">5</label>
-			    <input type="radio" id="radio2" name="radios" ng-change="changeAction()"  ng-model="pageSize" value="10" selected>
-			    <label id="label2" for="radio2">10</label>
-			    <input type="radio" id="radio3" name="radios" ng-change="changeAction()"  ng-model="pageSize" value="15">
-			    <label id="label3" for="radio3">15</label>
-			    </div>
-			</td>
-		</tr>
-	</table>
-	<table id="tableData" class="main-table" cellspacing="0" cellpadding="0">
-		<thead ng-if="lengthClientsPA != 0">
-			<th id="emtry"></th>
-			<th ng-class = "{'sort-up':isSortUp('firstName'), 'sort-down':isSortDown('firstName')}" ng-click="sort('firstName')" translate>NAME</th>
-			<th ng-class = "{'sort-up':isSortUp('email'), 'sort-down':isSortDown('email')}" ng-click="sort('email')">Email</th>
-			<th ng-class = "{'sort-up':isSortUp('role'), 'sort-down':isSortDown('role')}" ng-click="sort('role')" ng-if="dataTable == 'users'" style="padding-right:35px" translate>ROLE</th>
-			<th ng-class = "{'sort-up':isSortUp('testSent'), 'sort-down':isSortDown('testSent')}" ng-click="sort('testSent')" ng-if="dataTable == 'participants'" translate>SENT</th>
-			<th ng-class = "{'sort-up':isSortUp('testReturn'), 'sort-down':isSortDown('testReturn')}" ng-click="sort('testReturn')" ng-if="dataTable == 'participants'" translate>RETURNED</th>
-			<th ng-class = "{'sort-up':isSortUp('taken'), 'sort-down':isSortDown('taken')}" ng-click="sort('taken')" ng-if="dataTable == 'participants'" style="padding-right:15px" >TAKEN</th>
-		</thead>
-		<tbody>
-			<tr class="hover-tr" ng-repeat="dataColumn in lengthClientsPA = (dataTableList |
-			filter:{ firstName:searchNameA, taken:selectTaken, email:searchEmailA, role:selectRole} |
-			orderBy: sortField:reverse)"
-			ng-if="$index >= (currentPage * pageSize) && $index < ((currentPage+1)*pageSize)"
-			ng-dblclick="currentItem(dataColumn.id, true)">
 
-				<td class="td-status">
-					<a href="/participants/{{dataColumn.id}}">
-					<img ng-src="images/profiles/{{dataColumn.image}}" onerror="this.src='dist/images/profiles/error.png';" style="border-radius: 100%;">
-				</a></td>
-				<td class="td-name">
-					<b ng-if="dataTable === 'participants'"><a href="/participants/{{dataColumn.id}}"></b>
-					<!-- <b ng-if="dataTable === 'users'"><a href="/users/{{dataColumn.userId}}"></b> -->
-					{{dataColumn.firstName}} {{dataColumn.lastName}}</a></td>
-				<td>{{dataColumn.email}} </td>
-				<td ng-if="dataTable == 'users'">
-					<div>
-						<div ng-if="dataColumn.role == 'ROLE_ADMIN'" translate>ADMIN</div>
-						<div ng-if="dataColumn.role == 'ROLE_MANAGER'" translate>MANAGER</div>
-						<div ng-if="dataColumn.role == 'ROLE_RECRUITER'" translate>RECRUITER</div>
-					</div>
-				</td>
-				<td ng-if="dataTable == 'participants'">{{dataColumn.sent}}</td>
-				<td ng-if="dataTable == 'participants'">{{dataColumn.returned}}</td>
-				<td ng-if="dataTable == 'participants'" class="td-status"><img ng-src="dist/images/{{dataColumn.taken}}.png" onerror="this.src='dist/images/error.png';"></td>
-			</tr>
-			<tr id="no-hover" ng-if="lengthClientsPA == 0"><td style="padding-left: 25px;color:#666">
-				<div id="noSrchResults"></div>
-				<div id="titleNoSrchResults" translate>NO_SEARCH_RESULTS</div>
-			</td></tr>
-		</tbody>
-	</table>
-
-	<table id="tool" ng-if="lengthClientsPA != 0">
-		<tr>
-			<td>
- 		 		<button ng-click="paging(0)" translate>PREV</button>
- 				<span id="currentPage" ng-click="paging(currentPage)">{{currentPage + 1}}</span>
- 				<span id="currentPage" ng-if="(currentPage + 2) <= pageNumber" ng-click="paging(currentPage)">{{currentPage + 2}}</span>
- 				<span id="currentPage" ng-if="(currentPage + 3) <= pageNumber" ng-click="paging(currentPage)">{{currentPage + 3}}</span>
-				<button ng-click="paging(1)" translate>NEXT</button>
- 				</td>
-			<td><div class="altContainer"></div><button class="send" ng-click="clearFields()" translate>NEW</button></td>
-		</tr>
-	</table>
-</div>
-<div id="right-container">
-	<div id="filter" class="box filter">
-		<span id="title" translate>FILTER</span>
-		<div id="filter-container">
-			<input type="text" placeholder="Name" onblur="this.placeholder='Name'" onfocus="this.placeholder=''" ng-model="searchNameA" ng-change="changeAction()"><br>
-			<input type="text" placeholder="Email adress" onblur="this.placeholder='Email adress'" onfocus="this.placeholder=''" ng-model="searchEmailA" ng-change="changeAction()"><br>
-			<div ng-show=selectTakenVisible>
-			<span id="selectDash" class="select">
-				<div ng-if="selectTaken == null">All</div>
-				<div ng-if="selectTaken != null">{{takenTitle}}</div>
-			</span>
-			<div id="selectFilterDashboard" class="menu selectMenu">
-                <ul ng-model="selectTaken">
-                    <li ng-click="selectTaken='';takenTitle='All'" translate>ALL</li>
-                    <li ng-click="selectTaken='done';takenTitle='Done'" translate>DONE</li>
-                    <li ng-click="selectTaken='inProcess';takenTitle='In process'" translate>IN_PROCESS</li>
-                    <li ng-click="selectTaken='failed';takenTitle='Failed';" translate>FAILED</li>
-                </ul>
-            </div>
-            </div>
-            <div ng-show=selectRoleVisible>
-			<span id="selectDash" class="select">
-				<div ng-if="selectRole == null" translate>ALL</div>
-				<div ng-if="selectRole != null">{{titleRole}}</div>
-			</span>
-			<div id="selectFilterDashboard" class="menu selectMenu">
-                <ul ng-model="selectRole">
-                    <li ng-click="selectRole='';titleRole='All'" translate>ALL</li>
-                    <li ng-click="selectRole='ROLE_ADMIN';titleRole='Admin'" translate>ADMIN</li>
-                    <li ng-click="selectRole='ROLE_MANAGER';titleRole='Manager'" translate>MANAGER</li>
-                    <li ng-click="selectRole='ROLE_RECRUITER';titleRole='Recruiter'" translate>RECRUITER</li>
-                </ul>
-            </div>
-            </div>
-		</div>
-	</div>
-	<div id="chart-taken" class="chart" google-chart chart="chartPieData"/>
-</div>
-
-</section>
 </div>

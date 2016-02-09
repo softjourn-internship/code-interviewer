@@ -1,0 +1,14 @@
+input, .form-control{
+	padding: 5px 10px;
+	font-weight: bold;
+	border: 1px solid #e2e2e2;
+	border-radius: 1px;
+	font-size: 13px;
+	height: auto;
+	box-shadow: none;
+}
+
+input:hover, input:focus, .form-control:hover, .form-control:focus{
+	border: 1px solid silver;
+	box-shadow: none;
+}

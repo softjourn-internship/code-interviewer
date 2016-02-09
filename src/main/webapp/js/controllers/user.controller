@@ -1,0 +1,7 @@
+app.controller('UserController',
+    ['$scope', '$location', 'UserService',
+    function ($scope, $location, UserService) {
+        // reset login status
+        $scope.user = UserService.GetById(1);
+    
+    }]);
