@@ -1,6 +1,9 @@
 package com.code.reviewer.user.domain;
 
 
+import com.code.reviewer.test.domain.Exam;
+import com.code.reviewer.test.domain.Test;
+
 import javax.persistence.*;
 import javax.swing.*;
 import java.io.Serializable;
