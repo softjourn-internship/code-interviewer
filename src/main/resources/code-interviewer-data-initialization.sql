@@ -46,6 +46,27 @@ INSERT INTO users_participants(users_id, participants_id)
     VALUES(2, 8);
 
 INSERT INTO tasks(title, task, technology, difficulty, added_date)
-    VALUES ('title1', 'task1', 'tech', 'hard', '2016-01-04');
+    VALUES ('Multiples of 3 and 5', 'task1', 'PHP', 'Middle', '2016-01-04');
 INSERT INTO tasks(title, task, technology, difficulty, added_date)
-    VALUES ('title2', 'task2', 'tech', 'hard', '2016-01-04');
+    VALUES ('Even Fibonacci numbers', 'task2', 'Java', 'Hard', '2016-01-04');
+INSERT INTO tasks(title, task, technology, difficulty, added_date)
+    VALUES ('	Largest prime factor', 'task3', 'C#', 'Eazy', '2016-01-04');
+INSERT INTO tasks(title, task, technology, difficulty, added_date)
+    VALUES ('Largest palindrome product', 'C#', 'tech', 'Eazy', '2016-01-04');
+INSERT INTO tasks(title, task, technology, difficulty, added_date)
+    VALUES ('Smallest multiple', 'task4', 'Java', 'Middle', '2016-01-04');
+INSERT INTO tasks(title, task, technology, difficulty, added_date)
+    VALUES ('Sum square difference', 'task4', 'Java', 'Eazy', '2016-01-04');
+INSERT INTO tasks(title, task, technology, difficulty, added_date)
+    VALUES ('	10001st prime', 'task4', 'PHP', 'Hard', '2016-01-04');
+INSERT INTO tasks(title, task, technology, difficulty, added_date)
+    VALUES ('Largest product in a series', 'task4', 'C#', 'Hard', '2016-01-04');
+INSERT INTO tasks(title, task, technology, difficulty, added_date)
+    VALUES ('Special Pythagorean triplet', 'task4', 'C#', 'Middle', '2016-01-04');
+INSERT INTO tasks(title, task, technology, difficulty, added_date)
+    VALUES ('Summation of primes', 'task4', 'Java', 'Middle', '2016-01-04');
+INSERT INTO tasks(title, task, technology, difficulty, added_date)
+    VALUES ('Largest product in a grid', 'task4', 'PHP', 'Eazy', '2016-01-04');
+INSERT INTO tasks(title, task, technology, difficulty, added_date)
+    VALUES ('Highly divisible triangular number', 'task4', 'C#', 'Hard', '2016-01-04');
+

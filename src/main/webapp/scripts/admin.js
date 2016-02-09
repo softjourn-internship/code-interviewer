@@ -1,4 +1,4 @@
-var adminPanelApp = angular.module("adminPanelApp", ['ui.ace','ngRoute', 'ngResource','googlechart','ui.router','pascalprecht.translate']);
+var adminPanelApp = angular.module("adminPanelApp", ['ui.ace','ngRoute', 'ngResource','googlechart','ui.router','pascalprecht.translate','ckeditor']);
 
 $(document).ready(function() {
 	var fadeToggle = false;
