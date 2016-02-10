@@ -2,56 +2,60 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-    <base href="/">
+	<base href="/">
 	<title>Admin Panel</title>
-		<meta name="viewport" content="width=device-width, initial-scale: 1.0, user-scalabe=0">
+	<meta name="viewport" content="width=device-width, initial-scale: 1.0, user-scalabe=0">
 
 	<!-- <link rel="stylesheet" type="text/css" href="styles/admin.css">
 	<link rel="stylesheet" type="text/css" href="styles/workspace.css"> -->
 
 	<link rel="stylesheet" type="text/css" href="dist/styles/main.min.css">
 
-    <link rel="shortcut icon" href="images/icon.png">
+	<link rel="shortcut icon" href="images/icon.png">
 
 
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/angular-route/angular-route.js"></script>
+	<script src="bower_components/angular-resource/angular-resource.js"></script>
 
-    <script type="text/javascript" src="bower_components/ace-builds/src-min-noconflict/ace.js"></script>
-    <script type="text/javascript" src="bower_components/angular-ui-ace/ui-ace.js"></script>
-    <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+	<script type="text/javascript" src="bower_components/ace-builds/src-min-noconflict/ace.js"></script>
+	<script type="text/javascript" src="bower_components/angular-ui-ace/ui-ace.js"></script>
+	<script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 	<script type="text/javascript" src="bower_components/angular-translate/angular-translate.js"></script>
-	<script type="text/javascript" src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
+	<script type="text/javascript"
+	        src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
 
 
-    <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
-    <script type="text/javascript" src="bower_components/jquery-ui/jquery-ui.js"></script>
-    <link rel="stylesheet" type="text/css" href="/bower_components/jquery-ui/themes/smoothness/jquery-ui.css">
+	<script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+	<script type="text/javascript" src="bower_components/jquery-ui/jquery-ui.js"></script>
+	<link rel="stylesheet" type="text/css" href="/bower_components/jquery-ui/themes/smoothness/jquery-ui.css">
 
-    <script type="text/javascript" src="scripts/admin.js"></script>
+	<script type="text/javascript" src="scripts/admin.js"></script>
 	<!--<script src="scripts/config.js"></script>-->
-    <!--<script src="scripts/controllers/User.js"></script>-->
-    <!--<script src="scripts/controllers/Data.js"></script>-->
-    <!--<script src="scripts/controllers/Tasks.js"></script>-->
-    <!--<script src="scripts/controllers/CustomSelect.js"></script>-->
+	<!--<script src="scripts/controllers/User.js"></script>-->
+	<!--<script src="scripts/controllers/Data.js"></script>-->
+	<!--<script src="scripts/controllers/Tasks.js"></script>-->
+	<!--<script src="scripts/controllers/CustomSelect.js"></script>-->
 	<!--<script src="scripts/controllers/Workspase.js"></script>-->
 	<!--<script src="scripts/translate/translate.js"></script>-->
 
-    <script type="text/javascript" src="scripts/ng-google-chart.js"></script>
+	<script type="text/javascript" src="scripts/ng-google-chart.js"></script>
 
 	<!-- V2 -->
 	<script src="/bower_components/angular-acl/angular-acl.min.js"></script>
 	<script src="/v2/modules/main.mdl.js"></script>
 	<script src="/v2/resources/acl.resource.js"></script>
+	<script src="/v2/services/auth.srv.js"></script>
 
 
 	<script src="/v2/modules/tasks/tasks.mdl.js"></script>
 	<script src="/v2/modules/tasks/list/list.ctrl.js"></script>
+	<script src="/v2/modules/tasks/create/create.ctrl.js"></script>
+	<script src="/v2/modules/tasks/services/TaskModel.js"></script>
 
 
 </head>
 <body>
-	<ui-view></ui-view>
+<ui-view></ui-view>
 </body>
 </html>

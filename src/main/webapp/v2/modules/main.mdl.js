@@ -25,24 +25,18 @@
 
 		$stateProvider
 			.state('main', {
+				url: '/',
 				abstract: true,
 				template: '<ui-view></ui-view>'
 			})
 			.state('main.interviewer', {
-				url: '/',
+
 				templateUrl: '/v2/templates/workspase.html',
 				resolve: {
-					'acl': ['$q', 'AclService', function ($q, AclService) {
-
-						var defered = $q.defer();
-						if (AclService.can('solve_tasks')) {
-							return true;
-						} else {
-							// Does not have permission
-							defered.reject('Unauthorized');
-						}
-						return defered.promise;
-					}]
+					'acl': [
+						'v2.AuthService', function (AuthService) {
+							return AuthService.checkPermission('edit_own_task');
+						}]
 				}
 
 			});
