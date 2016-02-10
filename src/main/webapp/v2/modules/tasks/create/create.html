@@ -1,27 +1,29 @@
 <div class="Tbox">
-	<span ng-click="changeFrame('empty');changeButtonBack();" translate>CANSEL</span>
-	<form method="POST">
+	<a href="#" ui-sref="main.tasks.list"><span translate>CANCEL</span></a>
+	<form>
 		<table>
 			<tr>
 				<td class="Ttitle" translate>TITLE_TASK</td>
-				<td><input id="inputTitle" type="text" ng-model="titleTaskC" required ng-change="changeButton()"></td>
+				<td><input id="inputTitle" type="text" ng-model="createCtrl.task.title" required></td>
 			</tr>
 			<tr>
 				<td class="Ttitle" translate>DIFFICULTY</td>
-				<td><select class="selectBl" ng-model="diffTaskC" name="difficalty" required ng-change="changeButton()">
-					<option value="Eazy">Eazy</option>
-					<option value="Middle">Middle</option>
-					<option value="Hard">Hard</option>
-				</select></td>
+				<td><select
+						class="selectBl"
+						ng-model="createCtrl.task.difficulty"
+						name="difficulty"
+						ng-options="difficulty.id as difficulty.name for difficulty in createCtrl.difficulties"
+				></select></td>
 			</tr>
 			<tr>
 				<td class="Ttitle" translate>TECHNOLOGY</td>
 				<td>
-					<select class="selectBl" ng-model="techTaskC" name="technology" required ng-change="changeButton()">
-						<option value="Java">Java</option>
-						<option value="PHP">PHP</option>
-						<option value="C#">C#</option>
-					</select>
+					<select
+							class="selectBl"
+							ng-model="createCtrl.task.technology"
+							name="technology"
+							ng-options="technology.id as technology.name for technology in createCtrl.technologies"
+					></select>
 				</td>
 			</tr>
 			<tr>
@@ -30,7 +32,8 @@
 				</td>
 			</tr>
 		</table>
+
 	</form>
-	<div id="build-editor" ui-ace ng-model="TaskC" ng-change="changeButton()"></div>
-	<button id="sendT" ng-disabled="!anableButton" ng-click="Visible=!Visible;changeButtonBack();">{{buttonTbox}}</button>
+	<div id="build-editor" ui-ace ng-model="createCtrl.task.task"></div>
+	<button id="sendT" ng-click="createCtrl.save()">Save</button>
 </div>

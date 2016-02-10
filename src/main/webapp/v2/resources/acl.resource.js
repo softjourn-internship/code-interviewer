@@ -8,12 +8,40 @@
 
 				var permissions = {
 					// roles permissions
-					ROLE_ADMIN: ['view_tasks', 'create_tasks', 'edit_tasks', 'delete_tasks', 'view_participants'],
-					ROLE_MANAGER: this.ROLE_ADMIN,
-					ROLE_INTERVIEWER: ['solve_tasks'],
-					ROLE_REVIEWER: [],
-					ROLE_PARTICIPANT: [],
-					ROLE_RECRUITER: ['create_tasks', 'edit_tasks', 'delete_tasks', 'view_participants']
+					ROLE_ADMIN: [
+						'view_users_list',
+						'create_users',
+						'view_user_profile'
+					],
+					ROLE_MANAGER: [
+						'view_tasks_list',
+						'create_task',
+						'edit_own_task',
+						'view_tasks_list',
+						'view_task',
+						'view_candidates_list',
+						'view_task_results',
+						'set_reviewer',
+						'schedule_task',
+						'view_analytics'
+					],
+					ROLE_REVIEWER: [
+						'view_tasks_list',
+						'view_task',
+						'create_task',
+						'edit_own_task',
+						'delete_own_task',
+						'review_task',
+						'set_task_status'
+					],
+					ROLE_INTERVIEWER: [],
+					ROLE_RECRUITER: [
+						'view_candidates_list',
+						'create_candidate',
+						'edit_candidate',
+						'delete_candidate',
+						'add_watchers_to_candidate'
+					]
 				};
 
 				var entry_routes = {

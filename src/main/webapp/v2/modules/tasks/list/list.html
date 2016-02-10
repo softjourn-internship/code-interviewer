@@ -2,14 +2,17 @@
 	<div class="box">
 		<table id="head">
 			<tr>
-				<td>{{allTasks.length}} Tasks</td>
+				<td><span ng-bind="listCtrl.tasks.length"></span> Tasks</td>
 				<td id="page-size">
 					<div>
-						<input type="radio" id="radio1" name="radios" ng-change="changeAction()"  ng-model="pageSize" value="5">
+						<input type="radio" id="radio1" name="radios" ng-change="changeAction()" ng-model="pageSize"
+						       value="5">
 						<label id="label1" for="radio1">5</label>
-						<input type="radio" id="radio2" name="radios" ng-change="changeAction()"  ng-model="pageSize" value="10" selected>
+						<input type="radio" id="radio2" name="radios" ng-change="changeAction()" ng-model="pageSize"
+						       value="10" selected>
 						<label id="label2" for="radio2">10</label>
-						<input type="radio" id="radio3" name="radios" ng-change="changeAction()"  ng-model="pageSize" value="15">
+						<input type="radio" id="radio3" name="radios" ng-change="changeAction()" ng-model="pageSize"
+						       value="15">
 						<label id="label3" for="radio3">15</label>
 					</div>
 				</td>
@@ -24,14 +27,21 @@
 			<th translate>DIFFICULTY</th>
 			</thead>
 			<tbody>
-			<tr class="hover-tr" ng-repeat="task in listCtrl.tasks | orderBy:sortType:sortReverse | filter:{title:searchTask,language:technology,level:difficalty,day:dayForFilter,mounth:mounthForFilter,year:yearForFilter}" ng-click="sortReorder(task.title,$event)">
-				<td class="td-status"><img src="dist/images/task.png" /></td>
+			<tr class="hover-tr"
+			    ng-repeat="task in listCtrl.tasks | orderBy:sortType:sortReverse | filter:{title:searchTask,language:technology,level:difficalty,day:dayForFilter,mounth:mounthForFilter,year:yearForFilter}"
+			    ng-click="sortReorder(task.title,$event)">
+				<td class="td-status"><img src="dist/images/task.png"/></td>
 				<td class="td-name" ng-bind="task.title">title</td>
 				<td ng-bind="task.technology"></td>
 				<td ng-bind="task.addedDate"></td>
 				<td ng-bind="task.difficulty"></td>
-				<td><img ng-click="changeFrame(task.id);CreateOrChangeTask('CHANGE_TASK');" id="editImage" src="dist/images/task-edit.png" /></td>
-				<td><img ng-click="delTask(task.id,false);" src="dist/images/trash.png" id="deleteImage" /></td>
+				<td>
+					<a href="#" ui-sref="main.tasks.edit({'taskId': task.id})">
+						<img id="editImage"
+						     src="dist/images/task-edit.png"/>
+					</a>
+				</td>
+				<td><img ng-click="listCtrl.deleteTask(task);" src="dist/images/trash.png" id="deleteImage"/></td>
 			</tr>
 			</tbody>
 		</table>
@@ -44,7 +54,10 @@
 					<span id="currentPage" ng-if="(currentPage + 3) <= pageNumber" ng-click="paging(currentPage)">{{currentPage + 3}}</span>
 					<button ng-click="paging(1)" translate>NEXT</button>
 				</td>
-				<td><button class="send" ng-click="changeFrame('empty'); CreateOrChangeTask('CREANE_TASK');" translate>NEW</button>
+				<td>
+					<a class="send" ui-sref="main.tasks.create" translate>
+						NEW
+					</a>
 				</td>
 			</tr>
 		</table>
@@ -52,7 +65,8 @@
 	<div id="boxFindTask">
 		<span translate>FIND_TASK</span>
 		<div>
-			<input type="text" placeholder="Title Task" onblur="this.placeholder='Title Task'" onfocus="this.placeholder=''" ng-model="searchTask"></br>
+			<input type="text" placeholder="Title Task" onblur="this.placeholder='Title Task'"
+			       onfocus="this.placeholder=''" ng-model="searchTask"></br>
 		</div>
 		<div>
 			<span translate>TECHNOLOGY</span>
