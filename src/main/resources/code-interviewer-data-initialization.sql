@@ -7,7 +7,7 @@ INSERT INTO users(username, first_name, last_name, email, password, role, active
 INSERT INTO users(username, first_name, last_name, email, password, role, active, image, background)
     VALUES ('reviewer', 'Reviewer', 'Reviewer', 'reviewer@gmail.com', '$2a$10$n.0.3Aw2HMLJc8PLkazaAO3w6snWAUFB88HBJMDa58iWBDa0tsEVO', 'ROLE_REVIEWER', TRUE, NULL, NULL);
 INSERT INTO users(username, first_name, last_name, email, password, role, active, image, background)
-    VALUES ('interviewer', 'Interviewer', 'Interviewer', 'interviewer@gmail.com', '$2a$10$QXQ.o8xvlJjyr5OPi83/.uQKrNNMIlRZzurrZHludpsAeMblv/Kc2', 'ROLE_INTERVIEWER', TRUE, NULL, NULL);
+    VALUES ('candidate', 'Candidate', 'Candidate', 'candidate@gmail.com', '$2a$10$QXQ.o8xvlJjyr5OPi83/.uQKrNNMIlRZzurrZHludpsAeMblv/Kc2', 'ROLE_CANDIDATE', TRUE, NULL, NULL);
 
 
 INSERT INTO participants(first_name, last_name, email, sent, returned, taken, active, image)
