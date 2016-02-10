@@ -1,8 +1,8 @@
 package com.code.reviewer.mailService;
 
 /**
- * Created by Yurii on 03.02.2016.
- */
+* Created by Yurii on 03.02.2016.
+*/
 import com.code.reviewer.user.domain.User;
 import org.apache.commons.lang.CharEncoding;
 import org.slf4j.Logger;
@@ -20,13 +20,12 @@ import javax.mail.internet.MimeMessage;
 import java.util.Locale;
 
 /**
- * Service for sending e-mails.
- * <p/>
- * <p>
- * We use the @Async annotation to send e-mails asynchronously.
- * </p>
- */
-@Service
+* Service for sending e-templates.
+* <p/>
+* <p>
+* We use the @Async annotation to send e-templates asynchronously.
+* </p>
+*/
 public class MailService {
 
     private final Logger log = LoggerFactory.getLogger(MailService.class);
@@ -41,10 +40,8 @@ public class MailService {
     private SpringTemplateEngine templateEngine;
 
     /**
-     * System default email address that sends the e-mails.
+     * System default email address that sends the e-templates.
      */
-    private String from;
-
     @Async
     public void sendEmail(String to, String subject, String content, boolean isMultipart, boolean isHtml) {
         log.debug("Send e-mail[multipart '{}' and html '{}'] to '{}' with subject '{}' and content={}",
@@ -67,7 +64,7 @@ public class MailService {
     @Async
     public void sendInviteEmail(User user, String baseUrl) {
         log.debug("Sending activation e-mail to '{}'", user.getEmail());
-        Locale locale = Locale.forLanguageTag(user.getLangKey());
+        Locale locale = Locale.forLanguageTag("en");
         Context context = new Context();
         context.setVariable("user", user);
         context.setVariable("baseUrl", baseUrl);
@@ -80,7 +77,7 @@ public class MailService {
     public void sendAddingUserEmail(User user, String baseUrl) {
         log.debug("Sending creation e-mail to '{}'", user.getEmail());
 
-        Locale locale = Locale.forLanguageTag(en,us);
+        Locale locale = Locale.forLanguageTag("en");
         Context context = new Context(locale);
         context.setVariable("user", user);
         context.setVariable("baseUrl", baseUrl);
@@ -92,7 +89,7 @@ public class MailService {
     @Async
     public void sendReviewerMail(User user, String baseUrl) {
         log.debug("Sending password reset e-mail to '{}'", user.getEmail());
-        Locale locale = Locale.forLanguageTag(user.getLangKey());
+        Locale locale = Locale.forLanguageTag("en");
         Context context = new Context(locale);
         context.setVariable("user", user);
         context.setVariable("baseUrl", baseUrl);

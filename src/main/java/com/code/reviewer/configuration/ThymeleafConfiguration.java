@@ -20,7 +20,7 @@ public class ThymeleafConfiguration {
     @Description("Thymeleaf template resolver serving HTML 5 emails")
     public ClassLoaderTemplateResolver emailTemplateResolver() {
         ClassLoaderTemplateResolver emailTemplateResolver = new ClassLoaderTemplateResolver();
-        emailTemplateResolver.setPrefix("mails/");
+        emailTemplateResolver.setPrefix("templates/");
         emailTemplateResolver.setSuffix(".html");
         emailTemplateResolver.setTemplateMode("HTML5");
         emailTemplateResolver.setCharacterEncoding(CharEncoding.UTF_8);
@@ -33,7 +33,7 @@ public class ThymeleafConfiguration {
     public MessageSource emailMessageSource() {
         log.info("loading non-reloadable mail messages resources");
         ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
-        messageSource.setBasename("classpath:/mails/messages/messages");
+        messageSource.setBasename("classpath:/templates");
         messageSource.setDefaultEncoding(CharEncoding.UTF_8);
         return messageSource;
     }
