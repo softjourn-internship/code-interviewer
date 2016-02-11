@@ -48,3 +48,21 @@ This project is a platform for making online interview with writing a code.
 ### commands for use prod profile
    mvn clean package (#Enter)
    java -jar target/code-reviewer.war --spring.profiles.active=prod
+
+### URLs:
+   /user
+      GET            --> returns all users
+      POST           --> consumes request body of User.class; saves a new user
+      PUT            --> consumes request body of User.class; updates a user
+      DELETE         --> consumes request param "id"; sets field 'active' onto false
+      /restore/{id}  --> (PUT) sets field 'active' onto true
+      /{id}          --> (GET) returns a user which has same id
+      /current       --> (GET) returns a user which logged in
+      /participants  --> (GET) returns a list of participants of current user
+
+   /participant
+      GET            --> returns all participants
+      POST           --> consumes request body of Participant.class; saves a new participant
+      PUT            --> consumes request body of Participant.class; updates a participant
+      DELETE         --> consumes request param "id"; sets field 'active' onto false
+      /{id}          --> (GET) returns a participant which has same id
