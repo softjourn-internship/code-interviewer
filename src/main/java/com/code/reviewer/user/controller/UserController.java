@@ -1,8 +1,8 @@
 package com.code.reviewer.user.controller;
 
-import com.code.reviewer.user.domain.Participant;
+import com.code.reviewer.participant.domain.Participant;
 import com.code.reviewer.user.domain.User;
-import com.code.reviewer.user.service.ParticipantService;
+import com.code.reviewer.participant.service.ParticipantService;
 import com.code.reviewer.user.service.UserGeneratorService;
 import com.code.reviewer.user.service.UserService;
 import org.slf4j.Logger;
@@ -25,18 +25,13 @@ public class UserController {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
-    @Qualifier(value = "userService")
+    @Qualifier("userService")
     private UserService userService;
-
-    @Autowired
-    @Qualifier(value = "participantService")
-    private ParticipantService participantService;
 
     @Autowired
     @Qualifier("userGeneratorService")
     private UserGeneratorService userGeneratorService;
 
-    /*<USERS>*/
     @RequestMapping(value = "/users",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -122,71 +117,5 @@ public class UserController {
     public Set<Participant> getParticipants() {
         return userService.getCurrentUser().getParticipants();
     }
-    /*</USERS>*/
-
-    /*<PARTICIPANTS>*/
-    @RequestMapping(value = "/participants",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    public Collection<Participant> getAllParticipants() {
-        return participantService.getAll();
-    }
-
-    @RequestMapping(value = "/participants",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE,
-            consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Participant addParticipant(@RequestBody Participant participant) {
-        if (participantService.findOneByEmail(participant.getEmail()) != null) {
-            LOGGER.warn("Email" + participant.getEmail() + " already in use!");
-            return null;
-        } else {
-            User currentUser = userService.getCurrentUser();
-            participant.getUsers().add(currentUser);
-            currentUser.getParticipants().add(participant);
-            participantService.save(participant);
-            LOGGER.info("Participant '" + participant.getFirstName() + ' ' + participant.getLastName() + "' has been added");
-            return participant;
-        }
-    }
-
-    @RequestMapping(value = "/participants",
-            method = RequestMethod.PUT,
-            produces = MediaType.APPLICATION_JSON_VALUE,
-            consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Participant updateParticipant(@RequestBody Participant participant) {
-        participantService.save(participant);
-        return participant;
-    }
-
-    @RequestMapping(value = "/participants/{id}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    public Participant getParticipant(@PathVariable Long id) {
-        Participant participant = participantService.findOne(id);
-        if (participant == null) {
-            LOGGER.warn("Participant not found!");
-            return null;
-        } else {
-            LOGGER.info("Get participant. Id = " + id);
-            return participant;
-        }
-    }
-
-    @RequestMapping(value = "/participants/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    public Participant deleteParticipant(@PathVariable Long id) {
-        Participant participant = participantService.findOne(id);
-        if (participant == null) {
-            LOGGER.warn("Participant not found!");
-            return null;
-        } else {
-            participant.setActive(false);
-            LOGGER.info("Participant '" + participant.getFirstName() + ' ' + participant.getLastName() + "' has been deleted");
-            return participant;
-        }
-    }
-    /*<PARTICIPANTS>*/
 
 }

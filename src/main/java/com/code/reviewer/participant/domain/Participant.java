@@ -1,8 +1,9 @@
-package com.code.reviewer.user.domain;
+package com.code.reviewer.participant.domain;
 
 
 import com.code.reviewer.test.domain.Exam;
 import com.code.reviewer.test.domain.Test;
+import com.code.reviewer.user.domain.User;
 
 import javax.persistence.*;
 import javax.swing.*;

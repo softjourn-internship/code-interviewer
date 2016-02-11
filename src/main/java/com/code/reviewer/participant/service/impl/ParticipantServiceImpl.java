@@ -1,8 +1,8 @@
-package com.code.reviewer.user.service.impl;
+package com.code.reviewer.participant.service.impl;
 
-import com.code.reviewer.user.domain.Participant;
-import com.code.reviewer.user.repository.ParticipantRepository;
-import com.code.reviewer.user.service.ParticipantService;
+import com.code.reviewer.participant.domain.Participant;
+import com.code.reviewer.participant.repository.ParticipantRepository;
+import com.code.reviewer.participant.service.ParticipantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

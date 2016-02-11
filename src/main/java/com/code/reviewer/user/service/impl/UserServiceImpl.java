@@ -1,6 +1,6 @@
 package com.code.reviewer.user.service.impl;
 
-import com.code.reviewer.user.domain.Participant;
+import com.code.reviewer.participant.domain.Participant;
 import com.code.reviewer.security.SecurityUtils;
 import com.code.reviewer.user.domain.User;
 import com.code.reviewer.user.repository.UserRepository;
