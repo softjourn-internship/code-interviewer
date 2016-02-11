@@ -9,20 +9,18 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
 /**
  * Created by NicholasG on 11.02.2016.
  */
+@RestController
+@RequestMapping("/participant")
 public class ParticipantController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ParticipantController.class);
-
 
     @Autowired
     @Qualifier("userService")
@@ -32,14 +30,14 @@ public class ParticipantController {
     @Qualifier("participantService")
     private ParticipantService participantService;
 
-    @RequestMapping(value = "/participants",
+    @RequestMapping(
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public Collection<Participant> getAllParticipants() {
         return participantService.getAll();
     }
 
-    @RequestMapping(value = "/participants",
+    @RequestMapping(
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -57,7 +55,7 @@ public class ParticipantController {
         }
     }
 
-    @RequestMapping(value = "/participants",
+    @RequestMapping(
             method = RequestMethod.PUT,
             produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -66,7 +64,22 @@ public class ParticipantController {
         return participant;
     }
 
-    @RequestMapping(value = "/participants/{id}",
+    @RequestMapping(
+            method = RequestMethod.DELETE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public Participant deleteParticipant(@RequestParam("id") Long id) {
+        Participant participant = participantService.findOne(id);
+        if (participant == null) {
+            LOGGER.warn("Participant not found!");
+            return null;
+        } else {
+            participant.setActive(false);
+            LOGGER.info("Participant '" + participant.getFirstName() + ' ' + participant.getLastName() + "' has been deleted");
+            return participant;
+        }
+    }
+
+    @RequestMapping(value = "/{id}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public Participant getParticipant(@PathVariable Long id) {
@@ -76,21 +89,6 @@ public class ParticipantController {
             return null;
         } else {
             LOGGER.info("Get participant. Id = " + id);
-            return participant;
-        }
-    }
-
-    @RequestMapping(value = "/participants/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    public Participant deleteParticipant(@PathVariable Long id) {
-        Participant participant = participantService.findOne(id);
-        if (participant == null) {
-            LOGGER.warn("Participant not found!");
-            return null;
-        } else {
-            participant.setActive(false);
-            LOGGER.info("Participant '" + participant.getFirstName() + ' ' + participant.getLastName() + "' has been deleted");
             return participant;
         }
     }
