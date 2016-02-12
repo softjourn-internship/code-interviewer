@@ -33,6 +33,11 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
+    public Long getCountRow() {
+        return repository.count();
+    }
+
+    @Override
     public void save(Task task) {
         repository.save(task);
     }

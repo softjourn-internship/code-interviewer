@@ -15,6 +15,8 @@ public interface TaskService {
 
     Task findByTaskTitle(String title);
 
+    Long getCountRow();
+
     void save(Task task);
 
     void delete(Task task);
