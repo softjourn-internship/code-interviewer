@@ -88,7 +88,7 @@ public class Task implements Serializable {
     }
 
     public String getTechnology() {
-        return technology;
+        return this.technology;
     }
 
     public void setTechnology(String technology) {
@@ -96,7 +96,7 @@ public class Task implements Serializable {
     }
 
     public String getDifficulty() {
-        return difficulty;
+        return this.difficulty;
     }
 
     public void setDifficulty(String difficulty) {

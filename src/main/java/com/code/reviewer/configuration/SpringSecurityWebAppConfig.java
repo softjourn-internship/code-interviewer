@@ -59,7 +59,7 @@ public class SpringSecurityWebAppConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/dist/**").permitAll()
                 .and()
                 .formLogin()
-//                .loginPage("/template/login.html")
+             // .loginPage("/template/login.html")
                 .loginProcessingUrl("/api/authentication")
                 .successHandler(authenticationSuccessHandler)
                 .failureHandler(authenticationFailureHandler)
