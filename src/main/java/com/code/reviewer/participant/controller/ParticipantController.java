@@ -4,11 +4,14 @@ import com.code.reviewer.participant.domain.Participant;
 import com.code.reviewer.participant.service.ParticipantService;
 import com.code.reviewer.user.domain.User;
 import com.code.reviewer.user.service.UserService;
+import com.code.reviewer.web.util.HeaderUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -33,25 +36,27 @@ public class ParticipantController {
     @RequestMapping(
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public Collection<Participant> getAllParticipants() {
-        return participantService.getAll();
+    public ResponseEntity<Collection<Participant>> getAllParticipants() {
+        return ResponseEntity.ok(participantService.getAll());
     }
 
     @RequestMapping(
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Participant addParticipant(@RequestBody Participant participant) {
+    public ResponseEntity<?> addParticipant(@RequestBody Participant participant) {
         if (participantService.findOneByEmail(participant.getEmail()) != null) {
-            LOGGER.warn("Email" + participant.getEmail() + " already in use!");
-            return null;
+            LOGGER.warn("Email '{}' already in use!", participant.getEmail());
+            return ResponseEntity.badRequest()
+                    .headers(HeaderUtil.createFailureAlert("participant-management", "emailexists", "Email already in use"))
+                    .body(null);
         } else {
             User currentUser = userService.getCurrentUser();
             participant.getUsers().add(currentUser);
             currentUser.getParticipants().add(participant);
             participantService.save(participant);
-            LOGGER.info("Participant '" + participant.getFirstName() + ' ' + participant.getLastName() + "' has been added");
-            return participant;
+            LOGGER.info("Participant '{} {}' has been added", participant.getFirstName(), participant.getLastName());
+            return ResponseEntity.ok().build();
         }
     }
 
@@ -59,37 +64,70 @@ public class ParticipantController {
             method = RequestMethod.PUT,
             produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Participant updateParticipant(@RequestBody Participant participant) {
-        participantService.save(participant);
-        return participant;
+    public ResponseEntity<Participant> updateParticipant(@RequestBody Participant participant) {
+        Participant existingParticipant = participantService.findOneByEmail(participant.getEmail());
+        if (existingParticipant != null && !existingParticipant.getId().equals(participant.getId())) {
+            return ResponseEntity.badRequest()
+                    .headers(HeaderUtil.createFailureAlert("participant-management", "emailexists", "Email already in use"))
+                    .body(null);
+        } else {
+            participantService.save(participant);
+            return ResponseEntity.ok()
+                    .headers(HeaderUtil.createEntityUpdateAlert("participant", participant.getEmail()))
+                    .body(participantService.findOne(participant.getId()));
+        }
     }
 
     @RequestMapping(
             method = RequestMethod.DELETE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public Participant deleteParticipant(@RequestParam("id") Long id) {
+    public ResponseEntity<Void> deleteParticipant(@RequestParam("id") Long id) {
         Participant participant = participantService.findOne(id);
         if (participant == null) {
-            LOGGER.warn("Participant not found!");
-            return null;
+            LOGGER.warn("Participant 'id={}' not found!", id);
+            return ResponseEntity.badRequest()
+                    .headers(HeaderUtil.createFailureAlert("participant-management", "participantnotfound", "Participant not found"))
+                    .body(null);
         } else {
             participant.setActive(false);
-            LOGGER.info("Participant '" + participant.getFirstName() + ' ' + participant.getLastName() + "' has been deleted");
-            return participant;
+            LOGGER.info("Participant '{} {}' has been deleted", participant.getFirstName(), participant.getLastName());
+            return ResponseEntity.ok()
+                    .headers(HeaderUtil.createAlert("participant-management.deleted", id.toString()))
+                    .build();
         }
     }
 
     @RequestMapping(value = "/{id}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public Participant getParticipant(@PathVariable Long id) {
+    public ResponseEntity<Participant> getParticipant(@PathVariable Long id) {
         Participant participant = participantService.findOne(id);
         if (participant == null) {
             LOGGER.warn("Participant not found!");
-            return null;
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
-            LOGGER.info("Get participant. Id = " + id);
-            return participant;
+            LOGGER.info("Get participant. Id = {}", id);
+            return new ResponseEntity<>(participant, HttpStatus.OK);
+        }
+    }
+
+    @RequestMapping(value = "/restore/{id}",
+            method = RequestMethod.PUT,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Void> restoreParticipant(@PathVariable Long id) {
+        Participant participant = participantService.findOne(id);
+        if (participant == null) {
+            LOGGER.warn("Participant 'id={}' not found", id);
+            return ResponseEntity.badRequest()
+                    .headers(HeaderUtil.createFailureAlert("participan-management", "participantnotfound", "Participant not found"))
+                    .body(null);
+        } else {
+            participant.setActive(true);
+            participantService.save(participant);
+            LOGGER.info("Participant '{} {}' has been restored", participant.getFirstName(), participant.getLastName());
+            return ResponseEntity.ok()
+                    .headers(HeaderUtil.createAlert("participant-management.restored", participant.getEmail()))
+                    .build();
         }
     }
 
