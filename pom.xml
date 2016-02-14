@@ -163,6 +163,13 @@
             <artifactId>mail</artifactId>
             <version>${mail.version}</version>
         </dependency>
+
+        <!--TestNG -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
