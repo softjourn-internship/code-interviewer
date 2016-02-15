@@ -33,10 +33,10 @@
 	 	  			filter:{ firstName:searchNameA, taken:selectTaken, email:searchEmailA, role:selectRole} |
 			orderBy: sortField:reverse)">
 	      	<td class="image">
-				<a href="/participants/{{row.id}}">
+				<a href="#/profile/{{row.id}}">
 				<img ng-src="images/profiles/{{row.image}}" onerror="this.src='dist/images/profiles/error.png';">
 			</a></td>
-	        <td><a href="/users/{{row.id}}">{{row.firstName}} {{row.lastName}}</a></td>
+	        <td><a href="#/profile/{{row.id}}">{{row.firstName}} {{row.lastName}}</a></td>
 	        <td>{{row.email}}</td>
 	        <td>{{row.sent}}</td>
 			<td>{{row.returned}}</td>

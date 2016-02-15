@@ -61,3 +61,24 @@
 .chart img {
 	margin-left: 38px;
 }
+
+.activity .avatar{
+	width: 35px;
+}
+
+.activity table {
+	margin-bottom: 10px;
+}
+
+.activity table tbody tr:hover{
+	background: transparent;
+}
+
+.activity table tbody tr td{
+	padding-top: 0; 
+	padding-bottom: 0; 
+}
+
+.activity table tbody tr td:nth-child(3){
+	width: 50px;
+}

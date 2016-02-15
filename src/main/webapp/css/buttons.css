@@ -59,3 +59,46 @@ button, button:active, button:focus{
 	background-size: 16px;
 	background-image: url("/dist/images/logout.svg");
 }
+.sent {
+	background: transparent;
+	border: 1px solid #fff;
+	color: #fff;
+	font-size: 14px;
+	font-weight: 500;
+}
+.sent:hover {
+	background: transparent;
+	color: #AEC785;
+	border-color: #AEC785;
+}
+
+.sent:active {
+	background: #AEC785;
+	box-shadow: none;
+	border-color: #AEC785;
+	color: #fff;
+}
+
+.sent:focus {
+	color: #fff;
+	box-shadow: none;
+}
+
+.review {
+	background: transparent;
+	color: #777;
+	font-weight: 500;
+}
+
+.review:hover{
+	background: transparent;
+	color: #333;	
+	border-color: #777;
+}
+
+.review:active {
+	box-shadow: none;
+	background: #333;
+	color: #eee;
+	border-color: #333;	
+}

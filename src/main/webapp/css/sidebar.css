@@ -36,7 +36,7 @@
 	color: #666;
 }
 
-.nav-sidebar-admin a:hover { 
+.nav-sidebar-admin a:hover, .nav-sidebar-admin a:focus { 
 	margin-left: 5px; 
 	color: #fff; 
 	text-decoration: none;
