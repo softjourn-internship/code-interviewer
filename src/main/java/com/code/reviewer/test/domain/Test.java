@@ -1,7 +1,7 @@
 package com.code.reviewer.test.domain;
 
-import com.code.reviewer.tasks.domain.Task;
 import com.code.reviewer.participant.domain.Participant;
+import com.code.reviewer.tasks.domain.Task;
 import com.code.reviewer.user.domain.User;
 
 import javax.persistence.*;

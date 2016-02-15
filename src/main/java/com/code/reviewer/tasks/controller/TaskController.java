@@ -2,7 +2,6 @@ package com.code.reviewer.tasks.controller;
 
 import com.code.reviewer.tasks.domain.Task;
 import com.code.reviewer.tasks.service.TaskService;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +18,7 @@ import java.util.Collection;
 @RestController
 @RequestMapping("/api")
 public class TaskController {
+
     private static final Logger LOGGER = LoggerFactory.getLogger(TaskController.class);
 
     @Autowired
