@@ -8,10 +8,10 @@
 	cursor: pointer;
 	text-align: left;
 	padding: 10px;
-	color: #222;
+	color: #222; 
 	background-repeat: no-repeat;
-	background-position: right;
-	background-size: 14px;
+	background-position: 80% 50%;
+	background-size: 10px;
 }
 
 .table-admin thead th.sort-up {

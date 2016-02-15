@@ -1,59 +1,49 @@
-<section>
-<div class="box">
-	<table id="head">
-		<tr>
-			<td>{{lengthClientsPA.length}} <span translate>PARTICIPANTS</span></td>
-			<td style="height:35px;">
-				<select
-					ng-change="changeAction()"
-					ng-model="pageSize"
-					ng-options="opt as opt for opt in pageSizes">
-				</select>
-			</td>
-		</tr>
-	</table>
-	<table id="tableData" class="main-table" cellspacing="0" cellpadding="0">
-		<thead>
-			<th></th>
-			<th translate>NAME</th>
-			<th>Email</th>
-			<th translate>SENT</th>
-			<th translate>RETURNED</th>
-			<th style="padding-right:15px" translate>TAKEN</th>
-		</thead>
-		<tbody>
-			<tr class="hover-tr" ng-repeat="client in lengthClientsPA = (clients | filter:{name:searchNameA, taken:'done', email:searchEmailA} | orderBy:'surname')" ng-if="$index >= (currentPage * pageSize) && $index < ((currentPage+1)*pageSize)">
-				<td class="td-status"><a href="#/participants/{{client.id}}"><img ng-src="images/profiles/{{client.image}}" onerror="this.src='images/profiles/error.png';" style="border-radius: 100%;"></a></td>
-				<td class="td-name"><a href="#/participants/{{client.id}}">{{client.name}} {{client.surname}}</a></td>
-				<td>{{client.email}} </td>
-				<td>{{client.testSent}}</td>
-				<td>{{client.testReturn}}</td>
-				<td class="td-status"><img ng-src="images/{{client.taken}}.png" onerror="this.src='images/error.png';"></td>
-			</tr>
-			<tr ng-if="lengthClientsPA == 0"><td style="padding-left: 25px;color:#666">No search result</td></tr>
-		</tbody>
-	</table>
+<pop-up-dialog show="addParticipant" type="data"></pop-up-dialog>
 
-	<table id="tool" ng-if="lengthClientsPA != 0">
-		<tr>
-			<td>
- 		 		<button ng-click="paging(0)">Prev</button>
- 				<span ng-click="paging(currentPage + 1)">{{currentPage + 1}}</span>
-				<button ng-click="paging(1)">Next</button>
- 				</td>
-		</tr>
-	</table>
+<div class="col-lg-7 col-lg-offset-2 col-md-6 col-md-offset-2 col-sm-12 col-xs-12">
+	<table-main></table-main>
 </div>
-<div class='alt'>Add new participant</div>
-<div id="right-container">
-	<div id="filter" class="box filter">
-		<span translate>FILTER</span>
-		<div id="filter-container">
-			<input type="text" placeholder="Name" onblur="this.placeholder='Name'" onfocus="this.placeholder=''" ng-model="searchNameA" ng-change="pageSize"><br>
-			<input type="text" placeholder="Email adress" onblur="this.placeholder='Email adress'" onfocus="this.placeholder=''" ng-model="searchEmailA" ng-change="pageSize"><br>
+
+</div>
+<div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
+	<div class="panel-admin">
+	<div class="title"><span class="left">Filter</span></div>
+	<div class="main table-responsive">
+		<div class="filter">
+		<input type="text" placeholder="Name" onblur="this.placeholder='Name'" onfocus="this.placeholder=''" ng-model="searchNameA" ng-change="changeAction()"><br>
+				<input type="text" placeholder="Email adress" onblur="this.placeholder='Email adress'" onfocus="this.placeholder=''" ng-model="searchEmailA" ng-change="changeAction()"><br>
+				<select class="form-control" ng-model="selectTaken">
+					<option value="">All</option>
+					<option value="Done">Done</option>
+					<option value="inProcess">In process</option>
+					<option value="failed">Failed</option>
+				</select>
+	            <div ng-show=selectRoleVisible>
+				<span id="selectDash" class="select">
+					<div ng-if="selectRole == null" translate>ALL</div>
+					<div ng-if="selectRole != null">{{titleRole}}</div>
+				</span>
+				<div id="selectFilterDashboard" class="menu selectMenu">
+	                <ul ng-model="selectRole">
+	                    <li ng-click="selectRole='';titleRole='All'" translate>ALL</li>
+	                    <li ng-click="selectRole='ROLE_ADMIN';titleRole='Admin'" translate>ADMIN</li>
+	                    <li ng-click="selectRole='ROLE_MANAGER';titleRole='Manager'" translate>MANAGER</li>
+	                    <li ng-click="selectRole='ROLE_RECRUITER';titleRole='Recruiter'" translate>RECRUITER</li>
+	                </ul>
+	            </div>
+				</div>
 		</div>
 	</div>
-
+		<div class="tool"></div>
+	</div>
+	<div class="panel-admin chart">
+	<div class="title"><span class="left"><a href="#/charts">Chart</a></span></div>
+	<div class="main table-responsive">
+		<img src="/dist/images/chartt.png">
+	</div>
+	<div class="tool"></div>
+	</div>
+</div>
 </div>
 
-</section>
+<div id="notifPart"></div>

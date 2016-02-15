@@ -1,52 +1,10 @@
-<div class="send-test">
-	<div id="close-box" ></div>
-	<div id="main">
-		<div class="head">
-			<table cellspacing="0" cellpadding="0">
-				<tr>
-					<td class="img"><img ng-src="images/profiles/avatar.jpg" onerror="this.src='dist/images/profiles/error.png';"></td>
-					<td><span>{{client.email}}</span></td>
-					<td><button id="close" translate>CLOSE</button></td>
-				</tr>
-			</table>
-		</div>
-		<form method="POST">
-		<div class="action">
-			<table>
-				<tr>
-					<td translate>LANGUAGE</td>
-					<td><div id="select_langProg" ng-controller="CustomSelect" ng-init="createSelect('langProg')"/></td>
-				</tr>
-				<tr>
-					<td translate>DIFFICULTY</td>
-					<td class="radio-td">
-						<input type="radio" id="radio1" name="radios" value="hard">
-					    <label for="radio1">Hard</label>
-					    <input type="radio" id="radio2" name="radios"value="middle">
-					    <label for="radio2">Middle</label>
-					    <input type="radio" id="radio3" name="radios" value="easy">
-					    <label for="radio3">Easy</label>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2" translate>MESSAGE<br><br><textarea class="textarea" rows="6" autofocus></textarea></td>
-				</tr>
-			</table>
-		</div>
-		<div class="tool">
-			<button class="send" translate>SEND_TEST</button>
-			<button id="close" style="float:right" ng-click="clearFields()">Cancel</button>
-		</div>
-	</form>
-	</div>
-</div>
 <section>
 <div id="x" class="box profile">
-	<img ng-src="images/profiles/bg.jpg" onerror="this.src='dist/images/profiles/default.jpg'">
+	<!-- <img ng-src="images/profiles/bg.jpg" onerror="this.src='dist/images/profiles/default.jpg'"> -->
 	<div class="info-profile">
-		<img class="avatar" ng-src="images/profiles/id{{client.image}}" onerror="this.src='dist/images/profiles/error.png';">
+		<img class="avatar" ng-src="images/profiles/id{{account.image}}" onerror="this.src='dist/images/profiles/error.png';">
 		<div class="general-info">
-			<div class="name"><input value="{{client.firstName}} {{client.lastName}}"></div>
+			<div class="name"><input value="{{account.firstName}} {{account.lastName}}"></div>
 		</div>
 
 	</div>
@@ -56,28 +14,28 @@
 		<table>
 			<!-- <tr>
 				<td>Birthday</td>
-				<td><input value="{{client.birthday}}"></td>
+				<td><input value="{{account.birthday}}"></td>
 			</tr> -->
 			<tr>
 				<td translate>CITY</td>
-				<td><input value="{{client.city}}"></td>
+				<td><input value="{{account.city}}"></td>
 			</tr>
 			<tr>
 				<td translate>CONTACT</td>
-				<td><input value="{{client.email}}"></td>
+				<td><input value="{{account.email}}"></td>
 			</tr>
 			<tr>
 				<td translate>SPECIALITY</td>
-				<td><input value="{{client.specialty}}"></td>
+				<td><input value="{{account.specialty}}"></td>
 			</tr>
 			<tr>
 				<td translate>ENGLISH_LEVEL</td>
-				<td><input value="{{client.englishLevel}}"></td>
+				<td><input value="{{account.englishLevel}}"></td>
 			</tr>
 		</table>
 	</div>
 </div>
-<div id="profile-send-alt" class='alt'>Send test to {{client.name}}</div>
+<div id="profile-send-alt" class='alt'>Send test to {{account.name}}</div>
 <div id="conteiner-profile">
 <div id="activity" class="box profile">
 	<table id="head">
@@ -93,7 +51,7 @@
 			<th translate>REVIEW</th>
 		</thead>
 		<tbody>
-		<tr class="hover-tr"ng-repeat="act in client.activity">
+		<tr class="hover-tr"ng-repeat="act in account.activity">
 			<td>{{act.technology}}</td>
 			<td><img ng-src="images/{{act.taken}}.png" onerror="this.src='dist/images/error.png'"></td>
 			<td>{{act.complication}}</td>
@@ -102,7 +60,7 @@
 		</tbody>
 	</table>
 </div>
-<div id="chart-profile" class="chart" google-chart chart="clientStatistics"/>
+<div id="chart-profile" class="chart" google-chart chart="accountStatistics"/>
 
 
 

@@ -10,7 +10,8 @@ app.controller('LoginController',
                     AuthenticationService.SetCredentials($scope.username, $scope.password);
 
                     // ROLE
-                    $location.path('/dashboard/participants');
+                    $location.path('/dashboard');
+                    $scope.dataTable = 'participants';
                 } else {
                     $scope.error = response.message;
                     $scope.dataLoading = false;
