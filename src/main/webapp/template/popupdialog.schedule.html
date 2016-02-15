@@ -1,0 +1,19 @@
+<form method="POST">
+	<table>
+		<tr>
+			<td translate>Language</td>
+			<td><select class="form-control" ng-model="specialitySel" ng-options="o as o for o in speciality.options"></select></td>
+		</tr>
+		<tr>
+			<td translate>Difficulty</td>
+			<td class="btn-group">
+				<label class="radio-custom" ng-model="radioModel" uib-btn-radio="'Hard'" uncheckable>Hard</label>
+		        <label class="radio-custom" ng-model="radioModel" uib-btn-radio="'Middle'" uncheckable>Middle</label>
+		        <label class="radio-custom" ng-model="radioModel" uib-btn-radio="'Easy'" uib-uncheckable="uncheckable">Easy</label>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" translate>Message<br><br><textarea class="textarea" rows="6" autofocus></textarea></td>
+		</tr>
+	</table>
+</form>

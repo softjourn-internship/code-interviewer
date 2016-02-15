@@ -1,0 +1,40 @@
+<form method="POST">
+	<table>
+		<tr ng-if="dataTable === 'users'">
+			<td translate>Username</td>
+			<td><input id="userName" type="text" ng-model="userName" size="30"></td>
+		</tr>
+		<tr>
+			<td translate>First Name</td>
+			<td><input id="firstName" type="text" ng-model="firstName"></td>
+		</tr>
+		<tr>
+			<td translate>Last Name</td>
+			<td><input id="lastName" type="text" ng-model="lastName"></td>
+		</tr>
+		<tr ng-if="dataTable !== 'users'">
+			<td translate>City</td>
+			<td><input id="city" type="text" ng-model="city"></td>
+		</tr>
+		<tr ng-if="dataTable === 'users'">
+			<td translate>Role</td>
+			<td><select class="form-control" ng-model="specialitySel" ng-options="o as o for o in speciality.options"></select></td>
+		</tr>
+		<tr ng-if="dataTable !== 'users'">
+			<td translate>English level</td>
+			<td><select class="form-control" ng-model="specialitySel" ng-options="o as o for o in speciality.options"></select></td>
+		</tr>
+		<tr ng-if="dataTable !== 'users'">
+			<td translate>Speciality</td>
+			<td><select class="form-control" ng-model="specialitySel" ng-options="o as o for o in speciality.options"></select></td>
+		</tr>
+		<tr ng-if="dataTable !== 'users'">
+			<td translate>Contact</td>
+			<td><input id="contact" type="text" ng-model="contact"></td>
+		</tr>
+		<tr>
+			<td>Email</td>
+			<td><input id="email" type="text" ng-model="email"></td>
+		</tr>
+	</table>
+</form>
