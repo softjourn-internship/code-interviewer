@@ -15,10 +15,19 @@
 	</span></div>
 	<div class="main table-responsive">
  	<table class="table-admin">
- 		<thead>
+ 		<!-- <thead>
  			<th></th>
  			<th ng-repeat="column in infoTable.columns"ng-class = "{'sort-up':isSortUp('firstName'), 'sort-down':isSortDown('firstName')}" ng-click="sort('firstName')" translate>{{column}}</th>
- 		</thead>
+ 		</thead> -->
+ 		<thead ng-if="lengthClientsPA !== 0">
+			<th id="emtry"></th>
+			<th ng-class = "{'sort-up':isSortUp('firstName'), 'sort-down':isSortDown('firstName')}" ng-click="sort('firstName')" translate>Name</th>
+			<th ng-class = "{'sort-up':isSortUp('email'), 'sort-down':isSortDown('email')}" ng-click="sort('email')">Email</th>
+			<th ng-class = "{'sort-up':isSortUp('role'), 'sort-down':isSortDown('role')}" ng-click="sort('role')" ng-if="dataTable === 'users'" style="padding-right:35px" translate>Role</th>
+			<th ng-class = "{'sort-up':isSortUp('testSent'), 'sort-down':isSortDown('testSent')}" ng-click="sort('testSent')" translate>Sent</th>
+			<th ng-class = "{'sort-up':isSortUp('testReturn'), 'sort-down':isSortDown('testReturn')}" ng-click="sort('testReturn')" translate>Returned</th>
+			<th ng-class = "{'sort-up':isSortUp('taken'), 'sort-down':isSortDown('taken')}" ng-click="sort('taken')" translate>Taken</th>
+		</thead>
  		<tbody>
 	 	  <tr ng-repeat="row in lengthClientsPA = ((data.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))) |
 	 	  			filter:{ firstName:searchNameA, taken:selectTaken, email:searchEmailA, role:selectRole} |

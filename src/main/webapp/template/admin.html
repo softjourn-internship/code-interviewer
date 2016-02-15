@@ -7,8 +7,8 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="navbar-admin">
-      <li><a id="dashboard" href="#/dashboard/participants" ng-click="dataTable = 'participants'" translate>DASHBOARD</a></li>
-      <li><a id="statistics" href="#/charts" translate>STATISTICS</a></li>
+      <li><a id="dashboard" href="#/dashboard" ng-click="dataTable = 'participants'" translate>DASHBOARD</a></li>
+      <li><a id="statistics" href="#/charts" translate>CHARTS</a></li>
       <li><a href="#/tasks">TASKS</a></li>
       <li><a href="/logout?logout">LOG OUT</a></li>
       </ul>
@@ -27,13 +27,14 @@
       </center>
     </div>
     <ul class="nav-sidebar-admin">
-      <li><a id="dashboard" href="#/dashboard/participants" ng-click="dataTable = 'participants'" translate>DASHBOARD</a></li>
-      <li><a id="participants" href="#/dashboard/participants" ng-click="dataTable = users" translate>USERS</a></li>
-      <li><a id="statistics" href="#/charts" translate>STATISTICS</a></li>
+      <li><a id="dashboard" href="#/dashboard" ng-click="dataTable = 'participants'" translate>DASHBOARD</a></li>
+      <li><a id="participants" href="#/users" ng-click="dataTable = users" translate>USERS</a></li>
+      <li><a id="statistics" href="#/charts" translate>CHARTS</a></li>
       <li><a id="tasks" href="#/tasks" translate>TASKS</a></li>
     </ul>
     <div class="logout-admin"><button class="logout" ng-click="logOut()">Log out</button></div>
     </div>
-    <div ui-view="content"></div>
+    <!-- <div ui-view="content"></div> -->
+    <div ui-view></div>
   </div>
 </div>

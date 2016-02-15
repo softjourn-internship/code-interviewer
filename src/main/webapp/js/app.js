@@ -9,16 +9,44 @@ app
 
     $stateProvider
         .state('admin', {
-            url: '/dashboard/:dataTable',
-
+            templateUrl: 'template/admin.html',
+            controller: 'UserController'
+        })
+        .state('admin.dashboard', {
+            url: '/dashboard',
+            templateUrl: 'template/admin.html',
             views: {
                 '': {
-                    templateUrl: 'template/admin.html',
-                    controller: 'UserController'
-                },
-                'content@admin': {
-                    templateUrl: 'template/data.html'
-                    // controller: 'DataCtrl'
+                    templateUrl: 'template/dashboard.html'
+                }
+            }
+        })
+        .state('admin.charts', {
+            url: '/charts',
+            templateUrl: 'template/charts.html',
+            views: {
+                '': {
+                    templateUrl: 'template/charts.html'
+                }
+            }
+        })
+        .state('admin.profile', {
+            url: '/profile/:accId',
+            templateUrl: 'template/charts.html',
+            views: {
+                '': {
+                    templateUrl: 'template/profile.html',
+                    controller: 'ProfileCtrl'
+                }
+            }
+        })
+        .state('admin.tasks', {
+            url: '/tasks',
+            templateUrl: 'template/tasks.html',
+            views: {
+                '': {
+                    templateUrl: 'template/tasks.html',
+                    controller: 'TasksCtrl'
                 }
             }
         })
@@ -27,30 +55,10 @@ app
             templateUrl: 'template/login.html',
             controller: 'LoginController'
         })
-        .state('charts', {
-            url: '/charts',
-            // templateUrl: 'template/charts.html',
-            // controller: 'DataCtrl'
-            views: {
-                '': {
-                    templateUrl: 'template/admin.html',
-                    controller: 'UserController'
-                },
-                'content@admin': {
-                    templateUrl: 'template/data.html'
-                    // controller: 'DataCtrl'
-                }
-            }
-        })
         .state('workspace', {
             url: '/workspace',
             templateUrl: 'template/workspace.html',
             controller: 'DataCtrl'
-        })
-        .state('tasks', {
-            url: '/tasks',
-            templateUrl: 'template/tasks.html',
-            controller: 'TasksCtrl'
         });
   }
 ])
