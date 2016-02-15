@@ -29,8 +29,18 @@ app
         })
         .state('charts', {
             url: '/charts',
-            templateUrl: 'template/charts.html',
-            controller: 'DataCtrl'
+            // templateUrl: 'template/charts.html',
+            // controller: 'DataCtrl'
+            views: {
+                '': {
+                    templateUrl: 'template/admin.html',
+                    controller: 'UserController'
+                },
+                'content@admin': {
+                    templateUrl: 'template/data.html'
+                    // controller: 'DataCtrl'
+                }
+            }
         })
         .state('workspace', {
             url: '/workspace',
