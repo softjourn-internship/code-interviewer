@@ -154,11 +154,6 @@
             <version>${javax.inject.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.ecwid</groupId>
-            <artifactId>ecwid-mailchimp</artifactId>
-            <version>${ecwid-mailchimp.version}</version>
-        </dependency>
-        <dependency>
             <groupId>javax.mail</groupId>
             <artifactId>mail</artifactId>
             <version>${mail.version}</version>

@@ -16,6 +16,7 @@ import org.thymeleaf.spring4.SpringTemplateEngine;
 import javax.inject.Inject;
 import javax.mail.internet.MimeMessage;
 import java.util.Locale;
+import java.util.Properties;
 
 
 public class MailService {
@@ -37,11 +38,18 @@ public class MailService {
         log.debug("Send e-mail[multipart '{}' and html '{}'] to '{}' with subject '{}' and content={}",
                 isMultipart, isHtml, to, subject, content);
 
-        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+        mailSender.setHost("smtp.gmail.com");
+        mailSender.setPort(465);
+        mailSender.setProtocol("smtp");
+        mailSender.setUsername("code.interviewer@gmail.com");
+        mailSender.setPassword("Code.interviewer1");
+
+        MimeMessage mimeMessage = mailSender.createMimeMessage();
         try {
             MimeMessageHelper message = new MimeMessageHelper(mimeMessage, isMultipart, CharEncoding.UTF_8);
             message.setTo(to);
-//            message.setFrom(Something);
+            message.setFrom("code.interviewer@gmail.com");
             message.setSubject(subject);
             message.setText(content, isHtml);
             javaMailSender.send(mimeMessage);
@@ -86,5 +94,4 @@ public class MailService {
         String subject = messageSource.getMessage("email.review.subject", null, locale);
         sendEmail(user.getEmail(), subject, content, false, true);
     }
-
 }
