@@ -1,0 +1,20 @@
+.radio-custom {
+  padding: 6px;
+  padding-left: 12px;
+  padding-right: 12px;
+  cursor: pointer;
+  border: 1px solid #e2e2e2;
+  background-color: #fff;
+  color: #d8d8d8;
+  font-size: 13px;
+}
+
+.radio-custom:hover {
+  color: #666;
+  border-color: silver;
+}
+
+.active{
+  border-color: silver;
+  color: #333;
+}
