@@ -52,13 +52,13 @@ INSERT INTO users_participants(users_id, participants_id)
     INSERT INTO tasks(title, task, technology, difficulty, added_date)
         VALUES ('	Largest prime factor', 'task3', 'C#', 'Eazy', '2016-01-04');
     INSERT INTO tasks(title, task, technology, difficulty, added_date)
-        VALUES ('Largest palindrome product', 'C#', 'tech', 'Eazy', '2016-01-04');
+        VALUES ('Largest palindrome product', 'task', 'PHP', 'Eazy', '2016-01-04');
     INSERT INTO tasks(title, task, technology, difficulty, added_date)
         VALUES ('Smallest multiple', 'task4', 'Java', 'Middle', '2016-01-04');
     INSERT INTO tasks(title, task, technology, difficulty, added_date)
         VALUES ('Sum square difference', 'task4', 'Java', 'Eazy', '2016-01-04');
     INSERT INTO tasks(title, task, technology, difficulty, added_date)
-        VALUES ('	10001st prime', 'task4', 'PHP', 'Hard', '2016-01-04');
+        VALUES ('10001st prime', 'task4', 'PHP', 'Hard', '2016-01-04');
     INSERT INTO tasks(title, task, technology, difficulty, added_date)
         VALUES ('Largest product in a series', 'task4', 'C#', 'Hard', '2016-01-04');
     INSERT INTO tasks(title, task, technology, difficulty, added_date)
