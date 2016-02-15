@@ -1,5 +1,8 @@
-<div ng-controller="TasksCtrl" ng-init="getTaskList()" id="mainTasksBox">
-	<!--Change view scroll strip -->
+<div ng-controller="TasksCtrl" id="mainTasksBox">
+
+<link rel="stylesheet" type="text/css" href="styles/admin.css">
+
+
 	<div ng-show="visibleMessageDel">
 		<div id="messageDeleteBox"></div>
 		<div id="messageDelete">
@@ -42,7 +45,7 @@
 		</table>
 	</form>
 	<div id="build-editor" ui-ace ng-model="TaskC" ng-change="changeButton()"></div>
-	<button id="sendT" ng-disabled="!anableButton" ng-click="Visible=!Visible;changeButtonBack();">{{buttonTbox}}</button>
+	<button id="sendT" ng-disabled="!anableButton" ng-click="Visible=!Visible;changeButtonBack();modityTask(buttonTbox)">{{buttonTbox}}</button>
 	</div>
 
 <div class="box">
@@ -90,12 +93,12 @@
 						<span id="currentPage" ng-if="(currentPage + 3) <= pageNumber" ng-click="paging(currentPage)">{{currentPage + 3}}</span>
 						<button ng-click="paging(1)" translate>NEXT</button>
 						</td>
-					<td><button class="send" ng-click="changeFrame('empty'); CreateOrChangeTask('CREANE_TASK');" translate>NEW</button>
+					<td><button class="send" ng-click="changeFrame('empty'); CreateOrChangeTask('CREATE_TASK');" translate>NEW</button>
 			</td>
 				</tr>
 			</table>
 		</div>
-		<div id="boxFindTask">
+	<!--	<div id="boxFindTask">
 				<span translate>FIND_TASK</span>
 			<div>
 				<input type="text" placeholder="Title Task" onblur="this.placeholder='Title Task'" onfocus="this.placeholder=''" ng-model="searchTask"></br>
@@ -147,8 +150,8 @@
 								<option value="2015">2015</option>
 								<option value="2016">2016</option>
 							</select>
-						<!-- ne add select data modify -->
+
 						</div>
 					</div>
-		</div>
+		</div>-->
 </div>
