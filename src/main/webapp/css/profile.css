@@ -1,0 +1,55 @@
+.profile img.bg {
+	width: 100%;
+}
+
+.profile div.title {
+	display: block;
+	padding: 0;
+	position: absolute;
+	padding: 25px;
+	margin-top: -175px;
+	width: 100%;
+}
+
+.profile img.avatar {
+	width: 125px;
+}
+
+.profile .name {
+	font-size: 17px;
+	font-weight: bold;
+	color: #fff;
+	margin-top: 0;
+}
+
+.profile .sub {
+	font-size: 13px;
+	color: #fff;
+}
+
+
+.profile td.title {
+	padding: 15px;
+	width: auto;
+}
+
+.profile td.image {
+	width: 125px;
+}
+
+.profile td.button {
+	width: 50px;
+	padding: 0;
+	padding-right: 10px;
+}
+
+.profile td.button button{
+	margin: 0;
+}
+
+.bottom {
+	display: block;
+	margin-top: 85px;
+	margin-right: 15px;
+	width: auto;
+}

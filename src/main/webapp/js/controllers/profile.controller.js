@@ -4,7 +4,6 @@ app.controller('ProfileCtrl',
         var success = function (response) {
             $scope.account = response.data;
         }
-        alert($stateParams.accId);
         ParticipantService.GetById($stateParams.accId ,success);
 
     }]);

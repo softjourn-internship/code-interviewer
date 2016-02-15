@@ -1,0 +1,45 @@
+<div class="main table-responsive">
+		<table class="table-admin">
+		<thead ng-if="lengthClientsPA != 0">
+			<th id="emtry"></th>
+			<th ng-class = "{'sort-up':isSortUp('firstName'), 'sort-down':isSortDown('firstName')}" ng-click="sort('firstName')" translate>Name</th>
+			<th ng-class = "{'sort-up':isSortUp('email'), 'sort-down':isSortDown('email')}" ng-click="sort('email')">Email</th>
+			<th ng-class = "{'sort-up':isSortUp('role'), 'sort-down':isSortDown('role')}" ng-click="sort('role')" ng-if="dataTable == 'users'" style="padding-right:35px" translate>Role</th>
+			<th ng-class = "{'sort-up':isSortUp('testSent'), 'sort-down':isSortDown('testSent')}" ng-click="sort('testSent')" ng-if="dataTable == 'participants'" translate>Sent</th>
+			<th ng-class = "{'sort-up':isSortUp('testReturn'), 'sort-down':isSortDown('testReturn')}" ng-click="sort('testReturn')" ng-if="dataTable == 'participants'" translate>Returned</th>
+			<th ng-class = "{'sort-up':isSortUp('taken'), 'sort-down':isSortDown('taken')}" ng-click="sort('taken')" ng-if="dataTable == 'participants'" style="padding-right:15px" >Taken</th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="dataColumn in lengthClientsPA = (dataTableList |
+			filter:{ firstName:searchNameA, taken:selectTaken, email:searchEmailA, role:selectRole} |
+			orderBy: sortField:reverse)"
+			ng-if="$index >= (currentPage * pageSize) && $index < ((currentPage+1)*pageSize)"
+			ng-dblclick="currentItem(dataColumn.id, true)">
+
+				<td class="image">
+					<a href="/participants/{{dataColumn.id}}">
+					<img ng-src="images/profiles/{{dataColumn.image}}" onerror="this.src='dist/images/profiles/error.png';">
+				</a></td>
+				<td>
+					<b ng-if="dataTable === 'participants'"><a href="/participants/{{dataColumn.id}}"></b>
+					<b ng-if="dataTable === 'users'"><a href="/users/{{dataColumn.userId}}"></b>
+					{{dataColumn.firstName}} {{dataColumn.lastName}}</a></td>
+				<td>{{dataColumn.email}} </td>
+				<td ng-if="dataTable == 'users'">
+					<div>
+						<div ng-if="dataColumn.role == 'ROLE_ADMIN'" translate>ADMIN</div>
+						<div ng-if="dataColumn.role == 'ROLE_MANAGER'" translate>MANAGER</div>
+						<div ng-if="dataColumn.role == 'ROLE_RECRUITER'" translate>RECRUITER</div>
+					</div>
+				</td>
+				<td ng-if="dataTable === 'participants'">{{dataColumn.sent}}</td>
+				<td ng-if="dataTable === 'participants'">{{dataColumn.returned}}</td>
+				<td ng-if="dataTable === 'participants'" class="td-status"><img ng-src="dist/images/{{dataColumn.taken}}.png" onerror="this.src='dist/images/error.png';"></td>
+			</tr>
+			<tr id="no-hover" ng-if="lengthClientsPA == 0"><td style="padding-left: 25px;color:#666">
+				<div id="noSrchResults"></div>
+				<div id="titleNoSrchResults" translate>NO_SEARCH_RESULTS</div>
+			</td></tr>
+		</tbody>
+		</table>
+	</div>

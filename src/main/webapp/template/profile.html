@@ -1,69 +1,65 @@
-<section>
-<div id="x" class="box profile">
-	<!-- <img ng-src="images/profiles/bg.jpg" onerror="this.src='dist/images/profiles/default.jpg'"> -->
-	<div class="info-profile">
-		<img class="avatar" ng-src="images/profiles/id{{account.image}}" onerror="this.src='dist/images/profiles/error.png';">
-		<div class="general-info">
-			<div class="name"><input value="{{account.firstName}} {{account.lastName}}"></div>
+<pop-up-dialog show="scheduleTest" type="schedule"></pop-up-dialog>
+
+<div class="col-lg-6 col-lg-offset-2 col-md-6 col-md-offset-2 col-sm-12 col-xs-12">
+	<div class="panel-admin profile table-responsive">
+		<img class="bg" src="dist/images/profiles/{{account.background}}" onerror="this.src='dist/images/profiles/default.jpg'">
+		<div class="title">
+			<table>
+				<tr>
+					<td class="image">
+						<img class="avatar" src="dist/images/profiles/{{account.image}}" onerror="this.src='dist/images/profiles/error.png'">
+					</td>
+					<td class="title">
+						<div class="name">{{account.firstName}} {{account.lastName}}</div>
+						<div class="sub">New York</div><!-- {{account.city}} -->
+						<div class="sub">{{account.email}}</div>
+						<div class="sub">{{account.speciality}}</div>
+						<div class="sub">{{account.englishLevel}}</div>
+						<div style="color:#A3BE8C"><b>Online</b></div>
+					</td>
+	<!-- 				<td class="button">
+						<div class="bottom"></div>
+					</td> -->
+					<span class="right bottom"><button class="btn sent" ng-click="scheduleTest = true">Schedule test</button></span>
+					
+				</tr>
+			</table>
 		</div>
-
 	</div>
-
-	<div class="history">
-		<button id="send-profile" class="send" translate>SEND_TEST</button>
-		<table>
-			<!-- <tr>
-				<td>Birthday</td>
-				<td><input value="{{account.birthday}}"></td>
-			</tr> -->
-			<tr>
-				<td translate>CITY</td>
-				<td><input value="{{account.city}}"></td>
-			</tr>
-			<tr>
-				<td translate>CONTACT</td>
-				<td><input value="{{account.email}}"></td>
-			</tr>
-			<tr>
-				<td translate>SPECIALITY</td>
-				<td><input value="{{account.specialty}}"></td>
-			</tr>
-			<tr>
-				<td translate>ENGLISH_LEVEL</td>
-				<td><input value="{{account.englishLevel}}"></td>
-			</tr>
-		</table>
+	<div class="panel-admin activity" style="margin-top:25px;margin-bottom:25px;">
+		<div class="title"><span class="left">Activity</span></div>
+		<div class="main table-responsive">
+			<table class="table-admin">
+				<tbody>
+					<tr ng-repeat="activity in account.activity">
+						<td class="image">
+							<img class="avatar" src="dist/images/profiles/{{account.image}}" onerror="this.src='dist/images/profiles/error.png'">
+						</td>
+						<td>
+							<span class="name"><a href="#/profile/{{account.id}}">
+							{{account.firstName}} {{account.lastName}}</a></span> 
+							<span ng-if="activity.taken === 'failed'" style="color:#D08770">failed</span> 
+							<span ng-if="activity.taken === 'inProcces'" style="color:#f1c40f">in the procces</span>
+							<span ng-if="activity.taken === 'done'" style="color:#A3BE8C">completed</span>
+							test of {{activity.technology}}, complication: {{activity.complication}}
+						</td>
+						<td>
+							<span ng-if="activity.status !== 'checked'"><button class="btn review">Review</button></span>
+							<span ng-if="activity.status === 'checked'"><button class="btn review">View</button></span>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </div>
-<div id="profile-send-alt" class='alt'>Send test to {{account.name}}</div>
-<div id="conteiner-profile">
-<div id="activity" class="box profile">
-	<table id="head">
-		<tr>
-			<td translate>ACTIVITY</td>
-		</tr>
-	</table>
-	<table id="activity" class="main-table" cellspacing="0" cellpadding="0">
-		<thead>
-			<th translate>TECHNOLOGY</th>
-			<th translate>TAKEN</th>
-			<th>Complication</th>
-			<th translate>REVIEW</th>
-		</thead>
-		<tbody>
-		<tr class="hover-tr"ng-repeat="act in account.activity">
-			<td>{{act.technology}}</td>
-			<td><img ng-src="images/{{act.taken}}.png" onerror="this.src='dist/images/error.png'"></td>
-			<td>{{act.complication}}</td>
-			<td><button class="view {{act.review}}"></button></td>
-		</tr>
-		</tbody>
-	</table>
+
+<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+	<div class="panel-admin chart" style="margin:0">
+	<div class="title"><span class="left"><a href="#/charts">Chart</a></span></div>
+	<div class="main table-responsive">
+		<img src="/dist/images/chart.png">
+	</div>
+	<div class="tool"></div>
+	</div>
 </div>
-<div id="chart-profile" class="chart" google-chart chart="accountStatistics"/>
-
-
-
-</div>
-
-</section>
