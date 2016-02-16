@@ -36,10 +36,12 @@
 	</div>
 		<div class="tool"></div>
 	</div>
-	<div class="panel-admin chart">
+	<div class="panel-admin chart" ng-controller="ChartsCtrl">
 	<div class="title"><span class="left"><a href="#/charts">Chart</a></span></div>
 	<div class="main table-responsive">
-		<img src="/dist/images/chartt.png">
+		<canvas id="doughnut" class="chart chart-doughnut"
+		  chart-data="doughnut.data" chart-labels="doughnut.labels">
+		</canvas> 
 	</div>
 	<div class="tool"></div>
 	</div>
