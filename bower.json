@@ -20,7 +20,9 @@
     "angular-ui-ace":"0.2.x",
     "angular-translate":"2.9.x",
     "angular-translate-loader-static-files":"2.9.x",
-    "bootstrap":"3.3.x"
+    "bootstrap":"3.3.x",
+    "Chart.js":"1.0.x",
+    "angular-chart.js":"0.8.x"
   }
 }
 
