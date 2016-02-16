@@ -69,3 +69,9 @@ INSERT INTO users_participants(users_id, participants_id)
         VALUES ('Largest product in a grid', 'task4', 'PHP', 'Eazy', '2016-01-04');
     INSERT INTO tasks(title, task, technology, difficulty, added_date)
         VALUES ('Highly divisible triangular number', 'task4', 'C#', 'Hard', '2016-01-04');
+    INSERT INTO tasks(title, task, technology, difficulty, added_date)
+        VALUES ('title43', 'task4', 'PHP', 'Hard', '2016-01-04');
+    INSERT INTO tasks(title, task, technology, difficulty, added_date)
+        VALUES ('title45', 'task4', 'Java', 'Hard', '2016-01-04');
+    INSERT INTO tasks(title, task, technology, difficulty, added_date)
+        VALUES ('title44', 'task4', 'Java', 'Hard', '2016-01-04');
