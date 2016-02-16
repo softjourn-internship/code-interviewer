@@ -1,4 +1,4 @@
-package com.code.reviewer.mailService;
+package com.code.reviewer.mailing.service;
 
 /**
 * Created by Yurii on 03.02.2016.
@@ -7,7 +7,9 @@ import com.code.reviewer.user.domain.User;
 import org.apache.commons.lang.CharEncoding;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
@@ -16,10 +18,20 @@ import org.thymeleaf.spring4.SpringTemplateEngine;
 import javax.inject.Inject;
 import javax.mail.internet.MimeMessage;
 import java.util.Locale;
-import java.util.Properties;
 
-
+@PropertySource("classpath:application.properties")
 public class MailService {
+
+    @Value("${mail.username}")
+    private String username;
+    @Value("${mail.password}")
+    private String password;
+    @Value("${mail.protocol}")
+    private String protocol;
+    @Value("${mail.host}")
+    private String host;
+    @Value("${mail.port}")
+    private int port;
 
     private final Logger log = LoggerFactory.getLogger(MailService.class);
 
@@ -34,16 +46,16 @@ public class MailService {
 
 
     @Async
-    public void sendEmail(String to, String subject, String content, boolean isMultipart, boolean isHtml) {
+    private void sendEmail(String to, String subject, String content, boolean isMultipart, boolean isHtml) {
         log.debug("Send e-mail[multipart '{}' and html '{}'] to '{}' with subject '{}' and content={}",
                 isMultipart, isHtml, to, subject, content);
 
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-        mailSender.setHost("smtp.gmail.com");
-        mailSender.setPort(465);
-        mailSender.setProtocol("smtp");
-        mailSender.setUsername("code.interviewer@gmail.com");
-        mailSender.setPassword("Code.interviewer1");
+        mailSender.setHost(host);
+        mailSender.setPort(port);
+        mailSender.setProtocol(protocol);
+        mailSender.setUsername(username);
+        mailSender.setPassword(password);
 
         MimeMessage mimeMessage = mailSender.createMimeMessage();
         try {
