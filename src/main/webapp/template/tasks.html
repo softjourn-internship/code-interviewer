@@ -1,6 +1,5 @@
-<div ng-controller="TasksCtrl" id="mainTasksBox">
+<!--<div ng-controller="TasksCtrl" id="mainTasksBox">
 
-<link rel="stylesheet" type="text/css" href="styles/admin.css">
 
 
 	<div ng-show="visibleMessageDel">
@@ -153,5 +152,47 @@
 
 						</div>
 					</div>
-		</div>-->
+		</div>
+</div>-->
+<div class="col-lg-7 col-lg-offset-2 col-md-6 col-md-offset-2 col-sm-12 col-xs-12">
+<table-with-tasks></table-with-tasks>
 </div>
+<!--<pop-up-dialog show="addParticipant" type="data"></pop-up-dialog>
+
+
+
+</div>
+<div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
+	<div class="panel-admin">
+	<div class="title"><span class="left">Filter</span></div>
+	<div class="main table-responsive">
+		<div class="filter">
+		<input type="text" placeholder="Name" onblur="this.placeholder='Name'" onfocus="this.placeholder=''" ng-model="searchNameA" ng-change="changeAction()"><br>
+				<input type="text" placeholder="Email adress" onblur="this.placeholder='Email adress'" onfocus="this.placeholder=''" ng-model="searchEmailA" ng-change="changeAction()"><br>
+				<select class="form-control" ng-model="selectTaken">
+					<option value="">All</option>
+					<option value="Done">Done</option>
+					<option value="inProcess">In process</option>
+					<option value="failed">Failed</option>
+				</select>
+	            <div ng-show=selectRoleVisible>
+				<span id="selectDash" class="select">
+					<div ng-if="selectRole == null" translate>ALL</div>
+					<div ng-if="selectRole != null">{{titleRole}}</div>
+				</span>
+				<div id="selectFilterDashboard" class="menu selectMenu">
+	                <ul ng-model="selectRole">
+	                    <li ng-click="selectRole='';titleRole='All'" translate>ALL</li>
+	                    <li ng-click="selectRole='ROLE_ADMIN';titleRole='Admin'" translate>ADMIN</li>
+	                    <li ng-click="selectRole='ROLE_MANAGER';titleRole='Manager'" translate>MANAGER</li>
+	                    <li ng-click="selectRole='ROLE_RECRUITER';titleRole='Recruiter'" translate>RECRUITER</li>
+	                </ul>
+	            </div>
+				</div>
+		</div>
+	</div>
+		<div class="tool"></div>
+	</div>
+
+</div>
+</div>-->
