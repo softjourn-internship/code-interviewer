@@ -1,0 +1,47 @@
+<div class="panel-admin">
+	<div class="title"><span class="left">{{lengthClientsPA.length}} {{infoTable.title}}</span>
+	<span class="right">
+		<div>
+		<select class="form-control" ng-model="viewby" ng-change="setItemsPerPage(viewby)">
+			<option>3</option>
+			<option>5</option>
+			<option>10</option>
+			<option>20</option>
+			<option>30</option>
+			<option>40</option>
+			<option>50</option>
+		</select>
+	    </div>
+	</span></div>
+	<div class="main table-responsive">
+ 	<table class="table-admin">
+ 		<thead ng-if="lengthClientsPA !== 0">
+			<th id="emtry"></th>
+			<th ng-class = "{'sort-up':isSortUp('firstName'), 'sort-down':isSortDown('firstName')}" ng-click="sort('firstName')" translate>TITLE_TASK</th>
+			<th ng-class = "{'sort-up':isSortUp('email'), 'sort-down':isSortDown('email')}" ng-click="sort('email')">TECHNOLOGY</th>
+      <th ng-class = "{'sort-up':isSortUp('testSent'), 'sort-down':isSortDown('testSent')}" ng-click="sort('testSent')" translate>LAST_MODIFY</th>
+      <th ng-class = "{'sort-up':isSortUp('testSent'), 'sort-down':isSortDown('testSent')}" ng-click="sort('testSent')" translate>DIFFICULTY</th>
+			<th id="emtry"></th>
+      <th id="emtry"></th>
+		</thead>
+ 		<tbody>
+	 	  <tr ng-repeat="task in allTasks | orderBy:sortType:sortReverse | filter:{title:searchTask,language:technology,level:difficalty,day:dayForFilter,mounth:mounthForFilter,year:yearForFilter}" ng-click="sortReorder(task.title,$event)">
+	      	<td class="image"><img src="dist/images/task.png" /></td>
+	        <td>{{task.title}}</td>
+          <td>{{task.technology}} </td>
+          <td>{{task.addedDate}}</td>
+          <td>{{task.difficulty}}</td>
+          <td class="image"><img style="cursor:pointer" ng-click="changeFrame(task.id);CreateOrChangeTask('CHANGE_TASK');" id="editImage" src="dist/images/task-edit.png" /></td>
+          <td class="image" style="padding-right:15px"><img style="cursor:pointer" ng-click="delTask(task.id,false);" src="dist/images/trash.png" id="deleteImage" /></td>
+        </tr>
+      	</tbody>
+	</table>
+	</div>
+	<div class="tool">
+	<span class="left">
+		<uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" class="pagination-sm" items-per-page="itemsPerPage"></uib-pagination>
+		<br>
+	</span>
+	<span class="right"><button id="addParticipants" class="btn succes" ng-click="changeFrame('empty'); CreateOrChangeTask('CREATE_TASK');" translate>NEW</button></span>
+	</div>
+</div>
