@@ -26,7 +26,7 @@
 
     <link href="bower_components/angular-chart.js/dist/angular-chart.css" rel="stylesheet">
 
-<body>
+<body ng-controller="MainCtrl">
 
 
     <div ui-view></div>
@@ -54,6 +54,8 @@
 
 	<script src="js/app.js"></script>
 
+    <script src="js/controllers/main.controller.js"></script>
+
     <script src="js/controllers/login.controller.js"></script>
   	<script src="js/services/authentication.service.js"></script>
 
@@ -70,9 +72,9 @@
 
     <script src="js/services/participant.service.js"></script>
 
-		<script src="js/services/tasks.service.js"></script>
-		<script src="js/controllers/tasks.controller.js"></script>
-		<script src="js/directives/tableWithTasks.ditective.js"></script>
+	<script src="js/services/tasks.service.js"></script>
+	<script src="js/controllers/tasks.controller.js"></script>
+	<script src="js/directives/tableWithTasks.ditective.js"></script>
 
     <script src="js/controllers/profile.controller.js"></script>
 

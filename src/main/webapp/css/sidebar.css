@@ -2,19 +2,21 @@
 	margin: 0;
 	padding: 0;
 	background: #333;
-	width: 180px;
+	/*width: 180px;*/
+	height: 100%;
 	font-size: 11px;
+	/*margin-right:15px;*/
 }
 
 /* NAV */
 
-.nav-sidebar-admin { 
+.sidebar-nav { 
 	margin-top: 25px;
 	margin-left: 25px;
 	padding: 0;
 }
 
-.nav-sidebar-admin li{
+.sidebar-nav li{
 	margin: 0;
 	margin-bottom: 30px;
 	font-size: 11px;
@@ -23,7 +25,7 @@
 	color: #666;
 	width: 100%;
 }
-.nav-sidebar-admin a{
+.sidebar-nav a{
 	padding: 15px;
 	padding-left: 35px;
 	background-image: url("/dist/images/db.svg");
@@ -36,65 +38,65 @@
 	color: #666;
 }
 
-.nav-sidebar-admin a:hover, .nav-sidebar-admin a:focus { 
+.sidebar-nav a:hover, .sidebar-nav a:focus { 
 	margin-left: 5px; 
 	color: #fff; 
 	text-decoration: none;
 }
 
-.nav-sidebar-admin a#dashboard {
+.sidebar-nav a#dashboard {
   background-image: url("/dist/images/db.svg");
 }
 
-.nav-sidebar-admin a#dashboard:hover {
+.sidebar-nav a#dashboard:hover {
   background-image: url("/dist/images/db-h.svg");
 }
 
-.nav-sidebar-admin a#dashboard:focus {
+.sidebar-nav a#dashboard:focus {
   background-image: url("/dist/images/db-h.svg");
 }
 
-.nav-sidebar-admin a#participants {
+.sidebar-nav a#participants {
   background-image: url("/dist/images/u.svg");
 }
 
-.nav-sidebar-admin a#participants:hover {
+.sidebar-nav a#participants:hover {
   background-image: url("/dist/images/u-h.svg");
 }
 
-.nav-sidebar-admin a#participants:focus {
+.sidebar-nav a#participants:focus {
   background-image: url("/dist/images/u-h.svg");
 }
 
-.nav-sidebar-admin a#statistics {
+.sidebar-nav a#statistics {
   background-image: url("/dist/images/s.svg");
 }
 
-.nav-sidebar-admin a#statistics:hover {
+.sidebar-nav a#statistics:hover {
   background-image: url("/dist/images/s-h.svg");
 }
 
-.nav-sidebar-admin a#statistics:focus {
+.sidebar-nav a#statistics:focus {
   background-image: url("/dist/images/s-h.svg");
 }
 
-.nav-sidebar-admin a#workspace {
+.sidebar-nav a#workspace {
   background-image: url("/dist/images/ws.svg");
 }
 
-.nav-sidebar-admin a#workspace:hover {
+.sidebar-nav a#workspace:hover {
   background-image: url("/dist/images/ws-h.svg");
 }
 
-.nav-sidebar-admin a#tasks {
+.sidebar-nav a#tasks {
   background-image: url("/dist/images/t.svg");
 }
 
-.nav-sidebar-admin a#tasks:hover {
+.sidebar-nav a#tasks:hover {
   background-image: url("/dist/images/t-h.svg");
 }
 
-.nav-sidebar-admin a#tasks:focus {
+.sidebar-nav a#tasks:focus {
   background-image: url("/dist/images/t-h.svg");
 }
 
@@ -154,4 +156,77 @@
 .logout-admin button:hover{
 	background-image: url("/dist/images/logout.svg");
 	color: #fff;
+}
+
+
+#wrapper {
+  padding-left: 180px;
+  transition: all 0.4s ease 0s;
+}
+
+.sidebar-wrapper {
+  margin-left: -180px;
+  left: 180px;
+  width: 180px;
+  background: #333;
+  font-size: 11px;
+  position: fixed;
+  height: 100%;
+  overflow-y: auto;
+  z-index: 1000;
+  transition: all 0.4s ease 0s;
+}
+
+#page-content-wrapper {
+  width: 100%;
+}
+
+@media (max-width:767px) {
+  #wrapper {
+    padding-left: 0;
+  }
+  .sidebar-wrapper {
+    left: 0;
+  }
+  #wrapper.active {
+    position: relative;
+    left: 180px;
+  }
+  #wrapper.active .sidebar-wrapper {
+    left: 180px;
+    width: 180px;
+    transition: all 0.4s ease 0s;
+  }
+  button#sidebar {
+  	display: block;
+  }
+}
+
+@media (min-width:767px) {
+	button#sidebar{
+  		display: none;
+  	}
+}
+
+button#sidebar {
+	position: fixed;
+	left: 20px;
+	top: 20px;
+	background-color: rgba(34, 34, 34, 0.7);
+	width: 50px;
+	height: 50px;
+	border: none;
+	background-image: url("/dist/images/mm.gif");
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	box-shadow: 0 2px 2px rgba(34, 34, 34, 0.5);
+	border-radius: 100%;
+}
+
+button#sidebar:hover {
+	background-color: rgba(34, 34, 34, 1);
+}
+
+button#sidebar:active {
+	margin-top: 5px;
 }
