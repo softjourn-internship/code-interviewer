@@ -26,7 +26,8 @@ app
             templateUrl: 'template/charts.html',
             views: {
                 '': {
-                    templateUrl: 'template/charts.html'
+                     templateUrl: 'template/charts.html',
+                     controller: 'ChartsCtrl'
                 }
             }
         })

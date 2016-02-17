@@ -1,10 +1,9 @@
 <pop-up-dialog show="addParticipant" type="data"></pop-up-dialog>
-
+<div class="row">
 <div class="col-md-9 col-sm-9 main-padding">
 	<table-main></table-main>
 </div>
 
-</div>
 <div class="col-md-3 col-sm-3 main-padding">
 	<div class="panel-admin">
 	<div class="title"><span class="left">Filter</span></div>
@@ -18,20 +17,6 @@
 					<option value="inProcess">In process</option>
 					<option value="failed">Failed</option>
 				</select>
-	            <div ng-show=selectRoleVisible>
-				<span id="selectDash" class="select">
-					<div ng-if="selectRole == null" translate>ALL</div>
-					<div ng-if="selectRole != null">{{titleRole}}</div>
-				</span>
-				<div id="selectFilterDashboard" class="menu selectMenu">
-	                <ul ng-model="selectRole">
-	                    <li ng-click="selectRole='';titleRole='All'" translate>ALL</li>
-	                    <li ng-click="selectRole='ROLE_ADMIN';titleRole='Admin'" translate>ADMIN</li>
-	                    <li ng-click="selectRole='ROLE_MANAGER';titleRole='Manager'" translate>MANAGER</li>
-	                    <li ng-click="selectRole='ROLE_RECRUITER';titleRole='Recruiter'" translate>RECRUITER</li>
-	                </ul>
-	            </div>
-				</div>
 		</div>
 	</div>
 		<div class="tool"></div>
@@ -47,5 +32,3 @@
 	</div>
 </div>
 </div>
-
-<div id="notifPart"></div>

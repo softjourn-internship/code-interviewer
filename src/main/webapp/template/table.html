@@ -1,5 +1,5 @@
 <div class="panel-admin">
-	<div class="title"><span class="left">{{lengthClientsPA.length}} {{infoTable.title}}</span>
+	<div class="title"><span class="left" ng-if="lengthClientsPA.length !== 0">{{lengthClientsPA.length}} {{infoTable.title}}</span>
 	<span class="right">
 		<div>
 		<select class="form-control" ng-model="viewby" ng-change="setItemsPerPage(viewby)">
@@ -14,12 +14,12 @@
 	    </div>
 	</span></div>
 	<div class="main table-responsive">
+	<div class="no-search-results" ng-if="lengthClientsPA.length === 0">
+		<img src="dist/images/oops.svg">
+		<span>Oops, no search results</span>
+	</div>
  	<table class="table-admin">
- 		<!-- <thead>
- 			<th></th>
- 			<th ng-repeat="column in infoTable.columns"ng-class = "{'sort-up':isSortUp('firstName'), 'sort-down':isSortDown('firstName')}" ng-click="sort('firstName')" translate>{{column}}</th>
- 		</thead> -->
- 		<thead ng-if="lengthClientsPA !== 0">
+ 		<thead ng-if="lengthClientsPA.length !== 0">
 			<th id="emtry"></th>
 			<th ng-class = "{'sort-up':isSortUp('firstName'), 'sort-down':isSortDown('firstName')}" ng-click="sort('firstName')" translate>Name</th>
 			<th ng-class = "{'sort-up':isSortUp('email'), 'sort-down':isSortDown('email')}" ng-click="sort('email')">Email</th>
