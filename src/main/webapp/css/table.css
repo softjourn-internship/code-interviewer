@@ -91,3 +91,19 @@
     background: transparent;
 }
 
+.no-search-results{
+  width: 100%;
+  padding: 25px;
+}
+
+.no-search-results img{
+  width: 25%;
+  padding-bottom: 25px;
+  padding-left: 25px;
+}
+
+.no-search-results span{
+  margin-left: 25px;
+  font-size: 40px;
+  color: silver;  
+}

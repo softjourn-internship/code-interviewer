@@ -1,4 +1,4 @@
-input, .form-control{
+input, textarea,.form-control{
 	padding: 5px 10px;
 	font-weight: bold;
 	border: 1px solid #e2e2e2;

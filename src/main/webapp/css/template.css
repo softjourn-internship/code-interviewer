@@ -10,7 +10,7 @@ body {
 }
 
 /* TRANSITION */
-a, button, tr, th, input {
+a, button, tr, th, input, label {
   transition: 0.2s;
   outline: none !important;
 }
