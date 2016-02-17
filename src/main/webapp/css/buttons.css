@@ -92,7 +92,7 @@ button, button:active, button:focus{
 
 .review:hover{
 	background: transparent;
-	color: #333;	
+	color: #333;
 	border-color: #777;
 }
 
@@ -100,5 +100,9 @@ button, button:active, button:focus{
 	box-shadow: none;
 	background: #333;
 	color: #eee;
-	border-color: #333;	
+	border-color: #333;
+}
+
+#del:hover {
+	background: rgba(247, 6, 6, 0.53);
 }
