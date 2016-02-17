@@ -6,4 +6,6 @@ app.controller('ProfileCtrl',
         }
         ParticipantService.GetById($stateParams.accId ,success);
 
+        $scope.changeBackground = false;
+        $scope.changeAvatar = false;
     }]);
