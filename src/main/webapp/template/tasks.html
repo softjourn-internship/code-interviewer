@@ -1,198 +1,72 @@
-<!--<div ng-controller="TasksCtrl" id="mainTasksBox">
-
-
-
-	<div ng-show="visibleMessageDel">
-		<div id="messageDeleteBox"></div>
-		<div id="messageDelete">
-			<span translate>RESPONSE_BEFOR_DELETE</span><span>"{{titleTaskDel}}"?</span>
-			<div class="buttonMessageDel" id="TDel" ng-click="deletedTask();" translate>DELETE</div>
-			<div class="buttonMessageDel" id="TCanc" ng-click="visibleMessageDel=!visibleMessageDel;" translate>CANSEL</div>
+		<div style="margin-left:1%; margin-top:10px;" class="col-lg-7 col-lg-offset-2 col-md-6 col-md-offset-2 col-sm-12 col-xs-12">
+			<table-with-tasks></table-with-tasks>
 		</div>
-	</div>
-	<div class="Tbox" ng-show="!Visible">
-		<span ng-click="changeFrame('empty');changeButtonBack();" translate>CANSEL</span>
-		<form method="POST">
-			<table>
-				<tr>
-					<td class="Ttitle" translate>TITLE_TASK</td>
-					<td><input id="inputTitle" type="text" ng-model="titleTaskC" required ng-change="changeButton()"></td>
-				</tr>
-				<tr>
-					<td class="Ttitle" translate>DIFFICULTY</td>
-					<td><select class="selectBl" ng-model="diffTaskC" name="difficalty" required ng-change="changeButton()">
-						<option value="Eazy">Eazy</option>
-						<option value="Middle">Middle</option>
-						<option value="Hard">Hard</option>
-					</select></td>
-				</tr>
-				<tr>
-					<td class="Ttitle" translate>TECHNOLOGY</td>
-					<td>
-					<select class="selectBl" ng-model="techTaskC" name="technology" required ng-change="changeButton()">
-						<option value="Java">Java</option>
-						<option value="PHP">PHP</option>
-						<option value="C#">C#</option>
-					</select>
-					</td>
-				</tr>
-				<tr>
-					<td class="Ttitle" translate>
-						TASK
-					</td>
-				</tr>
-		</table>
-	</form>
-	<div id="build-editor" ui-ace ng-model="TaskC" ng-change="changeButton()"></div>
-	<button id="sendT" ng-disabled="!anableButton" ng-click="Visible=!Visible;changeButtonBack();modityTask(buttonTbox)">{{buttonTbox}}</button>
-	</div>
 
-<div class="box">
-	<table id="head">
-		<tr>
-			<td>{{allTasks.length}} Tasks</td>
-			<td id="page-size">
-				<div>
-				<input type="radio" id="radio1" name="radios" ng-change="changeAction()"  ng-model="pageSize" value="5">
-			    <label id="label1" for="radio1">5</label>
-			    <input type="radio" id="radio2" name="radios" ng-change="changeAction()"  ng-model="pageSize" value="10" selected>
-			    <label id="label2" for="radio2">10</label>
-			    <input type="radio" id="radio3" name="radios" ng-change="changeAction()"  ng-model="pageSize" value="15">
-			    <label id="label3" for="radio3">15</label>
-			    </div>
-			</td>
-		</tr>
-	</table>
-			<table id="tableData" class="main-table" cellspacing="0" cellpadding="0">
-				<thead>
-					<th></th>
-					<th translate>TITLE_TASK</th>
-					<th translate>TECHNOLOGY</th>
-					<th translate>LAST_MODIFY</th>
-					<th translate>DIFFICULTY</th>
-				</thead>
-				<tbody>
-					<tr class="hover-tr" ng-repeat="task in allTasks | orderBy:sortType:sortReverse | filter:{title:searchTask,language:technology,level:difficalty,day:dayForFilter,mounth:mounthForFilter,year:yearForFilter}" ng-click="sortReorder(task.title,$event)">
-						<td class="td-status"><img src="dist/images/task.png" /></td>
-						<td class="td-name">{{task.title}}</td>
-						<td>{{task.technology}} </td>
-						<td>{{task.addedDate}}</td>
-						<td>{{task.difficulty}}</td>
-						<td><img ng-click="changeFrame(task.id);CreateOrChangeTask('CHANGE_TASK');" id="editImage" src="dist/images/task-edit.png" /></td>
-						<td><img ng-click="delTask(task.id,false);" src="dist/images/trash.png" id="deleteImage" /></td>
-					</tr>
-				</tbody>
-			</table>
-			<table id="tool" ng-if="lengthClientsPA != 0">
-				<tr>
-					<td>
-						<button ng-click="paging(0)" translate>PREV</button>
-						<span id="currentPage" ng-click="paging(currentPage)">{{currentPage + 1}}</span>
-						<span id="currentPage" ng-if="(currentPage + 2) <= pageNumber" ng-click="paging(currentPage)">{{currentPage + 2}}</span>
-						<span id="currentPage" ng-if="(currentPage + 3) <= pageNumber" ng-click="paging(currentPage)">{{currentPage + 3}}</span>
-						<button ng-click="paging(1)" translate>NEXT</button>
-						</td>
-					<td><button class="send" ng-click="changeFrame('empty'); CreateOrChangeTask('CREATE_TASK');" translate>NEW</button>
-			</td>
-				</tr>
-			</table>
-		</div>
-	<!--	<div id="boxFindTask">
-				<span translate>FIND_TASK</span>
-			<div>
-				<input type="text" placeholder="Title Task" onblur="this.placeholder='Title Task'" onfocus="this.placeholder=''" ng-model="searchTask"></br>
-			</div>
-					<div>
-						<span translate>TECHNOLOGY</span>
-						<select class="selectBl" ng-model="technology">
-							<option value="" selected>All</option>
-							<option value="Java">Java</option>
-							<option value="PHP">PHP</option>
-							<option value="C#">C#</option>
-						</select>
-					</div>
-					<div>
-						<span translate>DIFFICULTY</span>
-						<select class="selectBl" ng-model="difficalty">
-							<option value="" selected>All</option>
-							<option value="eazy">Eazy</option>
-							<option value="middle">Middle</option>
-							<option value="hard">Hard</option>
-						</select>
-					</div>
-					<div>
-						<span translate>LAST_MODIFY</span>
-						<br>
-						<div id="boxWithDate">
-							<select class="selectBl" id="day" ng-model="dayForFilter">
-								<option value="" selected></option>
-									<option ng-repeat="numberDay in days" value={{numberDay}}>{{numberDay}}</option>
-								</select>
-							<select class="selectBl" id="mounth" ng-model="mounthForFilter">
-								<option value="" selected></option>
-								<option value="01">January</option>
-								<option value="02">February</option>
-								<option value="03">March</option>
-								<option value="04">April</option>
-								<option value="05">May</option>
-								<option value="06">June</option>
-								<option value="07"> July</option>
-								<option value="08">August</option>
-								<option value="19">September</option>
-								<option value="10">October</option>
-								<option value="11">November</option>
-								<option value="12">December</option>
+		<div style="margin-top:10px;" class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
+			<div class="panel-admin">
+				<div class="title"><span class="left">Filter</span></div>
+				<div class="main table-responsive">
+					<div class="filter">
+						<input type="text" placeholder="Title Task" onblur="this.placeholder='Title Task'" onfocus="this.placeholder=''" ng-model="searchTask"></br>
+							<select class="form-control" ng-model="technology">
+								<option value="" selected>All</option>
+								<option value="Java">Java</option>
+								<option value="PHP">PHP</option>
+								<option value="C#">C#</option>
 							</select>
-							<select class="selectBl" id="year" ng-model="yearForFilter">
-								<option value="" selected></option>
-								<option value="2014">2014</option>
-								<option value="2015">2015</option>
-								<option value="2016">2016</option>
+							<select class="form-control" ng-model="difficalty">
+								<option value="" selected>All</option>
+								<option value="Eazy">Eazy</option>
+								<option value="Middle">Middle</option>
+								<option value="Hard">Hard</option>
 							</select>
-
-						</div>
+							<!-- add filter for date -->
 					</div>
-		</div>
-</div>-->
-<div class="col-lg-7 col-lg-offset-2 col-md-6 col-md-offset-2 col-sm-12 col-xs-12">
-<table-with-tasks></table-with-tasks>
-</div>
-<!--<pop-up-dialog show="addParticipant" type="data"></pop-up-dialog>
-
-
-
-</div>
-<div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
-	<div class="panel-admin">
-	<div class="title"><span class="left">Filter</span></div>
-	<div class="main table-responsive">
-		<div class="filter">
-		<input type="text" placeholder="Name" onblur="this.placeholder='Name'" onfocus="this.placeholder=''" ng-model="searchNameA" ng-change="changeAction()"><br>
-				<input type="text" placeholder="Email adress" onblur="this.placeholder='Email adress'" onfocus="this.placeholder=''" ng-model="searchEmailA" ng-change="changeAction()"><br>
-				<select class="form-control" ng-model="selectTaken">
-					<option value="">All</option>
-					<option value="Done">Done</option>
-					<option value="inProcess">In process</option>
-					<option value="failed">Failed</option>
-				</select>
-	            <div ng-show=selectRoleVisible>
-				<span id="selectDash" class="select">
-					<div ng-if="selectRole == null" translate>ALL</div>
-					<div ng-if="selectRole != null">{{titleRole}}</div>
-				</span>
-				<div id="selectFilterDashboard" class="menu selectMenu">
-	                <ul ng-model="selectRole">
-	                    <li ng-click="selectRole='';titleRole='All'" translate>ALL</li>
-	                    <li ng-click="selectRole='ROLE_ADMIN';titleRole='Admin'" translate>ADMIN</li>
-	                    <li ng-click="selectRole='ROLE_MANAGER';titleRole='Manager'" translate>MANAGER</li>
-	                    <li ng-click="selectRole='ROLE_RECRUITER';titleRole='Recruiter'" translate>RECRUITER</li>
-	                </ul>
-	            </div>
 				</div>
+			</div>
 		</div>
-	</div>
-		<div class="tool"></div>
-	</div>
 
-</div>
-</div>-->
+		<div ng-show="visibleMessageDel">
+			<div class="frame-containar"></div>
+			<div class="frameForResponse">
+				<div class="head" style="text-align:center;margin:10px 0px 15px 0px;">
+					<span translate>RESPONSE_BEFOR_DELETE</span><span>"{{titleTaskDel}}"?</span>
+				</div>
+				<button class="btn" id="del" style="float:left; " ng-click="deletedTask();" translate>DELETE</button>
+				<button class="btn" style="float:right; margin-right:10px;"  ng-click="visibleMessageDel=!visibleMessageDel;" translate>CANSEL</button>
+			</div>
+		</div>
+		<div ng-show="!Visible">
+			<div class="frame-containar"></div>
+			<div class="frameForTask">
+				<button class="btn" style="float:right" ng-click="changeFrame('empty');changeButtonBack();" translate>CANSEL</button>
+					<table class="table-task">
+						<tr>
+							<td class="Ttitle" translate>TITLE_TASK</td>
+							<td><input type="text" ng-model="titleTaskC" required ng-change="changeButton()"></td>
+						</tr>
+						<tr>
+							<td class="Ttitle" translate>DIFFICULTY</td>
+							<td><select class="form-control" ng-model="diffTaskC" name="difficalty" required ng-change="changeButton()">
+								<option value="Eazy">Eazy</option>
+								<option value="Middle">Middle</option>
+								<option value="Hard">Hard</option>
+							</select></td>
+						</tr>
+						<tr>
+							<td class="Ttitle" translate>TECHNOLOGY</td>
+							<td>
+							<select class="form-control" ng-model="techTaskC" name="technology" required ng-change="changeButton()">
+								<option value="Java">Java</option>
+								<option value="PHP">PHP</option>
+								<option value="C#">C#</option>
+							</select>
+							</td>
+						</tr>
+					</table>
+			<div style="margin:20px; position:absolute; z-index:2011; width:95%; height:*%; ">
+				<!--<div id="build-editor" ng-model="TaskC" ng-change="changeButton()"></div>-->
+			</div>
+			<button class="succes"; style="padding: 0px 7px 0px 7px; bottom:3%; right:3%; position:absolute"  ng-disabled="!anableButton" ng-click="Visible=!Visible;changeButtonBack();modityTask(buttonTbox)">{{buttonTbox}}</button>
+			</div>
+	</div>

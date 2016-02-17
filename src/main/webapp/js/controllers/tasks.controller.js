@@ -1,4 +1,5 @@
 app.controller('TasksCtrl',['$scope','$http','TasksService','$rootScope',function ($scope,$rootScope,TasksService,$http){
+      $scope.addParticipant = true;
       $scope.Visible=true;
       $scope.visibleMessageDel=false;
       $scope.countTaskT;
@@ -17,13 +18,13 @@ app.controller('TasksCtrl',['$scope','$http','TasksService','$rootScope',functio
       }
 
       $scope.changeButton=function(){
-        document.getElementById("sendT").style.background = '#abdd48';
+        //document.getElementById("sendT").style.background = '#abdd48';
         $scope.anableButton=true;
 
       }
 
       $scope.changeButtonBack=function(){
-        document.getElementById("sendT").style.background = '#d9e8bb';
+        //document.getElementById("sendT").style.background = '#d9e8bb';
         $scope.anableButton=false;
       }
 

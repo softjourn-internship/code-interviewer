@@ -24,15 +24,15 @@
 			<th id="emtry"></th>
       <th id="emtry"></th>
 		</thead>
- 		<tbody>
-	 	  <tr ng-repeat="task in allTasks | orderBy:sortType:sortReverse | filter:{title:searchTask,language:technology,level:difficalty,day:dayForFilter,mounth:mounthForFilter,year:yearForFilter}" ng-click="sortReorder(task.title,$event)">
+ 		<tbody >
+	 	  <tr ng-repeat="task in allTasks | orderBy:sortType:sortReverse | filter:{title:searchTask,technology:technology,difficulty:difficalty}" ng-click="sortReorder(task.title,$event)">
 	      	<td class="image"><img src="dist/images/task.png" /></td>
 	        <td>{{task.title}}</td>
           <td>{{task.technology}} </td>
           <td>{{task.addedDate}}</td>
           <td>{{task.difficulty}}</td>
           <td class="image"><img style="cursor:pointer" ng-click="changeFrame(task.id);CreateOrChangeTask('CHANGE_TASK');" id="editImage" src="dist/images/task-edit.png" /></td>
-          <td class="image" style="padding-right:15px"><img style="cursor:pointer" ng-click="delTask(task.id,false);" src="dist/images/trash.png" id="deleteImage" /></td>
+          <td class="image" style="padding-right:15px"><img style="cursor:pointer" ng-click="delTask(task.id);" src="dist/images/trash.png" id="deleteImage" /></td>
         </tr>
       	</tbody>
 	</table>
