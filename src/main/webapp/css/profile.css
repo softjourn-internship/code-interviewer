@@ -68,3 +68,42 @@
 	margin-right: 15px;
 	width: auto;
 }
+
+.profile .change-background {
+	position: absolute;
+	margin: 0;
+	width: 96.8%;
+	padding: 10px;
+}
+
+.profile .change-background button{
+	background: rgba(34, 34, 34, 0.5);
+	color: #eee;
+	float: right;
+}
+
+.profile .change-background button:hover{
+	background: rgba(34, 34, 34, 0.8);
+	color: #fff;
+}
+
+.profile .change-avatar {
+	position: absolute;
+	margin: 0;
+	background: rgba(1, 1, 1, 0.5);
+	width: 125px;
+	bottom: 0;
+	padding-bottom: 10px;
+	border-radius: 0 0 4px 4px;
+}
+
+.profile .change-avatar button {
+	width: 100%;
+	margin: 0;
+	background: transparent;
+	color: silver;
+}
+
+.profile .change-avatar button:hover, .profile .change-avatar button:focus {
+	color: #fff;
+}

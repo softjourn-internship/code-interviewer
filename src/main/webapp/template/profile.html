@@ -2,12 +2,20 @@
 <div class="row">
 <div class="col-md-7 col-sm-7 main-padding">
 	<div class="panel-admin profile table-responsive">
-		<img class="bg" src="dist/images/profiles/{{account.background}}" onerror="this.src='dist/images/profiles/default.jpg'">
+		<div class="change-background show-hide" ng-show="changeBackground" ng-mouseover="changeBackground = true" ng-mouseleave="changeBackground = false"><button class="btn">Change background</button></div>
+		<img class="bg" src="dist/images/profiles/{{account.background}}" onerror="this.src='dist/images/profiles/default.jpg'"
+		ng-mouseover="changeBackground = true" ng-mouseleave="changeBackground = false">
 		<div class="title">
 			<table>
 				<tr>
-					<td class="image">
-						<img class="avatar" src="dist/images/profiles/{{account.image}}" onerror="this.src='dist/images/profiles/error.png'">
+					<td>
+						<div class="change-avatar show-hide" ng-show="changeAvatar" ng-mouseover="changeAvatar = true" ng-mouseleave="changeAvatar = false">
+							<button class="btn">
+								Change photo
+							</button>
+						</div>
+						<img class="avatar" src="dist/images/profiles/{{account.image}}" onerror="this.src='dist/images/profiles/error.png'"
+						ng-mouseover="changeAvatar = true" ng-mouseleave="changeAvatar = false">
 					</td>
 					<td class="title">
 						<div class="name">{{account.firstName}} {{account.lastName}}</div>
@@ -17,7 +25,7 @@
 						<div class="sub">{{account.englishLevel}}</div>
 						<div style="color:#A3BE8C"><b>Online</b></div>
 					</td>
-					<span class="right bottom"><button class="btn sent" ng-click="scheduleTest = true">Schedule test</button></span>
+					<span class="right bottom"><button class="btn sent" ng-click="scheduleTest = true; toggle(true)">Schedule test</button></span>
 					
 				</tr>
 			</table>
