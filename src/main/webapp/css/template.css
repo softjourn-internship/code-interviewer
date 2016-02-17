@@ -23,7 +23,7 @@ a:focus {
   background: transparent;
   border-radius: 0;
   display: none;
-  background: #333; 
+  background: #333;
   position: fixed;
   width: 100%;
   z-index: 1000;
@@ -69,9 +69,9 @@ a:focus {
     display: block;
     padding: 20px;
     overflow-x: hidden;
-    overflow-y: auto; 
+    overflow-y: auto;
     background-color: #f5f5f5;
-    box-shadow: 1px 0 5px #999; 
+    box-shadow: 1px 0 5px #999;
   }*/
 
 /* Sidebar navigation */
@@ -137,7 +137,7 @@ a:focus {
   background-repeat: no-repeat;
   background-position: 50% 50%;
   float: left;
-  margin-left: 10px; 
+  margin-left: 10px;
 }
 
 .navbar-admin{
@@ -188,14 +188,14 @@ a:focus {
 }
 
 
-.nopadding { padding: 0} 
-.nomargin { margin: 0} 
-.main-padding { 
+.nopadding { padding: 0}
+.nomargin { margin: 0}
+.main-padding {
   padding-top: 20px;
   padding-bottom: 20px;
   padding-left: 10px;
   padding-right: 10px;
-} 
+}
 
 #adminView{
   padding-left: 10px;
