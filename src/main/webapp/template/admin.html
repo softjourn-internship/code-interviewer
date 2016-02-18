@@ -5,7 +5,7 @@
         <center>
           <img src="dist/images/profiles/{{user.image}}" onerror="this.src='dist/images/profiles/error.png'">
           <div class="title">{{user.firstName}} {{user.lastName}}</div>
-          <div class="role">{{user.role}}</div>
+          <div class="role" translate>{{user.role}}</div> <!-- does not work translate, fix it-->
         </center>
       </div>
       <ul class="sidebar-nav">
@@ -14,8 +14,8 @@
         <li><a id="statistics" href="#/charts" translate>CHARTS</a></li>
         <li><a id="tasks" href="#/tasks" translate>TASKS</a></li>
       </ul>
-      <button class="btn lang"></button>
-      <div class="logout-admin"><button class="logout" ng-click="logOut()">Log out</button></div>
+      <translate-button></translate-button>
+      <div class="logout-admin"><button class="logout" ng-click="logOut()" translate>LOGOUT</button></div>
   </div>
   <div id="page-content-wrapper">
     <div class="page-content">

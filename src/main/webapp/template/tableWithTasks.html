@@ -18,7 +18,7 @@
  		<thead ng-if="lengthClientsPA !== 0">
 			<th id="emtry"></th>
 			<th ng-class = "{'sort-up':isSortUp('firstName'), 'sort-down':isSortDown('firstName')}" ng-click="sort('firstName')" translate>TITLE_TASK</th>
-			<th ng-class = "{'sort-up':isSortUp('email'), 'sort-down':isSortDown('email')}" ng-click="sort('email')">TECHNOLOGY</th>
+			<th ng-class = "{'sort-up':isSortUp('email'), 'sort-down':isSortDown('email')}" ng-click="sort('email')" translate>TECHNOLOGY</th>
       <th ng-class = "{'sort-up':isSortUp('testSent'), 'sort-down':isSortDown('testSent')}" ng-click="sort('testSent')" translate>LAST_MODIFY</th>
       <th ng-class = "{'sort-up':isSortUp('testSent'), 'sort-down':isSortDown('testSent')}" ng-click="sort('testSent')" translate>DIFFICULTY</th>
 			<th id="emtry"></th>
@@ -28,9 +28,9 @@
 	 	  <tr ng-repeat="task in allTasks | orderBy:sortType:sortReverse | filter:{title:searchTask, technology:technology, difficulty:difficalty}" ng-click="sortReorder(task.title,$event)">
 	      	<td class="image"><img src="dist/images/task.png" /></td>
 	        <td>{{task.title}}</td>
-          <td>{{task.technology}} </td>
-          <td>{{task.addedDate}}</td>
-          <td>{{task.difficulty}}</td>
+          <td style="text-align:center;">{{task.technology}} </td>
+          <td style="text-align:center;">{{task.addedDate}}</td>
+          <td style="text-align:center;">{{task.difficulty}}</td>
           <td class="image"><img style="cursor:pointer" ng-click="changeFrame(task.id);CreateOrChangeTask('CHANGE_TASK');" id="editImage" src="dist/images/task-edit.png" /></td>
           <td class="image" style="padding-right:15px"><img style="cursor:pointer" ng-click="delTask(task.id);" src="dist/images/trash.png" id="deleteImage" /></td>
         </tr>

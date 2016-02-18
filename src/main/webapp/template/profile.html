@@ -10,8 +10,8 @@
 				<tr>
 					<td>
 						<div class="change-avatar show-hide" ng-show="changeAvatar" ng-mouseover="changeAvatar = true" ng-mouseleave="changeAvatar = false">
-							<button class="btn">
-								Change photo
+							<button class="btn" translate>
+								CHANGE_PHOTO
 							</button>
 						</div>
 						<img class="avatar" src="dist/images/profiles/{{account.image}}" onerror="this.src='dist/images/profiles/error.png'"
@@ -26,13 +26,13 @@
 						<div style="color:#A3BE8C"><b>Online</b></div>
 					</td>
 					<span class="right bottom"><button class="btn sent" ng-click="scheduleTest = true; toggle(true)">Schedule test</button></span>
-					
+
 				</tr>
 			</table>
 		</div>
 	</div>
 	<div class="panel-admin activity" style="margin-top:20px;">
-		<div class="title"><span class="left">Activity</span></div>
+		<div class="title"><span class="left" translate>ACTIVITY</span></div>
 		<div class="main table-responsive">
 			<table class="table-admin">
 				<tbody>
@@ -42,15 +42,15 @@
 						</td>
 						<td>
 							<span class="name"><a href="#/profile/{{account.id}}">
-							{{account.firstName}} {{account.lastName}}</a></span> 
-							<span ng-if="activity.taken === 'failed'" style="color:#D08770">failed</span> 
+							{{account.firstName}} {{account.lastName}}</a></span>
+							<span ng-if="activity.taken === 'failed'" style="color:#D08770">failed</span>
 							<span ng-if="activity.taken === 'inProcces'" style="color:#f1c40f">haven't passed</span>
 							<span ng-if="activity.taken === 'done'" style="color:#A3BE8C">passed</span>
 						    {{activity.technology}} test with {{activity.complication}} difficulty
 						</td>
 						<td>
-							<span ng-if="activity.status !== 'checked'"><button class="btn review">Review</button></span>
-							<span ng-if="activity.status === 'checked'"><button class="btn review">View</button></span>
+							<span ng-if="activity.status !== 'checked'"><button class="btn review" translate>REVIEW</button></span>
+							<span ng-if="activity.status === 'checked'"><button class="btn review" translate>VIEW</button></span>
 						</td>
 					</tr>
 				</tbody>
@@ -61,11 +61,11 @@
 
 <div class="col-md-5 col-sm-5 main-padding">
 	<div class="panel-admin chart" style="margin:0" ng-controller="ChartsCtrl">
-	<div class="title"><span class="left"><a href="#/charts">Chart</a></span></div>
+	<div class="title"><span class="left"><a href="#/charts" translate>CHARTS</a></span></div>
 	<div class="main" style="padding: 25px">
 		<canvas id="line" class="chart chart-line" chart-data="line.data"
 		  chart-labels="line.labels" chart-legend="true" chart-series="line.series">
-		</canvas> 
+		</canvas>
 	</div>
 	<div class="tool"></div>
 	</div>

@@ -18,14 +18,15 @@ app.controller('TasksCtrl',['$scope','$http','TasksService','$rootScope',functio
       }
 
       $scope.changeButton=function(){
-        //document.getElementById("sendT").style.background = '#abdd48';
         $scope.anableButton=true;
-
       }
 
       $scope.changeButtonBack=function(){
-        //document.getElementById("sendT").style.background = '#d9e8bb';
         $scope.anableButton=false;
+      }
+
+      $scope.hideFrame=function() {
+        $scope.visibleMessageDel=!$scope.visibleMessageDel;
       }
 
       $scope.delTask=function(taskId){
