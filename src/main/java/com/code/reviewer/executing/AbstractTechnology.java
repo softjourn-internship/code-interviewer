@@ -3,7 +3,7 @@ package com.code.reviewer.executing;
 /**
  * Created by NicholasG on 14.02.2016.
  */
-public abstract class Technology {
+public abstract class AbstractTechnology {
 
     protected String className;
 

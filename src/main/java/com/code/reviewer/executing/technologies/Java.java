@@ -1,6 +1,6 @@
 package com.code.reviewer.executing.technologies;
 
-import com.code.reviewer.executing.Technology;
+import com.code.reviewer.executing.AbstractTechnology;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -8,7 +8,7 @@ import java.io.InputStreamReader;
 /**
  * Created by NicholasG on 14.02.2016.
  */
-public class Java extends Technology {
+public class Java extends AbstractTechnology {
 
     public Java() {
     }
