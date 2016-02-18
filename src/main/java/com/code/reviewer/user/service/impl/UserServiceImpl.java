@@ -5,9 +5,14 @@ import com.code.reviewer.security.SecurityUtils;
 import com.code.reviewer.user.domain.User;
 import com.code.reviewer.user.repository.UserRepository;
 import com.code.reviewer.user.service.UserService;
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.validation.constraints.NotNull;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
 
@@ -53,6 +58,33 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getCurrentUser() {
         return findOneByUsername(SecurityUtils.getCurrentUserLogin());
+    }
+
+    @Override
+    public void changeProfileImage(@NotNull Long userId, File image) throws IOException {
+        User u = userRepository.findOne(userId);
+        String imageString = encodeToString(image);
+
+        u.setImage(imageString);
+        save(u);
+    }
+
+    @Override
+    public void changeBackgroundImage(@NotNull Long userId, File image) throws IOException {
+        User u = userRepository.findOne(userId);
+        String imageString = encodeToString(image);
+
+        u.setImage(imageString);
+        save(u);
+    }
+
+    private String encodeToString(File image) throws IOException {
+        String imageString;
+        FileInputStream imageInFile = new FileInputStream(image);
+        byte[] imageData = new byte[(int) image.length()];
+        imageInFile.read(imageData);
+        imageString = Base64.encodeBase64String(imageData);
+        return imageString;
     }
 
 }

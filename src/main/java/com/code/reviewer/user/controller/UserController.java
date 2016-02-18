@@ -14,6 +14,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Collection;
 import java.util.Set;
 
@@ -150,6 +152,28 @@ public class UserController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Set<Participant>> getParticipants() {
         return ResponseEntity.ok(userService.getCurrentUser().getParticipants());
+    }
+
+    @RequestMapping(value = "/{id}/profileImage",
+            method = RequestMethod.POST,
+            produces = MediaType.APPLICATION_JSON_VALUE,
+            consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Void> changeProfileImage(@PathVariable("id") Long id, @RequestParam("image") File image)
+            throws IOException {
+
+        userService.changeProfileImage(id, image);
+        return ResponseEntity.ok().build();
+    }
+
+    @RequestMapping(value = "/{id}/backgroundImage",
+            method = RequestMethod.POST,
+            produces = MediaType.APPLICATION_JSON_VALUE,
+            consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Void> changeBackgroundImage(@PathVariable("id") Long id, @RequestParam("image") File image)
+            throws IOException {
+
+        userService.changeBackgroundImage(id, image);
+        return ResponseEntity.ok().build();
     }
 
 }

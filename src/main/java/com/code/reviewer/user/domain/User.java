@@ -4,7 +4,6 @@ import com.code.reviewer.participant.domain.Participant;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import javax.swing.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -45,11 +44,11 @@ public class User implements Serializable {
     @Column(name = "active")
     private boolean active = true;
 
-    @Column(name = "image")
-    private ImageIcon image;
+    @Column(name = "image", length = 10000)
+    private String image;
 
-    @Column(name = "background")
-    private ImageIcon background;
+    @Column(name = "background", length = 10000)
+    private String background;
 
     @JsonIgnore
     @ManyToMany(targetEntity = Participant.class)
@@ -139,19 +138,19 @@ public class User implements Serializable {
         this.active = active;
     }
 
-    public ImageIcon getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(ImageIcon image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
-    public ImageIcon getBackground() {
+    public String getBackground() {
         return background;
     }
 
-    public void setBackground(ImageIcon background) {
+    public void setBackground(String background) {
         this.background = background;
     }
 
