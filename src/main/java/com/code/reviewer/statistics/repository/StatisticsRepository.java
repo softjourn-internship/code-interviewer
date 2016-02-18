@@ -8,8 +8,8 @@ import org.springframework.data.repository.query.Param;
 /**
  * Created by Iwan on 13.02.2016.
  */
-public interface StatisticsRepository extends JpaRepository<Task, Long>{
+public interface StatisticsRepository extends JpaRepository<Task, Long> {
 
     @Query("select count(*) from Task u where u.technology = :technology")
-    int find(@Param("technology") String technology);
+    int findTestByTechnology(@Param("technology") String technology);
 }

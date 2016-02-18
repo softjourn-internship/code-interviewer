@@ -75,3 +75,7 @@ INSERT INTO users_participants(users_id, participants_id)
         VALUES ('title45', 'task4', 'Java', 'Hard', '2016-01-04');
     INSERT INTO tasks(title, task, technology, difficulty, added_date)
         VALUES ('title44', 'task4', 'Java', 'Hard', '2016-01-04');
+    INSERT INTO tasks(title, task, technology, difficulty, added_date)
+        VALUES ('title46', 'task4', 'Java', 'Hard', '2016-01-04');
+    INSERT INTO tasks(title, task, technology, difficulty, added_date)
+        VALUES ('title47', 'task4', 'Java', 'Hard', '2016-01-04');

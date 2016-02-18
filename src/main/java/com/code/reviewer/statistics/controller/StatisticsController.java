@@ -16,12 +16,12 @@ import java.util.Set;
  * Created by Iwan on 14.02.2016.
  */
 @RestController
-@RequestMapping("/charts")
+@RequestMapping("/analytics")
 public class StatisticsController {
 
     @Autowired
-    @Qualifier(value = "StatisticsService")
-    private StatisticsService  statisticsService;
+    @Qualifier(value = "statisticsService")
+    private StatisticsService statisticsService;
 
     @RequestMapping(value = "/task",
             method = RequestMethod.GET,
@@ -31,7 +31,7 @@ public class StatisticsController {
         data.add(statisticsService.getCountTestsForTechnology("PHP"));
         data.add(statisticsService.getCountTestsForTechnology("Java"));
         data.add(statisticsService.getCountTestsForTechnology("C#"));
-        StatisticsForTasks statisticsForTasks= new StatisticsForTasks(data);
+        StatisticsForTasks statisticsForTasks = new StatisticsForTasks(data);
         return statisticsForTasks;
     }
 }

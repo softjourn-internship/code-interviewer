@@ -15,12 +15,12 @@ public class StatisticsForTasks {
 
     }
 
-   public StatisticsForTasks(Set<Integer> data) {
-       this.labels.add("PHP");
-       this.labels.add("Java");
-       this.labels.add("C#");
-       this.data = data;
-   }
+    public StatisticsForTasks(Set<Integer> data) {
+        this.labels.add("PHP");
+        this.labels.add("Java");
+        this.labels.add("C#");
+        this.data = data;
+    }
 
     public Set<String> getLabels() {
         return labels;
@@ -34,7 +34,7 @@ public class StatisticsForTasks {
         this.labels = labels;
     }
 
-    public void setData(Set<Integer> data){
+    public void setData(Set<Integer> data) {
         this.data = data;
     }
 }

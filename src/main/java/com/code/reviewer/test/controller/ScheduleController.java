@@ -4,7 +4,7 @@ import com.code.reviewer.participant.domain.Participant;
 import com.code.reviewer.participant.service.ParticipantService;
 import com.code.reviewer.security.Role;
 import com.code.reviewer.tasks.domain.Task;
-import com.code.reviewer.tasks.service.TaskGeneratorService;
+import com.code.reviewer.tasks.service.TaskService;
 import com.code.reviewer.test.domain.Test;
 import com.code.reviewer.test.service.TestService;
 import com.code.reviewer.user.domain.User;
@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 /**
@@ -35,12 +36,14 @@ public class ScheduleController {
     private ParticipantService participantService;
 
     @Autowired
-    @Qualifier(value = "taskGeneratorService")
-    private TaskGeneratorService taskGeneratorService;
+    @Qualifier(value = "taskService")
+    private TaskService taskService;
 
     @Autowired
     @Qualifier(value = "testService")
     private TestService testService;
+
+    private int start = 0;
 
     @RequestMapping(value = "/schedule",
             method = RequestMethod.POST,
@@ -55,7 +58,13 @@ public class ScheduleController {
         user.setFirstName(participant.getFirstName());
         user.setLastName(participant.getLastName());
         user.setEmail(participant.getEmail());
-        Set<Task> taskList = taskGeneratorService.generateThreeTasksByDifficultyAndTechnology(difficulty, technology);
+        Set<Task> demoTaskList = taskService.findTasksByUser(difficulty, technology);
+        Set<Task> taskList = new LinkedHashSet<Task>();
+        for (Task task : demoTaskList) {
+            if (start == 3) break;
+            taskList.add(task);
+            start++;
+        }
         Test test = new Test(user, participant, taskList);
         testService.save(test);
         return test;

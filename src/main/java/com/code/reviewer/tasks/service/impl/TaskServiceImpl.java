@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
+import java.util.Set;
 
 /**
  * Created by NicholasG on 08.01.2016.
@@ -30,6 +31,11 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public Task findByTaskTitle(String title) {
         return repository.findOneByTitle(title);
+    }
+
+    @Override
+    public Set<Task> findTasksByUser(String difficulty, String technology) {
+        return repository.findTaskByUser(difficulty, technology);
     }
 
     @Override

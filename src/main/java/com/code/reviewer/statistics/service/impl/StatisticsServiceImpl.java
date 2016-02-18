@@ -8,13 +8,13 @@ import org.springframework.stereotype.Component;
 /**
  * Created by Iwan on 13.02.2016.
  */
-@Component("StatisticsService")
-public class StatisticsServiceImpl implements StatisticsService{
+@Component("statisticsService")
+public class StatisticsServiceImpl implements StatisticsService {
     @Autowired
     StatisticsRepository statisticsRepository;
 
     @Override
     public int getCountTestsForTechnology(String technology) {
-        return statisticsRepository.find(technology);
+        return statisticsRepository.findTestByTechnology(technology);
     }
 }
