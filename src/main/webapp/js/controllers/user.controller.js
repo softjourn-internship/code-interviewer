@@ -7,7 +7,7 @@ app.controller('UserController',
         }
 
         UserService.GetById(1, currentUser);
-        
+        $scope.dataTable = 'participants';
         $scope.logOut = function () {
             $location.path('/login');
         };
