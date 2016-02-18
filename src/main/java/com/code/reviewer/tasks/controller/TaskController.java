@@ -2,11 +2,14 @@ package com.code.reviewer.tasks.controller;
 
 import com.code.reviewer.tasks.domain.Task;
 import com.code.reviewer.tasks.service.TaskService;
+import com.code.reviewer.web.util.HeaderUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -16,7 +19,7 @@ import java.util.Collection;
  * Created by Iwan on 01.02.2016.
  */
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/task")
 public class TaskController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TaskController.class);
@@ -25,55 +28,71 @@ public class TaskController {
     @Qualifier(value = "taskService")
     private TaskService taskService;
 
-    @RequestMapping(value = "/tasks",
+    @RequestMapping(
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public Collection<Task> getAllTasks() {
-        return taskService.getAll();
+    public ResponseEntity<Collection<Task>> getAllTasks() {
+        return ResponseEntity.ok(taskService.getAll());
     }
 
-    @RequestMapping(value = "/tasks/{id}",
+    @RequestMapping(value = "/{id}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public Task getTaskById(@PathVariable Long id) {
-        return taskService.findById(id);
-    }
-
-    @RequestMapping(value = "/tasks",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE,
-            consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Task addTask(@RequestBody Task task) {
-        if (taskService.findByTaskTitle(task.getTitle()) != null) {
-            LOGGER.warn("title '" + task.getTitle() + "' already in use!");
-            return null;
+    public ResponseEntity<Task> getTaskById(@PathVariable Long id) {
+        Task task = taskService.findById(id);
+        if (task != null) {
+            LOGGER.warn("task id = '" + task.getId() + "' is not found");
+            return new ResponseEntity<>(task, HttpStatus.OK);
         } else {
-            taskService.save(task);
-            LOGGER.info("Task '" + task.getTitle() + "' has been added");
-            return task;
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
-    @RequestMapping(value = "/tasks",
+    @RequestMapping(
+            method = RequestMethod.POST,
+            produces = MediaType.APPLICATION_JSON_VALUE,
+            consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> addTask(@RequestBody Task task) {
+        if (taskService.findByTaskTitle(task.getTitle()) != null) {
+            LOGGER.warn("title '" + task.getTitle() + "' already in use!");
+            return ResponseEntity.badRequest()
+                    .headers(HeaderUtil.createFailureAlert("task-managament", "taskexists", "Title already in use"))
+                    .body(null);
+        } else {
+            taskService.save(task);
+            LOGGER.info("Task '" + task.getTitle() + "' has been added");
+            return ResponseEntity.ok().build();
+        }
+    }
+
+    @RequestMapping(
             method = RequestMethod.PUT,
             produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Task updateTask(@RequestBody Task task) {
+    public ResponseEntity<Task> updateTask(@RequestBody Task task) {
         taskService.save(task);
-        return task;
+        LOGGER.info("task id = '" + task.getId() + "' has been ");
+        return ResponseEntity.ok()
+                .headers(HeaderUtil.createEntityUpdateAlert("task", task.getTitle()))
+                .body(taskService.findById(task.getId()));
     }
 
-    @RequestMapping(value = "/tasks/{id}",
+    @RequestMapping(value = "/{id}",
             method = RequestMethod.DELETE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public boolean deleteTask(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteTask(@PathVariable Long id) {
         Task task = taskService.findById(id);
         if (task == null) {
             LOGGER.warn("task id = '" + id + "' is not found");
-            return false;
+            return ResponseEntity.badRequest()
+                    .headers(HeaderUtil.createFailureAlert("task-management", "tasknotfound", "Task not found"))
+                    .body(null);
         } else {
             taskService.delete(task);
-            return true;
+            LOGGER.info("task id = '" + id + "' has been deleted");
+            return ResponseEntity.ok()
+                    .headers(HeaderUtil.createAlert("task-management.deleted", id.toString()))
+                    .build();
         }
     }
 }
