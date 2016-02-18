@@ -3,7 +3,7 @@ app.controller('TableCtrl',
     function ($scope, $location, $http, ParticipantService, UserService) {
         var success = function (response) {
             $scope.data = response.data;
-            
+
             // Pagination
             $scope.viewby = 10;
             $scope.totalItems = $scope.data.length;

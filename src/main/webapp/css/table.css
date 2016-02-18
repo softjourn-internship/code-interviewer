@@ -8,7 +8,7 @@
 	cursor: pointer;
 	text-align: left;
 	padding: 10px;
-	color: #222; 
+	color: #222;
 	background-repeat: no-repeat;
 	background-position: 80% 50%;
 	background-size: 10px;
@@ -105,5 +105,13 @@
 .no-search-results span{
   margin-left: 25px;
   font-size: 40px;
-  color: silver;  
+  color: silver;
+}
+
+.table-task{
+	margin: 30px;
+}
+
+.table-task td{
+	padding-right: 10px;
 }
