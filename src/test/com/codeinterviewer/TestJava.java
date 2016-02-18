@@ -1,6 +1,7 @@
 package com.codeinterviewer;
 
-import com.code.reviewer.executing.Technology;
+import com.code.reviewer.executing.AbstractTechnology;
+import com.code.reviewer.executing.EnumTechnology;
 import com.code.reviewer.executing.TechnologyFactory;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -31,7 +32,7 @@ public class TestJava {
 
     @Test
     public void test() throws Exception {
-        Technology java = new TechnologyFactory().getTechnology("java");
+        AbstractTechnology java = new TechnologyFactory().getTechnology(EnumTechnology.JAVA);
         java.execute();
     }
 
