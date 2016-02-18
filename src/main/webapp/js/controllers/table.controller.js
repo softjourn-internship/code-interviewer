@@ -54,7 +54,8 @@ app.controller('TableCtrl',
 
         }
 
-        ParticipantService.GetAll(success);
+        if ($scope.dataTable === 'participants') ParticipantService.GetAll(success);
+        if ($scope.dataTable === 'users') UserService.GetAll(success);
 
         var participant = {
           "firstName": '$scope.firstName',

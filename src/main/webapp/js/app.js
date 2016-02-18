@@ -21,6 +21,15 @@ app
                 }
             }
         })
+        .state('admin.users', {
+            url: '/users',
+            templateUrl: 'template/admin.html',
+            views: {
+                '': {
+                    templateUrl: 'template/dashboard.html'
+                }
+            }
+        })
         .state('admin.charts', {
             url: '/charts',
             templateUrl: 'template/charts.html',
