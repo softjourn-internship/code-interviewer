@@ -18,12 +18,6 @@ app.controller("MainCtrl", function ($scope) {
 		else {sidebar.css('left', 0); sidebarVisible = false;}
 	}
 
-	$scope.toggle = function(toggle) {
-            var frameContainar = angular.element(document.querySelector('.frame-containar'));
-            if (toggle) {frameContainar.css('display', 'block'); toggle = false;}        
-            else {frameContainar.css('display', 'none');}
-        }
 
-    $scope.toggle(false);
 
 });
