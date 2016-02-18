@@ -22,7 +22,7 @@
  		<thead ng-if="lengthClientsPA.length !== 0">
 			<th id="emtry"></th>
 			<th ng-class = "{'sort-up':isSortUp('firstName'), 'sort-down':isSortDown('firstName')}" ng-click="sort('firstName')" translate>NAME</th>
-			<th ng-class = "{'sort-up':isSortUp('email'), 'sort-down':isSortDown('email')}" ng-click="sort('email')">Email</th>
+			<th ng-class = "{'sort-up':isSortUp('email'), 'sort-down':isSortDown('email')}" ng-click="sort('email')" translate>EMAIL_ADRESS</th>
 			<th ng-class = "{'sort-up':isSortUp('role'), 'sort-down':isSortDown('role')}" ng-click="sort('role')" ng-if="dataTable === 'users'" style="padding-right:35px" translate>ROLE</th>
 			<th ng-class = "{'sort-up':isSortUp('testSent'), 'sort-down':isSortDown('testSent')}" ng-click="sort('testSent')" translate>SENT</th>
 			<th ng-class = "{'sort-up':isSortUp('testReturn'), 'sort-down':isSortDown('testReturn')}" ng-click="sort('testReturn')" translate>RETURNED</th>
@@ -50,6 +50,6 @@
 		<uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" class="pagination-sm" items-per-page="itemsPerPage"></uib-pagination>
 		<br>
 	</span>
-	<span class="right"><button id="addParticipants" class="btn succes" ng-click="addParticipant = true" translate>NEW</button></span>
+	<span class="right"><button id="addParticipants" class="btn succes" ng-click="addParticipant = true">NEW</button></span>
 	</div>
 </div>
