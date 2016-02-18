@@ -1,5 +1,4 @@
 app.controller('TasksCtrl',['$scope','$http','TasksService','$rootScope',function ($scope,$rootScope,TasksService,$http){
-      $scope.addParticipant = true;
       $scope.Visible=true;
       $scope.visibleMessageDel=false;
       $scope.countTaskT;
@@ -7,7 +6,24 @@ app.controller('TasksCtrl',['$scope','$http','TasksService','$rootScope',functio
 
       var success = function (response) {
           $scope.allTasks = response.data;
-          console.log($scope.allTasks);
+
+          $scope.viewby = 5;
+          $scope.totalItems = response.data.length;
+          $scope.currentPage = 1;
+          $scope.itemsPerPage = $scope.viewby;
+          $scope.maxSize = 5;
+          $scope.setPage = function (pageNo) {
+              $scope.currentPage = pageNo;
+          };
+
+          $scope.pageChanged = function() {
+              console.log('Page changed to: ' + $scope.currentPage);
+          };
+
+          $scope.setItemsPerPage = function(num) {
+              $scope.itemsPerPage = num;
+              $scope.currentPage = 1; //reset to first paghe
+          }
         };
 
       TasksService.GetAll(success);
@@ -84,16 +100,16 @@ app.controller('TasksCtrl',['$scope','$http','TasksService','$rootScope',functio
           }
         };
 
-    for (var q=1; q<32;q++){
-          if(q>0 && q<10){
-            $scope.days.push("0"+q);
-          }
-          else{
-            $scope.days.push(q);
-          }
-    };
+        //options for ckeditor
+        $scope.options = {
+          language: 'en',
+          allowedContent: true,
+          entities: false
+        };
+
         //sort
     $scope.sortType= '';
     $scope.sortReverse  = true;
+
 
   }]);

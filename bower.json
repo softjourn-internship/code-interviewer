@@ -22,7 +22,9 @@
     "angular-translate-loader-static-files":"2.9.x",
     "bootstrap":"3.3.x",
     "Chart.js":"1.0.x",
-    "angular-chart.js":"0.8.x"
+    "angular-chart.js":"0.8.x",
+    "ckeditor": "4",
+    "angular-ckeditor":"1.*"
   }
 }
 

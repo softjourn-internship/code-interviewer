@@ -65,7 +65,8 @@
 						</tr>
 					</table>
 			<div style="margin:20px; position:absolute; z-index:2011; width:95%; height:*%; ">
-				<!--<div id="build-editor" ng-model="TaskC" ng-change="changeButton()"></div>-->
+				<div ckeditor="options" ng-model="TaskC" ng-change="changeButton()"></div>
+
 			</div>
 			<button class="succes"; style="padding: 0px 7px 0px 7px; bottom:3%; right:3%; position:absolute"  ng-disabled="!anableButton" ng-click="Visible=!Visible;changeButtonBack();modityTask(buttonTbox)">{{buttonTbox}}</button>
 			</div>
