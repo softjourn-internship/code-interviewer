@@ -1,9 +1,9 @@
 'use strict';
 
-var app = angular.module('app', ['ngRoute','ngResource', 'ngCookies', 'ngAnimate', 'ui.router', 'ui.bootstrap', 'chart.js']);
+var app = angular.module('app', ['ngRoute','ngResource', 'ngCookies', 'ngAnimate', 'ui.router', 'ui.bootstrap', 'chart.js','pascalprecht.translate']);
 var currentUser;
 app
-  .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+  .config(['$stateProvider', '$urlRouterProvider','$translateProvider', function ($stateProvider, $urlRouterProvider,$translateProvider,$http) {
 
   	$urlRouterProvider.otherwise('/login');
 
@@ -51,7 +51,7 @@ app
                 }
             }
         })
-    	.state('login', {
+    	   .state('login', {
             url: '/login',
             templateUrl: 'template/login.html',
             controller: 'LoginController'
@@ -61,6 +61,11 @@ app
             templateUrl: 'template/workspace.html',
             controller: 'DataCtrl'
         });
+
+        $translateProvider.useStaticFilesLoader({
+            prefix: '/translate/',
+            suffix: '.json'
+          });
   }
 ])
   .run(['$rootScope', '$location', '$cookieStore', '$http',
