@@ -1,0 +1,74 @@
+<pop-up-dialog show="addParticipant" type="data"></pop-up-dialog>
+<div class="row">
+<div class="col-md-9 col-sm-9 main-padding">
+
+	<div class="panel-admin">
+	<div class="title"><span class="left" ng-if="lengthClientsPA.length !== 0" translate>PROGRESS</span>
+	<div class="main" style="padding:25px">
+		<canvas id="line" class="chart chart-line" chart-data="line.data"
+		  chart-labels="line.labels" chart-legend="true" chart-series="line.series">
+		</canvas>
+	</div>
+	</div>
+	</div>
+</div>
+
+<div class="col-md-3 col-sm-3 main-padding">
+	<div class="panel-admin">
+	<div class="title"><span class="left" translate>FILTER</span></div>
+	<div class="main table-responsive">
+		<div class="filter">
+		<input type="text" placeholder="Name" onblur="this.placeholder='Name'" onfocus="this.placeholder=''" ng-model="searchNameA" ng-change="changeAction()"><br>
+				<input type="text" placeholder="Email adress" onblur="this.placeholder='Email adress'" onfocus="this.placeholder=''" ng-model="searchEmailA" ng-change="changeAction()"><br>
+				<select class="form-control" ng-model="selectTaken">
+					<option value="" translate>ALL</option>
+					<option value="Done" translate>DONE</option>
+					<option value="inProcess"translate>IN_PROCESS</option>
+					<option value="failed" translate>FAILED</option>
+				</select>
+		</div>
+	</div>
+		<div class="tool"></div>
+	</div>
+	<div class="panel-admin chart" ng-controller="ChartsCtrl">
+	<div class="title"><span class="left" translate>TECHNOLOGY</span></div>
+	<div class="main">
+		<canvas id="doughnut" class="chart chart-doughnut"
+		  chart-data="doughnut.data" chart-labels="doughnut.labels">
+		</canvas>
+	</div>
+	<div class="tool"></div>
+	</div>
+	</div>
+</div>
+
+</div>
+
+<div class="row">
+<div class="col-md-5 col-sm-5 main-padding">
+
+	<div class="panel-admin" style="margin-top:-20px">
+	<div class="title"><span class="left" ng-if="lengthClientsPA.length !== 0" translate>PROGRESS</span>
+	<div class="main" style="padding:25px">
+		<canvas id="radar" class="chart chart-radar"
+		  chart-data="line.data" chart-labels="line.labels">
+		</canvas>
+	</div>
+	</div>
+	</div>
+</div>
+
+<div class="col-md-7 col-sm-7 main-padding" style="margin-top:-40px">
+	<div class="panel-admin chart" ng-controller="ChartsCtrl">
+	<div class="title"><span class="left" translate>TECHNOLOGY</span></div>
+	<div class="main" style="padding:25px">
+		<canvas id="bar" class="chart chart-bar"
+  			chart-data="line.data" chart-labels="line.labels" chart-series="line.series">
+  		</canvas>
+	</div>
+	<div class="tool"></div>
+	</div>
+	</div>
+</div>
+
+</div>

@@ -1,50 +1,50 @@
 <pop-up-dialog show="addParticipant" type="data"></pop-up-dialog>
 <div class="row">
-<div class="col-md-9 col-sm-9 main-padding">
-	<div class="panel-admin">
-	<div class="title"><span class="left">Participants</span></div>
-	<div class="main table-responsive">
-	<div class="no-search-results" ng-if="lengthClientsPA.length === 0">
-		<img src="dist/images/oops.svg">
-		<span>Oops, no search results</span>
-	</div>
-		<table-main data="'participants'"></table-main>
-	</div>
-	<div class="tool">
-	<span class="left">
-		<uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" class="pagination-sm" items-per-page="itemsPerPage"></uib-pagination>
-		<br>
-	</span>
-	<span class="right"><button id="addParticipants" class="btn succes" ng-click="addParticipant = true">NEW</button></span>
-	</div>
-	</div>
-</div>
-
-<div class="col-md-3 col-sm-3 main-padding">
-	<div class="panel-admin">
-	<div class="title"><span class="left" translate>FILTER</span></div>
-	<div class="main table-responsive">
-		<div class="filter">
-		<input type="text" placeholder="Name" onblur="this.placeholder='Name'" onfocus="this.placeholder=''" ng-model="searchNameA" ng-change="changeAction()"><br>
-				<input type="text" placeholder="Email adress" onblur="this.placeholder='Email adress'" onfocus="this.placeholder=''" ng-model="searchEmailA" ng-change="changeAction()"><br>
-				<select class="form-control" ng-model="selectTaken">
-					<option value="" translate>ALL</option>
-					<option value="Done" translate>DONE</option>
-					<option value="inProcess" translate>IN_PROCESS</option>
-					<option value="failed" translate>FAILED</option>
-				</select>
+	<div class="col-md-9 col-sm-9 main-padding">
+		<div class="panel-admin">
+			<div class="title"><span class="left">Participants</span></div>
+			<div class="main table-responsive">
+				<div class="no-search-results" ng-if="lengthClientsPA.length === 0">
+					<img src="dist/images/oops.svg">
+					<span>Oops, no search results</span>
+				</div>
+				<table-main data="'participants'"></table-main>
+			</div>
+			<div class="tool">
+				<span class="left">
+					<uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" class="pagination-sm" items-per-page="itemsPerPage"></uib-pagination>
+					<br>
+				</span>
+				<span class="right"><button id="addParticipants" class="btn succes" ng-click="addParticipant = true">NEW</button></span>
+			</div>
 		</div>
 	</div>
+
+	<div class="col-md-3 col-sm-3 main-padding">
+		<div class="panel-admin">
+			<div class="title"><span class="left" translate>FILTER</span></div>
+			<div class="main table-responsive">
+				<div class="filter">
+					<input type="text" placeholder="Name" onblur="this.placeholder='Name'" onfocus="this.placeholder=''" ng-model="searchNameA" ng-change="changeAction()"><br>
+					<input type="text" placeholder="Email adress" onblur="this.placeholder='Email adress'" onfocus="this.placeholder=''" ng-model="searchEmailA" ng-change="changeAction()"><br>
+					<select class="form-control" ng-model="selectTaken">
+						<option value="" translate>ALL</option>
+						<option value="Done" translate>DONE</option>
+						<option value="inProcess" translate>IN_PROCESS</option>
+						<option value="failed" translate>FAILED</option>
+					</select>
+				</div>
+			</div>
+			<div class="tool"></div>
+		</div>
+		<div class="panel-admin chart" ng-controller="ChartsCtrl">
+			<div class="title"><span class="left"><a href="#/charts" translate>ANALYTICS_DASHBOARD</a></span></div>
+			<div class="main">
+				<canvas id="doughnut" class="chart chart-doughnut"
+				chart-data="doughnut.data" chart-labels="doughnut.labels">
+			</canvas>
+		</div>
 		<div class="tool"></div>
-	</div>
-	<div class="panel-admin chart" ng-controller="ChartsCtrl">
-	<div class="title"><span class="left"><a href="#/charts" translate>ANALYTICS_DASHBOARD</a></span></div>
-	<div class="main">
-		<canvas id="doughnut" class="chart chart-doughnut"
-		  chart-data="doughnut.data" chart-labels="doughnut.labels">
-		</canvas>
-	</div>
-	<div class="tool"></div>
 	</div>
 </div>
 </div>
