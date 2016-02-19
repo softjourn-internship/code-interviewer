@@ -15,7 +15,7 @@ app.controller('TableCtrl',
                 $scope.currentPage = pageNo;
             };
 
-            $scope.pageChanged = function() {
+            $.pageChanged = function() {
                 console.log('Page changed to: ' + $scope.currentPage);
             };
 

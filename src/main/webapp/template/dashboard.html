@@ -1,7 +1,23 @@
 <pop-up-dialog show="addParticipant" type="data"></pop-up-dialog>
 <div class="row">
 <div class="col-md-9 col-sm-9 main-padding">
-	<table-main></table-main>
+	<div class="panel-admin">
+	<div class="title"><span class="left">Participants</span></div>
+	<div class="main table-responsive">
+	<div class="no-search-results" ng-if="lengthClientsPA.length === 0">
+		<img src="dist/images/oops.svg">
+		<span>Oops, no search results</span>
+	</div>
+		<table-main data="'participants'"></table-main>
+	</div>
+	<div class="tool">
+	<span class="left">
+		<uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" class="pagination-sm" items-per-page="itemsPerPage"></uib-pagination>
+		<br>
+	</span>
+	<span class="right"><button id="addParticipants" class="btn succes" ng-click="addParticipant = true">NEW</button></span>
+	</div>
+	</div>
 </div>
 
 <div class="col-md-3 col-sm-3 main-padding">
