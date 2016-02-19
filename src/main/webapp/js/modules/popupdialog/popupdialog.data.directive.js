@@ -1,7 +1,7 @@
 app.directive('popUpDialogData', function() {
     return {
         restrict: 'EA',
-        templateUrl: 'template/popupdialog.data.html',
+        templateUrl: 'js/modules/popupdialog/popupdialog.data.template.html',
         scope: false,
         controller: 'PopUpDialogCtrl'
     }

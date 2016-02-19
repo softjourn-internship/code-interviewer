@@ -46,7 +46,7 @@ app
             templateUrl: 'template/charts.html',
             views: {
                 '': {
-                    templateUrl: 'template/profile.html',
+                    templateUrl: 'js/modules/profile/profile.template.html',
                     controller: 'ProfileCtrl'
                 }
             }
@@ -63,7 +63,7 @@ app
         })
     	   .state('login', {
             url: '/login',
-            templateUrl: 'template/login.html',
+            templateUrl: 'js/modules/login/login.template.html',
             controller: 'LoginController'
         })
         .state('workspace', {
@@ -73,7 +73,7 @@ app
         });
 
         $translateProvider.useStaticFilesLoader({
-            prefix: '/translate/',
+            prefix: '/lang/',
             suffix: '.json'
           });
   }
