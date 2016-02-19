@@ -24,32 +24,20 @@
   margin-top: 70px;
 }
 
-.frame .head{
+.head{
   width: 100%;
   height: 50px;
   background: #333;
 }
 
-.frame .head img{
+.head img{
   width: 30px;
   margin: 10px;
 }
 
-.frame .head button{
-  background: transparent;
-  border: none;
-  color: #888;
-  margin: 15px;
-  font-size: 13px;
-}
-
-.frame .head button:hover{
+.head .title{
   color: #fff;
-}
-
-.frame .head span.title{
-  color: #fff;
-  margin: 15px;
+  margin-top: 14px;
   margin-left: 0;
   font-size: 13px;
 }
@@ -60,27 +48,23 @@
   min-height: 200px;
 }
 
-.frame .tool{
-  margin-top: 0;
-  width: 100%;
-  height: 50px;
-}
-.frame .main table{margin-top: 10px;}
-.frame .main table, .frame .main table input{
+
+.frame table{margin-top: 10px;}
+.frame table, .frame .main table input{
   width: 100%;
 }
 
-.frame .main table tr td{
+.frame table tr td{
   padding: 5px;
 }
 
-.frame .main table tr td:nth-child(1){
+.frame table tr td:nth-child(1){
   width: 100px;
   padding-left: 20px;
   font-size: 13px;
 }
 
-.frame .main table tr td:nth-child(2){
+.frame table tr td:nth-child(2){
   padding-right: 15px;
 }
 

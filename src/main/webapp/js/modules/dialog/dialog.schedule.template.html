@@ -1,5 +1,9 @@
+<div class="head">
+	<span class="left"><img src="/dist/images/profiles/error.png"></span>
+	<span class="left title">Schedule</span>
+</div>
 <form method="POST">
-	<table>
+	<table class="dialog">
 		<tr>
 			<td translate>LANGUAGE</td>
 			<td><select class="form-control" ng-model="specialitySel" ng-options="o as o for o in speciality.options"></select></td>
@@ -8,8 +12,8 @@
 			<td translate>DIFFICULTY</td>
 			<td class="btn-group">
 				<label class="radio-custom" ng-model="radioModel" uib-btn-radio="'Hard'" uncheckable translate>HARD</label>
-		        <label class="radio-custom" ng-model="radioModel" uib-btn-radio="'Middle'" uncheckable>Middle</label>
-		        <label class="radio-custom" ng-model="radioModel" uib-btn-radio="'Easy'" uib-uncheckable="uncheckable" translate>Eazy</label>
+				<label class="radio-custom" ng-model="radioModel" uib-btn-radio="'Middle'" uncheckable>Middle</label>
+				<label class="radio-custom" ng-model="radioModel" uib-btn-radio="'Easy'" uib-uncheckable="uncheckable" translate>Eazy</label>
 			</td>
 		</tr>
 		<tr>

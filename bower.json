@@ -10,8 +10,6 @@
     "angular-mocks": "~1.4.x",
     "angular-bootstrap": "~1.1.x",
     "angular-cookies": "~1.4.x",
-    "jquery": "~2.1.1",
-    "jquery-ui":"1.x",
     "angular-route": "~1.4.x",
     "angular-ui-router":"0.2.x",
     "angular-resource": "1.4.x",
@@ -24,7 +22,8 @@
     "Chart.js":"1.0.x",
     "angular-chart.js":"0.8.x",
     "ckeditor": "4",
-    "angular-ckeditor":"1.*"
+    "angular-ckeditor":"1.*",
+    "ng-dialog":"0.5.7"
   }
 }
 

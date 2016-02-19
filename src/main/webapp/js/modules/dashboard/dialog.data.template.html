@@ -1,5 +1,9 @@
+<div class="head">
+	<span class="left"><img src="/dist/images/profiles/error.png"></span>
+	<span class="left title">Add participant</span>
+</div>
 <form method="POST">
-	<table>
+	<table class="dialog">
 		<tr ng-if="dataTable === 'users'">
 			<td translate>USERNAME</td>
 			<td><input id="userName" type="text" ng-model="userName" size="30"></td>
@@ -37,4 +41,7 @@
 			<td><input id="email" type="text" ng-model="email"></td>
 		</tr>
 	</table>
+	<div class="tool">
+		<span class="right"><button class="btn succes" ng-click="newParticipant()">Add</button></span>
+	</div>
 </form>
