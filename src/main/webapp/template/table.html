@@ -1,55 +1,28 @@
-<div class="panel-admin">
-	<div class="title"><span class="left" ng-if="lengthClientsPA.length !== 0">{{lengthClientsPA.length}} {{infoTable.title}}</span>
-	<span class="right">
-		<div>
-		<select class="form-control" ng-model="viewby" ng-change="setItemsPerPage(viewby)">
-			<option>3</option>
-			<option>5</option>
-			<option>10</option>
-			<option>20</option>
-			<option>30</option>
-			<option>40</option>
-			<option>50</option>
-		</select>
-	    </div>
-	</span></div>
-	<div class="main table-responsive">
-	<div class="no-search-results" ng-if="lengthClientsPA.length === 0">
-		<img src="dist/images/oops.svg">
-		<span>Oops, no search results</span>
-	</div>
- 	<table class="table-admin">
- 		<thead ng-if="lengthClientsPA.length !== 0">
-			<th id="emtry"></th>
-			<th ng-class = "{'sort-up':isSortUp('firstName'), 'sort-down':isSortDown('firstName')}" ng-click="sort('firstName')" translate>NAME</th>
-			<th ng-class = "{'sort-up':isSortUp('email'), 'sort-down':isSortDown('email')}" ng-click="sort('email')" translate>EMAIL_ADRESS</th>
-			<th ng-class = "{'sort-up':isSortUp('role'), 'sort-down':isSortDown('role')}" ng-click="sort('role')" ng-if="dataTable === 'users'" style="padding-right:35px" translate>ROLE</th>
-			<th ng-class = "{'sort-up':isSortUp('testSent'), 'sort-down':isSortDown('testSent')}" ng-click="sort('testSent')" translate>SENT</th>
-			<th ng-class = "{'sort-up':isSortUp('testReturn'), 'sort-down':isSortDown('testReturn')}" ng-click="sort('testReturn')" translate>RETURNED</th>
-			<th ng-class = "{'sort-up':isSortUp('taken'), 'sort-down':isSortDown('taken')}" ng-click="sort('taken')" translate>TAKEN</th>
-		</thead>
- 		<tbody>
-	 	  <tr ng-repeat="row in lengthClientsPA = ((data.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))) |
-	 	  			filter:{ firstName:searchNameA, taken:selectTaken, email:searchEmailA, role:selectRole} |
-			orderBy: sortField:reverse)">
-	      	<td class="image">
-				<a href="#/profile/{{row.id}}">
-				<img ng-src="images/profiles/{{row.image}}" onerror="this.src='dist/images/profiles/error.png';">
-			</a></td>
-	        <td><a href="#/profile/{{row.id}}">{{row.firstName}} {{row.lastName}}</a></td>
-	        <td>{{row.email}}</td>
-	        <td>{{row.sent}}</td>
-			<td>{{row.returned}}</td>
-			<td class="td-status"><img ng-src="dist/images/{{row.taken}}.png" onerror="this.src='dist/images/error.png';"></td>
-	      </tr>
-      	</tbody>
-	</table>
-	</div>
-	<div class="tool">
-	<span class="left">
-		<uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" class="pagination-sm" items-per-page="itemsPerPage"></uib-pagination>
-		<br>
-	</span>
-	<span class="right"><button id="addParticipants" class="btn succes" ng-click="addParticipant = true">NEW</button></span>
-	</div>
-</div>
+<table class="table-admin">
+	<thead ng-if="lengthClientsPA.length !== 0">
+	<th id="emtry"></th>
+	<th ng-class = "{'sort-up':isSortUp('firstName'), 'sort-down':isSortDown('firstName')}" ng-click="sort('firstName')" translate>NAME</th>
+	<th ng-class = "{'sort-up':isSortUp('email'), 'sort-down':isSortDown('email')}" ng-click="sort('email')" translate>EMAIL_ADRESS</th>
+	<th ng-class = "{'sort-up':isSortUp('role'), 'sort-down':isSortDown('role')}" ng-click="sort('role')" ng-if="dataTable === 'users'" style="padding-right:35px" translate>ROLE</th>
+	<th ng-class = "{'sort-up':isSortUp('taken'), 'sort-down':isSortDown('taken')}" ng-click="sort('taken')" translate>TECHNOLOGY</th>
+	<th ng-class = "{'sort-up':isSortUp('taken'), 'sort-down':isSortDown('taken')}" ng-click="sort('taken')" translate>TAKEN</th>
+</thead>
+	<tbody>
+	 <tr ng-repeat="row in lengthClientsPA = ((data.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))) |
+	  			filter:{ firstName:searchNameA, taken:selectTaken, email:searchEmailA, role:selectRole} |
+	orderBy: sortField:reverse)">
+  	<td class="image">
+		<a href="#/profile/{{row.id}}">
+		<img ng-src="images/profiles/{{row.image}}" onerror="this.src='dist/images/profiles/error.png';">
+	</a></td>
+    <td><a href="#/profile/{{row.id}}">{{row.firstName}} {{row.lastName}}</a></td>
+    <td>{{row.email}}</td>
+    <td></td>
+	<td class="td-status">
+		<img ng-if="row.taken === 'inProcess'" uib-tooltip="Send {{row.sent}}" ng-src="dist/images/{{row.taken}}.png" onerror="this.src='dist/images/error.png';">
+		<img ng-if="row.taken === 'done'" uib-tooltip="Returned {{row.returned}}" ng-src="dist/images/{{row.taken}}.png" onerror="this.src='dist/images/error.png';">
+		<img ng-if="row.taken == 'failed'" uib-tooltip="Returned {{row.returned}}" ng-src="dist/images/{{row.taken}}.png" onerror="this.src='dist/images/error.png';">
+	</td>
+  </tr>
+	</tbody>
+</table>
