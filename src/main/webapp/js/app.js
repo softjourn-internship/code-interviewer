@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('app', ['ngRoute','ngResource', 'ngCookies', 'ui.router', 'ui.bootstrap', 'chart.js','pascalprecht.translate','ckeditor']);
+var app = angular.module('app', ['ngRoute','ngResource', 'ngCookies', 'ngDialog','ui.router', 'ui.bootstrap', 'chart.js','pascalprecht.translate','ckeditor']);
 
 var currentUser;
 app
@@ -18,7 +18,8 @@ app
             templateUrl: 'template/admin.html',
             views: {
                 '': {
-                    templateUrl: 'template/dashboard.html'
+                    templateUrl: 'template/dashboard.html',
+                    controller: 'DashboardCtrl'
                 }
             }
         })
