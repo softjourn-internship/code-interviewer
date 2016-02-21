@@ -1,8 +1,4 @@
-		<div style="margin-left:1%; margin-top:10px;" class="col-lg-7 col-lg-offset-2 col-md-6 col-md-offset-2 col-sm-12 col-xs-12">
-			<table-with-tasks></table-with-tasks>
-		</div>
-
-		<div style="margin-top:10px;" class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
+		<div style="margin-left:1%; margin-top:10px;" class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
 			<div class="panel-admin">
 				<div class="title"><span class="left" translate>FILTER</span></div>
 				<div class="main table-responsive">
@@ -26,48 +22,6 @@
 			</div>
 		</div>
 
-		<div ng-show="visibleMessageDel">
-			<div class="frame-containar"></div>
-			<div class="frameForResponse">
-				<div class="head" style="text-align:center;margin:10px 0px 15px 0px;">
-					<span translate>RESPONSE_BEFOR_DELETE</span><span> "{{titleTaskDel}}"?</span>
-				</div>
-				<button class="btn" id="del" style="float:left; " ng-click="deletedTask();" translate>DELETE</button>
-				<button class="btn" style="float:right; margin-right:10px;"  ng-click="hideFrame()" translate>CANSEL</button>
-			</div>
+		<div style="margin-left:1%; margin-top:10px;" class="col-lg-7 col-lg-offset-2 col-md-6 col-md-offset-2 col-sm-12 col-xs-12">
+			<table-with-tasks></table-with-tasks>
 		</div>
-		<div ng-show="!Visible">
-			<div class="frame-containar"></div>
-			<div class="frameForTask">
-				<button class="btn" style="float:right" ng-click="changeFrame('empty');changeButtonBack();" translate>CANSEL</button>
-					<table class="table-task">
-						<tr>
-							<td class="Ttitle" translate>TITLE_TASK</td>
-							<td><input type="text" ng-model="titleTaskC" required ng-change="changeButton()"></td>
-						</tr>
-						<tr>
-							<td class="Ttitle" translate>DIFFICULTY</td>
-							<td><select class="form-control" ng-model="diffTaskC" name="difficalty" required ng-change="changeButton()">
-								<option value="Eazy">Eazy</option>
-								<option value="Middle">Middle</option>
-								<option value="Hard">Hard</option>
-							</select></td>
-						</tr>
-						<tr>
-							<td class="Ttitle" translate>TECHNOLOGY</td>
-							<td>
-							<select class="form-control" ng-model="techTaskC" name="technology" required ng-change="changeButton()">
-								<option value="Java">Java</option>
-								<option value="PHP">PHP</option>
-								<option value="C#">C#</option>
-							</select>
-							</td>
-						</tr>
-					</table>
-			<div style="margin:20px; position:absolute; z-index:2011; width:95%; height:*%; ">
-				<div ckeditor="options" ng-model="TaskC" ng-change="changeButton()"></div>
-
-			</div>
-			<button class="succes"; style="padding: 0px 7px 0px 7px; bottom:3%; right:3%; position:absolute"  ng-disabled="!anableButton" ng-click="Visible=!Visible;changeButtonBack();modityTask(buttonTbox)">{{buttonTbox}}</button>
-			</div>
-	</div>

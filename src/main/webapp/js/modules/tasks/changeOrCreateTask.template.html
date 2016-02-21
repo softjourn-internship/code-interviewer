@@ -1,0 +1,34 @@
+  <div id="frameForTask">
+    <div class="dialog">
+      <table class="table-task">
+        <tr>
+          <td class="Ttitle" translate>TITLE_TASK</td>
+          <td><input type="text" ng-model="titleTask" required ng-change="changeButton()"></td>
+        </tr>
+        <tr>
+          <td class="Ttitle" translate>DIFFICULTY</td>
+          <td><select class="form-control" ng-model="diffTask" name="difficalty" required ng-change="changeButton()">
+            <option value="Eazy">Eazy</option>
+            <option value="Middle">Middle</option>
+            <option value="Hard">Hard</option>
+          </select></td>
+        </tr>
+        <tr>
+          <td class="Ttitle" translate>TECHNOLOGY</td>
+          <td>
+          <select class="form-control" ng-model="techTask" name="technology" required ng-change="changeButton()">
+            <option value="Java">Java</option>
+            <option value="PHP">PHP</option>
+            <option value="C#">C#</option>
+          </select>
+          </td>
+        </tr>
+      </table>
+    <div/>
+  <div class="dialog" >
+    <div ckeditor="options" ng-model="Task" ng-change="changeButton()"></div>
+  </div>
+  <div class="tool">
+  <button class="btn succes" ng-disabled="" ng-click="saveTask()">vvv</button>
+  <div/>
+  </div>

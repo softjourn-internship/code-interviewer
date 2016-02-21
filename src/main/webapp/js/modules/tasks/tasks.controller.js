@@ -1,4 +1,4 @@
-app.controller('TasksCtrl',['$scope','$http','TasksService','$rootScope',function ($scope,$rootScope,TasksService,$http){
+app.controller('TasksCtrl',['$scope','$http','TasksService','$rootScope','ngDialog','BufferService',function ($scope,$rootScope,TasksService,$http,ngDialog,BufferService){
       $scope.Visible=true;
       $scope.visibleMessageDel=false;
       $scope.countTaskT;
@@ -6,98 +6,56 @@ app.controller('TasksCtrl',['$scope','$http','TasksService','$rootScope',functio
 
       var success = function (response) {
           $scope.allTasks = response.data;
-
-          $scope.viewby = 5;
           $scope.totalItems = response.data.length;
           $scope.currentPage = 1;
-          $scope.itemsPerPage = $scope.viewby;
+          $scope.itemsPerPage = 10;
           $scope.maxSize = 5;
-          $scope.setPage = function (pageNo) {
-              $scope.currentPage = pageNo;
-          };
-
-          $scope.pageChanged = function() {
-              console.log('Page changed to: ' + $scope.currentPage);
-          };
-
-          $scope.setItemsPerPage = function(num) {
-              $scope.itemsPerPage = num;
-              $scope.currentPage = 1; //reset to first paghe
-          }
         };
 
       TasksService.GetAll(success);
 
-      $scope.buttonTbox;
-      $scope.CreateOrChangeTask=function(buttonTitle) {
-        $scope.buttonTbox=buttonTitle;
-      }
+        $scope.clickToTryDelTask = function (taskId) {
+          BufferService.setTitleTaskDel($scope.allTasks,taskId);
+          ngDialog.open({
+            template: 'js/modules/tasks/responseBeforDelete.template.html',
+            controller: ['$scope', 'BufferService', function($scope, BufferService) {
+              $scope.titleTaskDel=BufferService.getTitleTaskDel();
+              $scope.deletedTask=function(){
+                TasksService.Delete(BufferService.getTaskIdDeleted());
+                $scope.closeThisDialog('');
+              }
+            }]
+          });
+        };
 
-      $scope.changeButton=function(){
-        $scope.anableButton=true;
-      }
-
-      $scope.changeButtonBack=function(){
-        $scope.anableButton=false;
-      }
-
-      $scope.hideFrame=function() {
-        $scope.visibleMessageDel=!$scope.visibleMessageDel;
-      }
-
-      $scope.delTask=function(taskId){
-          $scope.taskIdDeleted=taskId;
-          $scope.visibleMessageDel=true;
-          for(var i=0;i<$scope.allTasks.length;i++){
-          var obj = $scope.allTasks[i];
-          if(taskId==obj.id){
-            $scope.titleTaskDel=obj.title;
-            $scope.numbetTaskDel=i;
-            break;
-          }
-        }
-      }
-
-      $scope.deletedTask=function(){
-        $scope.visibleMessageDel=!$scope.visibleMessageDel;
-        TasksService.Delete($scope.taskIdDeleted);
-        $scope.allTasks.splice($scope.numbetTaskDel,1);
-      }
-
-      $scope.changeFrame=function(taskId) {
-        if(taskId!='empty'){
-          for(var i=0;i<$scope.allTasks.length;i++){
-          var obj = $scope.allTasks[i];
-          if(taskId==obj.id){
-            $scope.titleTaskC=obj.title;
-            $scope.diffTaskC=obj.difficulty;
-            $scope.techTaskC=obj.technology;
-            $scope.TaskC=obj.task;
-            }
-          }
-        }
-        else{
-          $scope.titleTaskC='';
-          $scope.diffTaskC='';
-          $scope.techTaskC='';
-          $scope.TaskC='';
-        }
-          $scope.Visible=!$scope.Visible;
-        }
-        $scope.dateEndFilter="";
-        $scope.days=[];
-    $scope.modityTask=function(buttonTbox){
-        var taskForSend=[];
-        taskForSend.title=$scope.titleTaskC;
-        taskForSend.difficulty=$scope.diffTaskC;
-        taskForSend.technology=$scope.techTaskC;
-        taskForSend.task=$scope.TaskC;
-        console.log(taskForSend);
-          if(buttonTbox=='CHANGE_TASK'){
-            TasksService.Update(taskForSend);
-          } else{
-            TasksService.Create(taskForSend);
-          }
+        $scope.changeOrCreateTask=function (id,save){
+          BufferService.setDataForTask($scope.allTasks,id);
+          ngDialog.open({
+            template: 'js/modules/tasks/changeOrCreateTask.template.html',
+            controller: ['$scope', 'BufferService', function($scope, BufferService) {
+              if(id<0){
+                BufferService.resetDataForTask();
+              }
+              $scope.task=BufferService.getDataForTask();
+              $scope.titleTask=$scope.task.title;
+              $scope.diffTask=$scope.task.difficulty;
+              $scope.techTask=$scope.task.technology;
+              $scope.Task=$scope.task.task;
+              $scope.saveTask=function(){
+                $scope.task.title=$scope.titleTask;
+                $scope.task.difficulty=$scope.diffTask;
+                $scope.task.technology=$scope.techTask;
+                $scope.task.task=$scope.Task;
+                if(save){
+                  TasksService.Update($scope.task);
+                }
+                else{
+                  TasksService.Create($scope.task);
+                }
+                $scope.closeThisDialog('');
+              };
+            }]
+          });
         };
 
         //options for ckeditor

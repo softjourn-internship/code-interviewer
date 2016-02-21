@@ -2,15 +2,6 @@
 	<div class="title"><span class="left">{{lengthClientsPA.length}} {{infoTable.title}}</span>
 	<span class="right">
 		<div>
-		<select class="form-control" ng-model="viewby" ng-change="setItemsPerPage(viewby)">
-			<option>3</option>
-			<option>5</option>
-			<option>10</option>
-			<option>20</option>
-			<option>30</option>
-			<option>40</option>
-			<option>50</option>
-		</select>
 	    </div>
 	</span></div>
 	<div class="main table-responsive">
@@ -31,8 +22,8 @@
           <td style="text-align:center;">{{task.technology}} </td>
           <td style="text-align:center;">{{task.addedDate}}</td>
           <td style="text-align:center;">{{task.difficulty}}</td>
-          <td class="image"><img style="cursor:pointer" ng-click="changeFrame(task.id);CreateOrChangeTask('CHANGE_TASK');" id="editImage" src="dist/images/task-edit.png" /></td>
-          <td class="image" style="padding-right:15px"><img style="cursor:pointer" ng-click="delTask(task.id);" src="dist/images/trash.png" id="deleteImage" /></td>
+          <td class="image"><img style="cursor:pointer" ng-click="changeOrCreateTask(task.id,true);" id="editImage" src="dist/images/task-edit.png" /></td>
+          <td class="image" style="padding-right:15px"><img style="cursor:pointer" ng-click="clickToTryDelTask(task.id)" src="dist/images/trash.png" id="deleteImage" /></td>
         </tr>
       	</tbody>
 	</table>
@@ -42,6 +33,6 @@
 		<uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" class="pagination-sm" items-per-page="itemsPerPage"></uib-pagination>
 		<br>
 	</span>
-	<span class="right"><button id="addParticipants" class="btn succes" ng-click="changeFrame('empty'); CreateOrChangeTask('CREATE_TASK');" translate>NEW</button></span>
+	<span class="right"><button id="addParticipants" class="btn succes" ng-click="changeOrCreateTask(-1,false);" translate>NEW</button></span>
 	</div>
 </div>
