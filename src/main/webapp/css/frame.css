@@ -78,10 +78,7 @@
 
 .frameForResponse{
   z-index: 2010;
-  position: fixed;
   background-color: rgb(233, 237, 242);
-  margin-top:15%;
-  margin-left: 10%;
   padding:20px 80px 15px 80px;
   border-radius: 4px;
 }
@@ -90,14 +87,15 @@
   text-align: center;
 }
 
-.frameForTask{
-  position: fixed;
-  margin:1%;
+#frameForTask{
+  left:10%;
+  top:30px;
+  padding: 8px
   width: 80%;
   height: 90%;
   z-index: 2010;
   padding: 5px;
-  background-color: rgba(245, 245, 249, 1);
+  background-color: rgba(237, 237, 245, 1);
   border-radius: 5px;
 
 

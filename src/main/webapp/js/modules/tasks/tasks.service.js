@@ -12,19 +12,19 @@ app.factory('TasksService',TasksService);
         return service;
 
         function GetAll(handleSuccess) {
-            return $http.get('/api/tasks').then(handleSuccess);
+            return $http.get('/task').then(handleSuccess);
         }
 
         function Create(task) {
-            return $http.post('/api/tasks', task).then();
+            return $http.post('/task', task).then();
         }
 
         function Update(task) {
-            return $http.put('/api/tasks', task).then();
+            return $http.put('/task', task).then();
         }
 
         function Delete(Id) {
-            return $http.delete('/api/tasks/' + Id);
+            return $http.delete('/task/' + Id);
         }
 
     }
