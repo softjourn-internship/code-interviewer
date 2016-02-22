@@ -3,17 +3,20 @@ app.controller('TasksCtrl',['$scope','$http','TasksService','$rootScope','ngDial
       $scope.visibleMessageDel=false;
       $scope.countTaskT;
       $scope.dateForFilter={};
+      var refreshTaskList=function(){
+        for(var l=0; l<=5;l++){
+        var success = function (response) {
+            $scope.allTasks = response.data;
+            $scope.totalItems = response.data.length;
+            $scope.currentPage = 1;
+            $scope.itemsPerPage = 10;
+            $scope.maxSize = 5;
+          };
+        TasksService.GetAll(success);
+        }
+      }
 
-      var success = function (response) {
-          $scope.allTasks = response.data;
-          $scope.totalItems = response.data.length;
-          $scope.currentPage = 1;
-          $scope.itemsPerPage = 10;
-          $scope.maxSize = 5;
-        };
-
-      TasksService.GetAll(success);
-
+      refreshTaskList();
         $scope.clickToTryDelTask = function (taskId) {
           BufferService.setTitleTaskDel($scope.allTasks,taskId);
           ngDialog.open({
@@ -22,6 +25,8 @@ app.controller('TasksCtrl',['$scope','$http','TasksService','$rootScope','ngDial
               $scope.titleTaskDel=BufferService.getTitleTaskDel();
               $scope.deletedTask=function(){
                 TasksService.Delete(BufferService.getTaskIdDeleted());
+                refreshTaskList();
+                refreshTaskList();
                 $scope.closeThisDialog('');
               }
             }]
@@ -35,6 +40,7 @@ app.controller('TasksCtrl',['$scope','$http','TasksService','$rootScope','ngDial
             controller: ['$scope', 'BufferService', function($scope, BufferService) {
               if(id<0){
                 BufferService.resetDataForTask();
+                //console.log(BufferService.getDataForTask());
               }
               $scope.task=BufferService.getDataForTask();
               $scope.titleTask=$scope.task.title;
@@ -48,26 +54,34 @@ app.controller('TasksCtrl',['$scope','$http','TasksService','$rootScope','ngDial
                 $scope.task.task=$scope.Task;
                 if(save){
                   TasksService.Update($scope.task);
+                  refreshTaskList();
                 }
                 else{
                   TasksService.Create($scope.task);
+                  refreshTaskList();
                 }
                 $scope.closeThisDialog('');
               };
+              //options for ckeditor
+          $scope.options = {
+            height: 215,
+            toolbar: [
+              ['style', ['bold', 'italic', 'underline', 'clear']],
+              ['fontsize', ['fontsize']],
+              ['color', ['color']],
+              ['para', ['ul', 'ol', 'paragraph']],
+              ['height', ['height']]
+            ]
+          };
             }]
           });
         };
 
-        //options for ckeditor
-        $scope.options = {
-          language: 'en',
-          allowedContent: true,
-          entities: false
-        };
+
 
         //sort
-    $scope.sortType= '';
-    $scope.sortReverse  = true;
+        $scope.sortType= '';
+        $scope.sortReverse  = true;
 
 
   }]);

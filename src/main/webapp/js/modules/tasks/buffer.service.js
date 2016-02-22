@@ -4,7 +4,6 @@ app.service('BufferService', function () {
    var titleTask;
    var taskIdDeleted;
    var task={};
-   var emptyTask={'addedDate':'','difficulty':'','task':'','technology':'','title':'','id':''};
 
    return {
        setTitleTaskDel: function (allTasks,id) {
@@ -36,7 +35,12 @@ app.service('BufferService', function () {
           return task;
         },
         resetDataForTask: function () {
-          task=emptyTask;
+          task.addedDate='';
+          task.id='';
+          task.difficulty='';
+          task.technology='';
+          task.task='';
+          task.title='';
         }
 }
 });

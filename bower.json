@@ -21,9 +21,10 @@
     "bootstrap":"3.3.x",
     "Chart.js":"1.0.x",
     "angular-chart.js":"0.8.x",
-    "ckeditor": "4",
-    "angular-ckeditor":"1.*",
-    "ng-dialog":"0.5.7"
+    "angular-summernote":"*",
+    "summernote":"*",
+    "ng-dialog":"0.5.7",
+    "jquery-ui":"*"
   }
 }
 

@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('app', ['ngRoute','ngResource', 'ngCookies', 'ngDialog','ui.router', 'ui.bootstrap', 'chart.js','pascalprecht.translate','ckeditor']);
+var app = angular.module('app', ['ngRoute','ngResource', 'ngCookies', 'ngDialog','ui.router', 'ui.bootstrap', 'chart.js','pascalprecht.translate','summernote']);
 
 var currentUser;
 app
