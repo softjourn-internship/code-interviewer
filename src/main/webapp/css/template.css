@@ -10,8 +10,7 @@ body {
 }
 
 /* TRANSITION */
-a, button, tr, th, input, label, .ngdialog.ngdialog-theme-default .ngdialog-close:hover:before,
-.ngdialog.ngdialog-theme-default .ngdialog-close:active:before {
+a, button, tr, th, input, label {
   transition: 0.2s;
   outline: none !important;
 }
