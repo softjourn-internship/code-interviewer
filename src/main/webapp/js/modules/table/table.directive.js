@@ -1,8 +1,10 @@
 app.directive('tableMain', function() {
 	return {
-		restrict: 'E',
+		restrict: 'EA',
 		templateUrl: 'js/modules/table/table.template.html',
-		scope: false,
+		scope: {
+			datatable: '='
+		},
 		controller: 'TableCtrl'
 	}
 });
