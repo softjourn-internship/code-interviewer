@@ -1,11 +1,7 @@
 <table class="table-admin">
 	<thead ng-if="lengthClientsPA.length !== 0">
 		<th id="emtry"></th>
-		<th ng-class = "{'sort-up':isSortUp('firstName'), 'sort-down':isSortDown('firstName')}" ng-click="sort('firstName')" translate>NAME</th>
-		<th ng-class = "{'sort-up':isSortUp('email'), 'sort-down':isSortDown('email')}" ng-click="sort('email')" translate>EMAIL_ADRESS</th>
-		<th ng-class = "{'sort-up':isSortUp('role'), 'sort-down':isSortDown('role')}" ng-click="sort('role')" ng-if="dataTable === 'users'" style="padding-right:35px" translate>ROLE</th>
-		<th ng-class = "{'sort-up':isSortUp('taken'), 'sort-down':isSortDown('taken')}" ng-click="sort('taken')" translate>TECHNOLOGY</th>
-		<th ng-class = "{'sort-up':isSortUp('taken'), 'sort-down':isSortDown('taken')}" ng-click="sort('taken')" translate>TAKEN</th>
+		<th ng-repeat="column in infoTable.columns" ng-class = "{'sort-up':isSortUp(column), 'sort-down':isSortDown(column)}" ng-click="sort(column)" translate>{{column}}</th>
 	</thead>
 	<tbody>
 		<tr ng-repeat="row in lengthClientsPA = ((data.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))) |
