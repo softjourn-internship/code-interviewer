@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('app', ['ngRoute','ngResource', 'ngCookies', 'ngDialog','ui.router', 'ui.bootstrap', 'chart.js','pascalprecht.translate','ckeditor']);
+var app = angular.module('app', ['ngRoute','ngResource', 'ngCookies', 'ui.router', 'ui.bootstrap', 'chart.js','pascalprecht.translate','ckeditor']);
 
 var currentUser;
 app
@@ -18,8 +18,7 @@ app
             templateUrl: 'template/admin.html',
             views: {
                 '': {
-                    templateUrl: 'template/dashboard.html',
-                    controller: 'DashboardCtrl'
+                    templateUrl: 'template/dashboard.html'
                 }
             }
         })
@@ -47,7 +46,7 @@ app
             templateUrl: 'template/charts.html',
             views: {
                 '': {
-                    templateUrl: 'js/modules/profile/profile.template.html',
+                    templateUrl: 'template/profile.html',
                     controller: 'ProfileCtrl'
                 }
             }
@@ -64,7 +63,7 @@ app
         })
     	   .state('login', {
             url: '/login',
-            templateUrl: 'js/modules/login/login.template.html',
+            templateUrl: 'template/login.html',
             controller: 'LoginController'
         })
         .state('workspace', {
@@ -74,7 +73,7 @@ app
         });
 
         $translateProvider.useStaticFilesLoader({
-            prefix: '/lang/',
+            prefix: '/translate/',
             suffix: '.json'
           });
   }

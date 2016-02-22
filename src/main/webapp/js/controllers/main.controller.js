@@ -1,4 +1,4 @@
-app.controller("MainCtrl", ['ngDialog', function ($scope) {
+app.controller("MainCtrl", function ($scope) {
 	var sidebarVisible = false;
 
 	$scope.sidebarToggle = function() {
@@ -12,12 +12,12 @@ app.controller("MainCtrl", ['ngDialog', function ($scope) {
 
 	window.onresize = function(event) {
 		var sidebar = angular.element(document.querySelector('#sidebarToggle'));
-		if(window.innerWidth > 767) {
+    	if(window.innerWidth > 767) {
 			sidebar.css('left', '180px');
 		}
 		else {sidebar.css('left', 0); sidebarVisible = false;}
 	}
 
-	
 
-}]);
+
+});
