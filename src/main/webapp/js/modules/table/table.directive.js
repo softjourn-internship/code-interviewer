@@ -3,7 +3,9 @@ app.directive('tableMain', function() {
 		restrict: 'EA',
 		templateUrl: 'js/modules/table/table.template.html',
 		scope: {
-			datatable: '='
+			datatable: '=',
+			module: '@',
+			typedialog: '@'
 		},
 		controller: 'TableCtrl'
 	}

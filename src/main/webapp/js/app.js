@@ -1,7 +1,6 @@
 'use strict';
 
-var app = angular.module('app', ['ngRoute','ngResource', 'ngCookies', 'ngDialog','ui.router', 'ui.bootstrap', 'chart.js','pascalprecht.translate','summernote']);
-
+var app = angular.module('app', ['ngRoute','ngResource', 'ngCookies', 'ngDialog', 'ngAnimate', 'ui.router', 'ui.bootstrap', 'chart.js','pascalprecht.translate','summernote']);
 var currentUser;
 app
   .config(['$stateProvider', '$urlRouterProvider','$translateProvider', function ($stateProvider, $urlRouterProvider,$translateProvider,$http) {
