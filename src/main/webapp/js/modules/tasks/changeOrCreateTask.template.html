@@ -1,4 +1,4 @@
-  <div id="frameForTask">
+  <div id="frameForTask" >
     <div class="dialog">
       <table class="table-task">
         <tr>
@@ -25,8 +25,9 @@
         </tr>
       </table>
     <div/>
-  <div class="dialog" >
-    <div ckeditor="options" ng-model="Task" ng-change="changeButton()"></div>
+  <div class="dialog" style="height:350px">
+    <!--<div ckeditor="options" ng-model="Task" ng-change="changeButton()"></div>-->
+    <div summernote config="options" ng-model="Task"></div>
   </div>
   <div class="tool">
   <button class="btn succes" ng-disabled="" ng-click="saveTask()">vvv</button>
