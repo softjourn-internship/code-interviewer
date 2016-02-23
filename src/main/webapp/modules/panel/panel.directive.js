@@ -1,7 +1,7 @@
 app.directive('panel', function() {
 	return {
 		restrict: 'EA',
-		templateUrl: 'js/modules/panel/panel.template.html',
+		templateUrl: 'modules/panel/panel.template.html',
 		scope: {
 			tableData: '@tableData',
 			chartData: '=',

@@ -5,70 +5,65 @@ var currentUser;
 app
   .config(['$stateProvider', '$urlRouterProvider','$translateProvider', function ($stateProvider, $urlRouterProvider,$translateProvider,$http) {
 
-  	$urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.otherwise('/login');
 
     $stateProvider
         .state('admin', {
-            templateUrl: 'template/admin.html',
+            templateUrl: 'modules/admin/admin.html',
             controller: 'UserController'
         })
         .state('admin.dashboard', {
             url: '/dashboard',
-            templateUrl: 'template/admin.html',
             views: {
                 '': {
-                    templateUrl: 'template/dashboard.html',
+                    templateUrl: 'modules/dashboard/dashboard.html',
                     controller: 'DashboardCtrl'
                 }
             }
         })
         .state('admin.users', {
             url: '/users',
-            templateUrl: 'template/admin.html',
             views: {
                 '': {
-                    templateUrl: 'template/dashboard.html'
+                    templateUrl: 'modules/dashboard/dashboard.html'
                 }
             }
         })
         .state('admin.analytics', {
             url: '/analytics',
-            templateUrl: 'template/admin.html',
             views: {
                 '': {
-                     templateUrl: 'template/analytics.html',
+                     templateUrl: 'modules/analytics/analytics.html',
                      controller: 'AnalyticsCtrl'
                 }
             }
         })
         .state('admin.profile', {
             url: '/profile/:accId',
-            templateUrl: 'template/charts.html',
             views: {
                 '': {
-                    templateUrl: 'js/modules/profile/profile.template.html',
+                    templateUrl: 'modules/profile/profile.template.html',
                     controller: 'ProfileCtrl'
                 }
             }
         })
         .state('admin.tasks', {
             url: '/tasks',
-            templateUrl: 'template/tasks.html',
             views: {
                 '': {
-                    templateUrl: 'template/tasks.html',
+                    templateUrl: 'modules/tasks/tasks.html',
                     controller: 'TasksCtrl'
                 }
             }
         })
-    	   .state('login', {
+           .state('login', {
             url: '/login',
-            templateUrl: 'js/modules/login/login.template.html',
+            templateUrl: 'modules/login/login.template.html',
             controller: 'LoginController'
         })
         .state('workspace', {
             url: '/workspace',
-            templateUrl: 'template/workspace.html',
+            templateUrl: 'modules/workspace/workspace.html',
             controller: 'DataCtrl'
         });
 

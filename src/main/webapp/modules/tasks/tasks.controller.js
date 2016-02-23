@@ -20,7 +20,7 @@ app.controller('TasksCtrl',['$scope','$http','TasksService','$rootScope','ngDial
         $scope.clickToTryDelTask = function (taskId) {
           BufferService.setTitleTaskDel($scope.allTasks,taskId);
           ngDialog.open({
-            template: 'js/modules/tasks/responseBeforDelete.template.html',
+            template: 'modules/tasks/responseBeforDelete.template.html',
             controller: ['$scope', 'BufferService', function($scope, BufferService) {
               $scope.titleTaskDel=BufferService.getTitleTaskDel();
               $scope.deletedTask=function(){
@@ -36,7 +36,7 @@ app.controller('TasksCtrl',['$scope','$http','TasksService','$rootScope','ngDial
         $scope.changeOrCreateTask=function (id,save){
           BufferService.setDataForTask($scope.allTasks,id);
           ngDialog.open({
-            template: 'js/modules/tasks/changeOrCreateTask.template.html',
+            template: 'modules/tasks/changeOrCreateTask.template.html',
             controller: ['$scope', 'BufferService', function($scope, BufferService) {
               if(id<0){
                 BufferService.resetDataForTask();
