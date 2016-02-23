@@ -6,7 +6,9 @@ import com.code.reviewer.participant.service.ParticipantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.sql.Date;
 import java.util.Collection;
+import java.util.Set;
 
 /**
  * Created by NicholasG on 17.01.2016.
@@ -35,5 +37,20 @@ public class ParticipantServiceImpl implements ParticipantService {
     @Override
     public void save(Participant participant) {
         repository.save(participant);
+    }
+
+    @Override
+    public Set<Participant> findBySentDate(Date startLimit, Date endLimit) {
+        return repository.findByDate(startLimit, endLimit);
+    }
+
+    @Override
+    public Set<Participant> findByFirstName(String firstName) {
+        return repository.findByFirstName(firstName);
+    }
+
+    @Override
+    public Set<Participant> findByEmail(String email) {
+        return repository.findByEmail(email);
     }
 }

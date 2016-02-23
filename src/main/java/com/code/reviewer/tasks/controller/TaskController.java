@@ -12,6 +12,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
 import java.util.Collection;
 
 
@@ -59,6 +60,8 @@ public class TaskController {
                     .headers(HeaderUtil.createFailureAlert("task-managament", "taskexists", "Title already in use"))
                     .body(null);
         } else {
+            Date date = taskService.getNowDate();
+            task.setAddedDate(date);
             taskService.save(task);
             LOGGER.info("Task '" + task.getTitle() + "' has been added");
             return ResponseEntity.ok().build();

@@ -2,6 +2,7 @@ package com.code.reviewer.tasks.service;
 
 import com.code.reviewer.tasks.domain.Task;
 
+import java.sql.Date;
 import java.util.Collection;
 import java.util.Set;
 
@@ -19,6 +20,8 @@ public interface TaskService {
     Long getCountRow();
 
     Set<Task> findTasksByUser(String difficulty, String technology);
+
+    Date getNowDate();
 
     void save(Task task);
 
