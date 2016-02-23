@@ -1,0 +1,11 @@
+<div class="filter">
+	<input type="text" placeholder="Name" onblur="this.placeholder='Name'" onfocus="this.placeholder=''" ng-model="searchNameA"><br>
+	<input type="text" placeholder="Email adress" onblur="this.placeholder='Email adress'" onfocus="this.placeholder=''" ng-model="searchEmailA" ng-change="changeAction()"><br>
+	<select class="form-control" ng-model="selectTaken">
+		<option value="" translate>ALL</option>
+		<option value="Done" translate>DONE</option>
+		<option value="inProcess" translate>IN_PROCESS</option>
+		<option value="failed" translate>FAILED</option>
+	</select>
+</div>
+<div class="tool"></div>
