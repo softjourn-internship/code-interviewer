@@ -1,0 +1,118 @@
+#wrapper-workspace {
+  padding-right: 300px;
+  transition: all 0.4s ease 0s;
+}
+
+.sidebar-workspace-wrapper {
+  padding-right: -300px;
+  right: 0;
+  width: 300px;
+  background: #333;
+  font-size: 11px;
+  position: fixed;
+  height: 100%;
+  overflow-y: auto;
+  z-index: 1000;
+  transition: all 0.4s ease 0s;
+  /*box-shadow: inset 0 0 10px #000000;*/
+}
+
+
+@media (max-width:767px) {
+  #wrapper-workspace {
+    padding-right: 0;
+  }
+  .sidebar-workspace-wrapper {
+    right: -300px;
+  }
+  #wrapper-workspace.active {
+    position: relative;
+    right: 300px;
+  }
+  #wrapper-workspace.active .sidebar-workspace-wrapper {
+    right: 300px;
+    width: 300px;
+    transition: all 0.4s ease 0s;
+  }
+  button#sidebar {
+  	display: block;
+  }
+}
+
+.task {
+  color: #fff;
+  padding: 15px;
+  font-size: 14px;
+}
+
+.task .title{
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.tasks table{
+  width: 100%;
+  font-size: 15px;
+  color: #e2e2e2;
+  margin-top: 15px;
+}
+
+.tasks table tr:hover {
+  background: #444;
+  cursor: pointer;
+}
+
+.tasks table tr td{
+  padding: 15px;
+  color: #fff;
+}
+
+.participantInfo {
+  background: #393939;
+  box-shadow: 0 3px 3px rgba(34, 34, 34, 0.5);
+  height: 62px;
+}
+
+.participantInfo img{
+  width: 35px;
+  border-radius: 100%;
+  margin: 15px;
+  margin-right: 5px;
+}
+
+.participantInfo .title{
+  color: #fff;
+  display: inline-block;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.menu-humb {
+  background-repeat: no-repeat;
+  background-size: 24px;
+  background-position: 50% 50%;
+  background-image: url('/dist/images/menu_hamb.svg');
+  width: 62px;
+  height: 62px;
+  float: right;
+  border: none;
+  background-color: transparent;
+}
+
+.menu-humb:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.tab {
+  padding-right: 15px;
+  cursor: pointer;
+}
+
+.enableTab {
+  font-weight: bold;
+}
+
+.disableTab {
+  font-weight: normal;
+}
+

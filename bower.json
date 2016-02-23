@@ -25,7 +25,8 @@
     "summernote":"*",
     "ng-dialog":"0.5.7",
     "jscs":"~2.0.0",
-    "jquery-ui":"*"
+    "jquery-ui":"*",
+    "angular-timer":"*"
   }
 }
 

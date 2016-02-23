@@ -9,6 +9,7 @@
 
 	<link href="css/template.css" rel="stylesheet">
     <link href="css/sidebar.css" rel="stylesheet">
+    <link href="css/sidebar.workspace.css" rel="stylesheet">
     <link href="css/panel.css" rel="stylesheet">
     <link href="css/table.css" rel="stylesheet">
     <link href="css/buttons.css" rel="stylesheet">
@@ -22,9 +23,10 @@
     <link href="css/animate.slide.css" rel="stylesheet">
     <link href="css/show.hide.css" rel="stylesheet">
     <link href="css/chart.css" rel="stylesheet">
+    <link href="css/editor.css" rel="stylesheet">
 
 
-    <link href="css/workspace.css" rel="stylesheet">
+    <!-- <link href="css/workspace.css" rel="stylesheet"> -->
 
 
     <link href="bower_components/ng-dialog/css/ngDialog.css" rel="stylesheet">
@@ -69,6 +71,12 @@
 
         <script src="bower_components/ng-dialog/js/ngDialog.js"></script>
 
+        <script src="bower_components/momentjs/min/moment.min.js"></script>
+        <script src="bower_components/momentjs/min/locales.min.js"></script>
+        <script src="bower_components/humanize-duration/humanize-duration.js"></script>
+        <script src="bower_components/angular-timer/dist/angular-timer.min.js"></script>
+        
+
         <script src="main/main.js"></script>
 
         <script src="main/main.controller.js"></script>
@@ -96,11 +104,15 @@
         <script src="modules/translate/translaste.directive.js"></script>
 
         <script src="modules/profile/profile.controller.js"></script>
+        <script src="modules/profile/components/activity.controller.js"></script>
 
         <script src="modules/analytics/analytics.controller.js"></script>
 
         <script src="modules/panel/panel.controller.js"></script>
         <script src="modules/panel/panel.directive.js"></script>
+
+        <script src="modules/workspace/workspace.controller.js"></script>
+
 
     </body>
     </html>
