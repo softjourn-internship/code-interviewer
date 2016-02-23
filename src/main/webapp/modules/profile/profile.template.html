@@ -31,43 +31,11 @@
 			</table>
 		</div>
 	</div>
-	<div class="panel-admin activity" style="margin-top:20px;">
-		<div class="title"><span class="left" translate>ACTIVITY</span></div>
-		<div class="main table-responsive">
-			<table class="table-admin">
-				<tbody>
-					<tr ng-repeat="activity in account.activity">
-						<td class="image">
-							<img class="avatar" src="dist/images/profiles/{{account.image}}" onerror="this.src='dist/images/profiles/error.png'">
-						</td>
-						<td>
-							<span class="name"><a href="#/profile/{{account.id}}">
-							{{account.firstName}} {{account.lastName}}</a></span>
-							<span ng-if="activity.taken === 'failed'" style="color:#D08770">failed</span>
-							<span ng-if="activity.taken === 'inProcces'" style="color:#f1c40f">haven't passed</span>
-							<span ng-if="activity.taken === 'done'" style="color:#A3BE8C">passed</span>
-						    {{activity.technology}} test with {{activity.complication}} difficulty
-						</td>
-						<td>
-							<span ng-if="activity.status !== 'checked'"><button class="btn review" translate>REVIEW</button></span>
-							<span ng-if="activity.status === 'checked'"><button class="btn review" translate>VIEW</button></span>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
+
+	<panel title="ACTIVITY" module="{{MODULE}}" template="activity"></panel>
 </div>
 
 <div class="col-md-5 col-sm-5 main-padding">
-	<div class="panel-admin chart" style="margin:0" ng-controller="ChartsCtrl">
-	<div class="title"><span class="left"><a href="#/charts" translate>CHARTS</a></span></div>
-	<div class="main" style="padding: 25px">
-		<canvas id="line" class="chart chart-line" chart-data="line.data"
-		  chart-labels="line.labels" chart-legend="true" chart-series="line.series">
-		</canvas>
-	</div>
-	<div class="tool"></div>
-	</div>
+	<panel title="Progress" module="{{MODULE}}"template="progress" chart-data="line.data" chart-legend="true" chart-labels="line.labels" chart-series="line.series"></panel>
 </div>
 </div>

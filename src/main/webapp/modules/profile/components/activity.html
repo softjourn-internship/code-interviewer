@@ -1,0 +1,20 @@
+<table class="table-admin">
+	<tbody>
+		<tr ng-repeat="activity in account.activity">
+			<td class="image">
+				<img class="avatar" src="dist/images/profiles/{{account.image}}" onerror="this.src='dist/images/profiles/error.png'">
+			</td>
+			<td>
+				<span class="name"><a href="#/profile/{{account.id}}">{{account.firstName}} {{account.lastName}}</a></span>
+				<span ng-if="activity.taken === 'failed'" style="color:#D08770">failed</span>
+				<span ng-if="activity.taken === 'inProcces'" style="color:#f1c40f">haven't passed</span>
+				<span ng-if="activity.taken === 'done'" style="color:#A3BE8C">passed</span>
+				{{activity.technology}} test with {{activity.complication}} difficulty
+			</td>
+			<td>
+				<span ng-if="activity.status !== 'checked'"><button class="btn review" translate>REVIEW</button></span>
+				<span ng-if="activity.status === 'checked'"><button class="btn review" translate>VIEW</button></span>
+			</td>
+		</tr>
+	</tbody>
+</table>

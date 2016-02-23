@@ -1,0 +1,24 @@
+.ace_editor {
+	font-size: 14px !important;
+	font-family: Source Code Pro !important;
+	border-radius: 0 0 5px 5px !important;
+}
+
+#code {
+	height: 400px !important;
+}
+
+#run {
+	position: absolute;
+	bottom: 0;
+	/*width: 50%;*/
+	margin: 25px;
+	font-size: 15px;
+	height: 35px;
+	font-weight: bold;
+}
+
+#console {
+	background-color: #333 !important;
+	height: 115px !important;
+}
