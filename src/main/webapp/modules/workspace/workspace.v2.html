@@ -1,0 +1,28 @@
+<div id="wrapper-workspace">
+  <div class="sidebar-workspace-wrapper">
+    <button id="sidebar" ng-click="sidebarToggle()"></button>
+    <button id="run" class="btn succes">Run</button>
+    <div class="participantInfo" style="background-image: url(/dist/images/profiles/default.jpg">
+      <img src="dist/images/profiles/error.png" onerror="this.src='dist/images/profiles/error.png'">
+      <div class="title">Kutsaniuk Dmytro</div>
+    </div>
+    <div class="tasks">
+      <table>
+        <tr><td>1. Hello, world!</td><td><img src="dist/images/done.png"></td></tr>
+        <tr><td>2. Hello, world!</td><td><img src="dist/images/done.png"></td></tr>
+        <tr><td>3. Hello, world!</td><td><img src=""></td></tr>
+        <tr><td>4. Hello, world!</td><td><img src=""></td></tr>
+      </table>
+    </div>
+  </div>
+  <div id="page-content-wrapper">
+    <div class="page-content">
+      <div class="container-fluid">
+        <div class="col-md-12 col-sm-12 main-padding">
+          <panel title="Code" module="{{MODULE}}" ace="codeEditor" template="code.editor"></panel>  
+          <panel title="Console" module="{{MODULE}}" ace="console" template="console"></panel>  
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
