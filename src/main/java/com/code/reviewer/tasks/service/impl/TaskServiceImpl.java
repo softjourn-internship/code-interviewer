@@ -6,6 +6,7 @@ import com.code.reviewer.tasks.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.sql.Date;
 import java.util.Collection;
 import java.util.Set;
 
@@ -36,6 +37,11 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public Set<Task> findTasksByUser(String difficulty, String technology) {
         return repository.findTaskByUser(difficulty, technology);
+    }
+
+    @Override
+    public Date getNowDate() {
+        return repository.getNowDate();
     }
 
     @Override

@@ -14,7 +14,9 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
 import java.util.Collection;
+import java.util.Set;
 
 /**
  * Created by NicholasG on 11.02.2016.
@@ -131,4 +133,26 @@ public class ParticipantController {
         }
     }
 
+    @RequestMapping(value = "/sent/{startLimit}/{endLimit}",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Set<Participant>> getBySentDate(@PathVariable Date startLimit, @PathVariable Date endLimit) {
+        return ResponseEntity.ok(participantService.findBySentDate(startLimit, endLimit));
+    }
+
+    @RequestMapping(value = "/firstName/{firstName}",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Set<Participant>> getByFirstName(@PathVariable String firstName) {
+        firstName += "%";
+        return ResponseEntity.ok(participantService.findByFirstName(firstName));
+    }
+
+    @RequestMapping(value = "/email/{email}",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Set<Participant>> getByEmail(@PathVariable String email) {
+        email += "%";
+        return ResponseEntity.ok(participantService.findByEmail(email));
+    }
 }

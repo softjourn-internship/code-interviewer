@@ -43,12 +43,11 @@ public class Task implements Serializable {
     public Task() {
     }
 
-    public Task(String title, String task, String technology, String difficulty, Date addedDate) {
+    public Task(String title, String task, String technology, String difficulty) {
         this.title = title;
         this.task = task;
         this.technology = technology;
         this.difficulty = difficulty;
-        this.addedDate = addedDate;
     }
 
     @Override
