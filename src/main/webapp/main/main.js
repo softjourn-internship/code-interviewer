@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('app', ['ngRoute','ngResource', 'ngCookies', 'ngDialog', 'ngAnimate', 'ui.router', 'ui.bootstrap', 'chart.js','pascalprecht.translate','summernote']);
+var app = angular.module('app', ['ngRoute','ngResource', 'ngCookies', 'ngDialog', 'timer', 'ngAnimate', 'ui.router', 'ui.bootstrap', 'ui.ace', 'chart.js','pascalprecht.translate','summernote']);
 var currentUser;
 app
   .config(['$stateProvider', '$urlRouterProvider','$translateProvider', function ($stateProvider, $urlRouterProvider,$translateProvider,$http) {
@@ -63,10 +63,13 @@ app
         })
         .state('workspace', {
             url: '/workspace',
-            templateUrl: 'modules/workspace/workspace.html',
-            controller: 'DataCtrl'
+            templateUrl: 'modules/workspace/workspace.html'
+        })
+        .state('workspacev', {
+            url: '/workspacev',
+            templateUrl: 'modules/workspace/workspace.v2.html',
+            controller: 'WorkspaceCtrl'
         });
-
         $translateProvider.useStaticFilesLoader({
             prefix: '/lang/',
             suffix: '.json'
