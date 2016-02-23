@@ -10,7 +10,7 @@ app.controller('ProfileCtrl',
 		$scope.changeAvatar = false;
 
 		$scope.scheduleDialog = function () {
-			ngDialog.open({ template: 'js/modules/dialog/dialog.schedule.template.html'});
+			ngDialog.open({ template: 'modules/dialog/dialog.schedule.template.html'});
 		};
 
 	}]);
