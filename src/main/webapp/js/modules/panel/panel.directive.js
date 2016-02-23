@@ -6,6 +6,7 @@ app.directive('panel', function() {
 			tableData: '@tableData',
 			chartData: '=',
 			chartLabels: '=',
+			chartSeries: '=',
 			title: '@',
 			module: '@',
 			template: '@'

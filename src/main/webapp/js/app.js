@@ -31,13 +31,13 @@ app
                 }
             }
         })
-        .state('admin.charts', {
-            url: '/charts',
-            templateUrl: 'template/charts.html',
+        .state('admin.analytics', {
+            url: '/analytics',
+            templateUrl: 'template/admin.html',
             views: {
                 '': {
-                     templateUrl: 'template/charts.html',
-                     controller: 'ChartsCtrl'
+                     templateUrl: 'template/analytics.html',
+                     controller: 'AnalyticsCtrl'
                 }
             }
         })
