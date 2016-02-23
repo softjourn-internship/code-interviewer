@@ -1,0 +1,8 @@
+<div uib-collapse="idpanelclose" class="panel-admin">
+	<div class="title">
+		<span class="left" translate>{{title}}</span>
+		<span class="right controls close-panel" ng-click="idpanelclose = true"></span>
+		<span class="right controls minimize" ng-class = "{'minimize':!idPanelMinimize, 'maximize':idPanelMinimize}" ng-click="idPanelMinimize = !idPanelMinimize"></span>
+	</div>
+	<div uib-collapse="idPanelMinimize" ng-include="pathTemplate"></div>
+</div>
