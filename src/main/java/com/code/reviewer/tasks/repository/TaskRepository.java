@@ -20,7 +20,4 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     @Query("select  t  from Task t where t.difficulty = :difficulty and t.technology = :technology order by rand() ")
     Set<Task> findTaskByUser(@Param("difficulty")String difficulty, @Param("technology")String technology);
 
-    @Query("select date()")
-    Date getNowDate();
-
 }

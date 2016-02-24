@@ -12,8 +12,12 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Date;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Collection;
+import java.sql.Date;
 
 
 /**
@@ -60,7 +64,8 @@ public class TaskController {
                     .headers(HeaderUtil.createFailureAlert("task-managament", "taskexists", "Title already in use"))
                     .body(null);
         } else {
-            Date date = taskService.getNowDate();
+            Calendar calendar = Calendar.getInstance();
+            Date date = new Date(calendar.getTime().getTime());
             task.setAddedDate(date);
             taskService.save(task);
             LOGGER.info("Task '" + task.getTitle() + "' has been added");
