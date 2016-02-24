@@ -21,8 +21,6 @@ public interface TaskService {
 
     Set<Task> findTasksByUser(String difficulty, String technology);
 
-    Date getNowDate();
-
     void save(Task task);
 
     void delete(Task task);

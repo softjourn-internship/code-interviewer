@@ -40,11 +40,6 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public Date getNowDate() {
-        return repository.getNowDate();
-    }
-
-    @Override
     public Long getCountRow() {
         return repository.count();
     }
