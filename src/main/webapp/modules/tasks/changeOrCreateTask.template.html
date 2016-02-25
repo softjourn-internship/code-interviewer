@@ -1,13 +1,14 @@
-  <div id="frameForTask" >
+<div style="margin:0 auto;">
+  <div id="frameForTask">
     <div class="dialog">
       <table class="table-task">
         <tr>
           <td class="Ttitle" translate>TITLE_TASK</td>
-          <td><input type="text" ng-model="titleTask" required ng-change="changeButton()"></td>
+          <td><input type="text" ng-model="titleTask" required ng-change="changed.a=true;beenChanges()"></td>
         </tr>
         <tr>
           <td class="Ttitle" translate>DIFFICULTY</td>
-          <td><select class="form-control" ng-model="diffTask" name="difficalty" required ng-change="changeButton()">
+          <td><select class="form-control" ng-model="diffTask" name="difficalty" required ng-change="changed.b=true;beenChanges()">
             <option value="Eazy">Eazy</option>
             <option value="Middle">Middle</option>
             <option value="Hard">Hard</option>
@@ -16,7 +17,7 @@
         <tr>
           <td class="Ttitle" translate>TECHNOLOGY</td>
           <td>
-          <select class="form-control" ng-model="techTask" name="technology" required ng-change="changeButton()">
+          <select class="form-control" ng-model="techTask" name="technology" required ng-change="changed.c=true;beenChanges()">
             <option value="Java">Java</option>
             <option value="PHP">PHP</option>
             <option value="C#">C#</option>
@@ -25,11 +26,11 @@
         </tr>
       </table>
     <div/>
-  <div class="dialog" style="height:350px">
-    <!--<div ckeditor="options" ng-model="Task" ng-change="changeButton()"></div>-->
-    <div summernote config="options" ng-model="Task"></div>
+  <div class="dialog" style="height:350px;margin:10px 40px 10px 40px">
+    <div summernote config="options" ng-model="Task" ng-change="changed.d=true; beenChanges()"></div>
   </div>
   <div class="tool">
-  <button class="btn succes" ng-disabled="" ng-click="saveTask()">vvv</button>
+  <button class="btn succes" ng-disabled="whatDo" ng-click="saveTask()">Save Task</button>
   <div/>
   </div>
+</div>

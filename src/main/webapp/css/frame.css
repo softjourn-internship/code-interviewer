@@ -88,15 +88,9 @@
 }
 
 #frameForTask{
-  left:10%;
-  top:30px;
-  padding: 8px
-  width: 80%;
-  height: 90%;
-  z-index: 2010;
-  padding: 5px;
+  position: absolute;
+  width: 90%;
+  z-index: 100000;
   background-color: rgba(237, 237, 245, 1);
   border-radius: 5px;
-
-
 }
