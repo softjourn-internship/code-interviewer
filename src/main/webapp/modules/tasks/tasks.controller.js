@@ -36,12 +36,15 @@ app.controller('TasksCtrl',['$scope','$http','TasksService','$rootScope','ngDial
         $scope.changeOrCreateTask=function (id,save){
           BufferService.setDataForTask($scope.allTasks,id);
           ngDialog.open({
+            showClose:false,
+            className:'ngdialog-theme-for-editor',
             template: 'modules/tasks/changeOrCreateTask.template.html',
             controller: ['$scope', 'BufferService', function($scope, BufferService) {
               if(id<0){
                 BufferService.resetDataForTask();
-                //console.log(BufferService.getDataForTask());
               }
+              $scope.whatDo=true;
+              $scope.changed={"a":false,"b":false,"c":false,"d":false};
               $scope.task=BufferService.getDataForTask();
               $scope.titleTask=$scope.task.title;
               $scope.diffTask=$scope.task.difficulty;
@@ -62,9 +65,19 @@ app.controller('TasksCtrl',['$scope','$http','TasksService','$rootScope','ngDial
                 }
                 $scope.closeThisDialog('');
               };
-              //options for ckeditor
+              $scope.beenChanges= function(){
+                if(id<0){
+                  if($scope.changed.a && $scope.changed.b && $scope.changed.c && $scope.changed.d){$scope.whatDo=false;}
+                }
+                else{
+                  if($scope.changed.a || $scope.changed.b || $scope.changed.c || $scope.changed.d){$scope.whatDo=false;}
+                }
+              };
+              //options for summernote
           $scope.options = {
-            height: 215,
+            height: 290,
+            maxHeight: 290,
+            minHeight: 290,
             toolbar: [
               ['style', ['bold', 'italic', 'underline', 'clear']],
               ['fontsize', ['fontsize']],

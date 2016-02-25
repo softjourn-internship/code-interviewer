@@ -18,7 +18,7 @@
     "IN_PROCESS" : "In process",
     "FAILED" : "Failed",
     "TITLE_TASK" : "Title task:",
-    "technology" : "Technology",
+    "TECHNOLOGY" : "Technology:",
     "LAST_MODIFY" : "Last modify:",
     "DIFFICULTY" : "Difficulty:",
     "FIND_TASK" : "Find task",
