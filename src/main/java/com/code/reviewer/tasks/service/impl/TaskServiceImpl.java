@@ -35,7 +35,7 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public Set<Task> findTasksByUser(String difficulty, String technology) {
+    public Set<Task> findTaskByUser(String difficulty, String technology) {
         return repository.findTaskByUser(difficulty, technology);
     }
 
