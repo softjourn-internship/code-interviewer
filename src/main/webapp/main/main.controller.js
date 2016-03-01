@@ -1,8 +1,8 @@
 app.controller("MainCtrl", ['ngDialog', function ($scope) {
 	var sidebarVisible = false;
 
-	$scope.sidebarToggle = function() {
-		var sidebar = angular.element(document.querySelector('#sidebarToggle'));
+	$scope.sidebarToggle = function(id) {
+		var sidebar = angular.element(document.querySelector(id.toString()));
 		if (sidebarVisible) {
 			sidebar.css('left', 0);
 			sidebarVisible = false;

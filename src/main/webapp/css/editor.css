@@ -10,13 +10,11 @@
 
 #run {
 	position: absolute;
-	bottom: 0;
-	width: 100%;
-	margin: 0px;
-	font-size: 15px;
-	height: 50px;
-	border-radius: 0;
 	font-weight: bold;
+	z-index: 1000;
+	right: 0;
+	margin: 25px;
+	margin-top: -40px;
 }
 
 #console {
