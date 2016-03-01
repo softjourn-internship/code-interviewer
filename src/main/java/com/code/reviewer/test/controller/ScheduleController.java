@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.sql.Date;
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -43,30 +45,58 @@ public class ScheduleController {
     @Qualifier(value = "testService")
     private TestService testService;
 
-    private int start = 0;
-
     @RequestMapping(value = "/schedule",
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public Test schedule(
             @RequestParam("id") Long id,
-            @RequestParam("difficulty") String difficulty,
-            @RequestParam("technology") String technology
+            @RequestParam("difficulty") ArrayList<String> difficulties,
+            @RequestParam("technology") String technology,
+            @RequestParam("date") Date date
     ) {
         Participant participant = participantService.findOne(id);
         User user = userGeneratorService.generateUser(Role.PARTICIPANT);
         user.setFirstName(participant.getFirstName());
         user.setLastName(participant.getLastName());
         user.setEmail(participant.getEmail());
-        Set<Task> demoTaskList = taskService.findTasksByUser(difficulty, technology);
-        Set<Task> taskList = new LinkedHashSet<Task>();
-        for (Task task : demoTaskList) {
-            if (start == 3) break;
-            taskList.add(task);
-            start++;
+        Set<Task> tasks = new LinkedHashSet<Task>();
+        Set<Task> helpSet = new LinkedHashSet<Task>();
+        Task task = new Task();
+        for (String tech : difficulties) {
+            while (true) {
+                helpSet = taskService.findTaskByUser(tech, technology);
+                task = getFirstTask(helpSet, task);
+                int countNegative = 0;
+                countNegative = NoRepeat(tasks, task, countNegative);
+                if (countNegative == 1) {
+                    continue;
+                } else {
+                    tasks.add(task);
+                    break;
+                }
+            }
         }
-        Test test = new Test(user, participant, taskList);
+        Test test = new Test(user, participant, tasks, date);
         testService.save(test);
         return test;
     }
+
+    private int NoRepeat(Set<Task> taskList, Task demoTask, int countNegative) {
+        for (Task task : taskList) {
+            if (demoTask.getId() == task.getId()) {
+                countNegative++;
+                break;
+            }
+        }
+        return countNegative;
+    }
+
+    private Task getFirstTask(Set<Task> setTask, Task demoTask) {
+        for (Task task : setTask) {
+            demoTask = task;
+            break;
+        }
+        return demoTask;
+    }
 }
+

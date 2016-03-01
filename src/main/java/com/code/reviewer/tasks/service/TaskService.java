@@ -19,7 +19,7 @@ public interface TaskService {
 
     Long getCountRow();
 
-    Set<Task> findTasksByUser(String difficulty, String technology);
+    Set<Task> findTaskByUser(String difficulty, String technology);
 
     void save(Task task);
 

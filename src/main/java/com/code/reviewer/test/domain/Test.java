@@ -6,6 +6,7 @@ import com.code.reviewer.user.domain.User;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -25,6 +26,9 @@ public class Test implements Serializable {
     @MapsId
     private User user;
 
+    @Column(name = "date")
+    private Date date;
+
     @ManyToOne
     @JoinColumn(name = "participantsId", nullable = false)
     private Participant participant;
@@ -35,10 +39,11 @@ public class Test implements Serializable {
     public Test() {
     }
 
-    public Test(User user, Participant participant, Set<Task> tasks) {
+    public Test(User user, Participant participant, Set<Task> tasks, Date date) {
         this.user = user;
         this.participant = participant;
         this.tasks = tasks;
+        this.date = date;
     }
 
     public Long getId() {
@@ -59,6 +64,14 @@ public class Test implements Serializable {
 
     public Participant getParticipant() {
         return participant;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public void setParticipant(Participant participant) {
