@@ -63,11 +63,7 @@ app
         })
         .state('workspace', {
             url: '/workspace',
-            templateUrl: 'modules/workspace/workspace.html'
-        })
-        .state('workspacev', {
-            url: '/workspacev',
-            templateUrl: 'modules/workspace/workspace.v2.html',
+            templateUrl: 'modules/workspace/workspace.html',
             controller: 'WorkspaceCtrl'
         });
         $translateProvider.useStaticFilesLoader({

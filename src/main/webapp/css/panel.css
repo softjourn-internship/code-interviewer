@@ -102,3 +102,16 @@
 .close-panel {
 	background-image: url('/dist/images/close.svg');
 }
+
+.tab {
+  padding-right: 15px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.enableTab {
+  color: #333;
+}
+
+.disableTab {
+}

@@ -7,23 +7,31 @@
   padding-right: -300px;
   right: 0;
   width: 300px;
-  background: #333;
+  background: #fff;
   font-size: 11px;
   position: fixed;
   height: 100%;
   overflow-y: auto;
-  z-index: 1000;
+  z-index: 1999;
   transition: all 0.4s ease 0s;
-  /*box-shadow: inset 0 0 10px #000000;*/
+  border-left: 1px solid #e2e2e2;
 }
 
+#sidebarTask {
+  z-index: 2000;
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  right: 0;
+  margin-top: 15%;
+}
 
 @media (max-width:767px) {
   #wrapper-workspace {
-    padding-right: 0;
+    padding-right: 62px;
   }
   .sidebar-workspace-wrapper {
-    right: -300px;
+    right: -238px;
   }
   #wrapper-workspace.active {
     position: relative;
@@ -40,7 +48,7 @@
 }
 
 .task {
-  color: #fff;
+  color: #333;
   padding: 15px;
   font-size: 14px;
 }
@@ -54,22 +62,21 @@
   width: 100%;
   font-size: 15px;
   color: #e2e2e2;
+  color: #333;
   margin-top: 15px;
 }
 
 .tasks table tr:hover {
-  background: #444;
+  background: #eee;
   cursor: pointer;
 }
 
 .tasks table tr td{
   padding: 15px;
-  color: #fff;
 }
 
 .participantInfo {
   background: #393939;
-  box-shadow: 0 3px 3px rgba(34, 34, 34, 0.5);
   height: 62px;
 }
 
@@ -88,31 +95,32 @@
 }
 
 .menu-humb {
+  position: fixed;
   background-repeat: no-repeat;
-  background-size: 24px;
+  background-size: 48px;
   background-position: 50% 50%;
   background-image: url('/dist/images/menu_hamb.svg');
+  background-color: #393939;
   width: 62px;
   height: 62px;
   float: right;
+  right: 0;
+  top: 0;
   border: none;
-  background-color: transparent;
+  z-index: 2000;
 }
 
 .menu-humb:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: #414141;
 }
 
-.tab {
-  padding-right: 15px;
-  cursor: pointer;
+.left-arrow {
+  border: none;
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 20px;
+  background-image: url('/dist/images/leftArrow.svg');
 }
-
-.enableTab {
-  font-weight: bold;
-}
-
-.disableTab {
-  font-weight: normal;
-}
-

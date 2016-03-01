@@ -1,69 +1,52 @@
-<div>
-<div ng-controller="mainCTRL" ng-init="initTaskText()">
-<div id="header">
-		<div class="logo">interview<span id="span-logo">.code</span></div>
-		<div class="send-request"></div>
-
-	</div>
-	<div id="tasksBox">
-	<div id="fullTask">
-		<div id="Back"><img src="images/Back.png" alt="" ng-click="TaskListVisible=!TaskListVisible"></div>
-		<div id="titleTask">{{'Task '+NumberTask}}</div>
-
-		<div id="Task"><p>{{ TaskShow }}</p></div>
-		<div id="ListTasks" ng-show="TaskListVisible">
-		<table>
-			<tr  ng-click="changeText(NumberTask); TaskListVisible=!TaskListVisible; NumberTask=1; ShowTask(); newText(NumberTask);">
-				<td class="width-td"><div class="taskButton">1</div></td>
-				<td>Task</td>
-			</tr>
-			<tr  ng-click="changeText(NumberTask); TaskListVisible=!TaskListVisible; NumberTask=2; ShowTask(); newText(NumberTask);">
-				<td><div class="taskButton">2</div></td>
-				<td>Task</td>
-			</tr>
-			<tr ng-click="changeText(NumberTask); TaskListVisible=!TaskListVisible; NumberTask=3; ShowTask(); newText(NumberTask);">
-				<td><div class="taskButton">3</div></td>
-				<td>Task</td>
-			</tr>
-		</table>
-		</div>
-	</div>
-	<div id="runAndAtServer">
-		<div id="atServer">
-			<button id="buttonAtServer">AT SERVER</button>
-		</div>
-		<div id="run">
-			<button id="buttonRun">RUN</button>
-		</div>
-
-	</div>
-	</div>
-
-<div>
-	<div id="menuBar">
-		<div class="menuBox">
-			<img class="Icons" id="code-editor" src="images/code-editor.svg" alt="" title="Show program editor" ng-click="ShowPr()">
-			<img class="Icons" id="test-editor" src="images/test-editor.svg" title="Show test editor" ng-click="ShowTest()">
-			<img class="Icons" id="test-code-editor" src="images/test-code-editor.svg" alt="" title="Show all editors" ng-click="ShowAll()">
-			<img class="Icons" id="compiled" src="images/compiled.svg" alt="" title="Show debug message" ng-click="ShowLogMessage()">
-
-		</div>
-
-	</div>
-
-	<div id="baseArea" >
-		<div id="programEditor" >
-			<div id="files" > ProgramEditor</div>
-			<div class="editor" ui-ace ng-model="programText">sdc</div>
-		</div>
-
-		<div id="testEditor">
-			<div id="files">TestEditor</div>
-			<div class="editor" ui-ace ng-model="testText"></div>
-		</div>
-		<div id="logMess" ng-model="logText"></div>
-
-	</div>
-</div>
-</div>
+<div id="wrapper-workspace">
+  <button  class="menu-humb" ng-click="sidebarWorkspaceToggle(sidebarWorkspace)"></button>
+  <div id="sidebarWorkspace" class="sidebar-workspace-wrapper">
+    <div class="participantInfo">
+      <img src="dist/images/profiles/error.png" onerror="this.src='dist/images/profiles/error.png'">
+      <div class="title">Kutsaniuk Dmytro</div>
+    </div>
+    <div class="tasks">
+      <table class="show-hide" ng-show="taskListShow" ng-animate>
+        <tr ng-repeat="task in tasks" ng-click="openTask($index)"><td><b>{{$index + 1}}.</b> {{task.title}}</td></tr>
+      </table>
+      <div class="task show-hide" ng-show="taskShow" ng-animate>
+        <p class="title"><button class="left-arrow" ng-click="openTaskList()"></button>{{task.title}}</p>
+        <p>{{task.description}}</p>
+      </div>
+    </div>
+  </div>
+  <div id="page-content-wrapper">
+    <div class="page-content">
+      <div class="container-fluid">
+        <div class="col-md-12 col-sm-12 main-padding">
+          <div uib-collapse="idpanelclose" class="panel-admin show-hide">
+            <div class="title">
+              <span class="left tab" ng-click="mainShow = !mainShow; testShow = !testShow" 
+              ng-class = "{'enableTab':mainShow, 'disableTab':!mainShow}">Main</span>
+              <span class="left tab" ng-click="testShow = !testShow; mainShow = !mainShow"
+              ng-class = "{'enableTab':testShow, 'disableTab':!testShow}">Test</span>
+              <span class="right controls close-panel" ng-click="idpanelclose = true"></span>
+              <span class="right controls minimize" ng-class = "{'minimize':!idPanelMinimize, 'maximize':idPanelMinimize}" ng-click="idPanelMinimize = !idPanelMinimize"></span>
+              <center id="timer"><timer>60:{{minutes}}</timer></center>
+            </div>
+            <div uib-collapse="idPanelMinimize" class="show-hide">
+              <div class="show-hide" ng-show="mainShow" ng-animate><div id="code" class="editor" ui-ace="codeEditor" ng-model="mainCode" ></div></div>
+              <div class="show-hide" ng-show="testShow" ng-animate><div id="code" class="editor" ui-ace="codeEditor" ng-model="testCode" ></div></div>
+              <button id="run" class="btn succes" ng-click="run()">Run</button>
+            </div>
+          </div>
+          <div uib-collapse="consoleShow" class="panel-admin show-hide">
+            <div class="title">
+              <span class="left" style="font-weight:bold" translate>Console</span>
+              <span class="right controls close-panel" ng-click="consoleShow = true"></span>
+              <span class="right controls minimize" ng-class = "{'minimize':!consoleMinimize, 'maximize':consoleMinimize}" ng-click="consoleMinimize = !consoleMinimize"></span>
+            </div>
+            <div uib-collapse="consoleMinimize" class="show-hide">
+              <textarea id="console" ng-model="stack" readonly></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

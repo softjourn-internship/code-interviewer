@@ -42,7 +42,7 @@ app.controller('WorkspaceCtrl', function ($scope) {
 	}
 	];
 
-	$scope.mainCode = 'public class HelloWorld { \n\tpublic static void main(String[] args) { \n\t\t// Prints "Hello, World" to the terminal window. \n\t\tSystem.out.println("Hello, World"); \n\t} \n}';
+	$scope.mainCode = 'public class HelloWorld { \n\tpublic static void main(String[] args) { \n\t\t// Prints "Hello, World!" to the terminal window. \n\t\tSystem.out.println("Hello, World!"); \n\t} \n}';
 
 	$scope.openTaskList = function() {
 		$scope.taskListShow = true;
@@ -55,5 +55,37 @@ app.controller('WorkspaceCtrl', function ($scope) {
 		$scope.task = $scope.tasks[number];
 	};
 
+	$scope.run = function() {
+		$scope.stack = 'Hello, world!'
+	};
+
+	var sidebarVisible = true;
+	var wrapperWorkspace = angular.element(document.querySelector('#wrapper-workspace'));
+	var sidebar = angular.element(document.querySelector('#sidebarWorkspace'));
+
+	window.onresize = function(event) {
+		if (window.innerWidth < 767) {
+			wrapperWorkspace.css('padding-right', 62);
+			sidebar.css('right', '-238px');
+		}
+		else {
+			wrapperWorkspace.css('padding-right', 300);
+			sidebar.css('right', 0);
+		}
+	}
+
+	$scope.sidebarWorkspaceToggle = function(id) {
+		if (!sidebarVisible) { 
+			sidebar.css('right', '-238px'); 
+			sidebarVisible = true; 
+			if (window.innerWidth > 767) wrapperWorkspace.css('padding-right', 62);
+		}
+		else {
+			sidebar.css('right', 0);
+			sidebarVisible = false;
+			if (window.innerWidth > 767) wrapperWorkspace.css('padding-right', 300);
+		}
+		
+	}
 
 });
