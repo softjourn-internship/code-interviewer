@@ -53,9 +53,9 @@ public class ParticipantController {
                     .headers(HeaderUtil.createFailureAlert("participant-management", "emailexists", "Email already in use"))
                     .body(null);
         } else {
-            User currentUser = userService.getCurrentUser();
-            participant.getUsers().add(currentUser);
-            currentUser.getParticipants().add(participant);
+//            User currentUser = userService.getCurrentUser();
+//            participant.getUsers().add(currentUser);
+//            currentUser.getParticipants().add(participant);
             participantService.save(participant);
             LOGGER.info("Participant '{} {}' has been added", participant.getFirstName(), participant.getLastName());
             return ResponseEntity.ok().build();

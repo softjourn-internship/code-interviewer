@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
@@ -157,11 +158,11 @@ public class UserController {
     @RequestMapping(value = "/{id}/profileImage",
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE,
-            consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Void> changeProfileImage(@PathVariable("id") Long id, @RequestParam("image") File image)
+            consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<Void> changeProfileImage(@PathVariable("id") Long id, @RequestParam("image") MultipartFile image)
             throws IOException {
 
-        userService.changeProfileImage(id, image);
+        userService.changeProfileImage(id, (File) image);
         return ResponseEntity.ok().build();
     }
 

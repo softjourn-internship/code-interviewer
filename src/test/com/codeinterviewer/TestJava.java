@@ -1,8 +1,8 @@
 package com.codeinterviewer;
 
-import com.code.reviewer.executing.AbstractTechnology;
 import com.code.reviewer.executing.EnumTechnology;
 import com.code.reviewer.executing.TechnologyFactory;
+import com.code.reviewer.executing.technologies.Java;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -32,8 +32,9 @@ public class TestJava {
 
     @Test
     public void test() throws Exception {
-        AbstractTechnology java = new TechnologyFactory().getTechnology(EnumTechnology.JAVA);
-        java.execute();
+        Java java = (Java) new TechnologyFactory().getTechnology(EnumTechnology.JAVA);
+//        java.execute();
+        java.classNameFromFile(new File("Text.java")).stream().forEach(System.out::println);
     }
 
 }
